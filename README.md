@@ -1,0 +1,7 @@
+Projeto da disciplina de Programação 2
+
+Links uteis:
+
+Especificação: https://docs.google.com/document/d/e/2PACX-1vRKnuseh-1y300CI4fTlgVB8XMx3yDhEl9fg2NfkyrBDqYT9-tTjHTgSdD59htIIxDtJQDdSSYLzrnv/pub
+
+Casos de teste: https://drive.google.com/drive/folders/1H7au_Jzxi8UKih0bW8jVqAfe00ROOOMJ
