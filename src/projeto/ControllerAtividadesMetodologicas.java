@@ -97,7 +97,6 @@ public class ControllerAtividadesMetodologicas {
 	public int contaItensPendentes(String codigo) {
 		if (codigo == null) { throw new NullPointerException("Campo codigo nao pode ser nulo ou vazio."); }
 		if (codigo.trim().equals("")) { throw new IllegalArgumentException("Campo codigo nao pode ser nulo ou vazio."); }
-		
 		if (!this.atividadesMetodologicas.containsKey(codigo)) { throw new IllegalArgumentException("Atividade nao encontrada"); }
 		
 		return this.atividadesMetodologicas.get(codigo).contaItensPendentes();
@@ -112,7 +111,6 @@ public class ControllerAtividadesMetodologicas {
 	public int contaItensRealizados(String codigo) {
 		if (codigo == null) { throw new NullPointerException("Campo codigo nao pode ser nulo ou vazio."); }
 		if (codigo.trim().equals("")) { throw new IllegalArgumentException("Campo codigo nao pode ser nulo ou vazio."); }
-		
 		if (!this.atividadesMetodologicas.containsKey(codigo)) { throw new IllegalArgumentException("Atividade nao encontrada"); }
 		
 		return this.atividadesMetodologicas.get(codigo).contaItensRealizados();
