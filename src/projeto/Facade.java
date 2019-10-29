@@ -1,13 +1,15 @@
 package projeto;
 
+import easyaccept.EasyAccept;
+
 /** 
  * Representacao de uma fachada para todas as funcionalidades do sistema
  */
 
-import easyaccept.EasyAccept;
-
 public class Facade {
-
+	
+	/** Inicializa um Controle de Pesquisa, para poder chamar os metodos que manipulam as Pesquisas. */
+	PesquisaController pesquisaControle = new PesquisaController();
 	/** Controlador das atividades metodologicas */
 	private ControllerAtividadesMetodologicas controllerAtividadesMetodologicas = new ControllerAtividadesMetodologicas();
 	
@@ -77,17 +79,6 @@ public class Facade {
 		return this.controllerAtividadesMetodologicas.contaItensRealizados(codigo);
 	}
 	
-	/** Testes de aceitação */
-	public static void main(String[] args) {
-		args = new String[] { "projeto.Facade", "TestesAceitacao/use_case_1.txt", "TestesAceitacao/use_case_2.txt",
-				"TestesAceitacao/use_case_3.txt", "TestesAceitacao/use_case_4.txt" };
-		EasyAccept.main(args);
-	}
-
-	/**
-	 * Inicializa um Controle de Pesquisa, para poder chamar os metodos que manipulam as Pesquisas.
-	 */
-	PesquisaController pesquisaControle = new PesquisaController();
 
 	/**
 	 * Metodo responsavel por cadastrar uma Pesquisa.
