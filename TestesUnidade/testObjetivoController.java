@@ -1,6 +1,7 @@
 import static org.junit.jupiter.api.Assertions.*;
 
 import org.junit.jupiter.api.Test;
+import projeto.ObjetivoController;
 
 class testObjetivoController {
 	
@@ -83,20 +84,20 @@ class testObjetivoController {
 	void removeObjetivo() {
 		try {
 			objetivoController.cadastraObjetivo("GERAL", "Diminuir a frequencia de mensagens homofobicas trocadas em chats online entre alunos de primeiro periodo de computacao.", 1, 5);
-			objetivoController.apagaObjetivo("O1");
+			objetivoController.apagarObjetivo("O1");
 		} catch (Exception e) {
 			fail("Nao era esperado excecao");
 		}
 		try {
 			objetivoController.cadastraObjetivo("GERAL", "Diminuir a frequencia de mensagens homofobicas trocadas em chats online entre alunos de primeiro periodo de computacao.", 1, 5);
-			objetivoController.apagaObjetivo(" ");
+			objetivoController.apagarObjetivo(" ");
 			fail("Era esperado excecao");
 		} catch (Exception e) {
 
 		}
 		try {
 			objetivoController.cadastraObjetivo("GERAL", "Diminuir a frequencia de mensagens homofobicas trocadas em chats online entre alunos de primeiro periodo de computacao.", 1, 5);
-			objetivoController.apagaObjetivo(null);
+			objetivoController.apagarObjetivo(null);
 			fail("Era esperado excecao");
 		} catch (Exception e) {
 
@@ -107,28 +108,28 @@ class testObjetivoController {
 	void objetivoToString() {
 		try {
 			objetivoController.cadastraObjetivo("GERAL", "Diminuir a frequencia de mensagens homofobicas trocadas em chats online entre alunos de primeiro periodo de computacao.", 1, 5);
-			assertEquals(objetivoController.get("O1").exibeObjetivo(), "O1 - GERAL - Diminuir a frequencia de mensagens homofobicas trocadas em chats online entre alunos de primeiro periodo de computacao. - 6");
+			assertEquals(objetivoController.exibeObjetivo("O1"), "O1 - GERAL - Diminuir a frequencia de mensagens homofobicas trocadas em chats online entre alunos de primeiro periodo de computacao. - 6");
 		} catch (Exception e) {
 			fail("Nao espera esperado excecao");
 		}
 		try {
 			objetivoController.cadastraObjetivo("GERAL", "Diminuir a frequencia de mensagens homofobicas trocadas em chats online entre alunos de primeiro periodo de computacao.", 1, 5);
-			objetivoController.apagaObjetivo("O1");
+			objetivoController.apagarObjetivo("O1");
 			objetivoController.cadastraObjetivo("ESPECIFICO", "Realizar rodas de conversa entre alunos do curso, incluindo especialmente aqueles que emitem mensagens homofobicas e alunos ou pessoas homoafetivas.", 3, 4);
-			assertEquals(objetivoController.get("O2").exibeObjetivo(), "O2 - ESPECIFICO - Realizar rodas de conversa entre alunos do curso, incluindo especialmente aqueles que emitem mensagens homofobicas e alunos ou pessoas homoafetivas. - 7");
+			assertEquals(objetivoController.exibeObjetivo("O2"), "O2 - ESPECIFICO - Realizar rodas de conversa entre alunos do curso, incluindo especialmente aqueles que emitem mensagens homofobicas e alunos ou pessoas homoafetivas. - 7");
 		} catch (Exception e) {
 			fail("Nao espera esperado excecao");
 		}
 		try {
 			objetivoController.cadastraObjetivo("GERAL", "Diminuir a frequencia de mensagens homofobicas trocadas em chats online entre alunos de primeiro periodo de computacao.", 1, 5);
-			assertEquals(objetivoController.get("O11").exibeObjetivo(), "O1 - GERAL - Diminuir a frequencia de mensagens homofobicas trocadas em chats online entre alunos de primeiro periodo de computacao. - 6");
+			assertEquals(objetivoController.exibeObjetivo("O11"), "O1 - GERAL - Diminuir a frequencia de mensagens homofobicas trocadas em chats online entre alunos de primeiro periodo de computacao. - 6");
 			fail("Era esperado excecao");
 		} catch (IllegalArgumentException e) {
 
 		}
 		try {
 			objetivoController.cadastraObjetivo("GERAL", "Diminuir a frequencia de mensagens homofobicas trocadas em chats online entre alunos de primeiro periodo de computacao.", 1, 5);
-			assertEquals(objetivoController.get(null).exibeObjetivo(), "O1 - GERAL - Diminuir a frequencia de mensagens homofobicas trocadas em chats online entre alunos de primeiro periodo de computacao. - 6");
+			assertEquals(objetivoController.exibeObjetivo(null), "O1 - GERAL - Diminuir a frequencia de mensagens homofobicas trocadas em chats online entre alunos de primeiro periodo de computacao. - 6");
 			fail("Era esperado excecao");
 		} catch (NullPointerException e) {
 

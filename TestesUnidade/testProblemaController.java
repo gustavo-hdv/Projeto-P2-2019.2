@@ -1,6 +1,7 @@
 import static org.junit.jupiter.api.Assertions.*;
 
 import org.junit.jupiter.api.Test;
+import projeto.ProblemaController;
 
 class testProblemaController {
 
@@ -79,7 +80,7 @@ class testProblemaController {
 	void ToString() {
 		try {
 			problemaController.cadastraProblema("A dificuldade da predicao do sistema eleitoral brasileiro", 5);
-			assertEquals(problemaController.get("P1").exibeProblema(), "P1 - A dificuldade da predicao do sistema eleitoral brasileiro - 5");
+			assertEquals(problemaController.exibeProblema("P1"), "P1 - A dificuldade da predicao do sistema eleitoral brasileiro - 5");
 		} catch (Exception e) {
 			fail("Nao espera esperado excecao");
 		}
@@ -87,20 +88,20 @@ class testProblemaController {
 			problemaController.cadastraProblema("A dificuldade da predicao do sistema eleitoral brasileiro", 5);
 			problemaController.apagaProblema("P1");
 			problemaController.cadastraProblema("A problematica do aprendizado dos conceitos de programacao orientada a objeto", 2);
-			assertEquals(problemaController.get("P2").exibeProblema(), "P2 - A problematica do aprendizado dos conceitos de programacao orientada a objeto - 2");
+			assertEquals(problemaController.exibeProblema("P2"), "P2 - A problematica do aprendizado dos conceitos de programacao orientada a objeto - 2");
 		} catch (Exception e) {
 			fail("Nao espera esperado excecao");
 		}
 		try {
 			problemaController.cadastraProblema("A dificuldade da predicao do sistema eleitoral brasileiro", 5);
-			assertEquals(problemaController.get("P11").exibeProblema(), "P1 - A dificuldade da predicao do sistema eleitoral brasileiro - 5");
+			assertEquals(problemaController.exibeProblema("P11"), "P1 - A dificuldade da predicao do sistema eleitoral brasileiro - 5");
 			fail("Era esperado excecao");
 		} catch (IllegalArgumentException e) {
 
 		}
 		try {
 			problemaController.cadastraProblema("A dificuldade da predicao do sistema eleitoral brasileiro", 5);
-			assertEquals(problemaController.get(null).exibeProblema(), "P1 - A dificuldade da predicao do sistema eleitoral brasileiro - 5");
+			assertEquals(problemaController.exibeProblema(null), "P1 - A dificuldade da predicao do sistema eleitoral brasileiro - 5");
 			fail("Era esperado excecao");
 		} catch (NullPointerException e) {
 
