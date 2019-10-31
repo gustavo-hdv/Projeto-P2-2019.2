@@ -83,6 +83,10 @@ class testProblemaController {
 		} catch (Exception e) {
 			fail("Nao espera esperado excecao");
 		}
+	}
+	
+	@Test
+	void ToString_1() {
 		try {
 			problemaController.cadastraProblema("A dificuldade da predicao do sistema eleitoral brasileiro", 5);
 			problemaController.apagaProblema("P1");
@@ -91,6 +95,10 @@ class testProblemaController {
 		} catch (Exception e) {
 			fail("Nao espera esperado excecao");
 		}
+	}
+	
+	@Test
+	void ToString_2() {
 		try {
 			problemaController.cadastraProblema("A dificuldade da predicao do sistema eleitoral brasileiro", 5);
 			assertEquals(problemaController.get("P11").exibeProblema(), "P1 - A dificuldade da predicao do sistema eleitoral brasileiro - 5");
@@ -98,6 +106,10 @@ class testProblemaController {
 		} catch (IllegalArgumentException e) {
 
 		}
+	}
+	
+	@Test
+	void toString_3() {
 		try {
 			problemaController.cadastraProblema("A dificuldade da predicao do sistema eleitoral brasileiro", 5);
 			assertEquals(problemaController.get(null).exibeProblema(), "P1 - A dificuldade da predicao do sistema eleitoral brasileiro - 5");
