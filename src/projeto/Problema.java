@@ -36,9 +36,9 @@ public class Problema {
      * @param viabilidade a viabilidade do problema
      */
     public Problema(String codigo, String descricao, int viabilidade){
-        Validador.validaString(codigo, "Campo codigo nao pode ser nulo ou vazio.");
-        Validador.validaString(descricao, "Campo descricao nao pode ser nulo ou vazio.");
-        Validador.validaValores(viabilidade, "Valor invalido de viabilidade.");
+        ValidadorProblemaObjetivo.validaString(codigo, "Campo codigo nao pode ser nulo ou vazio.");
+        ValidadorProblemaObjetivo.validaString(descricao, "Campo descricao nao pode ser nulo ou vazio.");
+        ValidadorProblemaObjetivo.validaValores(viabilidade, "Valor invalido de viabilidade.");
 
         this.codigo = codigo;
         this.descricao = descricao;

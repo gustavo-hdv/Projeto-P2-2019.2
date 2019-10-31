@@ -45,8 +45,8 @@ public class ProblemaController {
      *
      */
     public void cadastraProblema(String descricao, int viabilidade){
-        Validador.validaString(descricao, "Campo descricao nao pode ser nulo ou vazio.");
-        Validador.validaValores(viabilidade, "Valor invalido de viabilidade.");
+        ValidadorProblemaObjetivo.validaString(descricao, "Campo descricao nao pode ser nulo ou vazio.");
+        ValidadorProblemaObjetivo.validaValores(viabilidade, "Valor invalido de viabilidade.");
 
         String codigo = "P" + this.posicao;
         this.problemas.put(codigo, new Problema(codigo, descricao, viabilidade));
@@ -61,8 +61,8 @@ public class ProblemaController {
      * @return a representação em String do problema pesquisado
      */
     public String exibeProblema(String codigo){
-        Validador.validaString(codigo, "Campo codigo nao pode ser nulo ou vazio.");
-        Validador.isRegistered(codigo, this.problemas, "Problema nao encontrado");
+        ValidadorProblemaObjetivo.validaString(codigo, "Campo codigo nao pode ser nulo ou vazio.");
+        ValidadorProblemaObjetivo.isRegistered(codigo, this.problemas, "Problema nao encontrado");
 
         return this.problemas.get(codigo).toString();
     }
@@ -73,8 +73,8 @@ public class ProblemaController {
      * @param codigo código do problema a ser removido
      */
     public void apagaProblema(String codigo){
-        Validador.validaString(codigo, "Campo codigo nao pode ser nulo ou vazio.");
-        Validador.isRegistered(codigo, this.problemas, "Problema nao encontrado");
+        ValidadorProblemaObjetivo.validaString(codigo, "Campo codigo nao pode ser nulo ou vazio.");
+        ValidadorProblemaObjetivo.isRegistered(codigo, this.problemas, "Problema nao encontrado");
 
         this.problemas.remove(codigo);
     }

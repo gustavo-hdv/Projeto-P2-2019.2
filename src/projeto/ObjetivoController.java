@@ -47,11 +47,11 @@ public class ObjetivoController {
      *
      */
     public void cadastraObjetivo(String tipo, String descricao, int aderencia, int viabilidade){
-        Validador.validaString(tipo, "Campo tipo nao pode ser nulo ou vazio.");
-        Validador.validaTipo(tipo, "Valor invalido de tipo.");
-        Validador.validaString(descricao, "Campo descricao nao pode ser nulo ou vazio.");
-        Validador.validaValores(aderencia, "Valor invalido de aderencia");
-        Validador.validaValores(viabilidade, "Valor invalido de viabilidade.");
+        ValidadorProblemaObjetivo.validaString(tipo, "Campo tipo nao pode ser nulo ou vazio.");
+        ValidadorProblemaObjetivo.validaTipo(tipo, "Valor invalido de tipo.");
+        ValidadorProblemaObjetivo.validaString(descricao, "Campo descricao nao pode ser nulo ou vazio.");
+        ValidadorProblemaObjetivo.validaValores(aderencia, "Valor invalido de aderencia");
+        ValidadorProblemaObjetivo.validaValores(viabilidade, "Valor invalido de viabilidade.");
 
         String codigo = "O" + this.posicao;
         this.objetivos.put(codigo, new Objetivo(codigo, tipo, descricao, aderencia, viabilidade));
@@ -66,8 +66,8 @@ public class ObjetivoController {
      * @return a representação em String do objetivo pesquisado
      */
     public String exibeObjetivo(String codigo){
-        Validador.validaString(codigo, "Campo codigo nao pode ser nulo ou vazio.");
-        Validador.isRegistered(codigo, this.objetivos, "Objetivo nao encontrado");
+        ValidadorProblemaObjetivo.validaString(codigo, "Campo codigo nao pode ser nulo ou vazio.");
+        ValidadorProblemaObjetivo.isRegistered(codigo, this.objetivos, "Objetivo nao encontrado");
 
         return this.objetivos.get(codigo).toString();
     }
@@ -78,8 +78,8 @@ public class ObjetivoController {
      * @param codigo código do objetivo a ser removido
      */
     public void apagarObjetivo(String codigo){
-        Validador.validaString(codigo, "Campo codigo nao pode ser nulo ou vazio.");
-        Validador.isRegistered(codigo, this.objetivos, "Objetivo nao encontrado");
+        ValidadorProblemaObjetivo.validaString(codigo, "Campo codigo nao pode ser nulo ou vazio.");
+        ValidadorProblemaObjetivo.isRegistered(codigo, this.objetivos, "Objetivo nao encontrado");
         this.objetivos.remove(codigo);
     }
 

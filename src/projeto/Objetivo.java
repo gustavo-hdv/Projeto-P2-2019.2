@@ -43,12 +43,12 @@ public class Objetivo {
      * @param viabilidade a viabilidade do objetivo
      */
     public Objetivo(String codigo, String tipo, String descricao, int aderencia, int viabilidade){
-        Validador.validaString(codigo, "Campo codigo nao pode ser nulo ou vazio.");
-        Validador.validaString(tipo, "Campo tipo nao pode ser nulo ou vazio.");
-        Validador.validaTipo(tipo, "Valor invalido de tipo.");
-        Validador.validaString(descricao, "Campo descricao nao pode ser nulo ou vazio.");
-        Validador.validaValores(aderencia, "Valor invalido de aderencia");
-        Validador.validaValores(viabilidade, "Valor invalido de viabilidade.");
+        ValidadorProblemaObjetivo.validaString(codigo, "Campo codigo nao pode ser nulo ou vazio.");
+        ValidadorProblemaObjetivo.validaString(tipo, "Campo tipo nao pode ser nulo ou vazio.");
+        ValidadorProblemaObjetivo.validaTipo(tipo, "Valor invalido de tipo.");
+        ValidadorProblemaObjetivo.validaString(descricao, "Campo descricao nao pode ser nulo ou vazio.");
+        ValidadorProblemaObjetivo.validaValores(aderencia, "Valor invalido de aderencia");
+        ValidadorProblemaObjetivo.validaValores(viabilidade, "Valor invalido de viabilidade.");
 
         this.codigo = codigo;
         this.tipo = tipo;

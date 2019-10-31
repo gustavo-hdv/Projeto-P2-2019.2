@@ -2,7 +2,7 @@ package projeto;
 
 import java.util.Map;
 
-public class Validador {
+public class ValidadorProblemaObjetivo {
 	public static void validaString(String atributo, String msg) {
 		if (atributo == null) {
 			throw new NullPointerException(msg);
