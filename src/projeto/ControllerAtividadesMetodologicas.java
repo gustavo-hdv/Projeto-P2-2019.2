@@ -29,15 +29,13 @@ public class ControllerAtividadesMetodologicas {
 	 * @return codigo da atividade, estilo: "A + posicao"
 	 */
 	public String cadastraAtividade(String descricao, String nivelRisco, String descricaoRisco) {
-		if (descricao == null) { throw new NullPointerException("Campo Descricao nao pode ser nulo ou vazio."); }
-		if (descricao.trim().equals("")) { throw new IllegalArgumentException("Campo Descricao nao pode ser nulo ou vazio."); }
-		
-		if (nivelRisco == null) { throw new NullPointerException("Campo nivelRisco nao pode ser nulo ou vazio."); }
-		if (nivelRisco.trim().equals("")) { throw new IllegalArgumentException("Campo nivelRisco nao pode ser nulo ou vazio."); }
-		if (!(nivelRisco.equalsIgnoreCase("BAIXO") || nivelRisco.equalsIgnoreCase("MEDIO") || nivelRisco.equalsIgnoreCase("ALTO"))) { throw new IllegalArgumentException("Valor invalido do nivel do risco."); }
-		
-		if (descricaoRisco == null) { throw new NullPointerException("Campo descricaoRisco nao pode ser nulo ou vazio."); }
-		if (descricaoRisco.trim().equals("")) { throw new IllegalArgumentException("Campo descricaoRisco nao pode ser nulo ou vazio."); }
+		Validador val = new Validador();
+		val.validaString(descricao, "Campo Descricao nao pode ser nulo ou vazio.");
+		val.validaString(nivelRisco, "Campo nivelRisco nao pode ser nulo ou vazio.");
+		val.validaString(descricaoRisco, "Campo descricaoRisco nao pode ser nulo ou vazio.");
+		if (!(nivelRisco.equalsIgnoreCase("BAIXO") || nivelRisco.equalsIgnoreCase("MEDIO") || nivelRisco.equalsIgnoreCase("ALTO"))) {
+			throw new IllegalArgumentException("Valor invalido do nivel do risco.");
+		}
 		
 		String codigo = "A" + (++this.contagem);
 		this.atividadesMetodologicas.put(codigo, new AtividadeMetodologica(descricao, nivelRisco, descricaoRisco));
@@ -49,8 +47,8 @@ public class ControllerAtividadesMetodologicas {
 	 * @param codigo da atividade (String)
 	 */
 	public void apagaAtividade(String codigo) {
-		if (codigo == null) { throw new NullPointerException("Campo codigo nao pode ser nulo ou vazio."); }
-		if (codigo.trim().equals("")) { throw new IllegalArgumentException("Campo codigo nao pode ser nulo ou vazio."); }
+		Validador val = new Validador();
+		val.validaString(codigo, "Campo codigo nao pode ser nulo ou vazio.");
 		if (!atividadesMetodologicas.containsKey(codigo)) { throw new IllegalArgumentException("Atividade nao encontrada"); }
 		
 		this.atividadesMetodologicas.remove(codigo);
@@ -62,13 +60,11 @@ public class ControllerAtividadesMetodologicas {
 	 * @param item (descricao do item) (String)
 	 */
 	public void cadastraItem(String codigo, String item) {
-		if (codigo == null) { throw new NullPointerException("Campo codigo nao pode ser nulo ou vazio."); }
-		if (codigo.trim().equals("")) { throw new IllegalArgumentException("Campo codigo nao pode ser nulo ou vazio."); }
-		if (!atividadesMetodologicas.containsKey(codigo)) { throw new IllegalArgumentException("Atividade nao encontrada"); }
-		
-		if (item.equals(null)) { throw new NullPointerException("Item nao pode ser nulo ou vazio."); }
-		if (item.trim().equals("")) { throw new IllegalArgumentException("Item nao pode ser nulo ou vazio."); }
-		
+		Validador val = new Validador();
+		val.validaString(codigo, "Campo codigo nao pode ser nulo ou vazio.");
+		val.validaString(item, "Item nao pode ser nulo ou vazio.");
+	    if (!atividadesMetodologicas.containsKey(codigo)) { throw new IllegalArgumentException("Atividade nao encontrada"); }
+	
 		this.atividadesMetodologicas.get(codigo).cadastraItem(item);
 		
 	}
@@ -81,8 +77,8 @@ public class ControllerAtividadesMetodologicas {
 	 *  @return representacao de uma ativdade (String)
 	 */
 	public String exibeAtividade(String codigo) {
-		if (codigo == null) { throw new NullPointerException("Campo codigo nao pode ser nulo ou vazio."); }
-		if (codigo.trim().equals("")) { throw new IllegalArgumentException("Campo codigo nao pode ser nulo ou vazio."); }
+		Validador val = new Validador();
+		val.validaString(codigo, "Campo codigo nao pode ser nulo ou vazio.");
 		if (!atividadesMetodologicas.containsKey(codigo)) { throw new IllegalArgumentException("Atividade nao encontrada"); }
 	
 		return atividadesMetodologicas.get(codigo).exibeAtividade();
@@ -95,8 +91,8 @@ public class ControllerAtividadesMetodologicas {
 	 * @return quantidade de itens pendentes (int)
 	 */
 	public int contaItensPendentes(String codigo) {
-		if (codigo == null) { throw new NullPointerException("Campo codigo nao pode ser nulo ou vazio."); }
-		if (codigo.trim().equals("")) { throw new IllegalArgumentException("Campo codigo nao pode ser nulo ou vazio."); }
+		Validador val = new Validador();
+		val.validaString(codigo, "Campo codigo nao pode ser nulo ou vazio.");
 		if (!this.atividadesMetodologicas.containsKey(codigo)) { throw new IllegalArgumentException("Atividade nao encontrada"); }
 		
 		return this.atividadesMetodologicas.get(codigo).contaItensPendentes();
@@ -109,8 +105,8 @@ public class ControllerAtividadesMetodologicas {
 	 * @return quantidade de itens realizados (int)
 	 */
 	public int contaItensRealizados(String codigo) {
-		if (codigo == null) { throw new NullPointerException("Campo codigo nao pode ser nulo ou vazio."); }
-		if (codigo.trim().equals("")) { throw new IllegalArgumentException("Campo codigo nao pode ser nulo ou vazio."); }
+		Validador val = new Validador();
+		val.validaString(codigo, "Campo codigo nao pode ser nulo ou vazio.");
 		if (!this.atividadesMetodologicas.containsKey(codigo)) { throw new IllegalArgumentException("Atividade nao encontrada"); }
 		
 		return this.atividadesMetodologicas.get(codigo).contaItensRealizados();
