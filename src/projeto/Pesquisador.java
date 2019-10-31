@@ -6,15 +6,24 @@ public class Pesquisador {
 	private String biografia;
 	private String email;
 	private String foto;
-	private boolean ativado;
+	private boolean status;
 
 	public Pesquisador(String nome, String funcao, String biografia, String email, String foto) {
+		Validador val = new Validador();
+		val.validaString(nome, "Campo nome nao pode ser nulo ou vazio.");
+		val.validaString(funcao, "Campo funcao nao pode ser nulo ou vazio.");
+		val.validaString(biografia, "Campo biografia nao pode ser nulo ou vazio.");
+		val.validaString(email, "Campo email nao pode ser nulo ou vazio.");
+		val.validaString(foto, "Campo fotoURL nao pode ser nulo ou vazio.");
+		validaEmail(email);
+		validaFoto(foto);
+		
 		this.nome = nome;
 		this.funcao = funcao;
 		this.biografia = biografia;
 		this.email = email;
 		this.foto = foto;
-		this.ativado = true;
+		this.status = true;
 	}
 	
 	private void validaEmail(String email) {
@@ -56,18 +65,18 @@ public class Pesquisador {
 	}
 	
 	public void desativaPesquisador() {
-		if (!ativado) {
-			throw new IllegalArgumentException("Pesquisador inativo.");
+		if (!status) {
+			throw new RuntimeException("Pesquisador inativo.");
 		} else {
-			this.ativado = false;
+			this.status = false;
 		}
 	}
 	
 	public void ativaPesquisador() {
-		if (ativado) {
-			throw new IllegalArgumentException("Pesquisador ja ativado.");
+		if (status) {
+			throw new RuntimeException("Pesquisador ja ativado.");
 		} else {
-			this.ativado = true;
+			this.status = true;
 		}
 	}
 	
@@ -103,6 +112,6 @@ public class Pesquisador {
 	}
 
 	public boolean pesquisadorEhAtivo() {
-		return this.ativado;
+		return this.status;
 	}
 }
