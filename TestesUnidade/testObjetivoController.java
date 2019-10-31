@@ -81,13 +81,17 @@ class testObjetivoController {
 	}
 	
 	@Test
-	void removeObjetivo() {
+	void removeObjetivoBasico() {
 		try {
 			objetivoController.cadastraObjetivo("GERAL", "Diminuir a frequencia de mensagens homofobicas trocadas em chats online entre alunos de primeiro periodo de computacao.", 1, 5);
 			objetivoController.apagarObjetivo("O1");
 		} catch (Exception e) {
 			fail("Nao era esperado excecao");
 		}
+	}
+
+	@Test
+	void removeObjetivoCodigoVazio() {
 		try {
 			objetivoController.cadastraObjetivo("GERAL", "Diminuir a frequencia de mensagens homofobicas trocadas em chats online entre alunos de primeiro periodo de computacao.", 1, 5);
 			objetivoController.apagarObjetivo(" ");
@@ -95,6 +99,10 @@ class testObjetivoController {
 		} catch (Exception e) {
 
 		}
+	}
+
+	@Test
+	void removeObjetivoCodigoNulo(){
 		try {
 			objetivoController.cadastraObjetivo("GERAL", "Diminuir a frequencia de mensagens homofobicas trocadas em chats online entre alunos de primeiro periodo de computacao.", 1, 5);
 			objetivoController.apagarObjetivo(null);
@@ -105,13 +113,17 @@ class testObjetivoController {
 	}
 	
 	@Test
-	void objetivoToString() {
+	void objetivoToStringBasico() {
 		try {
 			objetivoController.cadastraObjetivo("GERAL", "Diminuir a frequencia de mensagens homofobicas trocadas em chats online entre alunos de primeiro periodo de computacao.", 1, 5);
 			assertEquals(objetivoController.exibeObjetivo("O1"), "O1 - GERAL - Diminuir a frequencia de mensagens homofobicas trocadas em chats online entre alunos de primeiro periodo de computacao. - 6");
 		} catch (Exception e) {
 			fail("Nao espera esperado excecao");
 		}
+	}
+
+	@Test
+	void objetivoToStringOrdem() {
 		try {
 			objetivoController.cadastraObjetivo("GERAL", "Diminuir a frequencia de mensagens homofobicas trocadas em chats online entre alunos de primeiro periodo de computacao.", 1, 5);
 			objetivoController.apagarObjetivo("O1");
@@ -120,6 +132,10 @@ class testObjetivoController {
 		} catch (Exception e) {
 			fail("Nao espera esperado excecao");
 		}
+	}
+
+	@Test
+	void objetivoToStringCodigoInexistente() {
 		try {
 			objetivoController.cadastraObjetivo("GERAL", "Diminuir a frequencia de mensagens homofobicas trocadas em chats online entre alunos de primeiro periodo de computacao.", 1, 5);
 			assertEquals(objetivoController.exibeObjetivo("O11"), "O1 - GERAL - Diminuir a frequencia de mensagens homofobicas trocadas em chats online entre alunos de primeiro periodo de computacao. - 6");
@@ -127,6 +143,10 @@ class testObjetivoController {
 		} catch (IllegalArgumentException e) {
 
 		}
+	}
+
+	@Test
+	void objetivoToStringCodigoNulo(){
 		try {
 			objetivoController.cadastraObjetivo("GERAL", "Diminuir a frequencia de mensagens homofobicas trocadas em chats online entre alunos de primeiro periodo de computacao.", 1, 5);
 			assertEquals(objetivoController.exibeObjetivo(null), "O1 - GERAL - Diminuir a frequencia de mensagens homofobicas trocadas em chats online entre alunos de primeiro periodo de computacao. - 6");
