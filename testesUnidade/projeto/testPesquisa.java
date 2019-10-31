@@ -4,6 +4,8 @@ import static org.junit.jupiter.api.Assertions.*;
 
 import org.junit.jupiter.api.Test;
 
+
+
 class testPesquisa {
 
 	@Test
@@ -81,7 +83,7 @@ class testPesquisa {
 	void testCriaPesquisaDescricaoInvalida() {
 		try {
 			Pesquisa pesquisa = new Pesquisa("COM1",
-					"receita de bolo de cenoura pela metade    \r\n" + "\r\n" + "1/2 xícara (cha) de oleo\r\n"
+					"receita de bolo de cenoura pela metade    \r\n" + "\r\n" + "1/2 xï¿½cara (cha) de oleo\r\n"
 							+ "3 cenouras medias raladas\r\n" + "4 ovos\r\n" + "2 xicaras (cha) de acucar\r\n"
 							+ "2 e 1/2 xicaras (cha) de farinha de trigo\r\n" + "1 colher (sopa) de fermento em po\r\n"
 							+ "1 colher (sopa) de manteiga\r\n" + "3 colheres (sopa) de chocolate em po",

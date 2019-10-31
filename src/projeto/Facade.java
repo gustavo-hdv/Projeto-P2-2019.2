@@ -103,7 +103,7 @@ public class Facade {
 	 * @return a representacao do codigo da Pesquisa em String.
 	 */
 	public String cadastraPesquisa(String descricao, String campoDeInteresse) {
-		return pesquisaControle.cadatraPesquisa(descricao, campoDeInteresse);
+		return pesquisaControle.cadastraPesquisa(descricao, campoDeInteresse);
 	}
 
 	/**

@@ -1,9 +1,10 @@
+
 package projeto;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-
 import org.junit.jupiter.api.Test;
+import projeto.Pequisador;
 
 class testPesquisador {
 

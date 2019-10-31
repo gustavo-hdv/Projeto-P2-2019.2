@@ -1,7 +1,9 @@
 package projeto;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
+import java.util.List;
 
 /**
  * Representação de um Controle, que é responsável por manipular os
@@ -54,7 +56,7 @@ public class PesquisaController {
 	 * @param campoDeInteresse eh o campo de interesse da Pesquisa.
 	 * @return a representacao do codigo da Pesquisa em String.
 	 */
-	public String cadatraPesquisa(String descricao, String campoDeInteresse) {
+	public String cadastraPesquisa(String descricao, String campoDeInteresse) {
 		Validador val = new Validador();
 		val.validaString(descricao, "Descricao nao pode ser nula ou vazia.");
 		val.validaString(campoDeInteresse, "Formato do campo de interesse invalido.");
@@ -64,13 +66,19 @@ public class PesquisaController {
 		if (campoDeInteresse.contains(", ,")) {
 			throw new IllegalArgumentException("Formato do campo de interesse invalido.");
 		}
-		if (campoDeInteresse.length() < 3) {
-			throw new IllegalArgumentException("Formato do campo de interesse invalido.");
+		List<String> camposDeInteresse = Arrays.asList(campoDeInteresse.split(","));
+		for (int i = 0; i < camposDeInteresse.size(); i++) {
+			if (camposDeInteresse.get(i).length() < 3) {
+				throw new IllegalArgumentException("Formato do campo de interesse invalido.");
+			}
 		}
 		for (int i = 0; i < campoDeInteresse.length(); i++) {
 			if (campoDeInteresse.length() - campoDeInteresse.replaceAll(",", "").length() > 3) {
 				throw new IllegalArgumentException("Formato do campo de interesse invalido.");
 			}
+		}
+		if (campoDeInteresse.contains(",,")) {
+			throw new IllegalArgumentException("Formato de campo de interesse invalido.");
 		}
 		String codigoLetras = campoDeInteresse.substring(0, 3).toUpperCase();
 		if (codigos.containsKey(codigoLetras)) {
@@ -122,6 +130,7 @@ public class PesquisaController {
 	public void encerraPesquisa(String codigo, String motivo) {
 		Validador val = new Validador();
 		val.validaString(codigo, "Codigo nao pode ser nulo ou vazio.");
+		val.validaString(motivo, "Motivo nao pode ser nulo ou vazio.");
 		if (!pesquisas.containsKey(codigo)) {
 			throw new IllegalArgumentException("Pesquisa nao encontrada.");
 		}

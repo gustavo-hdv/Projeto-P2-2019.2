@@ -1,5 +1,8 @@
 package projeto;
 
+import java.util.Arrays;
+import java.util.List;
+
 /**
  * Representacao de uma pesquisa científica, que eh aquela que segue o metodo
  * cientifico para a construcao de um novo entendimento, compreensao ou
@@ -34,6 +37,33 @@ public class Pesquisa {
 	 * @param campoDeInteresse eh o campo de interesse da Pesquisa.
 	 */
 	public Pesquisa(String codigo, String descricao, String campoDeInteresse) {
+		Validador val = new Validador();
+		val.validaString(codigo, "Codigo nao pode ser nula ou vazia.");
+		val.validaString(descricao, "Descricao nao pode ser nula ou vazia.");
+		val.validaString(campoDeInteresse, "Formato do campo de interesse invalido");
+		if (campoDeInteresse.length() > 255) {
+			throw new IllegalArgumentException("Formato do campo de interesse invalido.");
+		}
+		if (campoDeInteresse.contains(", ,")) {
+			throw new IllegalArgumentException("Formato do campo de interesse invalido.");
+		}
+		if (campoDeInteresse.length() < 3) {
+			throw new IllegalArgumentException("Formato do campo de interesse invalido.");
+		}
+		for (int i = 0; i < campoDeInteresse.length(); i++) {
+			if (campoDeInteresse.length() - campoDeInteresse.replaceAll(",", "").length() > 3) {
+				throw new IllegalArgumentException("Formato do campo de interesse invalido.");
+			}
+		}
+		List<String> camposDeInteresse = Arrays.asList(campoDeInteresse.split(","));
+		for (int i = 0; i < camposDeInteresse.size(); i++) {
+			if (camposDeInteresse.get(i).length() < 3) {
+				throw new IllegalArgumentException("Formato do campo de interesse invalido.");
+			}
+		}
+		if (campoDeInteresse.contains(",,")) {
+			throw new IllegalArgumentException("Formato de campo de interesse invalido.");
+		}
 		this.codigo = codigo;
 		this.descricao = descricao;
 		this.campoDeInteresse = campoDeInteresse;
@@ -45,6 +75,8 @@ public class Pesquisa {
 	 * @param descricao eh a descricao da Pesquisa.
 	 */
 	public void setDescricao(String descricao) {
+		Validador val = new Validador();
+		val.validaString(descricao, "Descricao nao pode ser nula ou vazia.");
 		this.descricao = descricao;
 	}
 
@@ -54,6 +86,25 @@ public class Pesquisa {
 	 * @param campoDeInteresse eh o campo de interesse da pesquisa.
 	 */
 	public void setCampoDeInteresse(String campoDeInteresse) {
+		Validador val = new Validador();
+		val.validaString(campoDeInteresse, "Formato do campo de interesse invalido.");
+		if (campoDeInteresse.length() > 255) {
+			throw new IllegalArgumentException("Formato do campo de interesse invalido.");
+		}
+		if (campoDeInteresse.contains(", ,")) {
+			throw new IllegalArgumentException("Formato do campo de interesse invalido.");
+		}
+		if (campoDeInteresse.length() < 3) {
+			throw new IllegalArgumentException("Formato do campo de interesse invalido.");
+		}
+		for (int i = 0; i < campoDeInteresse.length(); i++) {
+			if (campoDeInteresse.length() - campoDeInteresse.replaceAll(",", "").length() > 3) {
+				throw new IllegalArgumentException("Formato do campo de interesse invalido.");
+			}
+		}
+		if (campoDeInteresse.contains(",,")) {
+			throw new IllegalArgumentException("Formato de campo de interesse invalido.");
+		}
 		this.campoDeInteresse = campoDeInteresse;
 	}
 

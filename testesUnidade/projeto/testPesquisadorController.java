@@ -1,7 +1,6 @@
 package projeto;
 
 import static org.junit.jupiter.api.Assertions.*;
-import projeto.PesquisadorControleer;
 
 import org.junit.jupiter.api.Test;
 
@@ -135,14 +134,15 @@ class testPesquisadorController {
 	
 	@Test
 	public void testaExibePesquisador() {
-		controlePesquisador.cadastraPesquisador("Gabriel", "Ciencista", "estuda as donzelas", "gabriel12@gmail12", "http://bielzin");
-		assertEquals("Gabriel (Cientista) - estuda as donzelas - gabriel12@gmail12 - http", controlePesquisador.exibePesquisador("gabriel12@gmail12"));
+		controlePesquisador.cadastraPesquisador("Gabriel", "Cientista", "estuda as donzelas", "gabriel12@gmail12", "http://bielzin");
+		assertEquals("Gabriel (Cientista) - estuda as donzelas - gabriel12@gmail12 - http://bielzin", controlePesquisador.exibePesquisador("gabriel12@gmail12"));
 	}
 	
 	@Test
 	public void testaAlteraPesquisadorEmailVazio() {
 		try {
-			controlePesquisador.alteraPesquisador("", "atributo", "novoValor");
+			controlePesquisador.cadastraPesquisador("Gabriel", "Ciencista", "estuda as donzelas", "gabriel12@gmail12", "http://bielzin");
+			controlePesquisador.alteraPesquisador("", "NOME", "Bielzin");
 			fail ("Era esperado excecao");
 		} catch (IllegalArgumentException e) {
 			
@@ -152,7 +152,8 @@ class testPesquisadorController {
 	@Test
 	public void testaAlteraPesquisadorAtributoVazio() {
 		try {
-			controlePesquisador.alteraPesquisador("email", "", "novoValor");
+			controlePesquisador.cadastraPesquisador("Gabriel", "Ciencista", "estuda as donzelas", "gabriel12@gmail12", "http://bielzin");
+			controlePesquisador.alteraPesquisador("gabriel12@gmail12", "", "Biel");
 			fail ("Era esperado excecao");
 		} catch (IllegalArgumentException e) {
 			
@@ -162,7 +163,8 @@ class testPesquisadorController {
 	@Test
 	public void testaAlteraPesquisadorNovoValorVazio() {
 		try {
-			controlePesquisador.alteraPesquisador("email", "atributo", "");
+			controlePesquisador.cadastraPesquisador("Gabriel", "Ciencista", "estuda as donzelas", "gabriel12@gmail12", "http://bielzin");
+			controlePesquisador.alteraPesquisador("gabriel12@gmail12", "NOME", "");
 			fail ("Era esperado excecao");
 		} catch (IllegalArgumentException e) {
 			
@@ -172,7 +174,8 @@ class testPesquisadorController {
 	@Test
 	public void testaAlteraPesquisadorEmailNulo() {
 		try {
-			controlePesquisador.alteraPesquisador(null, "atributo", "novoValor");
+			controlePesquisador.cadastraPesquisador("Gabriel", "Ciencista", "estuda as donzelas", "gabriel12@gmail12", "http://bielzin");
+			controlePesquisador.alteraPesquisador(null, "NOME", "BONITONES");
 			fail ("Era esperado excecao");
 		} catch (NullPointerException e) {
 			
@@ -182,7 +185,8 @@ class testPesquisadorController {
 	@Test
 	public void testaAlteraPesquisadorAtributoNulo() {
 		try {
-			controlePesquisador.alteraPesquisador("email", null, "novoValor");
+			controlePesquisador.cadastraPesquisador("Gabriel", "Ciencista", "estuda as donzelas", "gabriel12@gmail12", "http://bielzin");
+			controlePesquisador.alteraPesquisador("gabriel12@gmail12", null, "BielzinGOD");
 			fail ("Era esperado excecao");
 		} catch (NullPointerException e) {
 			
@@ -192,7 +196,8 @@ class testPesquisadorController {
 	@Test
 	public void testaAlteraPesquisadorNovoValorNulo() {
 		try {
-			controlePesquisador.alteraPesquisador("email", "atributo", null);
+			controlePesquisador.cadastraPesquisador("Gabriel", "Ciencista", "estuda as donzelas", "gabriel12@gmail12", "http://bielzin");
+			controlePesquisador.alteraPesquisador("gabriel12@gmail12", "NOME", null);
 			fail ("Era esperado excecao");
 		} catch (NullPointerException e) {
 			
@@ -201,9 +206,9 @@ class testPesquisadorController {
 	
 	@Test
 	public void testaAlteraPesquisador() {
-		controlePesquisador.cadastraPesquisador("Gabriel", "Ciencista", "estuda as donzelas", "gabriel12@gmail12", "http://bielzin");
+		controlePesquisador.cadastraPesquisador("Gabriel", "Cientista", "estuda as donzelas", "gabriel12@gmail12", "http://bielzin");
 		controlePesquisador.alteraPesquisador("gabriel12@gmail12", "NOME", "godBIELZIN");
-		assertEquals("godBIELZIN (Cientista) - estuda as donzelas - gabriel12@gmail12 - http", controlePesquisador.exibePesquisador("gabriel12@gmail12"));
+		assertEquals("godBIELZIN (Cientista) - estuda as donzelas - gabriel12@gmail12 - http://bielzin", controlePesquisador.exibePesquisador("gabriel12@gmail12"));
 	}
 	
 	@Test
