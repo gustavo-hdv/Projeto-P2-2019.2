@@ -4,31 +4,36 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 /**
- * Representação de um Controle, que é responsável por manipular os Collections, e guardar alguns métodos do programa que sejam referentes a Classe Pesquisa.
+ * Representação de um Controle, que é responsável por manipular os
+ * Collections, e guardar alguns métodos do programa que sejam referentes a
+ * Classe Pesquisa.
  * 
  * @author Gabriel Menezes Cabral - 119110372.
  *
  */
 public class PesquisaController {
-	
+
 	/**
 	 * Eh o codigo da Pesquisa.
 	 */
 	private String codigo;
 
 	/**
-	 * HashMap responsavel por guardar as pesquisas cadastradas. Essas pesquisas estao associadas ao seu codigo.
+	 * HashMap responsavel por guardar as pesquisas cadastradas. Essas pesquisas
+	 * estao associadas ao seu codigo.
 	 */
 	private HashMap<String, Pesquisa> pesquisas;
 
 	/**
-	 * HashMap responsavel por registrar as pesquisas que foram desativadas . Essas pesquisas estao associadas ao seu codigo.
+	 * HashMap responsavel por registrar as pesquisas que foram desativadas . Essas
+	 * pesquisas estao associadas ao seu codigo.
 	 */
 	private HashMap<String, String> desativadas;
-	
+
 	/**
-	 * HashMap responsavel por guardar um codigo associado a um ArrayList, o tamanho desse ArrayList eh equivalente a quantidade
-	 * de vezes que esse codigo com essas 3 letras ja foram usados.
+	 * HashMap responsavel por guardar um codigo associado a um ArrayList, o tamanho
+	 * desse ArrayList eh equivalente a quantidade de vezes que esse codigo com
+	 * essas 3 letras ja foram usados.
 	 */
 	private HashMap<String, ArrayList> codigos;
 
@@ -45,7 +50,7 @@ public class PesquisaController {
 	/**
 	 * Metodo responsavel por cadastrar uma Pesquisa.
 	 * 
-	 * @param descricao eh a descricao da Pesquisa.
+	 * @param descricao        eh a descricao da Pesquisa.
 	 * @param campoDeInteresse eh o campo de interesse da Pesquisa.
 	 * @return a representacao do codigo da Pesquisa em String.
 	 */
@@ -83,9 +88,10 @@ public class PesquisaController {
 	/**
 	 * Metodo que altera os conteudos: Descricao ou Campo.
 	 * 
-	 * @param codigo eh o codigo que identifica a Pesquisa.
+	 * @param codigo               eh o codigo que identifica a Pesquisa.
 	 * @param conteudoASerAlterado eh o conteudo a ser alterado.
-	 * @param novoConteudo eh o novo conteudo que vai ficar no lugar do antigo.
+	 * @param novoConteudo         eh o novo conteudo que vai ficar no lugar do
+	 *                             antigo.
 	 */
 	public void alteraPesquisa(String codigo, String conteudoASerAlterado, String novoConteudo) {
 		if (!pesquisas.containsKey(codigo)) {
@@ -99,7 +105,7 @@ public class PesquisaController {
 		if (conteudoASerAlterado.equals("DESCRICAO")) {
 			val.validaString(novoConteudo, "Descricao nao pode ser nula ou vazia.");
 			pesquisas.get(codigo).setDescricao(novoConteudo);
-		}else if (conteudoASerAlterado.equals("CAMPO")) {
+		} else if (conteudoASerAlterado.equals("CAMPO")) {
 			val.validaString(novoConteudo, "Formato do campo de interesse invalido.");
 			pesquisas.get(codigo).setCampoDeInteresse(novoConteudo);
 		} else {
@@ -139,7 +145,7 @@ public class PesquisaController {
 		if (!desativadas.containsKey(codigo)) {
 			throw new IllegalArgumentException("Pesquisa ja ativada.");
 		}
-		
+
 		desativadas.remove(codigo);
 	}
 

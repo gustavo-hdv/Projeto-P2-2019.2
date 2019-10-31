@@ -5,7 +5,6 @@ import easyaccept.EasyAccept;
 /**
  * Representacao de uma fachada para todas as funcionalidades do sistema
  */
-
 public class Facade {
 	private Controller controller;
 

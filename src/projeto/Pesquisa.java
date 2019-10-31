@@ -1,7 +1,9 @@
 package projeto;
 
 /**
- * Representacao de uma pesquisa científica, que eh aquela que segue o metodo cientifico para a construcao de um novo entendimento, compreensao ou processo. 
+ * Representacao de uma pesquisa científica, que eh aquela que segue o metodo
+ * cientifico para a construcao de um novo entendimento, compreensao ou
+ * processo.
  * 
  * @author Gabriel Menezes Cabral - 119110372
  *
@@ -9,25 +11,26 @@ package projeto;
 public class Pesquisa {
 
 	/**
-	 * 	Codigo que identifica uma Pesquisa.
+	 * Codigo que identifica uma Pesquisa.
 	 */
 	private String codigo;
-	
+
 	/**
 	 * Descricao de uma Pesquisa.
 	 */
 	private String descricao;
-	
+
 	/**
 	 * Campo de Interesse de uma Pesquisa.
 	 */
 	private String campoDeInteresse;
 
 	/**
-	 * Constroi uma Pesquisa, a partir do seu codigo, descricao e campo de interesse.
+	 * Constroi uma Pesquisa, a partir do seu codigo, descricao e campo de
+	 * interesse.
 	 * 
-	 * @param codigo eh o codigo que identifica a Pesquisa.
-	 * @param descricao eh a descricao da Pesquisa.
+	 * @param codigo           eh o codigo que identifica a Pesquisa.
+	 * @param descricao        eh a descricao da Pesquisa.
 	 * @param campoDeInteresse eh o campo de interesse da Pesquisa.
 	 */
 	public Pesquisa(String codigo, String descricao, String campoDeInteresse) {
@@ -71,7 +74,8 @@ public class Pesquisa {
 	 * Metodo Equals que compara um objeto com outro a partir do seu codigo.
 	 * 
 	 * @param obj eh o objeto a ser comparado.
-	 * @return um valor booleano indicando se os objetos são iguais ou não, mediante o seus codigos.
+	 * @return um valor booleano indicando se os objetos são iguais ou não,
+	 *         mediante o seus codigos.
 	 */
 	@Override
 	public boolean equals(Object obj) {
@@ -89,12 +93,12 @@ public class Pesquisa {
 			return false;
 		return true;
 	}
-	
+
 	/**
 	 * Retorna a String que representa uma Pesquisa. A representacao segue o formato
 	 * "CODIGO - DESCRICAO - CAMPO DE INTERESSE".
 	 * 
-	 *  @return String que representa a Pesquisa.
+	 * @return String que representa a Pesquisa.
 	 */
 	@Override
 	public String toString() {
