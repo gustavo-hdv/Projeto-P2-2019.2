@@ -1,7 +1,6 @@
 package projeto;
 
 import static org.junit.jupiter.api.Assertions.*;
-import projeto.PesquisadorControleer;
 
 import org.junit.jupiter.api.Test;
 

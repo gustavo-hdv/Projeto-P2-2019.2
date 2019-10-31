@@ -54,7 +54,7 @@ public class PesquisaController {
 	 * @param campoDeInteresse eh o campo de interesse da Pesquisa.
 	 * @return a representacao do codigo da Pesquisa em String.
 	 */
-	public String cadatraPesquisa(String descricao, String campoDeInteresse) {
+	public String cadastraPesquisa(String descricao, String campoDeInteresse) {
 		Validador val = new Validador();
 		val.validaString(descricao, "Descricao nao pode ser nula ou vazia.");
 		val.validaString(campoDeInteresse, "Formato do campo de interesse invalido.");

@@ -31,7 +31,6 @@ public class PesquisadorController {
 		val.validaString(biografia, "Campo biografia nao pode ser nulo ou vazio.");
 		val.validaString(email, "Campo email nao pode ser nulo ou vazio.");
 		val.validaString(foto, "Campo fotoURL nao pode ser nulo ou vazio.");
-
 		validaEmail(email);
 		validaFoto(foto);
 
@@ -80,7 +79,7 @@ public class PesquisadorController {
 		Pesquisador pesquisador = this.pesquisadores.get(email);
 		pesquisador.desativaPesquisador();
 	}
-	
+
 	public void ativaPesquisador(String email) {
 		Validador val = new Validador();
 		val.validaString(email, "Email nao pode ser vazio ou nulo.");
