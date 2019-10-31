@@ -1,7 +1,12 @@
 package projeto;
 
+import java.util.Arrays;
+import java.util.List;
+
 /**
- * Representacao de uma pesquisa científica, que eh aquela que segue o metodo cientifico para a construcao de um novo entendimento, compreensao ou processo. 
+ * Representacao de uma pesquisa científica, que eh aquela que segue o metodo
+ * cientifico para a construcao de um novo entendimento, compreensao ou
+ * processo.
  * 
  * @author Gabriel Menezes Cabral - 119110372
  *
@@ -9,28 +14,56 @@ package projeto;
 public class Pesquisa {
 
 	/**
-	 * 	Codigo que identifica uma Pesquisa.
+	 * Codigo que identifica uma Pesquisa.
 	 */
 	private String codigo;
-	
+
 	/**
 	 * Descricao de uma Pesquisa.
 	 */
 	private String descricao;
-	
+
 	/**
 	 * Campo de Interesse de uma Pesquisa.
 	 */
 	private String campoDeInteresse;
 
 	/**
-	 * Constroi uma Pesquisa, a partir do seu codigo, descricao e campo de interesse.
+	 * Constroi uma Pesquisa, a partir do seu codigo, descricao e campo de
+	 * interesse.
 	 * 
-	 * @param codigo eh o codigo que identifica a Pesquisa.
-	 * @param descricao eh a descricao da Pesquisa.
+	 * @param codigo           eh o codigo que identifica a Pesquisa.
+	 * @param descricao        eh a descricao da Pesquisa.
 	 * @param campoDeInteresse eh o campo de interesse da Pesquisa.
 	 */
 	public Pesquisa(String codigo, String descricao, String campoDeInteresse) {
+		Validador val = new Validador();
+		val.validaString(codigo, "Codigo nao pode ser nula ou vazia.");
+		val.validaString(descricao, "Descricao nao pode ser nula ou vazia.");
+		val.validaString(campoDeInteresse, "Formato do campo de interesse invalido");
+		if (campoDeInteresse.length() > 255) {
+			throw new IllegalArgumentException("Formato do campo de interesse invalido.");
+		}
+		if (campoDeInteresse.contains(", ,")) {
+			throw new IllegalArgumentException("Formato do campo de interesse invalido.");
+		}
+		if (campoDeInteresse.length() < 3) {
+			throw new IllegalArgumentException("Formato do campo de interesse invalido.");
+		}
+		for (int i = 0; i < campoDeInteresse.length(); i++) {
+			if (campoDeInteresse.length() - campoDeInteresse.replaceAll(",", "").length() > 3) {
+				throw new IllegalArgumentException("Formato do campo de interesse invalido.");
+			}
+		}
+		List<String> camposDeInteresse = Arrays.asList(campoDeInteresse.split(","));
+		for (int i = 0; i < camposDeInteresse.size(); i++) {
+			if (camposDeInteresse.get(i).length() < 3) {
+				throw new IllegalArgumentException("Formato do campo de interesse invalido.");
+			}
+		}
+		if (campoDeInteresse.contains(",,")) {
+			throw new IllegalArgumentException("Formato de campo de interesse invalido.");
+		}
 		this.codigo = codigo;
 		this.descricao = descricao;
 		this.campoDeInteresse = campoDeInteresse;
@@ -42,6 +75,8 @@ public class Pesquisa {
 	 * @param descricao eh a descricao da Pesquisa.
 	 */
 	public void setDescricao(String descricao) {
+		Validador val = new Validador();
+		val.validaString(descricao, "Descricao nao pode ser nula ou vazia.");
 		this.descricao = descricao;
 	}
 
@@ -51,6 +86,25 @@ public class Pesquisa {
 	 * @param campoDeInteresse eh o campo de interesse da pesquisa.
 	 */
 	public void setCampoDeInteresse(String campoDeInteresse) {
+		Validador val = new Validador();
+		val.validaString(campoDeInteresse, "Formato do campo de interesse invalido.");
+		if (campoDeInteresse.length() > 255) {
+			throw new IllegalArgumentException("Formato do campo de interesse invalido.");
+		}
+		if (campoDeInteresse.contains(", ,")) {
+			throw new IllegalArgumentException("Formato do campo de interesse invalido.");
+		}
+		if (campoDeInteresse.length() < 3) {
+			throw new IllegalArgumentException("Formato do campo de interesse invalido.");
+		}
+		for (int i = 0; i < campoDeInteresse.length(); i++) {
+			if (campoDeInteresse.length() - campoDeInteresse.replaceAll(",", "").length() > 3) {
+				throw new IllegalArgumentException("Formato do campo de interesse invalido.");
+			}
+		}
+		if (campoDeInteresse.contains(",,")) {
+			throw new IllegalArgumentException("Formato de campo de interesse invalido.");
+		}
 		this.campoDeInteresse = campoDeInteresse;
 	}
 
@@ -71,7 +125,8 @@ public class Pesquisa {
 	 * Metodo Equals que compara um objeto com outro a partir do seu codigo.
 	 * 
 	 * @param obj eh o objeto a ser comparado.
-	 * @return um valor booleano indicando se os objetos são iguais ou não, mediante o seus codigos.
+	 * @return um valor booleano indicando se os objetos são iguais ou não,
+	 *         mediante o seus codigos.
 	 */
 	@Override
 	public boolean equals(Object obj) {
@@ -89,12 +144,12 @@ public class Pesquisa {
 			return false;
 		return true;
 	}
-	
+
 	/**
 	 * Retorna a String que representa uma Pesquisa. A representacao segue o formato
 	 * "CODIGO - DESCRICAO - CAMPO DE INTERESSE".
 	 * 
-	 *  @return String que representa a Pesquisa.
+	 * @return String que representa a Pesquisa.
 	 */
 	@Override
 	public String toString() {
