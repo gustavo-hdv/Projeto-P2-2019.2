@@ -25,16 +25,14 @@ public class AtividadeMetodologica {
 	 * @param nivelRisco (nivel de risco da atividade) (String)
 	 * @param descricaoRisco (descricao de risco da atividade) (String)
 	 */
-	public AtividadeMetodologica(String descricao, String nivelRisco, String descricaoRisco) {	
-		if (descricao.equals(null)) { throw new NullPointerException("Campo Descricao nao pode ser nulo ou vazio."); }
-		if (descricao.trim().equals("")) { throw new IllegalArgumentException("Campo Descricao nao pode ser nulo ou vazio."); }
-		
-		if (nivelRisco.equals(null)) { throw new NullPointerException("Campo nivelRisco nao pode ser nulo ou vazio."); }
-		if (nivelRisco.trim().equals("")) { throw new IllegalArgumentException("Campo nivelRisco nao pode ser nulo ou vazio."); }
-		if (!(nivelRisco.equalsIgnoreCase("BAIXO") || nivelRisco.equalsIgnoreCase("MEDIO") || nivelRisco.equalsIgnoreCase("ALTO"))) { throw new IllegalArgumentException("Valor invalido do nivel do risco."); }
-		
-		if (descricaoRisco.equals(null)) { throw new NullPointerException("Campo descricaoRisco nao pode ser nulo ou vazio."); }
-		if (descricaoRisco.trim().equals("")) { throw new IllegalArgumentException("Campo descricaoRisco nao pode ser nulo ou vazio."); }
+	public AtividadeMetodologica(String descricao, String nivelRisco, String descricaoRisco) {
+		Validador val = new Validador();
+		val.validaString(descricao, "Campo Descricao nao pode ser nulo ou vazio.");
+		val.validaString(nivelRisco, "Campo nivelRisco nao pode ser nulo ou vazio.");
+		val.validaString(descricaoRisco, "Campo descricaoRisco nao pode ser nulo ou vazio.");
+		if (!(nivelRisco.equalsIgnoreCase("BAIXO") || nivelRisco.equalsIgnoreCase("MEDIO") || nivelRisco.equalsIgnoreCase("ALTO"))) {
+			throw new IllegalArgumentException("Valor invalido do nivel do risco.");
+		}
 		
 		this.descricao = descricao;
 		this.nivelRisco = nivelRisco;
@@ -47,8 +45,8 @@ public class AtividadeMetodologica {
 	 * @param item (descricao do item) (String)
 	 */
 	public void cadastraItem(String item) {
-		if (item.equals(null)) { throw new NullPointerException("Item nao pode ser nulo ou vazio."); }
-		if (item.trim().equals("")) { throw new IllegalArgumentException("Item nao pode ser nulo ou vazio."); }
+		Validador val = new Validador();
+		val.validaString(item, "Item nao pode ser nulo ou vazio.");
 		
 		Item itemObject = new Item(item);
 		if (resultados.contains(itemObject)) { throw new IllegalArgumentException("Item ja cadastrado"); }

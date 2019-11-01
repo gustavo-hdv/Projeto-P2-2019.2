@@ -13,13 +13,10 @@ public class Facade {
 	 * manipulam as Pesquisas.
 	 */
 	PesquisaController pesquisaControle;
-	/** Controlador das atividades metodologicas */
-	private ControllerAtividadesMetodologicas controllerAtividadesMetodologicas;
 
 	public Facade() {
 		this.controller = new Controller();
 		this.pesquisaControle = new PesquisaController();
-		this.controllerAtividadesMetodologicas = new ControllerAtividadesMetodologicas();
 	}
 
 	/** Testes de aceitacao */
@@ -39,7 +36,7 @@ public class Facade {
 	 * @return codigo da atividade, estilo: "A + posicao"
 	 */
 	public String cadastraAtividade(String descricao, String nivelRisco, String descricaoRisco) {
-		return this.controllerAtividadesMetodologicas.cadastraAtividade(descricao, nivelRisco, descricaoRisco);
+		return controller.cadastraAtividade(descricao, nivelRisco, descricaoRisco);
 	}
 
 	/**
@@ -48,7 +45,7 @@ public class Facade {
 	 * @param codigo da atividade (String)
 	 */
 	public void apagaAtividade(String codigo) {
-		this.controllerAtividadesMetodologicas.apagaAtividade(codigo);
+		controller.apagaAtividade(codigo);
 	}
 
 	/**
@@ -58,7 +55,7 @@ public class Facade {
 	 * @param item   (descricao do item) (String)
 	 */
 	public void cadastraItem(String codigo, String item) {
-		this.controllerAtividadesMetodologicas.cadastraItem(codigo, item);
+		controller.cadastraItem(codigo, item);
 	}
 
 	/**
@@ -70,7 +67,7 @@ public class Facade {
 	 * @return representacao de uma ativdade (String)
 	 */
 	public String exibeAtividade(String codigo) {
-		return this.controllerAtividadesMetodologicas.exibeAtividade(codigo);
+		return controller.exibeAtividade(codigo);
 	}
 
 	/**
@@ -81,7 +78,7 @@ public class Facade {
 	 * @return quantidade de itens pendentes (int)
 	 */
 	public int contaItensPendentes(String codigo) {
-		return this.controllerAtividadesMetodologicas.contaItensPendentes(codigo);
+		return controller.contaItensPendentes(codigo);
 	}
 
 	/**
@@ -92,7 +89,7 @@ public class Facade {
 	 * @return quantidade de itens realizados (int)
 	 */
 	public int contaItensRealizados(String codigo) {
-		return this.controllerAtividadesMetodologicas.contaItensRealizados(codigo);
+		return this.controller.contaItensRealizados(codigo);
 	}
 
 	/**
