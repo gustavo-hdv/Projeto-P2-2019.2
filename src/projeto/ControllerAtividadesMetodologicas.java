@@ -47,7 +47,7 @@ public class ControllerAtividadesMetodologicas {
 	 */
 	public void apagaAtividade(String codigo) {
 		Validador.validaString(codigo, "Campo codigo nao pode ser nulo ou vazio.");
-		if (!atividadesMetodologicas.containsKey(codigo)) { throw new IllegalArgumentException("Atividade nao encontrada"); }
+		Validador.isRegistered(codigo, atividadesMetodologicas, "Atividade nao encontrada");
 		
 		this.atividadesMetodologicas.remove(codigo);
 	}
@@ -60,7 +60,7 @@ public class ControllerAtividadesMetodologicas {
 	public void cadastraItem(String codigo, String item) {
 		Validador.validaString(codigo, "Campo codigo nao pode ser nulo ou vazio.");
 		Validador.validaString(item, "Item nao pode ser nulo ou vazio.");
-	    if (!atividadesMetodologicas.containsKey(codigo)) { throw new IllegalArgumentException("Atividade nao encontrada"); }
+		Validador.isRegistered(codigo, atividadesMetodologicas, "Atividade nao encontrada");
 	
 		this.atividadesMetodologicas.get(codigo).cadastraItem(item);
 		
@@ -75,7 +75,7 @@ public class ControllerAtividadesMetodologicas {
 	 */
 	public String exibeAtividade(String codigo) {
 		Validador.validaString(codigo, "Campo codigo nao pode ser nulo ou vazio.");
-		if (!atividadesMetodologicas.containsKey(codigo)) { throw new IllegalArgumentException("Atividade nao encontrada"); }
+		Validador.isRegistered(codigo, atividadesMetodologicas, "Atividade nao encontrada");
 	
 		return atividadesMetodologicas.get(codigo).exibeAtividade();
 	}
@@ -88,7 +88,7 @@ public class ControllerAtividadesMetodologicas {
 	 */
 	public int contaItensPendentes(String codigo) {
 		Validador.validaString(codigo, "Campo codigo nao pode ser nulo ou vazio.");
-		if (!this.atividadesMetodologicas.containsKey(codigo)) { throw new IllegalArgumentException("Atividade nao encontrada"); }
+		Validador.isRegistered(codigo, atividadesMetodologicas, "Atividade nao encontrada");
 		
 		return this.atividadesMetodologicas.get(codigo).contaItensPendentes();
 	}
@@ -101,7 +101,7 @@ public class ControllerAtividadesMetodologicas {
 	 */
 	public int contaItensRealizados(String codigo) {
 		Validador.validaString(codigo, "Campo codigo nao pode ser nulo ou vazio.");
-		if (!this.atividadesMetodologicas.containsKey(codigo)) { throw new IllegalArgumentException("Atividade nao encontrada"); }
+		Validador.isRegistered(codigo, atividadesMetodologicas, "Atividade nao encontrada");
 		
 		return this.atividadesMetodologicas.get(codigo).contaItensRealizados();
 	}
