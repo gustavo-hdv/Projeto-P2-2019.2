@@ -25,12 +25,11 @@ public class PesquisadorController {
 	}
 
 	public void cadastraPesquisador(String nome, String funcao, String biografia, String email, String foto) {
-		Validador val = new Validador();
-		val.validaString(nome, "Campo nome nao pode ser nulo ou vazio.");
-		val.validaString(funcao, "Campo funcao nao pode ser nulo ou vazio.");
-		val.validaString(biografia, "Campo biografia nao pode ser nulo ou vazio.");
-		val.validaString(email, "Campo email nao pode ser nulo ou vazio.");
-		val.validaString(foto, "Campo fotoURL nao pode ser nulo ou vazio.");
+		Validador.validaString(nome, "Campo nome nao pode ser nulo ou vazio.");
+		Validador.validaString(funcao, "Campo funcao nao pode ser nulo ou vazio.");
+		Validador.validaString(biografia, "Campo biografia nao pode ser nulo ou vazio.");
+		Validador.validaString(email, "Campo email nao pode ser nulo ou vazio.");
+		Validador.validaString(foto, "Campo fotoURL nao pode ser nulo ou vazio.");
 		validaEmail(email);
 		validaFoto(foto);
 
@@ -39,8 +38,7 @@ public class PesquisadorController {
 	}
 
 	public String exibePesquisador(String email) {
-		Validador val = new Validador();
-		val.validaString(email, "Email nao pode ser vazio ou nulo.");
+		Validador.validaString(email, "Email nao pode ser vazio ou nulo.");
 		if (!pesquisadores.containsKey(email)) {
 			throw new IllegalArgumentException("Pesquisador nao encontrado");
 		}
@@ -49,9 +47,8 @@ public class PesquisadorController {
 	}
 
 	public void alteraPesquisador(String email, String atributo, String novoValor) {
-		Validador val = new Validador();
-		val.validaString(email, "Email nao pode ser vazio ou nulo.");
-		val.validaString(atributo, "Atributo nao pode ser vazio ou nulo.");
+		Validador.validaString(email, "Email nao pode ser vazio ou nulo.");
+		Validador.validaString(atributo, "Atributo nao pode ser vazio ou nulo.");
 		if (!pesquisadores.containsKey(email)) {
 			throw new IllegalArgumentException("Pesquisador nao encontrado");
 		}
@@ -59,7 +56,7 @@ public class PesquisadorController {
 		Pesquisador pesquisador = this.pesquisadores.get(email);
 
 		if (atributo.equals("EMAIL")) {
-			val.validaString(novoValor, "Campo email nao pode ser nulo ou vazio.");
+			Validador.validaString(novoValor, "Campo email nao pode ser nulo ou vazio.");
 			validaEmail(novoValor);
 
 			pesquisadores.remove(email);
@@ -71,8 +68,7 @@ public class PesquisadorController {
 	}
 
 	public void desativaPesquisador(String email) {
-		Validador val = new Validador();
-		val.validaString(email, "Email nao pode ser vazio ou nulo.");
+		Validador.validaString(email, "Email nao pode ser vazio ou nulo.");
 		if (!pesquisadores.containsKey(email)) {
 			throw new IllegalArgumentException("Pesquisador nao encontrado");
 		}
@@ -81,8 +77,7 @@ public class PesquisadorController {
 	}
 
 	public void ativaPesquisador(String email) {
-		Validador val = new Validador();
-		val.validaString(email, "Email nao pode ser vazio ou nulo.");
+		Validador.validaString(email, "Email nao pode ser vazio ou nulo.");
 		if (!pesquisadores.containsKey(email)) {
 			throw new IllegalArgumentException("Pesquisador nao encontrado");
 		}
@@ -91,8 +86,7 @@ public class PesquisadorController {
 	}
 
 	public boolean pesquisadorEhAtivo(String email) {
-		Validador val = new Validador();
-		val.validaString(email, "Email nao pode ser vazio ou nulo.");
+		Validador.validaString(email, "Email nao pode ser vazio ou nulo.");
 		if (!pesquisadores.containsKey(email)) {
 			throw new IllegalArgumentException("Pesquisador nao encontrado");
 		}

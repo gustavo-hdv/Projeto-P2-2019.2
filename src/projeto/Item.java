@@ -11,14 +11,13 @@ public class Item {
 	/** Estado do item (PENDENTE ou REALIZADO) */
 	private String estado;
 	
-	/** Construtor de um item\n
+	/** Construtor de um item
 	 *  Inicia com o estado: "PENDENTE"
 	 * 
 	 * @param descricao do item (String)
 	 */
 	public Item(String descricao) {
-		if (descricao.equals(null)) { throw new NullPointerException("Item nao pode ser nulo ou vazio."); }
-		if (descricao.trim().equals("")) { throw new IllegalArgumentException("Item nao pode ser nulo ou vazio."); }
+		Validador.validaString(descricao, "Item nao pode ser nulo ou vazio.");
 		
 		this.descricao = descricao;
 		this.estado = "PENDENTE";	

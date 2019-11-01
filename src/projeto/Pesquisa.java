@@ -37,10 +37,9 @@ public class Pesquisa {
 	 * @param campoDeInteresse eh o campo de interesse da Pesquisa.
 	 */
 	public Pesquisa(String codigo, String descricao, String campoDeInteresse) {
-		Validador val = new Validador();
-		val.validaString(codigo, "Codigo nao pode ser nula ou vazia.");
-		val.validaString(descricao, "Descricao nao pode ser nula ou vazia.");
-		val.validaString(campoDeInteresse, "Formato do campo de interesse invalido");
+		Validador.validaString(codigo, "Codigo nao pode ser nula ou vazia.");
+		Validador.validaString(descricao, "Descricao nao pode ser nula ou vazia.");
+		Validador.validaString(campoDeInteresse, "Formato do campo de interesse invalido");
 		if (campoDeInteresse.length() > 255) {
 			throw new IllegalArgumentException("Formato do campo de interesse invalido.");
 		}
@@ -75,8 +74,7 @@ public class Pesquisa {
 	 * @param descricao eh a descricao da Pesquisa.
 	 */
 	public void setDescricao(String descricao) {
-		Validador val = new Validador();
-		val.validaString(descricao, "Descricao nao pode ser nula ou vazia.");
+		Validador.validaString(descricao, "Descricao nao pode ser nula ou vazia.");
 		this.descricao = descricao;
 	}
 
@@ -86,8 +84,7 @@ public class Pesquisa {
 	 * @param campoDeInteresse eh o campo de interesse da pesquisa.
 	 */
 	public void setCampoDeInteresse(String campoDeInteresse) {
-		Validador val = new Validador();
-		val.validaString(campoDeInteresse, "Formato do campo de interesse invalido.");
+		Validador.validaString(campoDeInteresse, "Formato do campo de interesse invalido.");
 		if (campoDeInteresse.length() > 255) {
 			throw new IllegalArgumentException("Formato do campo de interesse invalido.");
 		}
