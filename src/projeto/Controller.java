@@ -4,11 +4,15 @@ public class Controller {
 	private PesquisadorController pesquisadorC;
 	private ControllerAtividadesMetodologicas ativividadesC;
 	private PesquisaController pesquisaC;
+	private ObjetivoController objC;
+	private ProblemaController probC;
 
 	public Controller() {
 		this.pesquisadorC = new PesquisadorController();
 		this.ativividadesC = new ControllerAtividadesMetodologicas();
 		this.pesquisaC = new PesquisaController();
+		this.objC = new ObjetivoController();
+		this.probC = new ProblemaController();
 	}
 
 	public void cadastraPesquisador(String nome, String funcao, String biografia, String email, String foto) {
@@ -38,6 +42,69 @@ public class Controller {
 	public String cadastraPesquisa(String descricao, String campoDeInteresse) {
 		return pesquisaC.cadastraPesquisa(descricao, campoDeInteresse);
 	}
+	
+	
+	 /**
+     * Cadastra um novo objetivo.
+     * Adiciona um objeto do tipo Objetivo no mapa de objetivos.
+
+     * @param tipo tipo do objetivo
+     * @param descricao descrição do objetivo
+     * @param aderencia aderência do objetivo
+     * @param viabilidade viabilidade do objetivo
+     */
+    public void cadastraObjetivo(String tipo, String descricao, int aderencia, int viabilidade){
+    	objC.cadastraObjetivo(tipo, descricao, aderencia, viabilidade);
+    }
+
+    /**
+     * Retorna a String que representa o objetivo existente na chave passada por parâmetro.
+     *
+     * @param codigo o código e chave do objetivo no mapa
+     * @return a representação em String do objetivo pesquisado
+     */
+    public String exibeObjetivo(String codigo){
+    	return objC.exibeObjetivo(codigo);
+    }
+
+    /**
+     * Remove um objetivo do mapa de objetivos.
+     *
+     * @param codigo código do objetivo a ser removido
+     */
+    public void apagarObjetivo(String codigo){
+    	objC.apagarObjetivo(codigo);
+    }
+	
+	/**
+     * Cadastra um novo problema.
+     * Adiciona um objeto do tipo Problema no mapa de problemas.
+     
+     * @param descricao descrição do problema
+     * @param viabilidade viabilidade do problema
+     */
+    public void cadastraProblema(String descricao, int viabilidade) {
+    	probC.cadastraProblema(descricao, viabilidade);
+    }
+    
+    /**
+     * Retorna a String que representa o problema existente na chave passada por parâmetro.
+     *
+     * @param codigo o código e chave do problema no mapa
+     * @return a representação em String do problema pesquisado
+     */
+    public String exibeProblema(String codigo) {
+    	return probC.exibeProblema(codigo);
+    }
+    
+    /**
+     * Remove um problema do mapa de problemas.
+     *
+     * @param codigo código do problema a ser removido
+     */
+    public void apagarProblema(String codigo) {
+    	probC.apagarProblema(codigo);
+    }
 
 	/**
 	 * Metodo que altera os conteudos: Descricao ou Campo.

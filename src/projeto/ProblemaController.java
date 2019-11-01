@@ -72,7 +72,7 @@ public class ProblemaController {
      *
      * @param codigo código do problema a ser removido
      */
-    public void apagaProblema(String codigo){
+    public void apagarProblema(String codigo){
         Validador.validaString(codigo, "Campo codigo nao pode ser nulo ou vazio.");
         Validador.isRegistered(codigo, this.problemas, "Problema nao encontrado");
 

@@ -58,7 +58,7 @@ class testProblemaController {
 	void apagaProblemaBasico() {
 		try {
 			problemaController.cadastraProblema("A problematica do aprendizado dos conceitos de programacao orientada a objeto", 2);
-			problemaController.apagaProblema("P1");
+			problemaController.apagarProblema("P1");
 		} catch (Exception e) {
 			fail("Nao era esperado excecao");
 		}
@@ -68,7 +68,7 @@ class testProblemaController {
 	void apagaProblemaCodigoVazio() {
 		try {
 			problemaController.cadastraProblema("A problematica do aprendizado dos conceitos de programacao orientada a objeto", 2);
-			problemaController.apagaProblema(" ");
+			problemaController.apagarProblema(" ");
 			fail("Era esperado excecao");
 		} catch (Exception e) {
 
@@ -79,7 +79,7 @@ class testProblemaController {
 	void apagaProblemaCodigoNulo(){
 		try {
 			problemaController.cadastraProblema("A problematica do aprendizado dos conceitos de programacao orientada a objeto", 2);
-			problemaController.apagaProblema(null);
+			problemaController.apagarProblema(null);
 			fail("Era esperado excecao");
 		} catch (Exception e) {
 
@@ -100,7 +100,7 @@ class testProblemaController {
 	void toStringOrdem() {
 		try {
 			problemaController.cadastraProblema("A dificuldade da predicao do sistema eleitoral brasileiro", 5);
-			problemaController.apagaProblema("P1");
+			problemaController.apagarProblema("P1");
 			problemaController.cadastraProblema("A problematica do aprendizado dos conceitos de programacao orientada a objeto", 2);
 			assertEquals(problemaController.exibeProblema("P2"), "P2 - A problematica do aprendizado dos conceitos de programacao orientada a objeto - 2");
 		} catch (Exception e) {
