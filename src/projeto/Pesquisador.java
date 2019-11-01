@@ -9,12 +9,11 @@ public class Pesquisador {
 	private boolean status;
 
 	public Pesquisador(String nome, String funcao, String biografia, String email, String foto) {
-		Validador val = new Validador();
-		val.validaString(nome, "Campo nome nao pode ser nulo ou vazio.");
-		val.validaString(funcao, "Campo funcao nao pode ser nulo ou vazio.");
-		val.validaString(biografia, "Campo biografia nao pode ser nulo ou vazio.");
-		val.validaString(email, "Campo email nao pode ser nulo ou vazio.");
-		val.validaString(foto, "Campo fotoURL nao pode ser nulo ou vazio.");
+		Validador.validaString(nome, "Campo nome nao pode ser nulo ou vazio.");
+		Validador.validaString(funcao, "Campo funcao nao pode ser nulo ou vazio.");
+		Validador.validaString(biografia, "Campo biografia nao pode ser nulo ou vazio.");
+		Validador.validaString(email, "Campo email nao pode ser nulo ou vazio.");
+		Validador.validaString(foto, "Campo fotoURL nao pode ser nulo ou vazio.");
 		validaEmail(email);
 		validaFoto(foto);
 		
@@ -41,22 +40,21 @@ public class Pesquisador {
 	}
 	
 	public void alteraPesquisador(String atributo, String novoValor) {
-		Validador val = new Validador();
 		if (atributo.equals("NOME")) {
-			val.validaString(novoValor, "Campo nome nao pode ser nulo ou vazio.");
+			Validador.validaString(novoValor, "Campo nome nao pode ser nulo ou vazio.");
 			this.nome = novoValor;
 		} else if (atributo.equals("FUNCAO")) {
-			val.validaString(novoValor, "Campo funcao nao pode ser nulo ou vazio.");
+			Validador.validaString(novoValor, "Campo funcao nao pode ser nulo ou vazio.");
 			this.funcao = novoValor;
 		} else if (atributo.equals("BIOGRAFIA")) {
-			val.validaString(novoValor, "Campo biografia nao pode ser nulo ou vazio.");
+			Validador.validaString(novoValor, "Campo biografia nao pode ser nulo ou vazio.");
 			this.biografia = novoValor;
 		} else if (atributo.equals("FOTO")) {
-			val.validaString(novoValor, "Campo fotoURL nao pode ser nulo ou vazio.");
+			Validador.validaString(novoValor, "Campo fotoURL nao pode ser nulo ou vazio.");
 			validaFoto(novoValor);
 			this.foto = novoValor;
 		} else if (atributo.equals("EMAIL")) {
-			val.validaString(novoValor, "Campo email nao pode ser nulo ou vazio.");
+			Validador.validaString(novoValor, "Campo email nao pode ser nulo ou vazio.");
 			validaEmail(novoValor);
 			this.email = novoValor;
 		} else {

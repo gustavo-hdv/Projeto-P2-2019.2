@@ -29,10 +29,9 @@ public class ControllerAtividadesMetodologicas {
 	 * @return codigo da atividade, estilo: "A + posicao"
 	 */
 	public String cadastraAtividade(String descricao, String nivelRisco, String descricaoRisco) {
-		Validador val = new Validador();
-		val.validaString(descricao, "Campo Descricao nao pode ser nulo ou vazio.");
-		val.validaString(nivelRisco, "Campo nivelRisco nao pode ser nulo ou vazio.");
-		val.validaString(descricaoRisco, "Campo descricaoRisco nao pode ser nulo ou vazio.");
+		Validador.validaString(descricao, "Campo Descricao nao pode ser nulo ou vazio.");
+		Validador.validaString(nivelRisco, "Campo nivelRisco nao pode ser nulo ou vazio.");
+		Validador.validaString(descricaoRisco, "Campo descricaoRisco nao pode ser nulo ou vazio.");
 		if (!(nivelRisco.equalsIgnoreCase("BAIXO") || nivelRisco.equalsIgnoreCase("MEDIO") || nivelRisco.equalsIgnoreCase("ALTO"))) {
 			throw new IllegalArgumentException("Valor invalido do nivel do risco.");
 		}
@@ -47,8 +46,7 @@ public class ControllerAtividadesMetodologicas {
 	 * @param codigo da atividade (String)
 	 */
 	public void apagaAtividade(String codigo) {
-		Validador val = new Validador();
-		val.validaString(codigo, "Campo codigo nao pode ser nulo ou vazio.");
+		Validador.validaString(codigo, "Campo codigo nao pode ser nulo ou vazio.");
 		if (!atividadesMetodologicas.containsKey(codigo)) { throw new IllegalArgumentException("Atividade nao encontrada"); }
 		
 		this.atividadesMetodologicas.remove(codigo);
@@ -60,9 +58,8 @@ public class ControllerAtividadesMetodologicas {
 	 * @param item (descricao do item) (String)
 	 */
 	public void cadastraItem(String codigo, String item) {
-		Validador val = new Validador();
-		val.validaString(codigo, "Campo codigo nao pode ser nulo ou vazio.");
-		val.validaString(item, "Item nao pode ser nulo ou vazio.");
+		Validador.validaString(codigo, "Campo codigo nao pode ser nulo ou vazio.");
+		Validador.validaString(item, "Item nao pode ser nulo ou vazio.");
 	    if (!atividadesMetodologicas.containsKey(codigo)) { throw new IllegalArgumentException("Atividade nao encontrada"); }
 	
 		this.atividadesMetodologicas.get(codigo).cadastraItem(item);
@@ -77,8 +74,7 @@ public class ControllerAtividadesMetodologicas {
 	 *  @return representacao de uma ativdade (String)
 	 */
 	public String exibeAtividade(String codigo) {
-		Validador val = new Validador();
-		val.validaString(codigo, "Campo codigo nao pode ser nulo ou vazio.");
+		Validador.validaString(codigo, "Campo codigo nao pode ser nulo ou vazio.");
 		if (!atividadesMetodologicas.containsKey(codigo)) { throw new IllegalArgumentException("Atividade nao encontrada"); }
 	
 		return atividadesMetodologicas.get(codigo).exibeAtividade();
@@ -91,8 +87,7 @@ public class ControllerAtividadesMetodologicas {
 	 * @return quantidade de itens pendentes (int)
 	 */
 	public int contaItensPendentes(String codigo) {
-		Validador val = new Validador();
-		val.validaString(codigo, "Campo codigo nao pode ser nulo ou vazio.");
+		Validador.validaString(codigo, "Campo codigo nao pode ser nulo ou vazio.");
 		if (!this.atividadesMetodologicas.containsKey(codigo)) { throw new IllegalArgumentException("Atividade nao encontrada"); }
 		
 		return this.atividadesMetodologicas.get(codigo).contaItensPendentes();
@@ -105,8 +100,7 @@ public class ControllerAtividadesMetodologicas {
 	 * @return quantidade de itens realizados (int)
 	 */
 	public int contaItensRealizados(String codigo) {
-		Validador val = new Validador();
-		val.validaString(codigo, "Campo codigo nao pode ser nulo ou vazio.");
+		Validador.validaString(codigo, "Campo codigo nao pode ser nulo ou vazio.");
 		if (!this.atividadesMetodologicas.containsKey(codigo)) { throw new IllegalArgumentException("Atividade nao encontrada"); }
 		
 		return this.atividadesMetodologicas.get(codigo).contaItensRealizados();

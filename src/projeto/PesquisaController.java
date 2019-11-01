@@ -57,9 +57,8 @@ public class PesquisaController {
 	 * @return a representacao do codigo da Pesquisa em String.
 	 */
 	public String cadastraPesquisa(String descricao, String campoDeInteresse) {
-		Validador val = new Validador();
-		val.validaString(descricao, "Descricao nao pode ser nula ou vazia.");
-		val.validaString(campoDeInteresse, "Formato do campo de interesse invalido.");
+		Validador.validaString(descricao, "Descricao nao pode ser nula ou vazia.");
+		Validador.validaString(campoDeInteresse, "Formato do campo de interesse invalido.");
 		if (campoDeInteresse.length() > 255) {
 			throw new IllegalArgumentException("Formato do campo de interesse invalido.");
 		}
@@ -108,13 +107,12 @@ public class PesquisaController {
 		if (desativadas.containsKey(codigo)) {
 			throw new IllegalArgumentException("Pesquisa desativada.");
 		}
-		Validador val = new Validador();
-		val.validaString(conteudoASerAlterado, "Conteudo a ser alterado nao pode ser vazio ou nulo.");
+		Validador.validaString(conteudoASerAlterado, "Conteudo a ser alterado nao pode ser vazio ou nulo.");
 		if (conteudoASerAlterado.equals("DESCRICAO")) {
-			val.validaString(novoConteudo, "Descricao nao pode ser nula ou vazia.");
+			Validador.validaString(novoConteudo, "Descricao nao pode ser nula ou vazia.");
 			pesquisas.get(codigo).setDescricao(novoConteudo);
 		} else if (conteudoASerAlterado.equals("CAMPO")) {
-			val.validaString(novoConteudo, "Formato do campo de interesse invalido.");
+			Validador.validaString(novoConteudo, "Formato do campo de interesse invalido.");
 			pesquisas.get(codigo).setCampoDeInteresse(novoConteudo);
 		} else {
 			throw new IllegalArgumentException("Nao e possivel alterar esse valor de pesquisa.");
@@ -128,9 +126,8 @@ public class PesquisaController {
 	 * @param motivo eh o motivo pelo qual o usuario quer encerrar a Pesquisa.
 	 */
 	public void encerraPesquisa(String codigo, String motivo) {
-		Validador val = new Validador();
-		val.validaString(codigo, "Codigo nao pode ser nulo ou vazio.");
-		val.validaString(motivo, "Motivo nao pode ser nulo ou vazio.");
+		Validador.validaString(codigo, "Codigo nao pode ser nulo ou vazio.");
+		Validador.validaString(motivo, "Motivo nao pode ser nulo ou vazio.");
 		if (!pesquisas.containsKey(codigo)) {
 			throw new IllegalArgumentException("Pesquisa nao encontrada.");
 		}
@@ -146,8 +143,7 @@ public class PesquisaController {
 	 * @param codigo eh o codigo que identifica a Pesquisa.
 	 */
 	public void ativaPesquisa(String codigo) {
-		Validador val = new Validador();
-		val.validaString(codigo, "Codigo nao pode ser nulo ou vazio.");
+		Validador.validaString(codigo, "Codigo nao pode ser nulo ou vazio.");
 		if (!pesquisas.containsKey(codigo)) {
 			throw new IllegalArgumentException("Pesquisa nao encontrada.");
 		}
@@ -165,8 +161,7 @@ public class PesquisaController {
 	 * @return a representacao textual da Pesquisa em forma de String.
 	 */
 	public String exibePesquisa(String codigo) {
-		Validador val = new Validador();
-		val.validaString(codigo, "Codigo nao pode ser nulo ou vazio.");
+		Validador.validaString(codigo, "Codigo nao pode ser nulo ou vazio.");
 		if (!pesquisas.containsKey(codigo)) {
 			throw new IllegalArgumentException("Pesquisa nao encontrada.");
 		}
@@ -180,8 +175,7 @@ public class PesquisaController {
 	 * @return retorna um valor Booleano dizendo se a Pesquisa eh ativa ou nao.
 	 */
 	public boolean pesquisaEhAtiva(String codigo) {
-		Validador val = new Validador();
-		val.validaString(codigo, "Codigo nao pode ser nulo ou vazio.");
+		Validador.validaString(codigo, "Codigo nao pode ser nulo ou vazio.");
 		if (!pesquisas.containsKey(codigo)) {
 			throw new IllegalArgumentException("Pesquisa nao encontrada.");
 		}

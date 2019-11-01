@@ -26,10 +26,9 @@ public class AtividadeMetodologica {
 	 * @param descricaoRisco (descricao de risco da atividade) (String)
 	 */
 	public AtividadeMetodologica(String descricao, String nivelRisco, String descricaoRisco) {
-		Validador val = new Validador();
-		val.validaString(descricao, "Campo Descricao nao pode ser nulo ou vazio.");
-		val.validaString(nivelRisco, "Campo nivelRisco nao pode ser nulo ou vazio.");
-		val.validaString(descricaoRisco, "Campo descricaoRisco nao pode ser nulo ou vazio.");
+		Validador.validaString(descricao, "Campo Descricao nao pode ser nulo ou vazio.");
+		Validador.validaString(nivelRisco, "Campo nivelRisco nao pode ser nulo ou vazio.");
+		Validador.validaString(descricaoRisco, "Campo descricaoRisco nao pode ser nulo ou vazio.");
 		if (!(nivelRisco.equalsIgnoreCase("BAIXO") || nivelRisco.equalsIgnoreCase("MEDIO") || nivelRisco.equalsIgnoreCase("ALTO"))) {
 			throw new IllegalArgumentException("Valor invalido do nivel do risco.");
 		}
@@ -45,8 +44,7 @@ public class AtividadeMetodologica {
 	 * @param item (descricao do item) (String)
 	 */
 	public void cadastraItem(String item) {
-		Validador val = new Validador();
-		val.validaString(item, "Item nao pode ser nulo ou vazio.");
+		Validador.validaString(item, "Item nao pode ser nulo ou vazio.");
 		
 		Item itemObject = new Item(item);
 		if (resultados.contains(itemObject)) { throw new IllegalArgumentException("Item ja cadastrado"); }
