@@ -8,15 +8,8 @@ import easyaccept.EasyAccept;
 public class Facade {
 	private Controller controller;
 
-	/**
-	 * Inicializa um Controle de Pesquisa, para poder chamar os metodos que
-	 * manipulam as Pesquisas.
-	 */
-	PesquisaController pesquisaControle;
-
 	public Facade() {
 		this.controller = new Controller();
-		this.pesquisaControle = new PesquisaController();
 	}
 
 	/** Testes de aceitacao */
@@ -89,7 +82,7 @@ public class Facade {
 	 * @return quantidade de itens realizados (int)
 	 */
 	public int contaItensRealizados(String codigo) {
-		return this.controller.contaItensRealizados(codigo);
+		return controller.contaItensRealizados(codigo);
 	}
 
 	/**
@@ -100,7 +93,7 @@ public class Facade {
 	 * @return a representacao do codigo da Pesquisa em String.
 	 */
 	public String cadastraPesquisa(String descricao, String campoDeInteresse) {
-		return pesquisaControle.cadastraPesquisa(descricao, campoDeInteresse);
+		return controller.cadastraPesquisa(descricao, campoDeInteresse);
 	}
 
 	/**
@@ -112,7 +105,7 @@ public class Facade {
 	 *                             antigo.
 	 */
 	public void alteraPesquisa(String codigo, String conteudoASerAlterado, String novoConteudo) {
-		pesquisaControle.alteraPesquisa(codigo, conteudoASerAlterado, novoConteudo);
+		controller.alteraPesquisa(codigo, conteudoASerAlterado, novoConteudo);
 	}
 
 	/**
@@ -122,7 +115,7 @@ public class Facade {
 	 * @param motivo eh o motivo pelo qual o usuario quer encerrar a Pesquisa.
 	 */
 	public void encerraPesquisa(String codigo, String motivo) {
-		pesquisaControle.encerraPesquisa(codigo, motivo);
+		controller.encerraPesquisa(codigo, motivo);
 	}
 
 	/**
@@ -131,7 +124,7 @@ public class Facade {
 	 * @param codigo eh o codigo que identifica a Pesquisa.
 	 */
 	public void ativaPesquisa(String codigo) {
-		pesquisaControle.ativaPesquisa(codigo);
+		controller.ativaPesquisa(codigo);
 	}
 
 	/**
@@ -141,7 +134,7 @@ public class Facade {
 	 * @return a representacao textual da Pesquisa em forma de String.
 	 */
 	public String exibePesquisa(String codigo) {
-		return pesquisaControle.exibePesquisa(codigo);
+		return controller.exibePesquisa(codigo);
 	}
 
 	/**
@@ -151,7 +144,7 @@ public class Facade {
 	 * @return retorna um valor Booleano dizendo se a Pesquisa eh ativa ou nao.
 	 */
 	public boolean pesquisaEhAtiva(String codigo) {
-		return pesquisaControle.pesquisaEhAtiva(codigo);
+		return controller.pesquisaEhAtiva(codigo);
 	}
 
 	public void cadastraPesquisador(String nome, String funcao, String biografia, String email, String foto) {
