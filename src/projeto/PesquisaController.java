@@ -62,9 +62,6 @@ public class PesquisaController {
 		if (campoDeInteresse.length() > 255) {
 			throw new IllegalArgumentException("Formato do campo de interesse invalido.");
 		}
-		if (campoDeInteresse.contains(", ,")) {
-			throw new IllegalArgumentException("Formato do campo de interesse invalido.");
-		}
 		List<String> camposDeInteresse = Arrays.asList(campoDeInteresse.split(","));
 		for (int i = 0; i < camposDeInteresse.size(); i++) {
 			if (camposDeInteresse.get(i).length() < 3) {
@@ -75,9 +72,6 @@ public class PesquisaController {
 			if (campoDeInteresse.length() - campoDeInteresse.replaceAll(",", "").length() > 3) {
 				throw new IllegalArgumentException("Formato do campo de interesse invalido.");
 			}
-		}
-		if (campoDeInteresse.contains(",,")) {
-			throw new IllegalArgumentException("Formato de campo de interesse invalido.");
 		}
 		String codigoLetras = campoDeInteresse.substring(0, 3).toUpperCase();
 		if (codigos.containsKey(codigoLetras)) {

@@ -43,7 +43,7 @@ public class Pesquisa {
 		if (campoDeInteresse.length() > 255) {
 			throw new IllegalArgumentException("Formato do campo de interesse invalido.");
 		}
-		if (campoDeInteresse.contains(", ,")) {
+		if (descricao.length() > 255) {
 			throw new IllegalArgumentException("Formato do campo de interesse invalido.");
 		}
 		if (campoDeInteresse.length() < 3) {
@@ -59,9 +59,6 @@ public class Pesquisa {
 			if (camposDeInteresse.get(i).length() < 3) {
 				throw new IllegalArgumentException("Formato do campo de interesse invalido.");
 			}
-		}
-		if (campoDeInteresse.contains(",,")) {
-			throw new IllegalArgumentException("Formato de campo de interesse invalido.");
 		}
 		this.codigo = codigo;
 		this.descricao = descricao;

@@ -6,19 +6,15 @@ import org.junit.jupiter.api.Test;
 
 public class testPesquisaController {
 
-	private PesquisaController pesqC;
+	private PesquisaController pesqC = new PesquisaController();;
 
-	@BeforeEach
-	void criaController() {
-		PesquisaController pesqC = new PesquisaController();
-	}
 
 	@Test
 	void testCadastraPesquisa() {
 		try {
 			pesqC.cadastraPesquisa("Homofobia em mensagens online de alunos de computacao do primeiro periodo.",
 					"computacao, homofobia");
-		} catch (Exception e) {
+		} catch (RuntimeException e) {
 			fail("Nao era esperado excessao");
 		}
 	}
@@ -37,7 +33,7 @@ public class testPesquisaController {
 		try {
 			pesqC.cadastraPesquisa("", "computacao, homofobia");
 			fail("Era esperado excessao");
-		} catch (IllegalArgumentException iAE) {
+		} catch (RuntimeException iAE) {
 		}
 	}
 	
@@ -55,7 +51,7 @@ public class testPesquisaController {
 		try {
 			pesqC.cadastraPesquisa("Homofobia em mensagens online de alunos de computacao do primeiro periodo.", "     ");
 			fail("Era esperado excessao");
-		} catch (IllegalArgumentException iAE) {
+		} catch (RuntimeException iAE) {
 		}
 	}
 }

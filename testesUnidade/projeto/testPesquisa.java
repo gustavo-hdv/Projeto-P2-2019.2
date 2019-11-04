@@ -88,7 +88,7 @@ class testPesquisa {
 							+ "2 e 1/2 xicaras (cha) de farinha de trigo\r\n" + "1 colher (sopa) de fermento em po\r\n"
 							+ "1 colher (sopa) de manteiga\r\n" + "3 colheres (sopa) de chocolate em po",
 					"computacao, homofobia");
-			fail("Formato do campo de interesse invalido.");
+			fail("Formato da descricao invalido.");
 		} catch (IllegalArgumentException iAE) {
 		}
 	}
