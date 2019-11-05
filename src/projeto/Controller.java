@@ -2,14 +2,14 @@ package projeto;
 
 public class Controller {
 	private PesquisadorController pesquisadorC;
-	private ControllerAtividadesMetodologicas ativividadesC;
+	private AtividadeController ativividadesC;
 	private PesquisaController pesquisaC;
 	private ObjetivoController objC;
 	private ProblemaController probC;
 
 	public Controller() {
 		this.pesquisadorC = new PesquisadorController();
-		this.ativividadesC = new ControllerAtividadesMetodologicas();
+		this.ativividadesC = new AtividadeController();
 		this.pesquisaC = new PesquisaController();
 		this.objC = new ObjetivoController();
 		this.probC = new ProblemaController();
