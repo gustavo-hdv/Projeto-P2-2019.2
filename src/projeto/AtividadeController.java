@@ -7,7 +7,7 @@ package projeto;
 import java.util.HashMap;
 import java.util.Map;
 
-public class ControllerAtividadesMetodologicas {
+public class AtividadeController {
 	
 	/** Mapa de atividades metodologicas por um codigo ("A" + posicao) */
 	private Map<String, AtividadeMetodologica> atividadesMetodologicas;
@@ -15,7 +15,7 @@ public class ControllerAtividadesMetodologicas {
 	private int contagem;
 	
 	/** Construtor de uma atividade metodologica */
-	public ControllerAtividadesMetodologicas() {
+	public AtividadeController() {
 		this.atividadesMetodologicas = new HashMap<String, AtividadeMetodologica>();
 		this.contagem = 0;
 	}
