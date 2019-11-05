@@ -2,14 +2,14 @@ package projeto;
 
 public class Controller {
 	private PesquisadorController pesquisadorC;
-	private ControllerAtividadesMetodologicas ativividadesC;
+	private ControllerAtividadesMetodologicas atividadesC;
 	private PesquisaController pesquisaC;
 	private ObjetivoController objC;
 	private ProblemaController probC;
 
 	public Controller() {
 		this.pesquisadorC = new PesquisadorController();
-		this.ativividadesC = new ControllerAtividadesMetodologicas();
+		this.atividadesC = new ControllerAtividadesMetodologicas();
 		this.pesquisaC = new PesquisaController();
 		this.objC = new ObjetivoController();
 		this.probC = new ProblemaController();
@@ -167,7 +167,7 @@ public class Controller {
 	 * @return codigo da atividade, estilo: "A + posicao"
 	 */
 	public String cadastraAtividade(String descricao, String nivelRisco, String descricaoRisco) {
-		return ativividadesC.cadastraAtividade(descricao, nivelRisco, descricaoRisco);
+		return atividadesC.cadastraAtividade(descricao, nivelRisco, descricaoRisco);
 	}
 
 	/**
@@ -176,7 +176,7 @@ public class Controller {
 	 * @param codigo da atividade (String)
 	 */
 	public void apagaAtividade(String codigo) {
-		ativividadesC.apagaAtividade(codigo);
+		atividadesC.apagaAtividade(codigo);
 	}
 
 	/**
@@ -186,7 +186,7 @@ public class Controller {
 	 * @param item   (descricao do item) (String)
 	 */
 	public void cadastraItem(String codigo, String item) {
-		ativividadesC.cadastraItem(codigo, item);
+		atividadesC.cadastraItem(codigo, item);
 	}
 
 	/**
@@ -198,7 +198,7 @@ public class Controller {
 	 * @return representacao de uma ativdade (String)
 	 */
 	public String exibeAtividade(String codigo) {
-		return ativividadesC.exibeAtividade(codigo);
+		return atividadesC.exibeAtividade(codigo);
 	}
 
 	/**
@@ -209,7 +209,7 @@ public class Controller {
 	 * @return quantidade de itens pendentes (int)
 	 */
 	public int contaItensPendentes(String codigo) {
-		return ativividadesC.contaItensPendentes(codigo);
+		return atividadesC.contaItensPendentes(codigo);
 	}
 
 	/**
@@ -220,7 +220,25 @@ public class Controller {
 	 * @return quantidade de itens realizados (int)
 	 */
 	public int contaItensRealizados(String codigo) {
-		return ativividadesC.contaItensRealizados(codigo);
+		return atividadesC.contaItensRealizados(codigo);
+	}
+
+	public String busca(String termo) {
+		Validador.validaString(termo, "Campo termo nao pode ser nulo ou vazio.");
+		Busca busca = new Busca(pesquisadorC, pesquisaC, atividadesC, objC, probC, termo);
+		return busca.toString();
 	}
 	
+	public String busca(String termo, int indiceResultado) {
+		Validador.validaString(termo, "Campo termo nao pode ser nulo ou vazio.");
+		if (indiceResultado < 0) {
+			throw new IllegalArgumentException("Numero do resultado nao pode ser negativo");
+		}
+		return null;
+	}
+
+	public int contaResultadosBusca(String termo) {
+		Validador.validaString(termo, "Campo termo nao pode ser nulo ou vazio.");
+		return 0;
+	}
 }

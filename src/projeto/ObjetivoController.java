@@ -17,7 +17,7 @@ import java.util.Map;
  * @author Marcos Silva
 
  */
-public class ObjetivoController {
+public class ObjetivoController implements Buscador {
     /**
      * Objetivos. Corresponde ao mapa de objetivos.
      */

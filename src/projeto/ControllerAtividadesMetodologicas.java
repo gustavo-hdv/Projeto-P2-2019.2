@@ -7,7 +7,7 @@ package projeto;
 import java.util.HashMap;
 import java.util.Map;
 
-public class ControllerAtividadesMetodologicas {
+public class ControllerAtividadesMetodologicas implements Buscador {
 	
 	/** Mapa de atividades metodologicas por um codigo ("A" + posicao) */
 	private Map<String, AtividadeMetodologica> atividadesMetodologicas;

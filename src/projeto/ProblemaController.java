@@ -17,7 +17,7 @@ import java.util.Map;
  * @author Marcos Silva
 
  */
-public class ProblemaController {
+public class ProblemaController implements Buscador {
     /**
      * Problemas. Corresponde ao mapa de problemas.
      */

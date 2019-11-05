@@ -13,7 +13,7 @@ import java.util.List;
  * @author Gabriel Menezes Cabral - 119110372.
  *
  */
-public class PesquisaController {
+public class PesquisaController implements Buscador {
 
 	/**
 	 * Eh o codigo da Pesquisa.

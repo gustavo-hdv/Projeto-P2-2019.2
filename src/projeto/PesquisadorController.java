@@ -3,7 +3,7 @@ package projeto;
 import java.util.HashMap;
 import java.util.Map;
 
-public class PesquisadorController {
+public class PesquisadorController implements Buscador {
 	private Map<String, Pesquisador> pesquisadores;
 
 	public PesquisadorController() {
