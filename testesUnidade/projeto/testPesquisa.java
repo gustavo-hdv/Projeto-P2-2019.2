@@ -1,10 +1,7 @@
 package projeto;
 
 import static org.junit.jupiter.api.Assertions.*;
-
 import org.junit.jupiter.api.Test;
-
-
 
 class testPesquisa {
 
@@ -14,7 +11,7 @@ class testPesquisa {
 			Pesquisa pesquisa = new Pesquisa("COM1",
 					"Homofobia em mensagens online de alunos de computacao do primeiro periodo.",
 					"computacao, homofobia");
-		} catch (Exception e) {
+		} catch (RuntimeException RTE) {
 			fail("Nao era esperado excessao");
 		}
 	}
@@ -26,7 +23,7 @@ class testPesquisa {
 					"Homofobia em mensagens online de alunos de computacao do primeiro periodo.",
 					"computacao, homofobia");
 			fail("Era esperado excessao");
-		} catch (NullPointerException nPE) {
+		} catch (RuntimeException RTE) {
 		}
 	}
 
@@ -37,7 +34,7 @@ class testPesquisa {
 					"Homofobia em mensagens online de alunos de computacao do primeiro periodo.",
 					"computacao, homofobia");
 			fail("Era esperado excessao");
-		} catch (IllegalArgumentException iAE) {
+		} catch (RuntimeException RTE) {
 		}
 	}
 
@@ -46,7 +43,7 @@ class testPesquisa {
 		try {
 			Pesquisa pesquisa = new Pesquisa("COM1", null, "computacao, homofobia");
 			fail("Descricao nao pode ser nula ou vazia.");
-		} catch (NullPointerException nPE) {
+		} catch (RuntimeException RTE) {
 		}
 	}
 
@@ -55,7 +52,7 @@ class testPesquisa {
 		try {
 			Pesquisa pesquisa = new Pesquisa("COM1", "", "computacao, homofobia");
 			fail("Descricao nao pode ser nula ou vazia.");
-		} catch (IllegalArgumentException iAE) {
+		} catch (RuntimeException RTE) {
 		}
 	}
 
@@ -65,7 +62,7 @@ class testPesquisa {
 			Pesquisa pesquisa = new Pesquisa("COM1",
 					"Homofobia em mensagens online de alunos de computacao do primeiro periodo.", null);
 			fail("Formato do campo de interesse invalido.");
-		} catch (NullPointerException nPE) {
+		} catch (RuntimeException RTE) {
 		}
 	}
 
@@ -75,7 +72,7 @@ class testPesquisa {
 			Pesquisa pesquisa = new Pesquisa("COM1",
 					"Homofobia em mensagens online de alunos de computacao do primeiro periodo.", "");
 			fail("Formato do campo de interesse invalido.");
-		} catch (IllegalArgumentException iAE) {
+		} catch (RuntimeException RTE) {
 		}
 	}
 
@@ -89,7 +86,7 @@ class testPesquisa {
 							+ "1 colher (sopa) de manteiga\r\n" + "3 colheres (sopa) de chocolate em po",
 					"computacao, homofobia");
 			fail("Formato da descricao invalido.");
-		} catch (IllegalArgumentException iAE) {
+		} catch (RuntimeException RTE) {
 		}
 	}
 
@@ -100,7 +97,7 @@ class testPesquisa {
 					"Homofobia em mensagens online de alunos de computacao do primeiro periodo.",
 					"computacao, homofobia, sociedade, preconceito, universidade");
 			fail("Formato do campo de interesse invalido.");
-		} catch (IllegalArgumentException iAE) {
+		} catch (RuntimeException RTE) {
 		}
 	}
 
@@ -111,7 +108,7 @@ class testPesquisa {
 					"Homofobia em mensagens online de alunos de computacao do primeiro periodo.",
 					"computacao, homofobia,, universidade");
 			fail("Formato do campo de interesse invalido.");
-		} catch (IllegalArgumentException iAE) {
+		} catch (RuntimeException RTE) {
 		}
 	}
 
@@ -122,7 +119,7 @@ class testPesquisa {
 					"Homofobia em mensagens online de alunos de computacao do primeiro periodo.",
 					"computacao, homofobia ,, universidade");
 			fail("Formato do campo de interesse invalido.");
-		} catch (IllegalArgumentException iAE) {
+		} catch (RuntimeException RTE) {
 		}
 	}
 
@@ -133,7 +130,7 @@ class testPesquisa {
 					"Homofobia em mensagens online de alunos de computacao do primeiro periodo.",
 					"computacao, homofobia , , universidade");
 			fail("Formato do campo de interesse invalido.");
-		} catch (IllegalArgumentException iAE) {
+		} catch (RuntimeException RTE) {
 		}
 	}
 
@@ -143,7 +140,7 @@ class testPesquisa {
 			Pesquisa pesquisa = new Pesquisa("COM1",
 					"Homofobia em mensagens online de alunos de computacao do primeiro periodo.", "ab, cd, ef");
 			fail("Formato do campo de interesse invalido.");
-		} catch (IllegalArgumentException iAE) {
+		} catch (RuntimeException RTE) {
 		}
 	}
 
