@@ -2,14 +2,14 @@ package projeto;
 
 public class Controller {
 	private PesquisadorController pesquisadorC;
-	private ControllerAtividadesMetodologicas atividadesC;
+	private AtividadeController atividadesC;
 	private PesquisaController pesquisaC;
 	private ObjetivoController objC;
 	private ProblemaController probC;
 
 	public Controller() {
 		this.pesquisadorC = new PesquisadorController();
-		this.atividadesC = new ControllerAtividadesMetodologicas();
+		this.atividadesC = new AtividadeController();
 		this.pesquisaC = new PesquisaController();
 		this.objC = new ObjetivoController();
 		this.probC = new ProblemaController();
@@ -240,5 +240,18 @@ public class Controller {
 	public int contaResultadosBusca(String termo) {
 		Validador.validaString(termo, "Campo termo nao pode ser nulo ou vazio.");
 		return 0;
+	/**
+	 * GABRIEL
+	 */
+	public boolean associaPesquisador(String codigoPesquisa, String emailPesquisador) {
+		pesquisadorC.pesquisadores.get(emailPesquisador).associaPesquisa(codigoPesquisa, pesquisaC.pesquisas.get(codigoPesquisa));
+		return true;
+	}
+	
+	/**
+	 * GABRIEL
+	 */
+	public void desassociaPesquisador(String codigoPesquisa, String emailPesquisador) {
+		pesquisadorC.pesquisadores.get(emailPesquisador).desassociaPesqusia(codigoPesquisa);
 	}
 }

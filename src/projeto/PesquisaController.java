@@ -6,9 +6,8 @@ import java.util.HashMap;
 import java.util.List;
 
 /**
- * Representação de um Controle, que é responsável por manipular os
- * Collections, e guardar alguns métodos do programa que sejam referentes a
- * Classe Pesquisa.
+ * Representação de um Controle, que é responsável por manipular os Collections,
+ * e guardar alguns métodos do programa que sejam referentes a Classe Pesquisa.
  * 
  * @author Gabriel Menezes Cabral - 119110372.
  *
@@ -24,7 +23,7 @@ public class PesquisaController implements Buscador {
 	 * HashMap responsavel por guardar as pesquisas cadastradas. Essas pesquisas
 	 * estao associadas ao seu codigo.
 	 */
-	private HashMap<String, Pesquisa> pesquisas;
+	protected HashMap<String, Pesquisa> pesquisas;
 
 	/**
 	 * HashMap responsavel por registrar as pesquisas que foram desativadas . Essas
@@ -100,6 +99,15 @@ public class PesquisaController implements Buscador {
 		}
 		if (desativadas.containsKey(codigo)) {
 			throw new IllegalArgumentException("Pesquisa desativada.");
+		}
+		if (novoConteudo.length() > 255) {
+			throw new IllegalArgumentException("Formato do campo de interesse invalido.");
+		}
+		List<String> novoConteudoList = Arrays.asList(novoConteudo.split(","));
+		for (int i = 0; i < novoConteudoList.size(); i++) {
+			if (novoConteudoList.get(i).length() < 3) {
+				throw new IllegalArgumentException("Formato do campo de interesse invalido.");
+			}
 		}
 		Validador.validaString(conteudoASerAlterado, "Conteudo a ser alterado nao pode ser vazio ou nulo.");
 		if (conteudoASerAlterado.equals("DESCRICAO")) {

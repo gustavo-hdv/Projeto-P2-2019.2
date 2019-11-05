@@ -1,5 +1,8 @@
 package projeto;
 
+import java.util.ArrayList;
+import java.util.HashMap;
+
 public class Pesquisador {
 	private String nome;
 	private String funcao;
@@ -7,7 +10,13 @@ public class Pesquisador {
 	private String email;
 	private String foto;
 	private boolean status;
-
+	
+	/**
+	 * GABRIEL
+	 * @return
+	 */
+	private HashMap<String, Pesquisa> pesquisasAssociadas;
+	
 	public Pesquisador(String nome, String funcao, String biografia, String email, String foto) {
 		Validador.validaString(nome, "Campo nome nao pode ser nulo ou vazio.");
 		Validador.validaString(funcao, "Campo funcao nao pode ser nulo ou vazio.");
@@ -23,6 +32,7 @@ public class Pesquisador {
 		this.email = email;
 		this.foto = foto;
 		this.status = true;
+		this.pesquisasAssociadas = new HashMap<>();
 	}
 	
 	private void validaEmail(String email) {
@@ -112,4 +122,19 @@ public class Pesquisador {
 	public boolean pesquisadorEhAtivo() {
 		return this.status;
 	}
+	
+	/**
+	 * GABRIEL
+	 */
+	public void associaPesquisa(String codigoPesquisa, Pesquisa pesquisa) {
+		pesquisasAssociadas.put(codigoPesquisa, pesquisa);
+	}
+	
+	/**
+	 * GABRIEL
+	 */
+	public void desassociaPesqusia(String codigoPesquisa) {
+		pesquisasAssociadas.remove(codigoPesquisa);
+	}
+	
 }
