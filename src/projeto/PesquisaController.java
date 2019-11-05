@@ -6,9 +6,8 @@ import java.util.HashMap;
 import java.util.List;
 
 /**
- * Representação de um Controle, que é responsável por manipular os
- * Collections, e guardar alguns métodos do programa que sejam referentes a
- * Classe Pesquisa.
+ * Representação de um Controle, que é responsável por manipular os Collections,
+ * e guardar alguns métodos do programa que sejam referentes a Classe Pesquisa.
  * 
  * @author Gabriel Menezes Cabral - 119110372.
  *
@@ -24,7 +23,7 @@ public class PesquisaController {
 	 * HashMap responsavel por guardar as pesquisas cadastradas. Essas pesquisas
 	 * estao associadas ao seu codigo.
 	 */
-	private HashMap<String, Pesquisa> pesquisas;
+	protected HashMap<String, Pesquisa> pesquisas;
 
 	/**
 	 * HashMap responsavel por registrar as pesquisas que foram desativadas . Essas

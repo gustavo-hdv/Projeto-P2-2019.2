@@ -223,4 +223,18 @@ public class Controller {
 		return ativividadesC.contaItensRealizados(codigo);
 	}
 	
+	/**
+	 * GABRIEL
+	 */
+	public boolean associaPesquisador(String codigoPesquisa, String emailPesquisador) {
+		pesquisadorC.pesquisadores.get(emailPesquisador).associaPesquisa(codigoPesquisa, pesquisaC.pesquisas.get(codigoPesquisa));
+		return true;
+	}
+	
+	/**
+	 * GABRIEL
+	 */
+	public void desassociaPesquisador(String codigoPesquisa, String emailPesquisador) {
+		pesquisadorC.pesquisadores.get(emailPesquisador).desassociaPesqusia(codigoPesquisa);
+	}
 }

@@ -4,7 +4,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class PesquisadorController {
-	private Map<String, Pesquisador> pesquisadores;
+	protected Map<String, Pesquisador> pesquisadores;
 
 	public PesquisadorController() {
 		this.pesquisadores = new HashMap<>();
