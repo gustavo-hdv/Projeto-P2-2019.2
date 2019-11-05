@@ -101,6 +101,15 @@ public class PesquisaController {
 		if (desativadas.containsKey(codigo)) {
 			throw new IllegalArgumentException("Pesquisa desativada.");
 		}
+		if (novoConteudo.length() > 255) {
+			throw new IllegalArgumentException("Formato do campo de interesse invalido.");
+		}
+		List<String> novoConteudoList = Arrays.asList(novoConteudo.split(","));
+		for (int i = 0; i < novoConteudoList.size(); i++) {
+			if (novoConteudoList.get(i).length() < 3) {
+				throw new IllegalArgumentException("Formato do campo de interesse invalido.");
+			}
+		}
 		Validador.validaString(conteudoASerAlterado, "Conteudo a ser alterado nao pode ser vazio ou nulo.");
 		if (conteudoASerAlterado.equals("DESCRICAO")) {
 			Validador.validaString(novoConteudo, "Descricao nao pode ser nula ou vazia.");

@@ -85,7 +85,7 @@ public class testPesquisaController {
 					pesqC.cadastraPesquisa("Homofobia em mensagens online de alunos de computacao do primeiro periodo.",
 							"computacao, homofobia"),
 					"DESCRICAO", null);
-			fail();
+			fail("");
 		} catch (RuntimeException RTE) {
 		}
 	}
@@ -97,7 +97,7 @@ public class testPesquisaController {
 					pesqC.cadastraPesquisa("Homofobia em mensagens online de alunos de computacao do primeiro periodo.",
 							"computacao, homofobia"),
 					"DESCRICAO", "   ");
-			fail();
+			fail("");
 		} catch (RuntimeException RTE) {
 		}
 	}
@@ -109,7 +109,7 @@ public class testPesquisaController {
 					pesqC.cadastraPesquisa("Homofobia em mensagens online de alunos de computacao do primeiro periodo.",
 							"computacao, homofobia"),
 					"CAMPO", null);
-			fail();
+			fail("");
 		} catch (RuntimeException RTE) {
 		}
 	}
@@ -121,7 +121,7 @@ public class testPesquisaController {
 					pesqC.cadastraPesquisa("Homofobia em mensagens online de alunos de computacao do primeiro periodo.",
 							"computacao, homofobia"),
 					"CAMPO", "");
-			fail();
+			fail("");
 		} catch (RuntimeException RTE) {
 		}
 	}
@@ -133,7 +133,7 @@ public class testPesquisaController {
 					pesqC.cadastraPesquisa("Homofobia em mensagens online de alunos de computacao do primeiro periodo.",
 							"computacao, homofobia"),
 					"DESCRICAO", null);
-			fail();
+			fail("");
 		} catch (RuntimeException RTE) {
 		}
 	}
@@ -145,7 +145,7 @@ public class testPesquisaController {
 					pesqC.cadastraPesquisa("Homofobia em mensagens online de alunos de computacao do primeiro periodo.",
 							"computacao, homofobia"),
 					"DESCRICAO", "");
-			fail();
+			fail("");
 		} catch (RuntimeException RTE) {
 		}
 	}
@@ -161,7 +161,7 @@ public class testPesquisaController {
 							+ "3 cenouras medias raladas\r\n" + "4 ovos\r\n" + "2 xicaras (cha) de acucar\r\n"
 							+ "2 e 1/2 xicaras (cha) de farinha de trigo\r\n" + "1 colher (sopa) de fermento em po\r\n"
 							+ "1 colher (sopa) de manteiga\r\n" + "3 colheres (sopa) de chocolate em po");
-			fail();
+			fail("");
 		} catch (RuntimeException RTE) {
 		}
 	}
@@ -173,7 +173,7 @@ public class testPesquisaController {
 					pesqC.cadastraPesquisa("Homofobia em mensagens online de alunos de computacao do primeiro periodo.",
 							"computacao, homofobia"),
 					"CAMPO", null);
-			fail();
+			fail("");
 		} catch (RuntimeException RTE) {
 		}
 	}
@@ -185,7 +185,7 @@ public class testPesquisaController {
 					pesqC.cadastraPesquisa("Homofobia em mensagens online de alunos de computacao do primeiro periodo.",
 							"computacao, homofobia"),
 					"CAMPO", "");
-			fail();
+			fail("");
 		} catch (RuntimeException RTE) {
 		}
 	}
@@ -197,7 +197,7 @@ public class testPesquisaController {
 					pesqC.cadastraPesquisa("Homofobia em mensagens online de alunos de computacao do primeiro periodo.",
 							"computacao, homofobia"),
 					"CAMPO", "computacao, homofobia, sociedade, preconceito, universidade");
-			fail();
+			fail("");
 		} catch (RuntimeException RTE) {
 		}
 	}
@@ -209,7 +209,7 @@ public class testPesquisaController {
 					pesqC.cadastraPesquisa("Homofobia em mensagens online de alunos de computacao do primeiro periodo.",
 							"computacao, homofobia"),
 					"CAMPO", "computacao, homofobia,, universidade");
-			fail();
+			fail("");
 		} catch (RuntimeException RTE) {
 		}
 	}
@@ -221,7 +221,7 @@ public class testPesquisaController {
 					pesqC.cadastraPesquisa("Homofobia em mensagens online de alunos de computacao do primeiro periodo.",
 							"computacao, homofobia"),
 					"CAMPO", "computacao, homofobia ,, universidade");
-			fail();
+			fail("");
 		} catch (RuntimeException RTE) {
 		}
 	}
@@ -233,7 +233,7 @@ public class testPesquisaController {
 					pesqC.cadastraPesquisa("Homofobia em mensagens online de alunos de computacao do primeiro periodo.",
 							"computacao, homofobia"),
 					"CAMPO", "computacao, homofobia , , universidade");
-			fail();
+			fail("");
 		} catch (RuntimeException RTE) {
 		}
 	}
@@ -245,7 +245,7 @@ public class testPesquisaController {
 					pesqC.cadastraPesquisa("Homofobia em mensagens online de alunos de computacao do primeiro periodo.",
 							"computacao, homofobia"),
 					"CAMPO", "ab, cd, ef");
-			fail();
+			fail("");
 		} catch (RuntimeException RTE) {
 		}
 	}
@@ -254,7 +254,7 @@ public class testPesquisaController {
 	void testAlteraPesquisaInexistente() {
 		try {
 			pesqC.alteraPesquisa("COM1", "DESCRICAO", "Autoavaliacao na Disciplina de Programacao Orientada a Objeto.");
-			fail();
+			fail("");
 		} catch (RuntimeException RTE) {
 		}
 	}
@@ -266,7 +266,7 @@ public class testPesquisaController {
 					pesqC.cadastraPesquisa("Homofobia em mensagens online de alunos de computacao do primeiro periodo.",
 							"computacao, homofobia"),
 					"ABcDx", "computacao, poo");
-			fail();
+			fail("");
 		} catch (RuntimeException RTE) {
 		}
 	}
