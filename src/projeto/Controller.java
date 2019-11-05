@@ -147,7 +147,6 @@ public class Controller {
 		return pesquisaC.exibePesquisa(codigo);
 	}
 
-}
 	/**
 	 * Metodo que retorna um valor Booleano dizendo se a Pesquisa eh ativa ou nao.
 	 * 
