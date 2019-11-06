@@ -4,12 +4,12 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 public class Pesquisador {
-	private String nome;
-	private String funcao;
-	private String biografia;
-	private String email;
-	private String foto;
-	private boolean status;
+	protected String nome;
+	protected String funcao;
+	protected String biografia;
+	protected String email;
+	protected String foto;
+	protected boolean status;
 	
 	/**
 	 * GABRIEL

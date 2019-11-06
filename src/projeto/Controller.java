@@ -239,7 +239,9 @@ public class Controller {
 
 	public int contaResultadosBusca(String termo) {
 		Validador.validaString(termo, "Campo termo nao pode ser nulo ou vazio.");
-		return 0;
+		return 0;	
+	}
+	
 	/**
 	 * GABRIEL
 	 */
