@@ -51,26 +51,24 @@ public class Pesquisador {
 	
 	public void alteraPesquisador(String atributo, String novoValor) {
 		if (atributo.equals("NOME")) {
-			if (atributo.equals("DESCRICAO")) {
-				Validador.validaString(novoValor, "Campo nome nao pode ser nulo ou vazio.");
-				this.nome = novoValor;
-			} else if (atributo.equals("FUNCAO")) {
-				Validador.validaString(novoValor, "Campo funcao nao pode ser nulo ou vazio.");
-				this.funcao = novoValor;
-			} else if (atributo.equals("BIOGRAFIA")) {
-				Validador.validaString(novoValor, "Campo biografia nao pode ser nulo ou vazio.");
-				this.biografia = novoValor;
-			} else if (atributo.equals("FOTO")) {
-				Validador.validaString(novoValor, "Campo fotoURL nao pode ser nulo ou vazio.");
-				validaFoto(novoValor);
-				this.foto = novoValor;
-			} else if (atributo.equals("EMAIL")) {
-				Validador.validaString(novoValor, "Campo email nao pode ser nulo ou vazio.");
-				validaEmail(novoValor);
-					this.email = novoValor;
-			} else {
-				throw new IllegalArgumentException("Atributo invalido.");
-			}
+			Validador.validaString(novoValor, "Campo nome nao pode ser nulo ou vazio.");
+			this.nome = novoValor;
+		} else if (atributo.equals("FUNCAO")) {
+			Validador.validaString(novoValor, "Campo funcao nao pode ser nulo ou vazio.");
+			this.funcao = novoValor;
+		} else if (atributo.equals("BIOGRAFIA")) {
+			Validador.validaString(novoValor, "Campo biografia nao pode ser nulo ou vazio.");
+			this.biografia = novoValor;
+		} else if (atributo.equals("FOTO")) {
+			Validador.validaString(novoValor, "Campo fotoURL nao pode ser nulo ou vazio.");
+			validaFoto(novoValor);
+			this.foto = novoValor;
+		} else if (atributo.equals("EMAIL")) {
+			Validador.validaString(novoValor, "Campo email nao pode ser nulo ou vazio.");
+			validaEmail(novoValor);
+				this.email = novoValor;
+		} else {
+			throw new IllegalArgumentException("Atributo invalido.");
 		}
 	}
 	
