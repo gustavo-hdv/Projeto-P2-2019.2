@@ -1,6 +1,5 @@
 #Associando COM2 e matheusgr@computacao.ufcg.edu.br
 
-
 associaPesquisador idPesquisa="COM2" emailPesquisador="matheusgr@computacao.ufcg.edu.br"
 
 

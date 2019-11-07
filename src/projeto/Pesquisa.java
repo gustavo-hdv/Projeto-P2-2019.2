@@ -149,5 +149,4 @@ public class Pesquisa {
 	public String toString() {
 		return this.codigo + " - " + this.descricao + " - " + this.campoDeInteresse;
 	}
-
 }

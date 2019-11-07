@@ -247,4 +247,9 @@ public class Facade {
 	public int contaResultadosBusca(String termo) {
 		return controller.contaResultadosBusca(termo);
 	}
+	
+	public boolean associaPesquisador(String codigoPesquisa, String emailPesquisador) {
+//		return controller.associaPesquisador(codigoPesquisa, emailPesquisador);
+		return true;
+	}
 }

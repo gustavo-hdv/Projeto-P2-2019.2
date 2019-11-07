@@ -246,7 +246,7 @@ public class Controller {
 	 * GABRIEL
 	 */
 	public boolean associaPesquisador(String codigoPesquisa, String emailPesquisador) {
-		pesquisadorC.pesquisadores.get(emailPesquisador).associaPesquisa(codigoPesquisa, pesquisaC.pesquisas.get(codigoPesquisa));
+		pesquisadorC.buscaPesquisador(emailPesquisador).associaPesquisa(codigoPesquisa, pesquisaC.buscaPesquisa(codigoPesquisa));
 		return true;
 	}
 	
@@ -254,6 +254,10 @@ public class Controller {
 	 * GABRIEL
 	 */
 	public void desassociaPesquisador(String codigoPesquisa, String emailPesquisador) {
-		pesquisadorC.pesquisadores.get(emailPesquisador).desassociaPesqusia(codigoPesquisa);
+		pesquisadorC.buscaPesquisador(emailPesquisador).desassociaPesqusia(codigoPesquisa);
+	}
+	
+	public void cadastraEspecialidadeProfessor(String email, String formacao, String unidade, String data) {
+		pesquisadorC.buscaPesquisador(email);
 	}
 }

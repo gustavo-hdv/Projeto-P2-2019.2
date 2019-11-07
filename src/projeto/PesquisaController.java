@@ -104,21 +104,24 @@ public class PesquisaController implements Buscador {
 		if (novoConteudo.length() > 255) {
 			throw new IllegalArgumentException("Formato do campo de interesse invalido.");
 		}
+		Validador.validaString(conteudoASerAlterado, "Conteudo a ser alterado nao pode ser vazio ou nulo.");
+		if (conteudoASerAlterado.equals("DESCRICAO")) {
+			Validador.validaString(novoConteudo, "Descricao nao pode ser nula ou vazia.");
+		} else if (conteudoASerAlterado.equals("CAMPO")) {
+			Validador.validaString(novoConteudo, "Formato do campo de interesse invalido.");
+		} else {
+			throw new IllegalArgumentException("Nao e possivel alterar esse valor de pesquisa.");
+		}
 		List<String> novoConteudoList = Arrays.asList(novoConteudo.split(","));
 		for (int i = 0; i < novoConteudoList.size(); i++) {
 			if (novoConteudoList.get(i).length() < 3) {
 				throw new IllegalArgumentException("Formato do campo de interesse invalido.");
 			}
 		}
-		Validador.validaString(conteudoASerAlterado, "Conteudo a ser alterado nao pode ser vazio ou nulo.");
 		if (conteudoASerAlterado.equals("DESCRICAO")) {
-			Validador.validaString(novoConteudo, "Descricao nao pode ser nula ou vazia.");
 			pesquisas.get(codigo).setDescricao(novoConteudo);
 		} else if (conteudoASerAlterado.equals("CAMPO")) {
-			Validador.validaString(novoConteudo, "Formato do campo de interesse invalido.");
 			pesquisas.get(codigo).setCampoDeInteresse(novoConteudo);
-		} else {
-			throw new IllegalArgumentException("Nao e possivel alterar esse valor de pesquisa.");
 		}
 	}
 
@@ -194,4 +197,10 @@ public class PesquisaController implements Buscador {
 		return null;
 	}
 
+	/**
+	 * GABRIEL
+	 */
+	public Pesquisa buscaPesquisa(String codigo) {
+		return pesquisas.get(codigo);
+	}
 }
