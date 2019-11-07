@@ -66,7 +66,7 @@ public class Pesquisador implements Buscavel {
 		} else if (atributo.equals("EMAIL")) {
 			Validador.validaString(novoValor, "Campo email nao pode ser nulo ou vazio.");
 			validaEmail(novoValor);
-			this.email = novoValor;
+				this.email = novoValor;
 		} else {
 			throw new IllegalArgumentException("Atributo invalido.");
 		}

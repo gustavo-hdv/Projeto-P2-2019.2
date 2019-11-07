@@ -6,7 +6,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class PesquisadorController implements Buscador {
-	protected Map<String, Pesquisador> pesquisadores;
+	private Map<String, Pesquisador> pesquisadores;
 
 	public PesquisadorController() {
 		this.pesquisadores = new HashMap<>();
@@ -104,4 +104,12 @@ public class PesquisadorController implements Buscador {
 		}
 		return achados;
 	}
+
+	/**
+	 * GABRIEL
+	 */
+	public Pesquisador buscaPesquisador(String email) {
+		return pesquisadores.get(email);
+	}
+
 }

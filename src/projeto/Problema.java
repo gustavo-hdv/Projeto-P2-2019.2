@@ -46,7 +46,6 @@ public class Problema implements Buscavel {
     }
 
     /**
-
      * Retorna o código do problema.
 
      *
