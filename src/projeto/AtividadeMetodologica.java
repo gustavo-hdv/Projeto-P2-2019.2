@@ -107,6 +107,6 @@ public class AtividadeMetodologica implements Buscavel {
 
 	@Override
 	public String exibeRepresentacaoBusca() {
-		
+		return null;
 	}
 }
