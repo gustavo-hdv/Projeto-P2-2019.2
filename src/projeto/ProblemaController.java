@@ -56,7 +56,6 @@ public class ProblemaController implements Buscador {
     }
 
     /**
-
      * Retorna a String que representa o problema existente na chave passada por parâmetro.
      *
      * @param codigo o código e chave do problema no mapa
@@ -81,6 +80,13 @@ public class ProblemaController implements Buscador {
         this.problemas.remove(codigo);
     }
     
+    /** 
+     * Retorna um problema pelo id
+     * 
+     * @param idProblema chave do mapa de problemas
+     * 
+     * @return Problema
+     */
     public Problema getProblema(String idProblema) {
     	Validador.validaString(idProblema, "Campo idProblema nao pode ser nulo ou vazio.");
     	Validador.isRegistered(idProblema, this.problemas, "Problema nao encontrado.");

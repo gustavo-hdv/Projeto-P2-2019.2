@@ -23,7 +23,7 @@ public class ObjetivoController implements Buscador {
     /**
      * Objetivos. Corresponde ao mapa de objetivos.
      */
-    private Map<String, Objetivo> objetivos;
+    protected Map<String, Objetivo> objetivos;
     /**
      * Posição. Corresponde a posição do próximo objetivo na lista (mapa) de objetivos a ser usada no código do objetivo.
      */
@@ -38,7 +38,6 @@ public class ObjetivoController implements Buscador {
     }
 
     /**
-
      * Cadastra um novo objetivo.
      * Adiciona um objeto do tipo Objetivo no mapa de objetivos.
 
@@ -61,7 +60,6 @@ public class ObjetivoController implements Buscador {
     }
 
     /**
-
      * Retorna a String que representa o objetivo existente na chave passada por parâmetro.
      *
      * @param codigo o código e chave do objetivo no mapa
@@ -92,5 +90,18 @@ public class ObjetivoController implements Buscador {
 			if (objetivo.contemTermo(termo)) achados.add(objetivo);
 		}
 		return achados;
+	}
+	
+	/** Retorna um objetivo pelo id 
+	 * 
+	 * @param idObjetivo chave do mapa de objetivos
+	 * 
+	 * @return Objetivo 
+	 */
+	public Objetivo getObjetivo(String idObjetivo) {
+		Validador.validaString(idObjetivo, "Campo idObjetivo nao pode ser nulo ou vazio.");
+    	Validador.isRegistered(idObjetivo, this.objetivos, "Objetivo nao encontrado.");
+    	
+    	return this.objetivos.get(idObjetivo);
 	}
 }

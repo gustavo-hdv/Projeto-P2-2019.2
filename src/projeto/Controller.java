@@ -30,7 +30,6 @@ public class Controller {
 		if (!pesquisaEhAtiva(idPesquisa)) {
 			throw new IllegalArgumentException("Pesquisa desativada.");
 		}
-		
 		return this.pesquisaC.associaProblema(idPesquisa, probC.getProblema(idProblema));
 	}
 	
@@ -49,8 +48,43 @@ public class Controller {
 		if (!pesquisaEhAtiva(idPesquisa)) {
 			throw new IllegalArgumentException("Pesquisa desativada.");
 		}
-		
 		return this.pesquisaC.desassociaProblema(idPesquisa, probC.getProblema(idProblema));
+	}
+	
+	/** Associa um objetivo para a pesquisa 
+	 * 
+	 * @param idPesquisa identificador da pesquisa
+	 * @param idObjetivo identificador do objetivo
+	 * 
+	 * @return boolean (true para associado com sucesso, false para nao associado)
+	 */
+	public boolean associaObjetivo(String idPesquisa, String idObjetivo) {
+		Validador.validaString(idPesquisa, "Campo idPesquisa nao pode ser nulo ou vazio.");
+		Validador.validaString(idObjetivo, "Campo idObjetivo nao pode ser nulo ou vazio.");
+		Validador.isRegistered(idPesquisa, this.pesquisaC.pesquisas, "Pesquisa nao encontrada.");
+		Validador.isRegistered(idObjetivo, this.objC.objetivos, "Objetivo nao encontrado.");
+		if (!pesquisaEhAtiva(idPesquisa)) {
+			throw new IllegalArgumentException("Pesquisa desativada.");
+		}
+		return this.pesquisaC.associaObjetivo(idPesquisa, objC.getObjetivo(idObjetivo));
+	}
+	
+	/** Desassocia um objetivo para a pesquisa 
+	 * 
+	 * @param idPesquisa identificador da pesquisa
+	 * @param idObjetivo identificador do objetivo
+	 * 
+	 * @return boolean (true para desassociado com sucesso, false para nao desassociado)
+	 */
+	public boolean desassociaObjetivo(String idPesquisa, String idObjetivo) {
+		Validador.validaString(idPesquisa, "Campo idPesquisa nao pode ser nulo ou vazio.");
+		Validador.validaString(idObjetivo, "Campo idObjetivo nao pode ser nulo ou vazio.");
+		Validador.isRegistered(idPesquisa, this.pesquisaC.pesquisas, "Pesquisa nao encontrada.");
+		Validador.isRegistered(idObjetivo, this.objC.objetivos, "Objetivo nao encontrado.");
+		if (!pesquisaEhAtiva(idPesquisa)) {
+			throw new IllegalArgumentException("Pesquisa desativada.");
+		}
+		return this.pesquisaC.desassociaObjetivo(idPesquisa, objC.getObjetivo(idObjetivo));
 	}
 	
 	public void cadastraPesquisador(String nome, String funcao, String biografia, String email, String foto) {

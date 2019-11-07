@@ -182,10 +182,10 @@ public class PesquisaController implements Buscador {
 	 */
 	public boolean pesquisaEhAtiva(String codigo) {
 		Validador.validaString(codigo, "Codigo nao pode ser nulo ou vazio.");
-		if (!pesquisas.containsKey(codigo)) {
+		if (!this.pesquisas.containsKey(codigo)) {
 			throw new IllegalArgumentException("Pesquisa nao encontrada.");
 		}
-		if (!desativadas.containsKey(codigo)) {
+		if (!this.desativadas.containsKey(codigo)) {
 			return true;
 		}
 		return false;
@@ -210,7 +210,6 @@ public class PesquisaController implements Buscador {
 	 */
 	public boolean associaProblema(String idPesquisa, Problema problema) {
 		Validador.validaString(idPesquisa, "Campo idPesquisa nao pode ser nulo ou vazio.");
-		Validador.isRegistered(idPesquisa, this.pesquisas, "Pesquisa nao encontrada.");
 		if (!pesquisaEhAtiva(idPesquisa)) {
 			throw new IllegalArgumentException("Pesquisa desativada.");
 		}
@@ -226,13 +225,49 @@ public class PesquisaController implements Buscador {
 	 */
 	public boolean desassociaProblema(String idPesquisa, Problema problema) {
 		Validador.validaString(idPesquisa, "Campo idPesquisa nao pode ser nulo ou vazio.");
-		Validador.isRegistered(idPesquisa, this.pesquisas, "Pesquisa nao encontrada.");
 		if (!pesquisaEhAtiva(idPesquisa)) {
 			throw new IllegalArgumentException("Pesquisa desativada.");
 		}
-		
 		return this.pesquisas.get(idPesquisa).desassociaProblema(problema);
-		
+	}
+	
+	/** Associa um objetivo para a pesquisa 
+	 * 
+	 * @param idPesquisa identificador da pesquisa
+	 * @param objetivo Objetivo da pesquisa
+	 * 
+	 * @return boolean (true para associado com sucesso, false para nao associado)
+	 */
+	public boolean associaObjetivo(String idPesquisa, Objetivo objetivo) {
+		Validador.validaString(idPesquisa, "Campo idPesquisa nao pode ser nulo ou vazio.");
+		if (objetivo == null) {
+			return false;
+		}
+		if (!pesquisaEhAtiva(idPesquisa)) {
+			throw new IllegalArgumentException("Pesquisa desativada.");
+		}
+		if (this.pesquisas.get(idPesquisa).containsObjetivo(objetivo.getCodigo(), objetivo)) {
+			return false;
+		}
+		return this.pesquisas.get(idPesquisa).associaObjetivo(objetivo.getCodigo(), objetivo);
+	}
+	
+	/** Desassocia um objetivo da pesquisa 
+	 * 
+	 * @param idPesquisa identificador da pesquisa
+	 * @param objetivo Objetivo da pesquisa
+	 * 
+	 * @return boolean (true para desassociado com sucesso, false para nao desassociado)
+	 */
+	public boolean desassociaObjetivo(String idPesquisa, Objetivo objetivo) {
+		Validador.validaString(idPesquisa, "Campo idPesquisa nao pode ser nulo ou vazio.");
+		if (objetivo == null) {
+			return false;
+		}
+		if (!pesquisaEhAtiva(idPesquisa)) {
+			throw new IllegalArgumentException("Pesquisa desativada.");
+		}
+		return this.pesquisas.get(idPesquisa).desassociaObjetivo(objetivo.getCodigo(), objetivo);
 	}
 
 	/**

@@ -5,6 +5,7 @@ import easyaccept.EasyAccept;
 /**
  * Representacao de uma fachada para todas as funcionalidades do sistema
  */
+
 public class Facade {
 	private Controller controller;
 
@@ -41,6 +42,29 @@ public class Facade {
 	public boolean desassociaProblema(String idPesquisa, String idProblema) {
 		return this.controller.desassociaProblema(idPesquisa, idProblema);
 	}
+	
+	/** Associa um objetivo para a pesquisa 
+	 * 
+	 * @param idPesquisa identificador da pesquisa
+	 * @param idObjetivo identificador do objetivo
+	 * 
+	 * @return boolean (true para associado com sucesso, false para nao associado)
+	 */
+	public boolean associaObjetivo(String idPesquisa, String idObjetivo) {
+		return this.controller.associaObjetivo(idPesquisa, idObjetivo);
+	}
+	
+	/** Desassocia um objetivo para a pesquisa 
+	 * 
+	 * @param idPesquisa identificador da pesquisa
+	 * @param idObjetivo identificador do objetivo
+	 * 
+	 * @return boolean (true para desassociado com sucesso, false para nao desassociado)
+	 */
+	public boolean desassociaObjetivo(String idPesquisa, String idObjetivo) {
+		return this.controller.desassociaObjetivo(idPesquisa, idObjetivo);
+	}
+	
 	/**
 	 * Cadastra um novo objetivo. Adiciona um objeto do tipo Objetivo no mapa de
 	 * objetivos.

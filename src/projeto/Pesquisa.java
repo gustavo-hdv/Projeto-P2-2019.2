@@ -31,15 +31,19 @@ public class Pesquisa {
 	private String campoDeInteresse;
 
     /**
-     * Mapa de atividades associadas
+     * Mapa de atividades associadas.
      */
-
     private Map<String, AtividadeMetodologica> atividadesAssociadas;
 
 	/**
 	 * Problema da Pesquisa.
 	 */
 	private Problema problema;
+	
+	/**
+	 * Objetivos da Pesquisa.
+	 */
+	private Map<String, Objetivo> objetivos;
 	
 	/**
 	 * Constroi uma Pesquisa, a partir do seu codigo, descricao e campo de
@@ -94,11 +98,10 @@ public class Pesquisa {
 			this.problema = problema;
 			return true;
 		}
-		if (this.problema.equals(problema)) {
-			return false;
-		} else {
+		if (!this.problema.equals(problema)) {
 			throw new IllegalArgumentException("Pesquisa ja associada a um problema.");
 		}
+		return false;
 	}
 	
 	/** Desassocia um problema da a pesquisa 
@@ -118,6 +121,67 @@ public class Pesquisa {
 			return false;
 		}
 		this.problema = null;
+		return true;
+	}
+	
+	/** Associa um objetivo para a pesquisa 
+	 * 
+	 * @param idPesquisa identificador da pesquisa
+	 * @param objetivo Objetivo da pesquisa
+	 * 
+	 * @return boolean (true para associado com sucesso, false para nao associado)
+	 */
+	public boolean associaObjetivo(String idObjetivo, Objetivo objetivo) {
+		Validador.validaString(idObjetivo, "Campo idObjetivo nao pode ser nulo ou vazio.");
+		if (objetivo == null) {
+			return false;
+		}
+		
+		if (!this.objetivos.containsKey(idObjetivo) || this.objetivos.get(idObjetivo) == null) {
+			this.objetivos.put(idObjetivo, objetivo);
+			return true;
+		}
+		
+		if (!this.objetivos.get(idObjetivo).equals(objetivo)) {
+			throw new IllegalArgumentException("Objetivo ja associado a uma pesquisa.");
+		}
+		return false;
+
+	}
+	
+	/** Desassocia um objetivo da pesquisa 
+	 * 
+	 * @param idPesquisa identificador da pesquisa
+	 * @param objetivo Objetivo da pesquisa
+	 * 
+	 * @return boolean (true para desassociado com sucesso, false para nao desassociado)
+	 */
+	public boolean desassociaObjetivo(String idObjetivo, Objetivo objetivo) {
+		Validador.validaString(idObjetivo, "Campo idObjetivo nao pode ser nulo ou vazio.");
+		if (objetivo == null) {
+			return false;
+		}
+		if (!this.objetivos.containsKey(idObjetivo) || this.objetivos.get(idObjetivo) == null) {
+			return false;
+		}
+		if (!this.objetivos.get(idObjetivo).equals(objetivo)) {
+			return false;
+		}
+		this.objetivos.put(idObjetivo, null);
+		return true;
+	}
+	
+	public boolean containsObjetivo(String idObjetivo, Objetivo objetivo) {
+		Validador.validaString(idObjetivo, "Campo idObjetivo nao pode ser nulo ou vazio.");
+		if (!this.objetivos.containsKey(idObjetivo)) {
+			return false;
+		}
+		if (this.objetivos.get(idObjetivo) == null) {
+			return false;
+		}
+		if (!this.objetivos.get(idObjetivo).equals(objetivo)) {
+			throw new IllegalArgumentException("Objetivo ja associado a uma pesquisa.");
+		}
 		return true;
 	}
 	
@@ -159,7 +223,7 @@ public class Pesquisa {
 	}
 
     public boolean associaAtividade(String codigoAtividade, AtividadeMetodologica atividade){
-	    if(this.atividadesAssociadas.containsKey(codigoAtividade)){
+	    if (this.atividadesAssociadas.containsKey(codigoAtividade)) {
 	        return false;
         }
 
@@ -169,7 +233,7 @@ public class Pesquisa {
     }
 
     public boolean desassociaAtividade(String codigoAtividade){
-	    if(!this.atividadesAssociadas.containsKey(codigoAtividade)){
+	    if (!this.atividadesAssociadas.containsKey(codigoAtividade)) {
 	        return false;
         }
 
