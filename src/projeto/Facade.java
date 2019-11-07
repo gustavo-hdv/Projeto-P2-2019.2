@@ -20,6 +20,27 @@ public class Facade {
 		EasyAccept.main(args);
 	}
 
+	/** Associa um problema para a pesquisa 
+	 * 
+	 * @param idPesquisa identificador da pesquisa
+	 * @param idProblema identificador do problema
+	 * 
+	 * @return boolean (true para associado com sucesso, false para nao associado)
+	 */
+	public boolean associaProblema(String idPesquisa, String idProblema) {
+		return this.controller.associaProblema(idPesquisa, idProblema);
+	}
+	
+	/** Desassocia um problema da a pesquisa 
+	 * 
+	 * @param idPesquisa identificador da pesquisa
+	 * @param idProblema identificador do problema
+	 * 
+	 * @return boolean (true para desassociado com sucesso, false para nao desassociado)
+	 */
+	public boolean desassociaProblema(String idPesquisa, String idProblema) {
+		return this.controller.desassociaProblema(idPesquisa, idProblema);
+	}
 	/**
 	 * Cadastra um novo objetivo. Adiciona um objeto do tipo Objetivo no mapa de
 	 * objetivos.

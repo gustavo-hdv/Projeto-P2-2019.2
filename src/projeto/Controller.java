@@ -15,6 +15,44 @@ public class Controller {
 		this.probC = new ProblemaController();
 	}
 
+	/** Associa um problema para a pesquisa 
+	 * 
+	 * @param idPesquisa identificador da pesquisa
+	 * @param idProblema identificador do problema
+	 * 
+	 * @return boolean (true para associado com sucesso, false para nao associado)
+	 */
+	public boolean associaProblema(String idPesquisa, String idProblema) {
+		Validador.validaString(idPesquisa, "Campo idPesquisa nao pode ser nulo ou vazio.");
+		Validador.validaString(idProblema, "Campo idProblema nao pode ser nulo ou vazio.");
+		Validador.isRegistered(idPesquisa, pesquisaC.pesquisas, "Pesquisa nao encontrada.");
+		Validador.isRegistered(idProblema, probC.problemas, "Problema nao encontrado.");
+		if (!pesquisaEhAtiva(idPesquisa)) {
+			throw new IllegalArgumentException("Pesquisa desativada.");
+		}
+		
+		return this.pesquisaC.associaProblema(idPesquisa, probC.getProblema(idProblema));
+	}
+	
+	/** Desassocia um problema da a pesquisa 
+	 * 
+	 * @param idPesquisa identificador da pesquisa
+	 * @param idProblema identificador do problema
+	 * 
+	 * @return boolean (true para desassociado com sucesso, false para nao desassociado)
+	 */
+	public boolean desassociaProblema(String idPesquisa, String idProblema) {
+		Validador.validaString(idPesquisa, "Campo idPesquisa nao pode ser nulo ou vazio.");
+		Validador.validaString(idProblema, "Campo idProblema nao pode ser nulo ou vazio.");
+		Validador.isRegistered(idPesquisa, pesquisaC.pesquisas, "Pesquisa nao encontrada.");
+		Validador.isRegistered(idProblema, probC.problemas, "Problema nao encontrado.");
+		if (!pesquisaEhAtiva(idPesquisa)) {
+			throw new IllegalArgumentException("Pesquisa desativada.");
+		}
+		
+		return this.pesquisaC.desassociaProblema(idPesquisa, probC.getProblema(idProblema));
+	}
+	
 	public void cadastraPesquisador(String nome, String funcao, String biografia, String email, String foto) {
 		pesquisadorC.cadastraPesquisador(nome, funcao, biografia, email, foto);
 	}
