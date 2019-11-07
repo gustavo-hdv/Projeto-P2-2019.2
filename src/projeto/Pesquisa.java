@@ -1,7 +1,9 @@
 package projeto;
 
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
  * Representacao de uma pesquisa científica, que eh aquela que segue o metodo
@@ -27,6 +29,12 @@ public class Pesquisa {
 	 * Campo de Interesse de uma Pesquisa.
 	 */
 	private String campoDeInteresse;
+
+    /**
+     * Mapa de atividades associadas
+     */
+
+    private Map<String, AtividadeMetodologica> atividadesAssociadas;
 
 	/**
 	 * Constroi uma Pesquisa, a partir do seu codigo, descricao e campo de
@@ -63,6 +71,7 @@ public class Pesquisa {
 		this.codigo = codigo;
 		this.descricao = descricao;
 		this.campoDeInteresse = campoDeInteresse;
+        this.atividadesAssociadas = new HashMap<>();
 	}
 
 	/**
@@ -101,6 +110,26 @@ public class Pesquisa {
 		}
 		this.campoDeInteresse = campoDeInteresse;
 	}
+
+    public boolean associaAtividade(String codigoAtividade, AtividadeMetodologica atividade){
+	    if(this.atividadesAssociadas.containsKey(codigoAtividade)){
+	        return false;
+        }
+
+        this.atividadesAssociadas.put(codigoAtividade, atividade);
+
+	    return true;
+    }
+
+    public boolean desassociaAtividade(String codigoAtividade){
+	    if(!this.atividadesAssociadas.containsKey(codigoAtividade)){
+	        return false;
+        }
+
+        this.atividadesAssociadas.remove(codigoAtividade);
+
+	    return true;
+    }
 
 	/**
 	 * Gera um inteiro que representa o hashCode da pesquisa a partir do seu codigo.

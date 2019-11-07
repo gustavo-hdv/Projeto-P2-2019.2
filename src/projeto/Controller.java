@@ -256,4 +256,12 @@ public class Controller {
 	public void desassociaPesquisador(String codigoPesquisa, String emailPesquisador) {
 		pesquisadorC.pesquisadores.get(emailPesquisador).desassociaPesqusia(codigoPesquisa);
 	}
+
+	public boolean associaAtividade(String codigoPesquisa, String codigoAtividade){
+	    return this.pesquisaC.getPesquisa(codigoPesquisa).associaAtividade(codigoAtividade, this.atividadesC.getAtividade(codigoAtividade));
+    }
+
+    public boolean desassociaAtiviade(String codigoPesquisa, String codigoAtividade){
+	    return this.pesquisaC.getPesquisa(codigoPesquisa).desassociaAtividade(codigoAtividade);
+    }
 }

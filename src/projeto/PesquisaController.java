@@ -188,6 +188,10 @@ public class PesquisaController implements Buscador {
 		return false;
 	}
 
+	public Pesquisa getPesquisa(String codigoPesquisa){
+	    return this.pesquisas.get(codigoPesquisa);
+    }
+
 	@Override
 	public Collection<Buscavel> busca(String termo) {
 		// TODO Auto-generated method stub

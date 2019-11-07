@@ -18,7 +18,7 @@ public class AtividadeController implements Buscador{
 	
 	/** Construtor de uma atividade metodologica */
 	public AtividadeController() {
-		this.atividadesMetodologicas = new HashMap<String, AtividadeMetodologica>();
+		this.atividadesMetodologicas = new HashMap<>();
 		this.contagem = 0;
 	}
 	
@@ -107,6 +107,10 @@ public class AtividadeController implements Buscador{
 		
 		return this.atividadesMetodologicas.get(codigo).contaItensRealizados();
 	}
+
+    public AtividadeMetodologica getAtividade(String codigoAtividade){
+	    return this.atividadesMetodologicas.get(codigoAtividade);
+    }
 
 	@Override
 	public Collection<Buscavel> busca(String termo) {

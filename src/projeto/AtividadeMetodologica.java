@@ -4,8 +4,10 @@ package projeto;
  * Representacao de uma atividade metodologica
  */
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.ArrayList;
+import java.util.Map;
 
 public class AtividadeMetodologica {
 	
@@ -18,7 +20,6 @@ public class AtividadeMetodologica {
 	/** Lista de resultados com os itens cadastrados */
 	private List<Item> resultados;
 
-	
 	/** Construtor da atividade metodologica com descricao, nivel de risco e uma descricao de risco 
 	 * 
 	 * @param descricao (descricao da atividade) (String) 
@@ -36,7 +37,8 @@ public class AtividadeMetodologica {
 		this.descricao = descricao;
 		this.nivelRisco = nivelRisco;
 		this.descricaoRisco = descricaoRisco;
-		this.resultados = new ArrayList<Item>();
+		this.resultados = new ArrayList<>();
+
 	}
 	
 	/** Cadastra um item para a atividade
@@ -96,4 +98,5 @@ public class AtividadeMetodologica {
 		}
 		return toString;
 	}
+
 }
