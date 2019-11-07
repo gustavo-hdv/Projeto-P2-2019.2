@@ -1,5 +1,6 @@
 package projeto;
 
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
@@ -82,8 +83,10 @@ public class ProblemaController implements Buscador {
 
 	@Override
 	public Collection<Buscavel> busca(String termo) {
-		// TODO Auto-generated method stub
-		return null;
+		ArrayList<Buscavel> achados = new ArrayList<>();
+		for (Buscavel problema : this.problemas.values()) {
+			if (problema.contemTermo(termo)) achados.add(problema);
+		}
+		return achados;
 	}
-
 }

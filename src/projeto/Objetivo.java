@@ -14,7 +14,7 @@ package projeto;
 
  */
 
-public class Objetivo {
+public class Objetivo implements Buscavel {
     /**
      * Código. Corresponde ao código do objetivo.
      */
@@ -78,4 +78,13 @@ public class Objetivo {
     public String toString() {
         return this.codigo + " - " + this.tipo + " - " + this.descricao + " - " + this.valor;
     }
+    
+    public boolean contemTermo(String termo) {
+		if (this.descricao.contains(termo)) return true;
+		return false;
+	}
+    
+    public String exibeRepresentacaoBusca() {
+		return String.format("%s: %s", this.codigo, this.descricao);
+	}
 }

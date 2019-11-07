@@ -13,7 +13,7 @@ package projeto;
  * @author Marcos Silva
 
  */
-public class Problema {
+public class Problema implements Buscavel {
     /**
      * Código. Corresponde ao código do problema.
      */
@@ -67,4 +67,15 @@ public class Problema {
     public String toString() {
         return this.codigo + " - " + this.descricao + " - " + this.viabilidade;
     }
+
+	@Override
+	public boolean contemTermo(String termo) {
+		if (this.descricao.contains(termo)) return true;
+		return false;
+	}
+
+	@Override
+	public String exibeRepresentacaoBusca() {
+		return String.format("%s: %s", this.codigo, this.descricao);
+	}
 }

@@ -1,5 +1,6 @@
 package projeto;
 
+import java.util.ArrayList;
 import java.util.Collection;
 
 /** 
@@ -110,7 +111,10 @@ public class AtividadeController implements Buscador{
 
 	@Override
 	public Collection<Buscavel> busca(String termo) {
-		// TODO Auto-generated method stub
-		return null;
+		ArrayList<Buscavel> achados = new ArrayList<>();
+		for (Buscavel atividade : this.atividadesMetodologicas.values()) {
+			if (atividade.contemTermo(termo)) achados.add(atividade);
+		}
+		return achados;
 	}
 }

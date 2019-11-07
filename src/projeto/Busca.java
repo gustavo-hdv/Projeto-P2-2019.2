@@ -12,22 +12,38 @@ public class Busca {
 	public Busca(PesquisadorController pesquisadorC, PesquisaController pesquisaC, AtividadeController atividadesC, ObjetivoController objetivoC, ProblemaController problemaC, String termo) {
 		this.buscadores = new ArrayList<>();
 		this.buscadores.add(pesquisadorC);
-		this.buscadores.add(pesquisaC);
+		//this.buscadores.add(pesquisaC);
 		this.buscadores.add(atividadesC);
 		this.buscadores.add(objetivoC);
-		this.buscadores.add(pesquisadorC);
-		this.buscadores.add(pesquisadorC);
+		this.buscadores.add(problemaC);
+		this.buscados = new ArrayList<>();
 		this.termo = termo;
 	}
 	
-	@Override
-	public String toString() {
+	private ArrayList<Buscavel> getEntidades() {
+		ArrayList<Buscavel> buscados = new ArrayList<>();
 		for (Buscador buscador : buscadores) {
 			Collection<Buscavel> achados = buscador.busca(this.termo);
 			for (Buscavel buscado : achados) {
 				buscados.add(buscado);
 			}
 		}
-		return null;
+		return buscados;
+	}
+	
+	@Override
+	public String toString() {
+		String msg = "";
+		boolean aux = true;
+		ArrayList<Buscavel> buscados = getEntidades();
+		for (Buscavel buscado : buscados) {
+			if (aux) {
+				msg += buscado.exibeRepresentacaoBusca();
+				aux = false;
+			} else {
+				msg += " | " + buscado.exibeRepresentacaoBusca();
+			}
+		}
+		return msg;
 	}
 }

@@ -7,7 +7,7 @@ package projeto;
 import java.util.List;
 import java.util.ArrayList;
 
-public class AtividadeMetodologica {
+public class AtividadeMetodologica implements Buscavel {
 	
 	/** Descricao */
 	private String descricao;
@@ -95,5 +95,16 @@ public class AtividadeMetodologica {
 			toString += resultados.get(i).exibeItem();
 		}
 		return toString;
+	}
+
+	@Override
+	public boolean contemTermo(String termo) {
+		if ((this.descricao.contains(termo)) || (this.descricaoRisco.contains(termo))) return true;
+		return false;
+	}
+
+	@Override
+	public String exibeRepresentacaoBusca() {
+		
 	}
 }
