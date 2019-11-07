@@ -104,21 +104,24 @@ public class PesquisaController implements Buscador {
 		if (novoConteudo.length() > 255) {
 			throw new IllegalArgumentException("Formato do campo de interesse invalido.");
 		}
+		Validador.validaString(conteudoASerAlterado, "Conteudo a ser alterado nao pode ser vazio ou nulo.");
+		if (conteudoASerAlterado.equals("DESCRICAO")) {
+			Validador.validaString(novoConteudo, "Descricao nao pode ser nula ou vazia.");
+		} else if (conteudoASerAlterado.equals("CAMPO")) {
+			Validador.validaString(novoConteudo, "Formato do campo de interesse invalido.");
+		} else {
+			throw new IllegalArgumentException("Nao e possivel alterar esse valor de pesquisa.");
+		}
 		List<String> novoConteudoList = Arrays.asList(novoConteudo.split(","));
 		for (int i = 0; i < novoConteudoList.size(); i++) {
 			if (novoConteudoList.get(i).length() < 3) {
 				throw new IllegalArgumentException("Formato do campo de interesse invalido.");
 			}
 		}
-		Validador.validaString(conteudoASerAlterado, "Conteudo a ser alterado nao pode ser vazio ou nulo.");
 		if (conteudoASerAlterado.equals("DESCRICAO")) {
-			Validador.validaString(novoConteudo, "Descricao nao pode ser nula ou vazia.");
 			pesquisas.get(codigo).setDescricao(novoConteudo);
 		} else if (conteudoASerAlterado.equals("CAMPO")) {
-			Validador.validaString(novoConteudo, "Formato do campo de interesse invalido.");
 			pesquisas.get(codigo).setCampoDeInteresse(novoConteudo);
-		} else {
-			throw new IllegalArgumentException("Nao e possivel alterar esse valor de pesquisa.");
 		}
 	}
 
@@ -197,5 +200,45 @@ public class PesquisaController implements Buscador {
 		// TODO Auto-generated method stub
 		return null;
 	}
+	
+	/** Associa um problema para a pesquisa 
+	 * 
+	 * @param idPesquisa identificador da pesquisa
+	 * @param problema Um objeto problema
+	 * 
+	 * @return boolean (true para associado com sucesso, false para nao associado)
+	 */
+	public boolean associaProblema(String idPesquisa, Problema problema) {
+		Validador.validaString(idPesquisa, "Campo idPesquisa nao pode ser nulo ou vazio.");
+		Validador.isRegistered(idPesquisa, this.pesquisas, "Pesquisa nao encontrada.");
+		if (!pesquisaEhAtiva(idPesquisa)) {
+			throw new IllegalArgumentException("Pesquisa desativada.");
+		}
+		return this.pesquisas.get(idPesquisa).associaProblema(problema);
+	}
+	
+	/** Desassocia um problema da a pesquisa 
+	 * 
+	 * @param idPesquisa identificador da pesquisa
+	 * @param problema Um objeto problema
+	 * 
+	 * @return boolean (true para desassociado com sucesso, false para nao desassociado)
+	 */
+	public boolean desassociaProblema(String idPesquisa, Problema problema) {
+		Validador.validaString(idPesquisa, "Campo idPesquisa nao pode ser nulo ou vazio.");
+		Validador.isRegistered(idPesquisa, this.pesquisas, "Pesquisa nao encontrada.");
+		if (!pesquisaEhAtiva(idPesquisa)) {
+			throw new IllegalArgumentException("Pesquisa desativada.");
+		}
+		
+		return this.pesquisas.get(idPesquisa).desassociaProblema(problema);
+		
+	}
 
+	/**
+	 * GABRIEL
+	 */
+	public Pesquisa buscaPesquisa(String codigo) {
+		return pesquisas.get(codigo);
+	}
 }

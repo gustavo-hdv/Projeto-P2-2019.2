@@ -1,11 +1,12 @@
 package projeto;
 
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
 
 public class PesquisadorController implements Buscador {
-	protected Map<String, Pesquisador> pesquisadores;
+	private Map<String, Pesquisador> pesquisadores;
 
 	public PesquisadorController() {
 		this.pesquisadores = new HashMap<>();
@@ -97,7 +98,18 @@ public class PesquisadorController implements Buscador {
 
 	@Override
 	public Collection<Buscavel> busca(String termo) {
-		// TODO Auto-generated method stub
-		return null;
+		ArrayList<Buscavel> achados = new ArrayList<>();
+		for (Buscavel pesquisador : this.pesquisadores.values()) {
+			if (pesquisador.contemTermo(termo)) achados.add(pesquisador);
+		}
+		return achados;
 	}
+
+	/**
+	 * GABRIEL
+	 */
+	public Pesquisador buscaPesquisador(String email) {
+		return pesquisadores.get(email);
+	}
+
 }

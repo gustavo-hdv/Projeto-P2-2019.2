@@ -3,7 +3,7 @@ package projeto;
 import java.util.ArrayList;
 import java.util.HashMap;
 
-public class Pesquisador {
+public class Pesquisador implements Buscavel {
 	protected String nome;
 	protected String funcao;
 	protected String biografia;
@@ -66,7 +66,7 @@ public class Pesquisador {
 		} else if (atributo.equals("EMAIL")) {
 			Validador.validaString(novoValor, "Campo email nao pode ser nulo ou vazio.");
 			validaEmail(novoValor);
-			this.email = novoValor;
+				this.email = novoValor;
 		} else {
 			throw new IllegalArgumentException("Atributo invalido.");
 		}
@@ -121,6 +121,15 @@ public class Pesquisador {
 
 	public boolean pesquisadorEhAtivo() {
 		return this.status;
+	}
+	
+	public boolean contemTermo(String termo) {
+		if (this.biografia.contains(termo)) return true;
+		return false;
+	}
+	
+	public String exibeRepresentacaoBusca() {
+		return String.format("%s: %s", this.email, this.biografia);
 	}
 	
 	/**

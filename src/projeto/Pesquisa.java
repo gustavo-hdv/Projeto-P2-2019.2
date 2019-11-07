@@ -37,6 +37,11 @@ public class Pesquisa {
     private Map<String, AtividadeMetodologica> atividadesAssociadas;
 
 	/**
+	 * Problema da Pesquisa.
+	 */
+	private Problema problema;
+	
+	/**
 	 * Constroi uma Pesquisa, a partir do seu codigo, descricao e campo de
 	 * interesse.
 	 * 
@@ -72,8 +77,50 @@ public class Pesquisa {
 		this.descricao = descricao;
 		this.campoDeInteresse = campoDeInteresse;
         this.atividadesAssociadas = new HashMap<>();
+		this.problema = null;
 	}
 
+	/** Associa um problema para a pesquisa 
+	 * 
+	 * @param problema Um objeto problema 
+	 * 
+	 * @return boolean (true para associado com sucesso, false para nao associado)
+	 */
+	public boolean associaProblema(Problema problema) {
+		if (problema == null) {
+			return false;
+		}
+		if (this.problema == null) {
+			this.problema = problema;
+			return true;
+		}
+		if (this.problema.equals(problema)) {
+			return false;
+		} else {
+			throw new IllegalArgumentException("Pesquisa ja associada a um problema.");
+		}
+	}
+	
+	/** Desassocia um problema da a pesquisa 
+	 * 
+	 * @param problema Um objeto problema 
+	 * 
+	 * @return boolean (true para associado com sucesso, false para nao associado)
+	 */
+	public boolean desassociaProblema(Problema problema) {
+		if (problema == null) {
+			return false;
+		}
+		if (this.problema == null) {
+			return false;
+		}
+		if (!this.problema.equals(problema)) {
+			return false;
+		}
+		this.problema = null;
+		return true;
+	}
+	
 	/**
 	 * Metodo Set que altera a descricao da Pesquisa.
 	 * 
@@ -178,5 +225,4 @@ public class Pesquisa {
 	public String toString() {
 		return this.codigo + " - " + this.descricao + " - " + this.campoDeInteresse;
 	}
-
 }
