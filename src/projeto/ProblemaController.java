@@ -22,7 +22,7 @@ public class ProblemaController implements Buscador {
     /**
      * Problemas. Corresponde ao mapa de problemas.
      */
-    private Map<String, Problema> problemas;
+    protected Map<String, Problema> problemas;
     /**
      * Posição. Corresponde a posição do próximo problema na lista (mapa) de problemas a ser usada no código do problema.
      */
@@ -79,11 +79,16 @@ public class ProblemaController implements Buscador {
 
         this.problemas.remove(codigo);
     }
-
+    
+    public Problema getProblema(String idProblema) {
+    	Validador.validaString(idProblema, "Campo idProblema nao pode ser nulo ou vazio.");
+    	Validador.isRegistered(idProblema, this.problemas, "Problema nao encontrado.");
+    	
+    	return problemas.get(idProblema);
+    }
 	@Override
 	public Collection<Buscavel> busca(String termo) {
 		// TODO Auto-generated method stub
 		return null;
 	}
-
 }
