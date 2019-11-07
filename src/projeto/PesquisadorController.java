@@ -1,5 +1,6 @@
 package projeto;
 
+import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -92,5 +93,11 @@ public class PesquisadorController implements Buscador {
 		}
 		Pesquisador pesquisador = this.pesquisadores.get(email);
 		return pesquisador.pesquisadorEhAtivo();
+	}
+
+	@Override
+	public Collection<Buscavel> busca(String termo) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 }

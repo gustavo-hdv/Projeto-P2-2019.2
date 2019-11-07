@@ -1,5 +1,6 @@
 package projeto;
 
+import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -82,5 +83,11 @@ public class ObjetivoController implements Buscador {
         Validador.isRegistered(codigo, this.objetivos, "Objetivo nao encontrado");
         this.objetivos.remove(codigo);
     }
+
+	@Override
+	public Collection<Buscavel> busca(String termo) {
+		// TODO Auto-generated method stub
+		return null;
+	}
 
 }

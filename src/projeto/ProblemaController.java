@@ -1,5 +1,6 @@
 package projeto;
 
+import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -78,5 +79,11 @@ public class ProblemaController implements Buscador {
 
         this.problemas.remove(codigo);
     }
+
+	@Override
+	public Collection<Buscavel> busca(String termo) {
+		// TODO Auto-generated method stub
+		return null;
+	}
 
 }

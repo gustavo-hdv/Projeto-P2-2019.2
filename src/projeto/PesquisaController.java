@@ -2,6 +2,7 @@ package projeto;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collection;
 import java.util.HashMap;
 import java.util.List;
 
@@ -185,6 +186,12 @@ public class PesquisaController implements Buscador {
 			return true;
 		}
 		return false;
+	}
+
+	@Override
+	public Collection<Buscavel> busca(String termo) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }

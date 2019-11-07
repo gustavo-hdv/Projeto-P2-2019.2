@@ -9,7 +9,7 @@ public class Busca {
 	private List<Buscavel> buscados;
 	private String termo;
 	
-	public Busca(PesquisadorController pesquisadorC, PesquisaController pesquisaC, ControllerAtividadesMetodologicas atividadesC, ObjetivoController objetivoC, ProblemaController problemaC, String termo) {
+	public Busca(PesquisadorController pesquisadorC, PesquisaController pesquisaC, AtividadeController atividadesC, ObjetivoController objetivoC, ProblemaController problemaC, String termo) {
 		this.buscadores = new ArrayList<>();
 		this.buscadores.add(pesquisadorC);
 		this.buscadores.add(pesquisaC);

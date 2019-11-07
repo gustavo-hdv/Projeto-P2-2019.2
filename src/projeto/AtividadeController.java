@@ -1,5 +1,7 @@
 package projeto;
 
+import java.util.Collection;
+
 /** 
  * Representacao de um controlador de atividades metodologicas
  */
@@ -104,5 +106,11 @@ public class AtividadeController implements Buscador{
 		Validador.isRegistered(codigo, atividadesMetodologicas, "Atividade nao encontrada");
 		
 		return this.atividadesMetodologicas.get(codigo).contaItensRealizados();
+	}
+
+	@Override
+	public Collection<Buscavel> busca(String termo) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 }
