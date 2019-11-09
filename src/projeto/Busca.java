@@ -13,12 +13,21 @@ public class Busca {
 	public Busca(PesquisadorController pesquisadorC, PesquisaController pesquisaC, AtividadeController atividadesC, ObjetivoController objetivoC, ProblemaController problemaC, String termo) {
 		this.buscadores = new ArrayList<>();
 		this.buscadores.add(pesquisadorC);
-		//this.buscadores.add(pesquisaC);
-		//this.buscadores.add(atividadesC);
 		this.buscadores.add(objetivoC);
 		this.buscadores.add(problemaC);
+		//this.buscadores.add(pesquisaC);
+		//this.buscadores.add(atividadesC);
 		this.termo = termo;
 		this.resultados = getMensagens();
+	}
+	
+	private void validaResultados(List<String> resultados) {
+		if (resultados.size() == 0) throw new RuntimeException("Nenhum resultado encontrado");
+	}
+	
+	private void validaIndice(int indice) {
+		if (resultados.size() <= indice) throw new IllegalArgumentException("Entidade nao encontrada.");
+		if (indice < 0) throw new IllegalArgumentException("Numero do resultado nao pode ser negativo");
 	}
 	
 	private static String join(List<String> mensagens) {
@@ -48,6 +57,7 @@ public class Busca {
 	}
 	
 	public int contaResultadosBusca() {
+		validaResultados(resultados);
 		return resultados.size();
 	}
 	
@@ -55,5 +65,10 @@ public class Busca {
 	public String toString() {
 		String res = join(this.resultados);
 		return res;
+	}
+	
+	public String getResultado(int indice) {
+		validaIndice(indice);
+		return this.resultados.get(indice);
 	}
 }

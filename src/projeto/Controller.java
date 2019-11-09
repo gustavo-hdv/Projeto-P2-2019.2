@@ -304,7 +304,8 @@ public class Controller {
 		if (indiceResultado < 0) {
 			throw new IllegalArgumentException("Numero do resultado nao pode ser negativo");
 		}
-		return null;
+		Busca busca = new Busca(pesquisadorC, pesquisaC, atividadesC, objC, probC, termo);
+		return busca.getResultado(indiceResultado);
 	}
 
 	public int contaResultadosBusca(String termo) {
