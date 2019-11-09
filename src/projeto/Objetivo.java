@@ -35,7 +35,6 @@ public class Objetivo implements Buscavel {
     /**
      * Constrói um objetivo a partir do seu código, do seu tipo, da sua descrição, da sua aderencia e da sua viabilidade.
      *
-
      * @param codigo código do objetivo
      * @param tipo tipo do objetivo
      * @param descricao a descrição do objetivo
@@ -57,9 +56,7 @@ public class Objetivo implements Buscavel {
     }
 
     /**
-
      * Retorna o código do objetivo.
-
      *
      * @return uma String representando o código do objetivo.
      */
@@ -68,9 +65,7 @@ public class Objetivo implements Buscavel {
     }
 
     /**
-
      * Retorna a String que representa o Objetivo.
-
      *
      * @return uma String representando o Objetivo no formato "Código - Tipo - Descrição - Valor".
      */

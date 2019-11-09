@@ -224,12 +224,12 @@ public class PesquisaController implements Buscador {
 	 * 
 	 * @return boolean (true para desassociado com sucesso, false para nao desassociado)
 	 */
-	public boolean desassociaProblema(String idPesquisa, Problema problema) {
+	public boolean desassociaProblema(String idPesquisa) {
 		Validador.validaString(idPesquisa, "Campo idPesquisa nao pode ser nulo ou vazio.");
 		if (!pesquisaEhAtiva(idPesquisa)) {
 			throw new IllegalArgumentException("Pesquisa desativada.");
 		}
-		return this.pesquisas.get(idPesquisa).desassociaProblema(problema);
+		return this.pesquisas.get(idPesquisa).desassociaProblema();
 	}
 	
 	/** Associa um objetivo para a pesquisa 

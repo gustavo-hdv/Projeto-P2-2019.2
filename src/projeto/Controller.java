@@ -40,15 +40,13 @@ public class Controller {
 	 * 
 	 * @return boolean (true para desassociado com sucesso, false para nao desassociado)
 	 */
-	public boolean desassociaProblema(String idPesquisa, String idProblema) {
+	public boolean desassociaProblema(String idPesquisa) {
 		Validador.validaString(idPesquisa, "Campo idPesquisa nao pode ser nulo ou vazio.");
-		Validador.validaString(idProblema, "Campo idProblema nao pode ser nulo ou vazio.");
 		Validador.isRegistered(idPesquisa, pesquisaC.pesquisas, "Pesquisa nao encontrada.");
-		Validador.isRegistered(idProblema, probC.problemas, "Problema nao encontrado.");
 		if (!pesquisaEhAtiva(idPesquisa)) {
 			throw new IllegalArgumentException("Pesquisa desativada.");
 		}
-		return this.pesquisaC.desassociaProblema(idPesquisa, probC.getProblema(idProblema));
+		return this.pesquisaC.desassociaProblema(idPesquisa);
 	}
 	
 	/** Associa um objetivo para a pesquisa 

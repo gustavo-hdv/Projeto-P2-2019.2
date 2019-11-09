@@ -80,6 +80,7 @@ public class ObjetivoController implements Buscador {
     public void apagarObjetivo(String codigo){
         Validador.validaString(codigo, "Campo codigo nao pode ser nulo ou vazio.");
         Validador.isRegistered(codigo, this.objetivos, "Objetivo nao encontrado");
+        
         this.objetivos.remove(codigo);
     }
 
@@ -95,7 +96,6 @@ public class ObjetivoController implements Buscador {
 	/** Retorna um objetivo pelo id 
 	 * 
 	 * @param idObjetivo chave do mapa de objetivos
-	 * 
 	 * @return Objetivo 
 	 */
 	public Objetivo getObjetivo(String idObjetivo) {

@@ -39,8 +39,8 @@ public class Facade {
 	 * 
 	 * @return boolean (true para desassociado com sucesso, false para nao desassociado)
 	 */
-	public boolean desassociaProblema(String idPesquisa, String idProblema) {
-		return this.controller.desassociaProblema(idPesquisa, idProblema);
+	public boolean desassociaProblema(String idPesquisa) {
+		return this.controller.desassociaProblema(idPesquisa);
 	}
 	
 	/** Associa um objetivo para a pesquisa 

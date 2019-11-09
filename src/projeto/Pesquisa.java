@@ -110,14 +110,8 @@ public class Pesquisa {
 	 * 
 	 * @return boolean (true para associado com sucesso, false para nao associado)
 	 */
-	public boolean desassociaProblema(Problema problema) {
-		if (problema == null) {
-			return false;
-		}
+	public boolean desassociaProblema() {
 		if (this.problema == null) {
-			return false;
-		}
-		if (!this.problema.equals(problema)) {
 			return false;
 		}
 		this.problema = null;
@@ -146,9 +140,8 @@ public class Pesquisa {
 			throw new IllegalArgumentException("Objetivo ja associado a uma pesquisa.");
 		}
 		return false;
+	} 
 
-	}
-	
 	/** Desassocia um objetivo da pesquisa 
 	 * 
 	 * @param idPesquisa identificador da pesquisa
@@ -171,6 +164,13 @@ public class Pesquisa {
 		return true;
 	}
 	
+	/** Verifica se a pesquisa possui determinado objetivo 
+	 * 
+	 * @param idObjetivo identificar o objetivo
+	 * @param objetivo objeto a ser verificado
+	 * 
+	 * @return boolean (possui ou nao possui o objetivo)
+	 */
 	public boolean containsObjetivo(String idObjetivo, Objetivo objetivo) {
 		Validador.validaString(idObjetivo, "Campo idObjetivo nao pode ser nulo ou vazio.");
 		if (!this.objetivos.containsKey(idObjetivo)) {
