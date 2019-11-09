@@ -309,7 +309,8 @@ public class Controller {
 
 	public int contaResultadosBusca(String termo) {
 		Validador.validaString(termo, "Campo termo nao pode ser nulo ou vazio.");
-		return 0;	
+		Busca busca = new Busca(pesquisadorC, pesquisaC, atividadesC, objC, probC, termo);
+		return busca.contaResultadosBusca();	
 	}
 	
 	/**

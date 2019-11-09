@@ -11,6 +11,7 @@ public class Aluno extends Pesquisador{
 		this.IEA = IEA;
 	}
 	
+	@Override
 	public String toString() {
 		return this.nome + "(ALUNO)" + " - " + this.biografia + "- " + this.email + " - " + this.foto + " - " + this.semestre + " SEMESTRE" + " - " + this.IEA;
 	}

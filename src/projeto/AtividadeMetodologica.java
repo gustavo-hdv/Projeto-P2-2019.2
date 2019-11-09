@@ -9,7 +9,7 @@ import java.util.List;
 import java.util.ArrayList;
 import java.util.Map;
 
-public class AtividadeMetodologica implements Buscavel {
+public class AtividadeMetodologica {
 	
 	/** Descricao */
 	private String descricao;
@@ -97,16 +97,5 @@ public class AtividadeMetodologica implements Buscavel {
 			toString += resultados.get(i).exibeItem();
 		}
 		return toString;
-	}
-
-	@Override
-	public boolean contemTermo(String termo) {
-		if ((this.descricao.contains(termo)) || (this.descricaoRisco.contains(termo))) return true;
-		return false;
-	}
-
-	@Override
-	public String exibeRepresentacaoBusca() {
-		return null;
 	}
 }

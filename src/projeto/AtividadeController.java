@@ -10,7 +10,7 @@ import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
 
-public class AtividadeController implements Buscador{
+public class AtividadeController {
 	
 	/** Mapa de atividades metodologicas por um codigo ("A" + posicao) */
 	private Map<String, AtividadeMetodologica> atividadesMetodologicas;
@@ -112,13 +112,4 @@ public class AtividadeController implements Buscador{
     public AtividadeMetodologica getAtividade(String codigoAtividade){
 	    return this.atividadesMetodologicas.get(codigoAtividade);
     }
-
-	@Override
-	public Collection<Buscavel> busca(String termo) {
-		ArrayList<Buscavel> achados = new ArrayList<>();
-		for (Buscavel atividade : this.atividadesMetodologicas.values()) {
-			if (atividade.contemTermo(termo)) achados.add(atividade);
-		}
-		return achados;
-	}
 }
