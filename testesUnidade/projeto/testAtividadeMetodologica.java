@@ -9,7 +9,7 @@ class testAtividadeMetodologica {
     @Test
     void constructAtividadeBasico(){
         try {
-            AtividadeMetodologica atividadeMetodologica = new AtividadeMetodologica("Organizar dados da pesquisa.", "MEDIO", "Caso não seja feita a organização, irá dificultar o desenvolvimento da pesquisa.");
+            AtividadeMetodologica atividadeMetodologica = new AtividadeMetodologica("Organizar dados da pesquisa.", "MEDIO", "Caso não seja feita a organização, irá dificultar o desenvolvimento da pesquisa.", "A1");
         } catch (Exception e) {
             fail("Nao era esperado excecao");
         }
@@ -18,21 +18,21 @@ class testAtividadeMetodologica {
     @Test
     void constructAtividadeParametrosNulos(){
         try {
-            AtividadeMetodologica atividadeMetodologica = new AtividadeMetodologica(null, "MEDIO", "Caso não seja feita a organização, irá dificultar o desenvolvimento da pesquisa.");
+            AtividadeMetodologica atividadeMetodologica = new AtividadeMetodologica(null, "MEDIO", "Caso não seja feita a organização, irá dificultar o desenvolvimento da pesquisa.", "A1");
             fail("Era esperado excecao");
         } catch (NullPointerException e) {
 
         }
 
         try {
-            AtividadeMetodologica atividadeMetodologica = new AtividadeMetodologica("Organizar dados da pesquisa.", null, "Caso não seja feita a organização, irá dificultar o desenvolvimento da pesquisa.");
+            AtividadeMetodologica atividadeMetodologica = new AtividadeMetodologica("Organizar dados da pesquisa.", null, "Caso não seja feita a organização, irá dificultar o desenvolvimento da pesquisa.", "A1");
             fail("Era esperado excecao");
         } catch (NullPointerException e) {
 
         }
 
         try {
-            AtividadeMetodologica atividadeMetodologica = new AtividadeMetodologica("Organizar dados da pesquisa.", "MEDIO", null);
+            AtividadeMetodologica atividadeMetodologica = new AtividadeMetodologica("Organizar dados da pesquisa.", "MEDIO", null, "A1");
             fail("Era esperado excecao");
         } catch (NullPointerException e) {
 
@@ -42,21 +42,21 @@ class testAtividadeMetodologica {
     @Test
     void constructAtividadeParametrosVazios(){
         try {
-            AtividadeMetodologica atividadeMetodologica = new AtividadeMetodologica("  ", "MEDIO", "Caso não seja feita a organização, irá dificultar o desenvolvimento da pesquisa.");
+            AtividadeMetodologica atividadeMetodologica = new AtividadeMetodologica("  ", "MEDIO", "Caso não seja feita a organização, irá dificultar o desenvolvimento da pesquisa.", "A1");
             fail("Era esperado excecao");
         } catch (IllegalArgumentException e) {
 
         }
 
         try {
-            AtividadeMetodologica atividadeMetodologica = new AtividadeMetodologica("Organizar dados da pesquisa.", "     ", "Caso não seja feita a organização, irá dificultar o desenvolvimento da pesquisa.");
+            AtividadeMetodologica atividadeMetodologica = new AtividadeMetodologica("Organizar dados da pesquisa.", "     ", "Caso não seja feita a organização, irá dificultar o desenvolvimento da pesquisa.", "A1");
             fail("Era esperado excecao");
         } catch (IllegalArgumentException e) {
 
         }
 
         try {
-            AtividadeMetodologica atividadeMetodologica = new AtividadeMetodologica("Organizar dados da pesquisa.", "MEDIO", "        ");
+            AtividadeMetodologica atividadeMetodologica = new AtividadeMetodologica("Organizar dados da pesquisa.", "MEDIO", "        ", "A1");
             fail("Era esperado excecao");
         } catch (IllegalArgumentException e) {
 
@@ -66,7 +66,7 @@ class testAtividadeMetodologica {
     @Test
     void constructAtividadeRiscoInvalido(){
         try {
-            AtividadeMetodologica atividadeMetodologica = new AtividadeMetodologica("Organizar dados da pesquisa.", "AAAA", "Caso não seja feita a organização, irá dificultar o desenvolvimento da pesquisa.");
+            AtividadeMetodologica atividadeMetodologica = new AtividadeMetodologica("Organizar dados da pesquisa.", "AAAA", "Caso não seja feita a organização, irá dificultar o desenvolvimento da pesquisa.", "A1");
             fail("Era esperado excecao");
         } catch (IllegalArgumentException e) {
 
@@ -75,7 +75,7 @@ class testAtividadeMetodologica {
 
     @Test
     void cadastraItemBasico() {
-        AtividadeMetodologica atividadeMetodologica = new AtividadeMetodologica("Organizar dados da pesquisa.", "MEDIO", "Caso não seja feita a organização, irá dificultar o desenvolvimento da pesquisa.");
+        AtividadeMetodologica atividadeMetodologica = new AtividadeMetodologica("Organizar dados da pesquisa.", "MEDIO", "Caso não seja feita a organização, irá dificultar o desenvolvimento da pesquisa.", "A1");
         try{
             atividadeMetodologica.cadastraItem("Dados reunidos da pesquisa reunidos com sucesso.");
         }catch (Exception e){
@@ -85,7 +85,7 @@ class testAtividadeMetodologica {
 
     @Test
     void cadastraItemNulo() {
-        AtividadeMetodologica atividadeMetodologica = new AtividadeMetodologica("Organizar dados da pesquisa.", "MEDIO", "Caso não seja feita a organização, irá dificultar o desenvolvimento da pesquisa.");
+        AtividadeMetodologica atividadeMetodologica = new AtividadeMetodologica("Organizar dados da pesquisa.", "MEDIO", "Caso não seja feita a organização, irá dificultar o desenvolvimento da pesquisa.", "A1");
         try {
             atividadeMetodologica.cadastraItem(null);
             fail("Era esperado excecao");
@@ -96,7 +96,7 @@ class testAtividadeMetodologica {
 
     @Test
     void cadastraItemVazio() {
-        AtividadeMetodologica atividadeMetodologica = new AtividadeMetodologica("Organizar dados da pesquisa.", "MEDIO", "Caso não seja feita a organização, irá dificultar o desenvolvimento da pesquisa.");
+        AtividadeMetodologica atividadeMetodologica = new AtividadeMetodologica("Organizar dados da pesquisa.", "MEDIO", "Caso não seja feita a organização, irá dificultar o desenvolvimento da pesquisa.", "A1");
         try {
             atividadeMetodologica.cadastraItem("  ");
             fail("Era esperado excecao");
@@ -107,7 +107,7 @@ class testAtividadeMetodologica {
 
     @Test
     void cadastraItemRepetido() {
-        AtividadeMetodologica atividadeMetodologica = new AtividadeMetodologica("Organizar dados da pesquisa.", "MEDIO", "Caso não seja feita a organização, irá dificultar o desenvolvimento da pesquisa.");
+        AtividadeMetodologica atividadeMetodologica = new AtividadeMetodologica("Organizar dados da pesquisa.", "MEDIO", "Caso não seja feita a organização, irá dificultar o desenvolvimento da pesquisa.", "A1");
         try {
             atividadeMetodologica.cadastraItem("Dados reunidos da pesquisa reunidos com sucesso.");
             atividadeMetodologica.cadastraItem("Dados reunidos da pesquisa reunidos com sucesso.");
@@ -119,7 +119,7 @@ class testAtividadeMetodologica {
 
     @Test
     void contaItensPendentes() {
-        AtividadeMetodologica atividadeMetodologica = new AtividadeMetodologica("Organizar dados da pesquisa.", "MEDIO", "Caso não seja feita a organização, irá dificultar o desenvolvimento da pesquisa.");
+        AtividadeMetodologica atividadeMetodologica = new AtividadeMetodologica("Organizar dados da pesquisa.", "MEDIO", "Caso não seja feita a organização, irá dificultar o desenvolvimento da pesquisa.", "A1");
         assertEquals(atividadeMetodologica.contaItensPendentes(), 0);
 
         atividadeMetodologica.cadastraItem("Dados reunidos da pesquisa reunidos com sucesso.");
@@ -128,7 +128,7 @@ class testAtividadeMetodologica {
 
     @Test
     void contaItensRealizados() {
-        AtividadeMetodologica atividadeMetodologica = new AtividadeMetodologica("Organizar dados da pesquisa.", "MEDIO", "Caso não seja feita a organização, irá dificultar o desenvolvimento da pesquisa.");
+        AtividadeMetodologica atividadeMetodologica = new AtividadeMetodologica("Organizar dados da pesquisa.", "MEDIO", "Caso não seja feita a organização, irá dificultar o desenvolvimento da pesquisa.", "A1");
         assertEquals(atividadeMetodologica.contaItensRealizados(), 0);
 
         atividadeMetodologica.cadastraItem("Dados reunidos da pesquisa reunidos com sucesso.");
@@ -137,14 +137,14 @@ class testAtividadeMetodologica {
 
     @Test
     void exibeAtividadeSemItem() {
-        AtividadeMetodologica atividadeMetodologica = new AtividadeMetodologica("Organizar dados da pesquisa.", "MEDIO", "Caso não seja feita a organização, irá dificultar o desenvolvimento da pesquisa.");
+        AtividadeMetodologica atividadeMetodologica = new AtividadeMetodologica("Organizar dados da pesquisa.", "MEDIO", "Caso não seja feita a organização, irá dificultar o desenvolvimento da pesquisa.", "A1");
 
         assertEquals(atividadeMetodologica.exibeAtividade(), "Organizar dados da pesquisa. (MEDIO - Caso não seja feita a organização, irá dificultar o desenvolvimento da pesquisa.)");
     }
 
     @Test
     void exibeAtividadeComUmItem() {
-        AtividadeMetodologica atividadeMetodologica = new AtividadeMetodologica("Organizar dados da pesquisa.", "MEDIO", "Caso não seja feita a organização, irá dificultar o desenvolvimento da pesquisa.");
+        AtividadeMetodologica atividadeMetodologica = new AtividadeMetodologica("Organizar dados da pesquisa.", "MEDIO", "Caso não seja feita a organização, irá dificultar o desenvolvimento da pesquisa.", "A1");
 
         atividadeMetodologica.cadastraItem("Dados reunidos da pesquisa reunidos com sucesso.");
 
@@ -153,7 +153,7 @@ class testAtividadeMetodologica {
 
     @Test
     void exibeAtividadeComMaisDeUmItem() {
-        AtividadeMetodologica atividadeMetodologica = new AtividadeMetodologica("Organizar dados da pesquisa.", "MEDIO", "Caso não seja feita a organização, irá dificultar o desenvolvimento da pesquisa.");
+        AtividadeMetodologica atividadeMetodologica = new AtividadeMetodologica("Organizar dados da pesquisa.", "MEDIO", "Caso não seja feita a organização, irá dificultar o desenvolvimento da pesquisa.", "A1");
 
         atividadeMetodologica.cadastraItem("Dados reunidos da pesquisa reunidos com sucesso.");
         atividadeMetodologica.cadastraItem("Dados colocados na planilha.");
