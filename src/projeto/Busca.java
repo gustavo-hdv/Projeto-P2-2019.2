@@ -9,14 +9,16 @@ public class Busca {
 	private List<Buscador> buscadores;
 	private List<String> resultados;
 	private String termo;
+	private PesquisaController pesquisaC;
+	private AtividadeController atividadesC;
 	
 	public Busca(PesquisadorController pesquisadorC, PesquisaController pesquisaC, AtividadeController atividadesC, ObjetivoController objetivoC, ProblemaController problemaC, String termo) {
 		this.buscadores = new ArrayList<>();
 		this.buscadores.add(pesquisadorC);
 		this.buscadores.add(objetivoC);
 		this.buscadores.add(problemaC);
-		//this.buscadores.add(pesquisaC);
-		//this.buscadores.add(atividadesC);
+		this.pesquisaC = pesquisaC;
+		this.atividadesC = atividadesC;
 		this.termo = termo;
 		this.resultados = getMensagens();
 	}
@@ -52,7 +54,18 @@ public class Busca {
 				mensagens.add(buscado.exibeRepresentacaoBusca());
 			}
 		}
-		Collections.sort(mensagens, Collections.reverseOrder());
+		for (String mensagem : pesquisaC.busca(this.termo)) {
+			if (mensagem.contains(this.termo)) {
+				mensagens.add(mensagem);
+			}
+		}
+		for (String mensagem : atividadesC.busca(this.termo)) {
+			if (mensagem.contains(this.termo)) {
+				mensagens.add(mensagem);
+			}
+		}
+		BuscaComparator comparador = new BuscaComparator();
+		Collections.sort(mensagens, comparador);
 		return mensagens;
 	}
 	

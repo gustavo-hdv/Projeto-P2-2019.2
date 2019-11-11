@@ -1,5 +1,6 @@
 package projeto;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
@@ -30,21 +31,21 @@ public class Pesquisa {
 	 */
 	private String campoDeInteresse;
 
-    /**
-     * Mapa de atividades associadas.
-     */
-    private Map<String, AtividadeMetodologica> atividadesAssociadas;
+	/**
+	 * Mapa de atividades associadas.
+	 */
+	private Map<String, AtividadeMetodologica> atividadesAssociadas;
 
 	/**
 	 * Problema da Pesquisa.
 	 */
 	private Problema problema;
-	
+
 	/**
 	 * Objetivos da Pesquisa.
 	 */
 	private Map<String, Objetivo> objetivos;
-	
+
 	/**
 	 * Constroi uma Pesquisa, a partir do seu codigo, descricao e campo de
 	 * interesse.
@@ -80,13 +81,14 @@ public class Pesquisa {
 		this.codigo = codigo;
 		this.descricao = descricao;
 		this.campoDeInteresse = campoDeInteresse;
-        this.atividadesAssociadas = new HashMap<>();
+		this.atividadesAssociadas = new HashMap<>();
 		this.problema = null;
 	}
 
-	/** Associa um problema para a pesquisa 
+	/**
+	 * Associa um problema para a pesquisa
 	 * 
-	 * @param problema Um objeto problema 
+	 * @param problema Um objeto problema
 	 * 
 	 * @return boolean (true para associado com sucesso, false para nao associado)
 	 */
@@ -103,10 +105,11 @@ public class Pesquisa {
 		}
 		return false;
 	}
-	
-	/** Desassocia um problema da a pesquisa 
+
+	/**
+	 * Desassocia um problema da a pesquisa
 	 * 
-	 * @param problema Um objeto problema 
+	 * @param problema Um objeto problema
 	 * 
 	 * @return boolean (true para associado com sucesso, false para nao associado)
 	 */
@@ -117,11 +120,12 @@ public class Pesquisa {
 		this.problema = null;
 		return true;
 	}
-	
-	/** Associa um objetivo para a pesquisa 
+
+	/**
+	 * Associa um objetivo para a pesquisa
 	 * 
 	 * @param idPesquisa identificador da pesquisa
-	 * @param objetivo Objetivo da pesquisa
+	 * @param objetivo   Objetivo da pesquisa
 	 * 
 	 * @return boolean (true para associado com sucesso, false para nao associado)
 	 */
@@ -130,24 +134,26 @@ public class Pesquisa {
 		if (objetivo == null) {
 			return false;
 		}
-		
+
 		if (!this.objetivos.containsKey(idObjetivo) || this.objetivos.get(idObjetivo) == null) {
 			this.objetivos.put(idObjetivo, objetivo);
 			return true;
 		}
-		
+
 		if (!this.objetivos.get(idObjetivo).equals(objetivo)) {
 			throw new IllegalArgumentException("Objetivo ja associado a uma pesquisa.");
 		}
 		return false;
-	} 
+	}
 
-	/** Desassocia um objetivo da pesquisa 
+	/**
+	 * Desassocia um objetivo da pesquisa
 	 * 
 	 * @param idPesquisa identificador da pesquisa
-	 * @param objetivo Objetivo da pesquisa
+	 * @param objetivo   Objetivo da pesquisa
 	 * 
-	 * @return boolean (true para desassociado com sucesso, false para nao desassociado)
+	 * @return boolean (true para desassociado com sucesso, false para nao
+	 *         desassociado)
 	 */
 	public boolean desassociaObjetivo(String idObjetivo, Objetivo objetivo) {
 		Validador.validaString(idObjetivo, "Campo idObjetivo nao pode ser nulo ou vazio.");
@@ -163,11 +169,12 @@ public class Pesquisa {
 		this.objetivos.put(idObjetivo, null);
 		return true;
 	}
-	
-	/** Verifica se a pesquisa possui determinado objetivo 
+
+	/**
+	 * Verifica se a pesquisa possui determinado objetivo
 	 * 
 	 * @param idObjetivo identificar o objetivo
-	 * @param objetivo objeto a ser verificado
+	 * @param objetivo   objeto a ser verificado
 	 * 
 	 * @return boolean (possui ou nao possui o objetivo)
 	 */
@@ -184,7 +191,7 @@ public class Pesquisa {
 		}
 		return true;
 	}
-	
+
 	/**
 	 * Metodo Set que altera a descricao da Pesquisa.
 	 * 
@@ -222,25 +229,25 @@ public class Pesquisa {
 		this.campoDeInteresse = campoDeInteresse;
 	}
 
-    public boolean associaAtividade(String codigoAtividade, AtividadeMetodologica atividade){
-	    if (this.atividadesAssociadas.containsKey(codigoAtividade)) {
-	        return false;
-        }
+	public boolean associaAtividade(String codigoAtividade, AtividadeMetodologica atividade) {
+		if (this.atividadesAssociadas.containsKey(codigoAtividade)) {
+			return false;
+		}
 
-        this.atividadesAssociadas.put(codigoAtividade, atividade);
+		this.atividadesAssociadas.put(codigoAtividade, atividade);
 
-	    return true;
-    }
+		return true;
+	}
 
-    public boolean desassociaAtividade(String codigoAtividade){
-	    if (!this.atividadesAssociadas.containsKey(codigoAtividade)) {
-	        return false;
-        }
+	public boolean desassociaAtividade(String codigoAtividade) {
+		if (!this.atividadesAssociadas.containsKey(codigoAtividade)) {
+			return false;
+		}
 
-        this.atividadesAssociadas.remove(codigoAtividade);
+		this.atividadesAssociadas.remove(codigoAtividade);
 
-	    return true;
-    }
+		return true;
+	}
 
 	/**
 	 * Gera um inteiro que representa o hashCode da pesquisa a partir do seu codigo.
@@ -288,5 +295,18 @@ public class Pesquisa {
 	@Override
 	public String toString() {
 		return this.codigo + " - " + this.descricao + " - " + this.campoDeInteresse;
+	}
+
+	public boolean contemTermo(String termo) {
+		if ((this.descricao.contains(termo)) || (this.campoDeInteresse.contains(termo)))
+			return true;
+		return false;
+	}
+
+	public List<String> exibeRepresentacoesBusca() {
+		List<String> mensagens = new ArrayList<>();
+		mensagens.add(String.format("%s: %s", this.codigo, this.descricao));
+		mensagens.add(String.format("%s: %s", this.codigo, this.campoDeInteresse));
+		return mensagens;
 	}
 }

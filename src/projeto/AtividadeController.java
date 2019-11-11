@@ -8,6 +8,7 @@ import java.util.Collection;
  */
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 public class AtividadeController {
@@ -40,7 +41,7 @@ public class AtividadeController {
 		}
 		
 		String codigo = "A" + (++this.contagem);
-		this.atividadesMetodologicas.put(codigo, new AtividadeMetodologica(descricao, nivelRisco, descricaoRisco));
+		this.atividadesMetodologicas.put(codigo, new AtividadeMetodologica(descricao, nivelRisco, descricaoRisco, codigo));
 		return codigo;
 	}
 	
@@ -112,4 +113,16 @@ public class AtividadeController {
     public AtividadeMetodologica getAtividade(String codigoAtividade){
 	    return this.atividadesMetodologicas.get(codigoAtividade);
     }
+
+    public List<String> busca(String termo) {
+		List<String> achados = new ArrayList<>();
+		for (AtividadeMetodologica atividades : this.atividadesMetodologicas.values()) {
+			if (atividades.contemTermo(termo)) {
+				for (String mensagem : atividades.exibeRepresentacoesBusca()) {
+					achados.add(mensagem);
+				}
+			}
+		}
+		return achados;
+	}
 }

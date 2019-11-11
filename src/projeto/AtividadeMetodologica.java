@@ -19,6 +19,7 @@ public class AtividadeMetodologica {
 	private String descricaoRisco;
 	/** Lista de resultados com os itens cadastrados */
 	private List<Item> resultados;
+	private String codigo;
 
 	/** Construtor da atividade metodologica com descricao, nivel de risco e uma descricao de risco 
 	 * 
@@ -26,7 +27,7 @@ public class AtividadeMetodologica {
 	 * @param nivelRisco (nivel de risco da atividade) (String)
 	 * @param descricaoRisco (descricao de risco da atividade) (String)
 	 */
-	public AtividadeMetodologica(String descricao, String nivelRisco, String descricaoRisco) {
+	public AtividadeMetodologica(String descricao, String nivelRisco, String descricaoRisco, String codigo) {
 		Validador.validaString(descricao, "Campo Descricao nao pode ser nulo ou vazio.");
 		Validador.validaString(nivelRisco, "Campo nivelRisco nao pode ser nulo ou vazio.");
 		Validador.validaString(descricaoRisco, "Campo descricaoRisco nao pode ser nulo ou vazio.");
@@ -38,7 +39,7 @@ public class AtividadeMetodologica {
 		this.nivelRisco = nivelRisco;
 		this.descricaoRisco = descricaoRisco;
 		this.resultados = new ArrayList<>();
-
+		this.codigo = codigo;
 	}
 	
 	/** Cadastra um item para a atividade
@@ -97,5 +98,17 @@ public class AtividadeMetodologica {
 			toString += resultados.get(i).exibeItem();
 		}
 		return toString;
+	}
+
+	public boolean contemTermo(String termo) {
+		if ((this.descricao.contains(termo)) || (this.descricaoRisco.contains(termo))) return true;
+		return false;
+	}
+
+	public List<String> exibeRepresentacoesBusca() {
+		List<String> mensagens = new ArrayList<>();
+		mensagens.add(String.format("%s: %s", this.codigo, this.descricao));
+		mensagens.add(String.format("%s: %s", this.codigo, this.descricaoRisco));
+		return mensagens;
 	}
 }

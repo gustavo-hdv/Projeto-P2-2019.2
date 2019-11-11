@@ -14,7 +14,7 @@ import java.util.Map;
  * @author Gabriel Menezes Cabral - 119110372.
  *
  */
-public class PesquisaController implements Buscador {
+public class PesquisaController {
 
 	/**
 	 * Eh o codigo da Pesquisa.
@@ -196,12 +196,6 @@ public class PesquisaController implements Buscador {
 	    return this.pesquisas.get(codigoPesquisa);
     }
 
-	@Override
-	public Collection<Buscavel> busca(String termo) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-	
 	/** Associa um problema para a pesquisa 
 	 * 
 	 * @param idPesquisa identificador da pesquisa
@@ -271,6 +265,18 @@ public class PesquisaController implements Buscador {
 			throw new IllegalArgumentException("Pesquisa desativada.");
 		}
 		return this.pesquisas.get(idPesquisa).desassociaObjetivo(objetivo.getCodigo(), objetivo);
+	}
+	
+	public List<String> busca(String termo) {
+		List<String> achados = new ArrayList<>();
+		for (Pesquisa pesquisa : this.pesquisas.values()) {
+			if (pesquisa.contemTermo(termo)) {
+				for (String mensagem : pesquisa.exibeRepresentacoesBusca()) {
+					achados.add(mensagem);
+				}
+			}
+		}
+		return achados;
 	}
 
 	/**
