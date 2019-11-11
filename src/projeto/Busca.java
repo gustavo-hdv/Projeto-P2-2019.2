@@ -82,6 +82,6 @@ public class Busca {
 	
 	public String getResultado(int indice) {
 		validaIndice(indice);
-		return this.resultados.get(indice);
+		return this.resultados.get(indice-1);
 	}
 }
