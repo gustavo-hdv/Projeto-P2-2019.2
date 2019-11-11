@@ -2,6 +2,8 @@ package projeto;
 
 import org.junit.jupiter.api.Test;
 
+import controllers.AtividadeController;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 class testAtividadeController {

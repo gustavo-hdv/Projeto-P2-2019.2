@@ -1,5 +1,6 @@
 package projeto;
 
+import controllers.Controller;
 import easyaccept.EasyAccept;
 
 /**

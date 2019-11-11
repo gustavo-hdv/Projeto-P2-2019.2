@@ -1,4 +1,4 @@
-package projeto;
+package controllers;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -6,6 +6,11 @@ import java.util.Collection;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+
+import projeto.Objetivo;
+import projeto.Pesquisa;
+import projeto.Problema;
+import projeto.Validador;
 
 /**
  * Representação de um Controle, que é responsável por manipular os Collections,

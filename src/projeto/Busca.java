@@ -5,6 +5,12 @@ import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
 
+import controllers.AtividadeController;
+import controllers.ObjetivoController;
+import controllers.PesquisaController;
+import controllers.PesquisadorController;
+import controllers.ProblemaController;
+
 public class Busca {
 	private List<Buscador> buscadores;
 	private List<String> resultados;

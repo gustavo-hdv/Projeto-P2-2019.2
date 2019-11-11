@@ -3,6 +3,8 @@ package projeto;
 import static org.junit.jupiter.api.Assertions.fail;
 import org.junit.jupiter.api.Test;
 
+import controllers.PesquisaController;
+
 public class testPesquisaController {
 
 	private PesquisaController pesqC = new PesquisaController();;

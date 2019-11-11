@@ -1,4 +1,7 @@
-package projeto;
+package controllers;
+
+import projeto.Busca;
+import projeto.Validador;
 
 public class Controller {
 	private PesquisadorController pesquisadorC;

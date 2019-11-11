@@ -1,9 +1,14 @@
-package projeto;
+package controllers;
 
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
+
+import projeto.Buscador;
+import projeto.Buscavel;
+import projeto.Objetivo;
+import projeto.Validador;
 
 /**
  * Laboratório de Programação 2 - Projeto

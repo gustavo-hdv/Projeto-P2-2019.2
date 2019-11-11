@@ -3,7 +3,8 @@ package projeto;
 import static org.junit.jupiter.api.Assertions.*;
 
 import org.junit.jupiter.api.Test;
-import projeto.ObjetivoController;
+
+import controllers.ObjetivoController;
 
 class testObjetivoController {
 	
