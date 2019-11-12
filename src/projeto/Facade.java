@@ -18,8 +18,22 @@ public class Facade {
 	public static void main(String[] args) {
 		args = new String[] { "projeto.Facade", "TestesAceitacao/use_case_1.txt", "TestesAceitacao/use_case_2.txt",
 				"TestesAceitacao/use_case_3.txt", "TestesAceitacao/use_case_4.txt", "TestesAceitacao/use_case_5.txt",
-				"TestesAceitacao/use_case_6.txt", "TestesAceitacao/use_case_7.txt", "TestesAceitacao/use_case_8.txt" };
+				"TestesAceitacao/use_case_6.txt", "TestesAceitacao/use_case_7.txt", "TestesAceitacao/use_case_8.txt",
+				"TestesAceitacao/use_case_9.txt", "TestesAceitacao/use_case_10.txt", "TestesAceitacao/use_case_11.txt"};
 		EasyAccept.main(args);
+	}
+	
+	/** Exporta um resumo da pesquisa em arquivo de texto
+	 *  Representado todas as entidades de um pesquisa em ordem de cadastro 
+	 */
+	public void gravarResumo(String codigoPesquisa) {
+		this.controller.gravarResumo(codigoPesquisa);
+	}
+	/** Exporta os resultados da pesquisa em arquivo de texto
+	 *  Representado os resultados obtidos com a pesquisa
+	 */
+	public void gravarResultados(String codigoPesquisa) {
+		this.controller.gravarResultados(codigoPesquisa);
 	}
 
 	/** Lista as pesquisas em determinada ordem

@@ -18,8 +18,26 @@ public class Controller {
 		this.probC = new ProblemaController();
 	}
 
+	/** Exporta um resumo da pesquisa em arquivo de texto
+	 *  Representado todas as entidades de um pesquisa em ordem de cadastro.
+	 *  Formato do arquivo: CODIGOPESQUISA.txt
+	 */
+	public void gravarResumo(String codigoPesquisa) {
+		Validador.validaString(codigoPesquisa, "Pesquisa nao pode ser nula ou vazia.");
+		Validador.isRegistered(codigoPesquisa, this.pesquisaC.pesquisas, "Pesquisa nao encontrada.");
+	}
+	
+	/** Exporta os resultados da pesquisa em arquivo de texto
+	 *  Representado os resultados obtidos com a pesquisa.
+	 *  Formato do arquivo: CODIGOPESQUISA-Resultados.txt
+	 */
+	public void gravarResultados(String codigoPesquisa) {
+		Validador.validaString(codigoPesquisa, "Pesquisa nao pode ser nula ou vazia.");
+		Validador.isRegistered(codigoPesquisa, this.pesquisaC.pesquisas, "Pesquisa nao encontrada.");
+	}
+	
 	/** Lista as pesquisas em determinada ordem
-	 *  Estilo: CÓDIGO - Descrição - Campo de interesse
+	 *  Estilo: CODIGO - Descricao - Campo de interesse
 	 * 
 	 * @param ordem descreve o tipo da listagem das pesquisas
 	 * @return CODIGO - Descricao - Campo de interesse | CODIGO - Descricao - Campo de interesse | ...
