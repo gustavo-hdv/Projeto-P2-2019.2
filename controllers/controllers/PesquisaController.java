@@ -263,9 +263,6 @@ public class PesquisaController {
 	 */
 	public boolean desassociaObjetivo(String idPesquisa, Objetivo objetivo) {
 		Validador.validaString(idPesquisa, "Campo idPesquisa nao pode ser nulo ou vazio.");
-		if (objetivo == null) {
-			return false;
-		}
 		if (!pesquisaEhAtiva(idPesquisa)) {
 			throw new IllegalArgumentException("Pesquisa desativada.");
 		}

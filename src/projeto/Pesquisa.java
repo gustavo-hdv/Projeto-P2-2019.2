@@ -132,17 +132,9 @@ public class Pesquisa {
 	 */
 	public boolean associaObjetivo(String idObjetivo, Objetivo objetivo) {
 		Validador.validaString(idObjetivo, "Campo idObjetivo nao pode ser nulo ou vazio.");
-		if (objetivo == null) {
-			return false;
-		}
-
 		if (!this.objetivos.containsKey(idObjetivo) || this.objetivos.get(idObjetivo) == null) {
 			this.objetivos.put(idObjetivo, objetivo);
 			return true;
-		}
-
-		if (!this.objetivos.get(idObjetivo).equals(objetivo)) {
-			throw new IllegalArgumentException("Objetivo ja associado a uma pesquisa.");
 		}
 		return false;
 	}
@@ -157,8 +149,8 @@ public class Pesquisa {
 	 *         desassociado)
 	 */
 	public boolean desassociaObjetivo(String idObjetivo, Objetivo objetivo) {
-		Validador.validaString(idObjetivo, "Campo idObjetivo nao pode ser nulo ou vazio.");
-		if (!this.objetivos.containsKey(idObjetivo) || this.objetivos.get(idObjetivo) == null) {
+		Validador.validaString(idObjetivo, "Campo idObjetivo nao pode ser nulo ou vazio.");	
+		if (!this.objetivos.containsKey(idObjetivo)) {
 			return false;
 		}
 		if (!this.objetivos.get(idObjetivo).equals(objetivo)) {
@@ -179,10 +171,6 @@ public class Pesquisa {
 	public boolean containsObjetivo(String idObjetivo) {
 		Validador.validaString(idObjetivo, "Campo idObjetivo nao pode ser nulo ou vazio.");
 		return this.objetivos.containsKey(idObjetivo);
-		//if (!this.objetivos.get(idObjetivo).equals(objetivo)) {
-		//	throw new IllegalArgumentException("Objetivo ja associado a uma pesquisa.");
-		//}
-
 	}
 
 	/**
