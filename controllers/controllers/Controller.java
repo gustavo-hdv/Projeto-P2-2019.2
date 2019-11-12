@@ -332,15 +332,35 @@ public class Controller {
 		pesquisadorC.buscaPesquisador(emailPesquisador).desassociaPesqusia(codigoPesquisa);
 	}
 	
+	/**
+	 * GABRIEL
+	 * 
+	 * @param email
+	 * @param formacao
+	 * @param unidade
+	 * @param data
+	 */
 	public void cadastraEspecialidadeProfessor(String email, String formacao, String unidade, String data) {
-		pesquisadorC.buscaPesquisador(email);
+		pesquisadorC.cadastraEspecialidadeProfessor(email, formacao, unidade, data);
 	}
 
-	public boolean associaAtividade(String codigoPesquisa, String codigoAtividade){
-	    return this.pesquisaC.getPesquisa(codigoPesquisa).associaAtividade(codigoAtividade, this.atividadesC.getAtividade(codigoAtividade));
-    }
+	/**
+	 * GABRIEL
+	 * 
+	 * @param codigoPesquisa
+	 * @param codigoAtividade
+	 * @return
+	 */
+	public void cadastraEspecialidadeAluno(String email, int semestre, double IEA) {
+		pesquisadorC.cadastraEspecialidadeAluno(email, semestre, IEA);
+	}
 
-    public boolean desassociaAtiviade(String codigoPesquisa, String codigoAtividade){
-	    return this.pesquisaC.getPesquisa(codigoPesquisa).desassociaAtividade(codigoAtividade);
-    }
+	/**
+	 * GABRIEL
+	 */
+	public String listaPesquisadores(String tipo) {
+		return pesquisadorC.listaPesquisadores(tipo);
+	}
+	
+
 }

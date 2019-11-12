@@ -11,6 +11,8 @@ public class Pesquisador implements Buscavel {
 	protected String foto;
 	protected boolean status;
 	
+	protected Especificacao especificacao;
+	
 	/**
 	 * GABRIEL
 	 * @return
@@ -67,6 +69,18 @@ public class Pesquisador implements Buscavel {
 			Validador.validaString(novoValor, "Campo email nao pode ser nulo ou vazio.");
 			validaEmail(novoValor);
 				this.email = novoValor;
+		}else if (atributo.equals("FORMACAO")) {
+			((Professor) especificacao).setFormacao(novoValor);
+		} else if (atributo.equals("UNIDADE")) {
+			((Professor) especificacao).setUnidade(novoValor);
+		} else if (atributo.equals("DATA")) {
+			((Professor) especificacao).setData(novoValor);
+		} else if (atributo.equals("SEMESTRE")) {
+			int novoSemestre = Integer.parseInt(novoValor);
+			((Aluno) especificacao).setSemestre(novoSemestre);
+		} else if (atributo.equals("IEA")) {
+			double novoIEA = Double.parseDouble(novoValor);
+			((Aluno) especificacao).setIEA(novoIEA);
 		} else {
 			throw new IllegalArgumentException("Atributo invalido.");
 		}
@@ -146,4 +160,55 @@ public class Pesquisador implements Buscavel {
 		pesquisasAssociadas.remove(codigoPesquisa);
 	}
 	
+	/**
+	 * GABRIEL
+	 * @return
+	 */
+	public String getNome() {
+		return nome;
+	}
+
+	/**
+	 * GABRIEL
+	 * @return
+	 */
+	public String getFuncao() {
+		return funcao;
+	}
+
+	/**
+	 * GABRIEL
+	 * @return
+	 */
+	public String getBiografia() {
+		return biografia;
+	}
+
+	/**
+	 * GABRIEL
+	 * @return
+	 */
+	public String getFoto() {
+		return foto;
+	}
+	
+	/**
+	 * GABRIEL
+	 */
+	public void cadastraEspecialidadeProfessor(String nome, String funcao, String biografia, String email, String foto, String formacao, String unidade, String data) {
+		especificacao = new Professor(nome, funcao, biografia, email, foto, formacao, unidade, data);
+		this.funcao = "PROFESSORA";
+	}
+	
+	/**
+	 * GABRIEL
+	 */
+	public void cadastraEspecialidadeAluno(String nome, String funcao, String biografia, String email, String foto, int semestre, double IEA) {
+		especificacao = new Aluno(nome, funcao, biografia, email, foto, semestre, IEA);
+		this.funcao = "ALUNA";
+	}
+	
+	public void alteraAtributo() {
+		
+	}
 }

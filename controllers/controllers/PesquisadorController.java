@@ -117,4 +117,38 @@ public class PesquisadorController implements Buscador {
 		return pesquisadores.get(email);
 	}
 
+	/**
+	 * GABRIEL
+	 */
+	public void cadastraEspecialidadeProfessor(String email, String formacao, String unidade, String data) {
+		String nome = pesquisadores.get(email).getNome();
+		String funcao = pesquisadores.get(email).getFuncao();
+		String biografia = pesquisadores.get(email).getBiografia();
+		String foto = pesquisadores.get(email).getFoto();
+		pesquisadores.get(email).cadastraEspecialidadeProfessor(nome, funcao, biografia, email, foto, formacao, unidade, data);
+	}
+	
+	/**
+	 * GABRIEL
+	 */
+	public void cadastraEspecialidadeAluno(String email, int semestre, double IEA) {
+		String nome = pesquisadores.get(email).getNome();
+		String funcao = pesquisadores.get(email).getFuncao();
+		String biografia = pesquisadores.get(email).getBiografia();
+		String foto = pesquisadores.get(email).getFoto();
+		pesquisadores.get(email).cadastraEspecialidadeAluno(nome, funcao, biografia, email, foto, semestre, IEA);
+	}
+
+	/**
+	 * GABRIEL
+	 */
+	public String listaPesquisadores(String tipo) {
+		String retorno = "";
+		for (int i = 0; i < pesquisadores.size(); i++) {
+			if (pesquisadores.get(i).getFuncao().equals(tipo)) {
+				retorno += pesquisadores.get(i).toString() + " | ";
+			}
+		}
+		return retorno;
+	}
 }
