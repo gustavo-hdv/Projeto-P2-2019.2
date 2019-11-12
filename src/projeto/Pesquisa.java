@@ -158,9 +158,6 @@ public class Pesquisa {
 	 */
 	public boolean desassociaObjetivo(String idObjetivo, Objetivo objetivo) {
 		Validador.validaString(idObjetivo, "Campo idObjetivo nao pode ser nulo ou vazio.");
-		if (objetivo == null) {
-			return false;
-		}
 		if (!this.objetivos.containsKey(idObjetivo) || this.objetivos.get(idObjetivo) == null) {
 			return false;
 		}
