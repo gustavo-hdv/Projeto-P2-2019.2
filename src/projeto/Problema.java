@@ -47,7 +47,6 @@ public class Problema implements Buscavel {
 
     /**
      * Retorna o código do problema.
-
      *
      * @return uma String representando o código do problema.
      */
@@ -58,7 +57,6 @@ public class Problema implements Buscavel {
     /**
 
      * Retorna a String que representa o Problema.
-
      *
      * @return uma String representando o Problema no formato "Código - Descrição - Viabilidade".
      */

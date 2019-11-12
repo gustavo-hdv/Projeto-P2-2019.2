@@ -2,6 +2,7 @@ package projeto;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -132,6 +133,9 @@ public class Pesquisa {
 	 */
 	public boolean associaObjetivo(String idObjetivo, Objetivo objetivo) {
 		Validador.validaString(idObjetivo, "Campo idObjetivo nao pode ser nulo ou vazio.");
+		if (objetivo == null) {
+			throw new IllegalArgumentException("Objetivo nao pode ser nulo.");
+		}
 		if (!this.objetivos.containsKey(idObjetivo) || this.objetivos.get(idObjetivo) == null) {
 			this.objetivos.put(idObjetivo, objetivo);
 			return true;
@@ -289,5 +293,31 @@ public class Pesquisa {
 		mensagens.add(String.format("%s: %s", this.codigo, this.descricao));
 		mensagens.add(String.format("%s: %s", this.codigo, this.campoDeInteresse));
 		return mensagens;
+	}
+	
+	
+	public Problema getProblema() {
+		return this.problema;
+	}
+	
+	public String getCodigo() {
+		return this.codigo;
+	}
+	
+	public String getObjetivoIdMaior() {
+		if (this.objetivos.size() == 0) {
+			return null;
+		}
+		String maiorID = null;
+		for (Map.Entry<String, Objetivo> CodigoObjetivo : this.objetivos.entrySet()) {
+			if (maiorID.compareTo(CodigoObjetivo.getValue().getCodigo()) == -1) {
+				maiorID = CodigoObjetivo.getValue().getCodigo();
+			}
+		}
+		return maiorID;
+	}
+	
+	public int quantidadeObjetivos() {
+		return this.objetivos.size();
 	}
 }

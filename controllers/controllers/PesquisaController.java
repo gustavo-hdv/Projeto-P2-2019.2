@@ -3,6 +3,7 @@ package controllers;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -46,10 +47,10 @@ public class PesquisaController {
 	private HashMap<String, ArrayList> codigos;
 
 	/**
-	 * Constroi um Controle da Pesquisa e inicializa os HAshMap e o atributo codigo.
+	 * Constroi um Controle da Pesquisa e inicializa os HashMap e o atributo codigo.
 	 */
 	public PesquisaController() {
-		codigo = "";
+		this.codigo = "";
 		this.pesquisas = new HashMap<String, Pesquisa>();
 		this.desativadas = new HashMap<String, String>();
 		this.codigos = new HashMap<String, ArrayList>();
@@ -240,6 +241,9 @@ public class PesquisaController {
 	 */
 	public boolean associaObjetivo(String idPesquisa, Objetivo objetivo) {
 		Validador.validaString(idPesquisa, "Campo idPesquisa nao pode ser nulo ou vazio.");
+		if (objetivo == null) {
+			throw new IllegalArgumentException("Objetivo nao pode ser nulo.");
+		}
 		if (!pesquisaEhAtiva(idPesquisa)) {
 			throw new IllegalArgumentException("Pesquisa desativada.");
 		}
@@ -267,6 +271,49 @@ public class PesquisaController {
 			throw new IllegalArgumentException("Pesquisa desativada.");
 		}
 		return this.pesquisas.get(idPesquisa).desassociaObjetivo(objetivo.getCodigo(), objetivo);
+	}
+	
+	/** Lista as pesquisas em determinada ordem
+	 *  Estilo: CÓDIGO - Descrição - Campo de interesse
+	 * 
+	 * @param ordem descreve o tipo da listagem das pesquisas
+	 * @return CODIGO - Descricao - Campo de interesse | CODIGO - Descricao - Campo de interesse | ...
+	 */
+	public String listaPesquisas(String ordem) {
+		Validador.validaString(ordem, "Valor invalido da ordem");
+		if (!((ordem.equals("PROBLEMA")) | ordem.equals("OBJETIVOS") | ordem.equals("PESQUISA"))) {
+			throw new IllegalArgumentException("Valor invalido da ordem");
+		}
+		
+		String ordenado = "";
+		List<Pesquisa> tempPesquisas = new ArrayList<Pesquisa>();
+		for (Map.Entry<String, Pesquisa> pesquisas : this.pesquisas.entrySet()) {
+			tempPesquisas.add(pesquisas.getValue());
+		}
+		
+		if (ordem.equals("PROBLEMA")) {
+			Collections.sort(tempPesquisas, new CompararProblema());
+			for (int i = 0; i < tempPesquisas.size(); i++) {
+				if (i != 0) ordenado += " | ";
+				ordenado += tempPesquisas.get(i).toString();
+			}
+		}
+		else if (ordem.equals("OBJETIVOS")) {
+			Collections.sort(tempPesquisas, new CompararObjetivos());
+			for (int i = 0; i < tempPesquisas.size(); i++) {
+				if (i != 0) ordenado += " | ";
+				ordenado += tempPesquisas.get(i).toString();
+			}
+		}
+		else if (ordem.equals("PESQUISA")) {
+			Collections.sort(tempPesquisas, new CompararPesquisas());
+			for (int i = 0; i < tempPesquisas.size(); i++) {
+				if (i != 0) ordenado += " | ";
+				ordenado += tempPesquisas.get(i).toString();
+			}
+		}
+		
+		return ordenado;
 	}
 	
 	public List<String> busca(String termo) {

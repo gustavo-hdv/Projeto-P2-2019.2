@@ -22,6 +22,16 @@ public class Facade {
 		EasyAccept.main(args);
 	}
 
+	/** Lista as pesquisas em determinada ordem
+	 *  Estilo: CÓDIGO - Descrição - Campo de interesse
+	 * 
+	 * @param ordem descreve o tipo da listagem das pesquisas
+	 * @return CODIGO - Descricao - Campo de interesse | CODIGO - Descricao - Campo de interesse | ...
+	 */
+	public String listaPesquisas(String ordem) {
+		return this.controller.listaPesquisas(ordem);
+	}
+	
 	/** Associa um problema para a pesquisa 
 	 * 
 	 * @param idPesquisa identificador da pesquisa

@@ -18,6 +18,20 @@ public class Controller {
 		this.probC = new ProblemaController();
 	}
 
+	/** Lista as pesquisas em determinada ordem
+	 *  Estilo: CÓDIGO - Descrição - Campo de interesse
+	 * 
+	 * @param ordem descreve o tipo da listagem das pesquisas
+	 * @return CODIGO - Descricao - Campo de interesse | CODIGO - Descricao - Campo de interesse | ...
+	 */
+	public String listaPesquisas(String ordem) {
+		Validador.validaString(ordem, "Valor invalido da ordem");
+		if (!(ordem.equals("PROBLEMA") || ordem.equals("OBJETIVOS") || ordem.equals("PESQUISA"))) {
+			throw new IllegalArgumentException("Valor invalido da ordem");
+		}
+		return this.pesquisaC.listaPesquisas(ordem);
+	}
+	
 	/**
 	 * Associa um problema para a pesquisa
 	 * 
