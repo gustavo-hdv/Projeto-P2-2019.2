@@ -83,6 +83,7 @@ public class Pesquisa {
 		this.campoDeInteresse = campoDeInteresse;
 		this.atividadesAssociadas = new HashMap<>();
 		this.problema = null;
+		this.objetivos = new HashMap<String, Objetivo>();
 	}
 
 	/**
@@ -166,7 +167,7 @@ public class Pesquisa {
 		if (!this.objetivos.get(idObjetivo).equals(objetivo)) {
 			return false;
 		}
-		this.objetivos.put(idObjetivo, null);
+		this.objetivos.remove(idObjetivo);
 		return true;
 	}
 
@@ -178,18 +179,13 @@ public class Pesquisa {
 	 * 
 	 * @return boolean (possui ou nao possui o objetivo)
 	 */
-	public boolean containsObjetivo(String idObjetivo, Objetivo objetivo) {
+	public boolean containsObjetivo(String idObjetivo) {
 		Validador.validaString(idObjetivo, "Campo idObjetivo nao pode ser nulo ou vazio.");
-		if (!this.objetivos.containsKey(idObjetivo)) {
-			return false;
-		}
-		if (this.objetivos.get(idObjetivo) == null) {
-			return false;
-		}
-		if (!this.objetivos.get(idObjetivo).equals(objetivo)) {
-			throw new IllegalArgumentException("Objetivo ja associado a uma pesquisa.");
-		}
-		return true;
+		return this.objetivos.containsKey(idObjetivo);
+		//if (!this.objetivos.get(idObjetivo).equals(objetivo)) {
+		//	throw new IllegalArgumentException("Objetivo ja associado a uma pesquisa.");
+		//}
+
 	}
 
 	/**

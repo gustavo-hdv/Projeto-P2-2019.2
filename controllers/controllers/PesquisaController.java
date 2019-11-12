@@ -246,9 +246,12 @@ public class PesquisaController {
 		if (!pesquisaEhAtiva(idPesquisa)) {
 			throw new IllegalArgumentException("Pesquisa desativada.");
 		}
+		if (this.pesquisas.get(idPesquisa).containsObjetivo(objetivo.getCodigo())) {
+			return false;
+		}
 		for (Map.Entry<String, Pesquisa> pesquisa : this.pesquisas.entrySet()) {
-			if (this.pesquisas.get(pesquisa.getKey()).containsObjetivo(objetivo.getCodigo(), objetivo)) {
-				return false;
+			if (this.pesquisas.get(pesquisa.getKey()).containsObjetivo(objetivo.getCodigo())) {
+				throw new IllegalArgumentException("Objetivo ja associado a uma pesquisa.");
 			}
 		}
 		return this.pesquisas.get(idPesquisa).associaObjetivo(objetivo.getCodigo(), objetivo);
