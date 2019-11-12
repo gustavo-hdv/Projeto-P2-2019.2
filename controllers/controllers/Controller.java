@@ -18,7 +18,8 @@ public class Controller {
 		this.probC = new ProblemaController();
 	}
 
-	/** Associa um problema para a pesquisa 
+	/**
+	 * Associa um problema para a pesquisa
 	 * 
 	 * @param idPesquisa identificador da pesquisa
 	 * @param idProblema identificador do problema
@@ -35,13 +36,15 @@ public class Controller {
 		}
 		return this.pesquisaC.associaProblema(idPesquisa, probC.getProblema(idProblema));
 	}
-	
-	/** Desassocia um problema da a pesquisa 
+
+	/**
+	 * Desassocia um problema da a pesquisa
 	 * 
 	 * @param idPesquisa identificador da pesquisa
 	 * @param idProblema identificador do problema
 	 * 
-	 * @return boolean (true para desassociado com sucesso, false para nao desassociado)
+	 * @return boolean (true para desassociado com sucesso, false para nao
+	 *         desassociado)
 	 */
 	public boolean desassociaProblema(String idPesquisa) {
 		Validador.validaString(idPesquisa, "Campo idPesquisa nao pode ser nulo ou vazio.");
@@ -51,8 +54,9 @@ public class Controller {
 		}
 		return this.pesquisaC.desassociaProblema(idPesquisa);
 	}
-	
-	/** Associa um objetivo para a pesquisa 
+
+	/**
+	 * Associa um objetivo para a pesquisa
 	 * 
 	 * @param idPesquisa identificador da pesquisa
 	 * @param idObjetivo identificador do objetivo
@@ -69,13 +73,15 @@ public class Controller {
 		}
 		return this.pesquisaC.associaObjetivo(idPesquisa, objC.getObjetivo(idObjetivo));
 	}
-	
-	/** Desassocia um objetivo para a pesquisa 
+
+	/**
+	 * Desassocia um objetivo para a pesquisa
 	 * 
 	 * @param idPesquisa identificador da pesquisa
 	 * @param idObjetivo identificador do objetivo
 	 * 
-	 * @return boolean (true para desassociado com sucesso, false para nao desassociado)
+	 * @return boolean (true para desassociado com sucesso, false para nao
+	 *         desassociado)
 	 */
 	public boolean desassociaObjetivo(String idPesquisa, String idObjetivo) {
 		Validador.validaString(idPesquisa, "Campo idPesquisa nao pode ser nulo ou vazio.");
@@ -87,11 +93,11 @@ public class Controller {
 		}
 		return this.pesquisaC.desassociaObjetivo(idPesquisa, objC.getObjetivo(idObjetivo));
 	}
-	
+
 	public void cadastraPesquisador(String nome, String funcao, String biografia, String email, String foto) {
 		pesquisadorC.cadastraPesquisador(nome, funcao, biografia, email, foto);
 	}
-	
+
 	public void desativaPesquisador(String email) {
 		pesquisadorC.desativaPesquisador(email);
 	}
@@ -99,7 +105,7 @@ public class Controller {
 	public void ativaPesquisador(String email) {
 		pesquisadorC.ativaPesquisador(email);
 	}
-	
+
 	public void alteraPesquisador(String email, String atributo, String novoValor) {
 		pesquisadorC.alteraPesquisador(email, atributo, novoValor);
 	}
@@ -115,69 +121,70 @@ public class Controller {
 	public String cadastraPesquisa(String descricao, String campoDeInteresse) {
 		return pesquisaC.cadastraPesquisa(descricao, campoDeInteresse);
 	}
-	
-	
-	 /**
-     * Cadastra um novo objetivo.
-     * Adiciona um objeto do tipo Objetivo no mapa de objetivos.
 
-     * @param tipo tipo do objetivo
-     * @param descricao descrição do objetivo
-     * @param aderencia aderência do objetivo
-     * @param viabilidade viabilidade do objetivo
-     */
-    public void cadastraObjetivo(String tipo, String descricao, int aderencia, int viabilidade){
-    	objC.cadastraObjetivo(tipo, descricao, aderencia, viabilidade);
-    }
-
-    /**
-     * Retorna a String que representa o objetivo existente na chave passada por parâmetro.
-     *
-     * @param codigo o código e chave do objetivo no mapa
-     * @return a representação em String do objetivo pesquisado
-     */
-    public String exibeObjetivo(String codigo){
-    	return objC.exibeObjetivo(codigo);
-    }
-
-    /**
-     * Remove um objetivo do mapa de objetivos.
-     *
-     * @param codigo código do objetivo a ser removido
-     */
-    public void apagarObjetivo(String codigo){
-    	objC.apagarObjetivo(codigo);
-    }
-	
 	/**
-     * Cadastra um novo problema.
-     * Adiciona um objeto do tipo Problema no mapa de problemas.
-     
-     * @param descricao descrição do problema
-     * @param viabilidade viabilidade do problema
-     */
-    public void cadastraProblema(String descricao, int viabilidade) {
-    	probC.cadastraProblema(descricao, viabilidade);
-    }
-    
-    /**
-     * Retorna a String que representa o problema existente na chave passada por parâmetro.
-     *
-     * @param codigo o código e chave do problema no mapa
-     * @return a representação em String do problema pesquisado
-     */
-    public String exibeProblema(String codigo) {
-    	return probC.exibeProblema(codigo);
-    }
-    
-    /**
-     * Remove um problema do mapa de problemas.
-     *
-     * @param codigo código do problema a ser removido
-     */
-    public void apagarProblema(String codigo) {
-    	probC.apagarProblema(codigo);
-    }
+	 * Cadastra um novo objetivo. Adiciona um objeto do tipo Objetivo no mapa de
+	 * objetivos.
+	 * 
+	 * @param tipo        tipo do objetivo
+	 * @param descricao   descrição do objetivo
+	 * @param aderencia   aderência do objetivo
+	 * @param viabilidade viabilidade do objetivo
+	 */
+	public void cadastraObjetivo(String tipo, String descricao, int aderencia, int viabilidade) {
+		objC.cadastraObjetivo(tipo, descricao, aderencia, viabilidade);
+	}
+
+	/**
+	 * Retorna a String que representa o objetivo existente na chave passada por
+	 * parâmetro.
+	 *
+	 * @param codigo o código e chave do objetivo no mapa
+	 * @return a representação em String do objetivo pesquisado
+	 */
+	public String exibeObjetivo(String codigo) {
+		return objC.exibeObjetivo(codigo);
+	}
+
+	/**
+	 * Remove um objetivo do mapa de objetivos.
+	 *
+	 * @param codigo código do objetivo a ser removido
+	 */
+	public void apagarObjetivo(String codigo) {
+		objC.apagarObjetivo(codigo);
+	}
+
+	/**
+	 * Cadastra um novo problema. Adiciona um objeto do tipo Problema no mapa de
+	 * problemas.
+	 * 
+	 * @param descricao   descrição do problema
+	 * @param viabilidade viabilidade do problema
+	 */
+	public void cadastraProblema(String descricao, int viabilidade) {
+		probC.cadastraProblema(descricao, viabilidade);
+	}
+
+	/**
+	 * Retorna a String que representa o problema existente na chave passada por
+	 * parâmetro.
+	 *
+	 * @param codigo o código e chave do problema no mapa
+	 * @return a representação em String do problema pesquisado
+	 */
+	public String exibeProblema(String codigo) {
+		return probC.exibeProblema(codigo);
+	}
+
+	/**
+	 * Remove um problema do mapa de problemas.
+	 *
+	 * @param codigo código do problema a ser removido
+	 */
+	public void apagarProblema(String codigo) {
+		probC.apagarProblema(codigo);
+	}
 
 	/**
 	 * Metodo que altera os conteudos: Descricao ou Campo.
@@ -229,7 +236,7 @@ public class Controller {
 	public boolean pesquisaEhAtiva(String codigo) {
 		return pesquisaC.pesquisaEhAtiva(codigo);
 	}
-	
+
 	/**
 	 * Cadastra uma atividade com descricao, nivel de risco e uma descricao de risco
 	 * 
@@ -301,7 +308,7 @@ public class Controller {
 		Busca busca = new Busca(pesquisadorC, pesquisaC, atividadesC, objC, probC, termo);
 		return busca.toString();
 	}
-	
+
 	public String busca(String termo, int indiceResultado) {
 		Validador.validaString(termo, "Campo termo nao pode ser nulo ou vazio.");
 		if (indiceResultado < 0) {
@@ -314,24 +321,25 @@ public class Controller {
 	public int contaResultadosBusca(String termo) {
 		Validador.validaString(termo, "Campo termo nao pode ser nulo ou vazio.");
 		Busca busca = new Busca(pesquisadorC, pesquisaC, atividadesC, objC, probC, termo);
-		return busca.contaResultadosBusca();	
+		return busca.contaResultadosBusca();
 	}
-	
+
 	/**
 	 * GABRIEL
 	 */
 	public boolean associaPesquisador(String codigoPesquisa, String emailPesquisador) {
-		pesquisadorC.buscaPesquisador(emailPesquisador).associaPesquisa(codigoPesquisa, pesquisaC.buscaPesquisa(codigoPesquisa));
+		pesquisadorC.buscaPesquisador(emailPesquisador).associaPesquisa(codigoPesquisa,
+				pesquisaC.buscaPesquisa(codigoPesquisa));
 		return true;
 	}
-	
+
 	/**
 	 * GABRIEL
 	 */
 	public void desassociaPesquisador(String codigoPesquisa, String emailPesquisador) {
 		pesquisadorC.buscaPesquisador(emailPesquisador).desassociaPesqusia(codigoPesquisa);
 	}
-	
+
 	/**
 	 * GABRIEL
 	 * 
@@ -361,6 +369,5 @@ public class Controller {
 	public String listaPesquisadores(String tipo) {
 		return pesquisadorC.listaPesquisadores(tipo);
 	}
-	
 
 }

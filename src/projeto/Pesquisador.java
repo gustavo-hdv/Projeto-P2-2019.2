@@ -104,7 +104,16 @@ public class Pesquisador implements Buscavel {
 	
 	@Override
 	public String toString() {
-		String msg = String.format("%s (%s) - %s - %s - %s", this.nome, this.funcao, this.biografia, this.email, this.foto);
+		String msg = "não implementado";
+		if(especificacao instanceof Professor) {
+			msg = ((Professor) especificacao).toString();
+		} else if (especificacao instanceof Aluno) {
+			msg = ((Aluno) especificacao).toString();
+		} else if (especificacao instanceof Externo) {
+			msg = ((Externo) especificacao).toString();
+		} else {
+			msg = String.format("%s (%s) - %s - %s - %s", this.nome, this.funcao, this.biografia, this.email, this.foto);
+		}
 		return msg;
 	}
 	
@@ -207,8 +216,5 @@ public class Pesquisador implements Buscavel {
 		especificacao = new Aluno(nome, funcao, biografia, email, foto, semestre, IEA);
 		this.funcao = "ALUNA";
 	}
-	
-	public void alteraAtributo() {
-		
-	}
+
 }

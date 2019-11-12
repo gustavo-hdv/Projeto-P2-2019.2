@@ -15,4 +15,6 @@ public abstract class Especificacao{
 		this.email = email;
 		this.foto = foto;
 	}
+	
+	public abstract String toString();
 }

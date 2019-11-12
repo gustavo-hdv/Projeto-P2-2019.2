@@ -45,6 +45,7 @@ public class PesquisadorController implements Buscador {
 	}
 
 	public String exibePesquisador(String email) {
+		
 		Validador.validaString(email, "Email nao pode ser vazio ou nulo.");
 		if (!pesquisadores.containsKey(email)) {
 			throw new IllegalArgumentException("Pesquisador nao encontrado");
