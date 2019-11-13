@@ -1,8 +1,6 @@
-package controllers;
+package projeto;
 
 import java.util.Comparator;
-
-import projeto.Pesquisa;
 
 /** Comparador de pesquisas com associações a problemas de maior ID aparecem primeiro.
  *  Depois, aparecem as pesquisas sem problemas associados (da pesquisa com maior ID até a pesquisa para a de menor ID)
@@ -40,13 +38,18 @@ class CompararObjetivos implements Comparator<Pesquisa> {
 		if (arg0.quantidadeObjetivos() > arg1.quantidadeObjetivos()) {
 			return -1;
 		}
-		if (arg1.quantidadeObjetivos() == arg0.quantidadeObjetivos() && !(arg1.getObjetivoIdMaior() == null | arg0.getObjetivoIdMaior() == null)) {
-			return arg1.getObjetivoIdMaior().compareTo(arg0.getObjetivoIdMaior());
+		if (arg1.quantidadeObjetivos() == arg0.quantidadeObjetivos()) {
+			if (arg1.getObjetivoIdMaior() != null && arg0.getObjetivoIdMaior() != null) {
+				return arg1.getObjetivoIdMaior().compareTo(arg0.getObjetivoIdMaior());
+			}
+			if (arg1.getObjetivoIdMaior() == null && arg0.getObjetivoIdMaior() != null) {
+				return -1;
+			}
+			if (arg1.getObjetivoIdMaior() != null && arg0.getObjetivoIdMaior() == null) {
+				return 1;
+			}
 		}
-		if (!(arg1.getCodigo() == null | arg0.getCodigo() == null)) {
-			return arg1.getCodigo().compareTo(arg0.getCodigo());
-		}
-		return arg0.toString().compareTo(arg1.toString());
+		return arg1.getCodigo().compareTo(arg0.getCodigo());
 	}
 }
 
@@ -57,10 +60,7 @@ class CompararPesquisas implements Comparator<Pesquisa> {
 
 	@Override
 	public int compare(Pesquisa arg0, Pesquisa arg1) {
-		if (!(arg1.getCodigo() == null | arg0.getCodigo() == null)) {
-			return arg1.getCodigo().compareTo(arg0.getCodigo());
-		}
-		return arg0.toString().compareTo(arg1.toString());
+		return arg1.getCodigo().compareTo(arg0.getCodigo());
 	}
 	
 }

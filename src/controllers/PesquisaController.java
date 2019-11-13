@@ -7,6 +7,9 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+//import projeto.CompararObjetivos;
+//import projeto.CompararPesquisas;
+//import projeto.CompararProblema;
 import projeto.Objetivo;
 import projeto.Pesquisa;
 import projeto.Problema;
