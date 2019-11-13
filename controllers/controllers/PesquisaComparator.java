@@ -12,22 +12,16 @@ class CompararProblema implements Comparator<Pesquisa> {
 	
 	@Override
 	public int compare(Pesquisa arg0, Pesquisa arg1) {
-		if (!(arg1.getProblema() == null | arg0.getProblema() == null || arg1.getProblema().getCodigo() == null | arg0.getProblema().getCodigo() == null)) {
+		if (arg1.getProblema() != null && arg0.getProblema() != null) {
 			return arg1.getProblema().getCodigo().compareTo(arg0.getProblema().getCodigo());
 		}
-		if (arg0.quantidadeObjetivos() < arg1.quantidadeObjetivos()) {
-			return 1;
-		}
-		if (arg0.quantidadeObjetivos() > arg1.quantidadeObjetivos()) {
+		if (arg1.getProblema() == null && arg0.getProblema() != null) {
 			return -1;
 		}
-		if (arg1.quantidadeObjetivos() == arg0.quantidadeObjetivos() && !(arg1.getObjetivoIdMaior() == null | arg0.getObjetivoIdMaior() == null)) {
-			return arg1.getObjetivoIdMaior().compareTo(arg0.getObjetivoIdMaior());
+		if (arg1.getProblema() != null && arg0.getProblema() == null) {
+			return 1;
 		}
-		if (!(arg1.getCodigo() == null | arg0.getCodigo() == null)) {
-			return arg1.getCodigo().compareTo(arg0.getCodigo());
-		}
-		return arg0.toString().compareTo(arg1.toString());
+		return arg1.getCodigo().compareTo(arg0.getCodigo());
 	}
 }
 
