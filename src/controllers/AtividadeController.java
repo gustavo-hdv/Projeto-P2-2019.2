@@ -1,17 +1,16 @@
 package controllers;
 
 import java.util.ArrayList;
-import java.util.Collection;
-
-/** 
- * Representacao de um controlador de atividades metodologicas
- */
-
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import comparators.*;
 import projeto.*;
+
+/** 
+ * Representacao de um controlador de atividades metodologicas
+ */
 
 public class AtividadeController {
 
@@ -137,18 +136,5 @@ public class AtividadeController {
 			}
 		}
 		return achados;
-	}
-
-	public void configuraEstrategia(String estrategia) {
-		Validador.validaString(estrategia, "Estrategia nao pode ser nula ou vazia.");
-		if (estrategia.equals("MAIS_ANTIGA")) {
-			this.estrategia = new AtividadeMaisAntiga();
-		} else if (estrategia.equals("MENOS_PENDENCIAS")) {
-			this.estrategia = new AtividadeMenosPendencias();
-		} else if (estrategia.equals("MAIOR_RISCO")) {
-			this.estrategia = new AtividadeMaiorRisco();
-		} else if (estrategia.equals("MAIOR_DURACAO")) {
-			this.estrategia = new AtividadeMaiorDuracao();
-		}
 	}
 }

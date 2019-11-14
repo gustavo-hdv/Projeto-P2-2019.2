@@ -1,14 +1,13 @@
 package comparators;
 
 import java.util.Collection;
-
 import projeto.AtividadeMetodologica;
 import projeto.Estrategia;
 
 public class AtividadeMaiorDuracao implements Estrategia {
 
 	@Override
-	public AtividadeMetodologica sugestao(Collection<AtividadeMetodologica> atividades) {
+	public String sugestao(Collection<AtividadeMetodologica> atividades) {
 		// TODO Auto-generated method stub
 		return null;
 	}

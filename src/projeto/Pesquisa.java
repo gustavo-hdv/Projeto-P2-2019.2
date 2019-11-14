@@ -316,4 +316,8 @@ public class Pesquisa {
 	public int quantidadeObjetivos() {
 		return this.objetivos.size();
 	}
+
+	public String proximaAtividade(Estrategia estrategia) {
+		return estrategia.sugestao(this.atividadesAssociadas.values());
+	}
 }

@@ -7,14 +7,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import comparators.ComparadorPesquisaCodigo;
-import comparators.ComparadorPesquisaObjetivos;
-import comparators.ComparadorPesquisaProblema;
-import projeto.Objetivo;
-import projeto.Pesquisa;
-import projeto.Problema;
-import projeto.Validador;
-import projeto.qtdVezesIdPesquisaUsado;
+import comparators.*;
+import projeto.*;
 
 /**
  * Representação de um Controle, que é responsável por manipular os Collections,
@@ -48,6 +42,8 @@ public class PesquisaController {
 	 * essas 3 letras ja foram usados.
 	 */
 	private HashMap<String, qtdVezesIdPesquisaUsado> codigos;
+	
+	private Estrategia estrategia;
 
 	/**
 	 * Constroi um Controle da Pesquisa e inicializa os HashMap e o atributo codigo.
@@ -92,6 +88,7 @@ public class PesquisaController {
 			codigos.put(codigoLetras, new qtdVezesIdPesquisaUsado(0));
 			codigos.get(codigoLetras).somaMaisUmQuantiadadeEsteCodigoFoiUsado();
 		}
+		this.estrategia = new AtividadeMaisAntiga();
 		pesquisas.put(codigo, new Pesquisa(codigo, descricao, campoDeInteresse));
 		return codigo;
 	}
@@ -345,5 +342,29 @@ public class PesquisaController {
 	 */
 	public Pesquisa buscaPesquisa(String codigo) {
 		return pesquisas.get(codigo);
+	}
+	
+	public void configuraEstrategia(String estrategia) {
+		Validador.validaString(estrategia, "Estrategia nao pode ser nula ou vazia.");
+		if (estrategia.equals("MAIS_ANTIGA")) {
+			this.estrategia = new AtividadeMaisAntiga();
+		} else if (estrategia.equals("MENOS_PENDENCIAS")) {
+			this.estrategia = new AtividadeMenosPendencias();
+		} else if (estrategia.equals("MAIOR_RISCO")) {
+			this.estrategia = new AtividadeMaiorRisco();
+		} else if (estrategia.equals("MAIOR_DURACAO")) {
+			this.estrategia = new AtividadeMaiorDuracao();
+		} else {
+			throw new IllegalArgumentException("Valor invalido da estrategia");
+		}
+	}
+
+	public String proximaAtividade(String codigoPesquisa) {
+		Validador.validaString(codigoPesquisa, "Pesquisa nao pode ser nula ou vazia.");
+		if (!this.pesquisas.containsKey(codigoPesquisa)) {
+			throw new IllegalArgumentException("Pesquisa nao encontrada.");
+		}
+		Pesquisa pesquisa = this.pesquisas.get(codigoPesquisa);
+		return pesquisa.proximaAtividade(this.estrategia);
 	}
 }

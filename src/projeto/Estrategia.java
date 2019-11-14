@@ -4,6 +4,6 @@ import java.util.Collection;
 
 public interface Estrategia {
 	
-	AtividadeMetodologica sugestao(Collection<AtividadeMetodologica> atividades);
+	String sugestao(Collection<AtividadeMetodologica> atividades);
 
 }

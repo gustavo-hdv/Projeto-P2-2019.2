@@ -8,7 +8,7 @@ import projeto.Estrategia;
 public class AtividadeMaisAntiga implements Estrategia {
 
 	@Override
-	public AtividadeMetodologica sugestao(Collection<AtividadeMetodologica> atividades) {
+	public String sugestao(Collection<AtividadeMetodologica> atividades) {
 		// TODO Auto-generated method stub
 		return null;
 	}

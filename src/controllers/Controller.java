@@ -436,6 +436,10 @@ public class Controller {
 	}
 
 	public void configuraEstrategia(String estrategia) {
-		atividadesC.configuraEstrategia(estrategia);
+		pesquisaC.configuraEstrategia(estrategia);
+	}
+
+	public String proximaAtividade(String codigoPesquisa) {
+		return pesquisaC.proximaAtividade(codigoPesquisa);		
 	}
 }

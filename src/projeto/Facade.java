@@ -360,4 +360,8 @@ public class Facade {
 	public void configuraEstrategia(String estrategia) {
 		controller.configuraEstrategia(estrategia);
 	}
+	
+	public String proximaAtividade(String codigoPesquisa) {
+		return controller.proximaAtividade(codigoPesquisa);
+	}
 }
