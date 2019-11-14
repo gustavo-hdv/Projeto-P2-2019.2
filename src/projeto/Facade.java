@@ -318,8 +318,42 @@ public class Facade {
 		return controller.contaResultadosBusca(termo);
 	}
 	
-	public boolean associaPesquisador(String codigoPesquisa, String emailPesquisador) {
-//		return controller.associaPesquisador(codigoPesquisa, emailPesquisador);
-		return true;
+	/**
+	 * GABRIEL
+	 * 
+	 * @param codigoPesquisa
+	 * @param emailPesquisador
+	 * @return
+	 */
+	public boolean associaPesquisador(String idPesquisa, String emailPesquisador) {
+		return controller.associaPesquisador(idPesquisa, emailPesquisador);
+	}
+	
+	/**
+	 * GABRIEL
+	 */
+	public boolean desassociaPesquisador(String idPesquisa, String emailPesquisador) {
+		return controller.desassociaPesquisador(idPesquisa, emailPesquisador);
+	}
+	
+	/**
+	 * GABRIEL
+	 */
+	public void cadastraEspecialidadeProfessor(String email, String formacao, String unidade, String data) {
+		controller.cadastraEspecialidadeProfessor(email, formacao, unidade, data);
+	}
+	
+	/**
+	 * GABRIEL
+	 */
+	public void cadastraEspecialidadeAluno(String email, int semestre, double IEA) {
+		controller.cadastraEspecialidadeAluno(email, semestre, IEA);
+	}
+	
+	/**
+	 * GABRIEL
+	 */
+	public String listaPesquisadores(String tipo) {
+		return controller.listaPesquisadores(tipo);
 	}
 }

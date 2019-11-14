@@ -20,17 +20,17 @@ public class Aluno extends Especificacao {
 	}
 
 	public void setSemestre(int semestre) {
-
+		this.semestre = semestre;
 	}
 
 	public void setIEA(double iEA) {
-		IEA = iEA;
+		this.IEA = iEA;
 	}
 
 	@Override
 	public String toString() {
-		return this.nome + "(ALUNO)" + " - " + this.biografia + "- " + this.email + " - " + this.foto + " - "
-				+ this.semestre + " SEMESTRE" + " - " + this.IEA;
+		return this.nome + " ("+ this.funcao + ")" + " - " + this.biografia + " - " + this.email + " - " + this.foto + " - "
+				+ this.semestre + "o SEMESTRE" + " - " + this.IEA;
 	}
 
 }

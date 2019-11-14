@@ -355,21 +355,33 @@ public class Controller {
 		Busca busca = new Busca(pesquisadorC, pesquisaC, atividadesC, objC, probC, termo);
 		return busca.contaResultadosBusca();
 	}
-
 	/**
 	 * GABRIEL
 	 */
-	public boolean associaPesquisador(String codigoPesquisa, String emailPesquisador) {
-		pesquisadorC.buscaPesquisador(emailPesquisador).associaPesquisa(codigoPesquisa,
-				pesquisaC.buscaPesquisa(codigoPesquisa));
-		return true;
+	public boolean associaPesquisador(String idPesquisa, String emailPesquisador) {
+		Validador.validaString(idPesquisa, "Campo idPesquisa nao pode ser nulo ou vazio.");
+		Validador.validaString(emailPesquisador, "Campo emailPesquisador nao pode ser nulo ou vazio.");
+		if (!pesquisaC.pesquisas.containsKey(idPesquisa)) {
+			throw new IllegalArgumentException("Pesquisa nao encontrada."); 
+		} else if (!pesquisaC.pesquisaEhAtiva(idPesquisa)) {
+			throw new IllegalArgumentException("Pesquisa desativada.");
+		}
+		return pesquisadorC.associaPesquisador(idPesquisa, emailPesquisador, pesquisaC.buscaPesquisa(idPesquisa));
 	}
 
 	/**
 	 * GABRIEL
+	 * @return 
 	 */
-	public void desassociaPesquisador(String codigoPesquisa, String emailPesquisador) {
-		pesquisadorC.buscaPesquisador(emailPesquisador).desassociaPesqusia(codigoPesquisa);
+	public boolean desassociaPesquisador(String idPesquisa, String emailPesquisador) {
+		Validador.validaString(idPesquisa, "Campo idPesquisa nao pode ser nulo ou vazio.");
+		Validador.validaString(emailPesquisador, "Campo emailPesquisador nao pode ser nulo ou vazio.");
+		if (!pesquisaC.pesquisas.containsKey(idPesquisa)) {
+			throw new IllegalArgumentException("Pesquisa nao encontrada."); 
+		} else if (!pesquisaC.pesquisaEhAtiva(idPesquisa)) {
+			throw new IllegalArgumentException("Pesquisa desativada.");
+		}
+		return pesquisadorC.buscaPesquisador(emailPesquisador).desassociaPesqusia(idPesquisa);
 	}
 
 	/**
@@ -401,5 +413,6 @@ public class Controller {
 	public String listaPesquisadores(String tipo) {
 		return pesquisadorC.listaPesquisadores(tipo);
 	}
+
 
 }

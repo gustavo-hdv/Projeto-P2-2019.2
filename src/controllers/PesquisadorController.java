@@ -1,12 +1,15 @@
 package controllers;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collection;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import projeto.Buscador;
 import projeto.Buscavel;
+import projeto.Pesquisa;
 import projeto.Pesquisador;
 import projeto.Validador;
 
@@ -45,8 +48,8 @@ public class PesquisadorController implements Buscador {
 	}
 
 	public String exibePesquisador(String email) {
-		
-		Validador.validaString(email, "Email nao pode ser vazio ou nulo.");
+
+		Validador.validaString(email, "Campo email nao pode ser nulo ou vazio.");
 		if (!pesquisadores.containsKey(email)) {
 			throw new IllegalArgumentException("Pesquisador nao encontrado");
 		}
@@ -106,7 +109,8 @@ public class PesquisadorController implements Buscador {
 	public Collection<Buscavel> busca(String termo) {
 		ArrayList<Buscavel> achados = new ArrayList<>();
 		for (Buscavel pesquisador : this.pesquisadores.values()) {
-			if (pesquisador.contemTermo(termo)) achados.add(pesquisador);
+			if (pesquisador.contemTermo(termo))
+				achados.add(pesquisador);
 		}
 		return achados;
 	}
@@ -121,18 +125,67 @@ public class PesquisadorController implements Buscador {
 	/**
 	 * GABRIEL
 	 */
+	public boolean associaPesquisador(String idPesquisa, String emailPesquisador, Pesquisa pesquisa) {
+		return pesquisadores.get(emailPesquisador).associaPesquisa(idPesquisa, pesquisa);
+	}
+
+	/**
+	 * GABRIEL
+	 */
 	public void cadastraEspecialidadeProfessor(String email, String formacao, String unidade, String data) {
+		Validador.validaString(email, "Campo email nao pode ser nulo ou vazio.");
+		Validador.validaString(formacao, "Campo formacao nao pode ser nulo ou vazio.");
+		Validador.validaString(unidade, "Campo unidade nao pode ser nulo ou vazio.");
+		Validador.validaString(data, "Campo data nao pode ser nulo ou vazio.");
+		if (!pesquisadores.containsKey(email)) {
+			throw new IllegalArgumentException("Pesquisadora nao encontrada.");
+		}
+		List<String> listaData = Arrays.asList(data.split("/"));
+		if (listaData.size() != 3) {
+			throw new IllegalArgumentException("Atributo data com formato invalido.");
+		} else if (listaData.get(0).length() != 2) {
+			throw new IllegalArgumentException("Atributo data com formato invalido.");
+		} else if (listaData.get(1).length() != 2) {
+			throw new IllegalArgumentException("Atributo data com formato invalido.");
+		} else if (listaData.get(2).length() != 4) {
+			throw new IllegalArgumentException("Atributo data com formato invalido.");
+		}
+		int dia = Integer.parseInt(listaData.get(0));
+		int mes = Integer.parseInt(listaData.get(1));
+		if (dia < 00 || dia > 31) {
+			throw new IllegalArgumentException("Atributo data com formato invalido.");
+		} else if (mes < 00 || mes > 12) {
+			throw new IllegalArgumentException("Atributo data com formato invalido.");
+		}
+		if (!pesquisadores.get(email).getFuncao().toUpperCase().equals("PROFESSOR")) {
+			throw new IllegalArgumentException("Pesquisador nao compativel com a especialidade.");
+		}
+
 		String nome = pesquisadores.get(email).getNome();
 		String funcao = pesquisadores.get(email).getFuncao();
 		String biografia = pesquisadores.get(email).getBiografia();
 		String foto = pesquisadores.get(email).getFoto();
-		pesquisadores.get(email).cadastraEspecialidadeProfessor(nome, funcao, biografia, email, foto, formacao, unidade, data);
+		pesquisadores.get(email).cadastraEspecialidadeProfessor(nome, funcao, biografia, email, foto, formacao, unidade,
+				data);
 	}
-	
+
 	/**
 	 * GABRIEL
 	 */
 	public void cadastraEspecialidadeAluno(String email, int semestre, double IEA) {
+		Validador.validaString(email, "Campo email nao pode ser nulo ou vazio.");
+		if (semestre < 1 || semestre > 4) {
+			throw new IllegalArgumentException("Atributo semestre com formato invalido.");
+		}
+		if (IEA < 0 || IEA > 10) {
+			throw new IllegalArgumentException("Atributo IEA com formato invalido.");
+		}
+		if (!pesquisadores.containsKey(email)) {
+			throw new IllegalArgumentException("Pesquisadora nao encontrada.");
+		}
+		if (!pesquisadores.get(email).getFuncao().toUpperCase().equals("ESTUDANTE")) {
+			throw new IllegalArgumentException("Pesquisador nao compativel com a especialidade.");
+		}
 		String nome = pesquisadores.get(email).getNome();
 		String funcao = pesquisadores.get(email).getFuncao();
 		String biografia = pesquisadores.get(email).getBiografia();
@@ -144,12 +197,17 @@ public class PesquisadorController implements Buscador {
 	 * GABRIEL
 	 */
 	public String listaPesquisadores(String tipo) {
-		String retorno = "";
-		for (int i = 0; i < pesquisadores.size(); i++) {
-			if (pesquisadores.get(i).getFuncao().equals(tipo)) {
-				retorno += pesquisadores.get(i).toString() + " | ";
+		String msg = "";
+		Validador.validaString(tipo, "Campo tipo nao pode ser nulo ou vazio.");
+		if (!tipo.toUpperCase().equals("PROFESSOR") && !tipo.toUpperCase().equals("ESTUDANTE")
+				&& !tipo.toUpperCase().equals("EXTERNO")) {
+			throw new IllegalArgumentException(String.format("Tipo %s inexistente.", tipo));
+		}
+		for (Pesquisador pesquisador : pesquisadores.values()) {
+			if (pesquisador.getFuncao().toUpperCase().equals(tipo)) {
+				msg += pesquisador.toString() + " | ";
 			}
 		}
-		return retorno;
+		return msg.substring(0, msg.length() - 3);
 	}
 }

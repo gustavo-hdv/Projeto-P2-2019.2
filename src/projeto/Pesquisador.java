@@ -10,15 +10,16 @@ public class Pesquisador implements Buscavel {
 	protected String email;
 	protected String foto;
 	protected boolean status;
-	
+
 	protected Especificacao especificacao;
-	
+
 	/**
 	 * GABRIEL
+	 * 
 	 * @return
 	 */
 	private HashMap<String, Pesquisa> pesquisasAssociadas;
-	
+
 	public Pesquisador(String nome, String funcao, String biografia, String email, String foto) {
 		Validador.validaString(nome, "Campo nome nao pode ser nulo ou vazio.");
 		Validador.validaString(funcao, "Campo funcao nao pode ser nulo ou vazio.");
@@ -27,7 +28,7 @@ public class Pesquisador implements Buscavel {
 		Validador.validaString(foto, "Campo fotoURL nao pode ser nulo ou vazio.");
 		validaEmail(email);
 		validaFoto(foto);
-		
+
 		this.nome = nome;
 		this.funcao = funcao;
 		this.biografia = biografia;
@@ -36,7 +37,7 @@ public class Pesquisador implements Buscavel {
 		this.status = true;
 		this.pesquisasAssociadas = new HashMap<>();
 	}
-	
+
 	private void validaEmail(String email) {
 		if ((email.startsWith("@")) || (email.endsWith("@"))) {
 			throw new IllegalArgumentException("Formato de email invalido.");
@@ -44,13 +45,13 @@ public class Pesquisador implements Buscavel {
 			throw new IllegalArgumentException("Formato de email invalido.");
 		}
 	}
-	
+
 	private void validaFoto(String foto) {
 		if ((!foto.startsWith("http://")) && (!foto.startsWith("https://"))) {
 			throw new IllegalArgumentException("Formato de foto invalido.");
 		}
 	}
-	
+
 	public void alteraPesquisador(String atributo, String novoValor) {
 		if (atributo.equals("NOME")) {
 			Validador.validaString(novoValor, "Campo nome nao pode ser nulo ou vazio.");
@@ -68,8 +69,8 @@ public class Pesquisador implements Buscavel {
 		} else if (atributo.equals("EMAIL")) {
 			Validador.validaString(novoValor, "Campo email nao pode ser nulo ou vazio.");
 			validaEmail(novoValor);
-				this.email = novoValor;
-		}else if (atributo.equals("FORMACAO")) {
+			this.email = novoValor;
+		} else if (atributo.equals("FORMACAO")) {
 			((Professor) especificacao).setFormacao(novoValor);
 		} else if (atributo.equals("UNIDADE")) {
 			((Professor) especificacao).setUnidade(novoValor);
@@ -85,7 +86,7 @@ public class Pesquisador implements Buscavel {
 			throw new IllegalArgumentException("Atributo invalido.");
 		}
 	}
-	
+
 	public void desativaPesquisador() {
 		if (!status) {
 			throw new RuntimeException("Pesquisador inativo.");
@@ -93,7 +94,7 @@ public class Pesquisador implements Buscavel {
 			this.status = false;
 		}
 	}
-	
+
 	public void ativaPesquisador() {
 		if (status) {
 			throw new RuntimeException("Pesquisador ja ativado.");
@@ -101,22 +102,23 @@ public class Pesquisador implements Buscavel {
 			this.status = true;
 		}
 	}
-	
+
 	@Override
 	public String toString() {
 		String msg = "não implementado";
-		if(especificacao instanceof Professor) {
+		if (especificacao instanceof Professor) {
 			msg = ((Professor) especificacao).toString();
 		} else if (especificacao instanceof Aluno) {
 			msg = ((Aluno) especificacao).toString();
 		} else if (especificacao instanceof Externo) {
 			msg = ((Externo) especificacao).toString();
 		} else {
-			msg = String.format("%s (%s) - %s - %s - %s", this.nome, this.funcao, this.biografia, this.email, this.foto);
+			msg = String.format("%s (%s) - %s - %s - %s", this.nome, this.funcao, this.biografia, this.email,
+					this.foto);
 		}
 		return msg;
 	}
-	
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -145,32 +147,45 @@ public class Pesquisador implements Buscavel {
 	public boolean pesquisadorEhAtivo() {
 		return this.status;
 	}
-	
+
 	public boolean contemTermo(String termo) {
-		if (this.biografia.contains(termo)) return true;
+		if (this.biografia.contains(termo))
+			return true;
 		return false;
 	}
-	
+
 	public String exibeRepresentacaoBusca() {
 		return String.format("%s: %s", this.email, this.biografia);
 	}
+
+	/**
+	 * GABRIEL
+	 */
+	public boolean associaPesquisa(String idPesquisa,  Pesquisa pesquisa) {
+		if (pesquisasAssociadas.containsKey(idPesquisa)) {
+			return false;
+		} else {
+			pesquisasAssociadas.put(idPesquisa, pesquisa);
+		}
+		return true;
+	}
+	
 	
 	/**
 	 * GABRIEL
 	 */
-	public void associaPesquisa(String codigoPesquisa, Pesquisa pesquisa) {
-		pesquisasAssociadas.put(codigoPesquisa, pesquisa);
+	public boolean desassociaPesqusia(String codigoPesquisa) {
+		if (!pesquisasAssociadas.containsKey(codigoPesquisa)) {
+			return false;
+		} else {
+			pesquisasAssociadas.remove(codigoPesquisa);
+		}
+		return true;
 	}
-	
+
 	/**
 	 * GABRIEL
-	 */
-	public void desassociaPesqusia(String codigoPesquisa) {
-		pesquisasAssociadas.remove(codigoPesquisa);
-	}
-	
-	/**
-	 * GABRIEL
+	 * 
 	 * @return
 	 */
 	public String getNome() {
@@ -179,6 +194,7 @@ public class Pesquisador implements Buscavel {
 
 	/**
 	 * GABRIEL
+	 * 
 	 * @return
 	 */
 	public String getFuncao() {
@@ -187,6 +203,7 @@ public class Pesquisador implements Buscavel {
 
 	/**
 	 * GABRIEL
+	 * 
 	 * @return
 	 */
 	public String getBiografia() {
@@ -195,26 +212,28 @@ public class Pesquisador implements Buscavel {
 
 	/**
 	 * GABRIEL
+	 * 
 	 * @return
 	 */
 	public String getFoto() {
 		return foto;
 	}
-	
+
 	/**
 	 * GABRIEL
 	 */
-	public void cadastraEspecialidadeProfessor(String nome, String funcao, String biografia, String email, String foto, String formacao, String unidade, String data) {
+	public void cadastraEspecialidadeProfessor(String nome, String funcao, String biografia, String email, String foto,
+			String formacao, String unidade, String data) {
+		this.funcao = "professor";
 		especificacao = new Professor(nome, funcao, biografia, email, foto, formacao, unidade, data);
-		this.funcao = "PROFESSORA";
-	}
-	
-	/**
-	 * GABRIEL
-	 */
-	public void cadastraEspecialidadeAluno(String nome, String funcao, String biografia, String email, String foto, int semestre, double IEA) {
-		especificacao = new Aluno(nome, funcao, biografia, email, foto, semestre, IEA);
-		this.funcao = "ALUNA";
 	}
 
+	/**
+	 * GABRIEL
+	 */
+	public void cadastraEspecialidadeAluno(String nome, String funcao, String biografia, String email, String foto,
+			int semestre, double IEA) {
+		this.funcao = "estudante";
+		especificacao = new Aluno(nome, funcao, biografia, email, foto, semestre, IEA);
+	}
 }
