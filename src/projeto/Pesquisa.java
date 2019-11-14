@@ -150,7 +150,7 @@ public class Pesquisa {
 	 *         desassociado)
 	 */
 	public boolean desassociaObjetivo(String idObjetivo, Objetivo objetivo) {
-		Validador.validaString(idObjetivo, "Campo idObjetivo nao pode ser nulo ou vazio.");	
+		Validador.validaString(idObjetivo, "Campo idObjetivo nao pode ser nulo ou vazio.");
 		if (!this.objetivos.containsKey(idObjetivo)) {
 			return false;
 		}
@@ -248,8 +248,8 @@ public class Pesquisa {
 	 * Metodo Equals que compara um objeto com outro a partir do seu codigo.
 	 * 
 	 * @param obj eh o objeto a ser comparado.
-	 * @return um valor booleano indicando se os objetos são iguais ou não,
-	 *         mediante o seus codigos.
+	 * @return um valor booleano indicando se os objetos são iguais ou não, mediante
+	 *         o seus codigos.
 	 */
 	@Override
 	public boolean equals(Object obj) {
@@ -291,16 +291,15 @@ public class Pesquisa {
 		mensagens.add(String.format("%s: %s", this.codigo, this.campoDeInteresse));
 		return mensagens;
 	}
-	
-	
+
 	public Problema getProblema() {
 		return this.problema;
 	}
-	
+
 	public String getCodigo() {
 		return this.codigo;
 	}
-	
+
 	public String getObjetivoIdMaior() {
 		if (this.objetivos.size() == 0) {
 			return null;
@@ -313,7 +312,7 @@ public class Pesquisa {
 		}
 		return maiorID;
 	}
-	
+
 	public int quantidadeObjetivos() {
 		return this.objetivos.size();
 	}
