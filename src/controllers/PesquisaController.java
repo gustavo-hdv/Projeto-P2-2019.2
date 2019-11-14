@@ -7,9 +7,9 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import projeto.CompararObjetivos;
-import projeto.CompararPesquisas;
-import projeto.CompararProblema;
+import projeto.ComparadorPesquisaObjetivos;
+import projeto.ComparadorPesquisaCodigo;
+import projeto.ComparadorPesquisaProblema;
 import projeto.Objetivo;
 import projeto.Pesquisa;
 import projeto.Problema;
@@ -295,21 +295,21 @@ public class PesquisaController {
 		}
 		
 		if (ordem.equals("PROBLEMA")) {
-			Collections.sort(tempPesquisas, new CompararProblema());
+			Collections.sort(tempPesquisas, new ComparadorPesquisaProblema());
 			for (int i = 0; i < tempPesquisas.size(); i++) {
 				if (i != 0) ordenado += " | ";
 				ordenado += tempPesquisas.get(i).toString();
 			}
 		}
 		else if (ordem.equals("OBJETIVOS")) {
-			Collections.sort(tempPesquisas, new CompararObjetivos());
+			Collections.sort(tempPesquisas, new ComparadorPesquisaObjetivos());
 			for (int i = 0; i < tempPesquisas.size(); i++) {
 				if (i != 0) ordenado += " | ";
 				ordenado += tempPesquisas.get(i).toString();
 			}
 		}
 		else if (ordem.equals("PESQUISA")) {
-			Collections.sort(tempPesquisas, new CompararPesquisas());
+			Collections.sort(tempPesquisas, new ComparadorPesquisaCodigo());
 			for (int i = 0; i < tempPesquisas.size(); i++) {
 				if (i != 0) ordenado += " | ";
 				ordenado += tempPesquisas.get(i).toString();

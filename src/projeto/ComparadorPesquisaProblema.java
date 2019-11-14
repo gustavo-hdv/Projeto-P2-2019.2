@@ -6,7 +6,7 @@ import java.util.Comparator;
  *  Depois, aparecem as pesquisas sem problemas associados (da pesquisa com maior ID até a pesquisa para a de menor ID)
  *  (ORDEM: PROBLEMA).
  */
-public class CompararProblema implements Comparator<Pesquisa> {
+public class ComparadorPesquisaProblema implements Comparator<Pesquisa> {
 	
 	@Override
 	public int compare(Pesquisa arg0, Pesquisa arg1) {

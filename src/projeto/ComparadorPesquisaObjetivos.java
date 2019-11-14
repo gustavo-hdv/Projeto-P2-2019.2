@@ -7,7 +7,7 @@ import java.util.Comparator;
  *  Para as pesquisas sem objetivos, lista da pesquisa de maior ID para a de menor ID
  *  (ORDEM: OBJETIVOS).
  */
-public class CompararObjetivos implements Comparator<Pesquisa> {
+public class ComparadorPesquisaObjetivos implements Comparator<Pesquisa> {
 
 	@Override
 	public int compare(Pesquisa arg0, Pesquisa arg1) {
