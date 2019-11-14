@@ -12,4 +12,4 @@ Auxílio com Branchs (temporário): https://git-scm.com/book/pt-br/v1/Ramificaç
 
 Exemplo de relatório: https://docs.google.com/document/d/1yH9ySp8VButG5i4-0dUPJHp2WDaa8f4IZyl3WIkZR0o/edit
 
-Relatório do Projeto: https://docs.google.com/document/d/1WVcHA3SwkbGUQh19Y-nS4_XoVO-LfdwCmj1lT7C9Oz8/edit?usp=sharing
+Relatório do Projeto: <LINK>
