@@ -83,6 +83,23 @@ public class Pesquisa {
 		this.problema = null;
 		this.objetivos = new HashMap<String, Objetivo>();
 	}
+	
+	public String exibeAtividades() {
+		String resumoAtividades = "";
+		for (Map.Entry<String, AtividadeMetodologica> atividades : this.atividadesAssociadas.entrySet()) {
+			resumoAtividades += "\t\t-" + atividades.getValue().toString() + System.lineSeparator();
+			resumoAtividades += atividades.getValue().exibeItens() + System.lineSeparator();
+		}
+		return resumoAtividades;
+	}
+	
+	public String exibeObjetivos() {
+		String resumoObjetivos = "";
+		for (Map.Entry<String, Objetivo> objetivos : this.objetivos.entrySet()) {
+			resumoObjetivos += objetivos.toString() + System.lineSeparator();
+		}
+		return resumoObjetivos;
+	}
 
 	/**
 	 * Associa um problema para a pesquisa

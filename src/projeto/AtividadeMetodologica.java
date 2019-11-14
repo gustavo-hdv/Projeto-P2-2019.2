@@ -109,6 +109,23 @@ public class AtividadeMetodologica {
 		}
 		return toString;
 	}
+	
+	/** Exibe a atividade no estilo:
+	 *  DESCRIÇÃO (NIVEL_RISCO - DESC_RISCO)
+	 *  
+	 *  @return representacao de uma atividade
+	 */
+	public String toString() {
+		return this.descricao + " (" + this.nivelRisco + " - " + this.descricaoRisco + ")";
+	}
+	
+	public String exibeItens() {
+		String resumoItens = "";
+		for(Item itens : this.resultados) {
+			resumoItens += "\t\t\t-" + itens.exibeItem() + System.lineSeparator();
+		}
+		return resumoItens;
+	}
 
 	public boolean contemTermo(String termo) {
 		if ((this.descricao.contains(termo)) || (this.descricaoRisco.contains(termo)))

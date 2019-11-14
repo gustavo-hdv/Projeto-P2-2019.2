@@ -232,4 +232,14 @@ public class PesquisadorController implements Buscador {
 		}
 		return msg.substring(0, msg.length() - 3);
 	}
+	
+	public String exibePesquisadoresAssociados(String codigoPesquisa) {
+		String pesquisadoresAssociados = "";
+		for (Map.Entry<String, Pesquisador> pesquisador : this.pesquisadores.entrySet()) {
+			if (pesquisador.getValue().contemPesquisaAssociada(codigoPesquisa)) {
+				pesquisadoresAssociados += "\t\t-" + pesquisador.toString() + System.lineSeparator();
+			}
+		}
+		return pesquisadoresAssociados;
+	}
 }

@@ -37,10 +37,10 @@ public class Item {
 		this.estado = "REALIZADO";
 	}
 
-	/**
-	 * Exibe o item\n Estilo: "Estado do item - Descricao do item"
-	 * 
-	 * @return Representacao do item (String)
+	/** Exibe o item
+	 *  Estilo: "Estado do item - Descricao do item"
+	 *  
+	 *  @return Representacao do item (String)
 	 */
 	public String exibeItem() {
 		return this.estado + " - " + this.descricao;

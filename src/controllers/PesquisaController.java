@@ -56,6 +56,35 @@ public class PesquisaController {
 	}
 
 	/**
+	 * Exporta um resumo da pesquisa em arquivo de texto Representado todas as
+	 * entidades de um pesquisa em ordem de cadastro. Formato do arquivo:
+	 * CODIGOPESQUISA.txt
+	 */
+	public void gravarResumo(String codigoPesquisa) {
+		Validador.validaString(codigoPesquisa, "Pesquisa nao pode ser nula ou vazia.");
+		Validador.isRegistered(codigoPesquisa, this.pesquisas, "Pesquisa nao encontrada.");
+		Pesquisa pesquisa = this.pesquisas.get(codigoPesquisa);
+	}
+
+	/**
+	 * Exporta os resultados da pesquisa em arquivo de texto Representado os
+	 * resultados obtidos com a pesquisa. Formato do arquivo:
+	 * CODIGOPESQUISA-Resultados.txt
+	 */
+	public void gravarResultados(String codigoPesquisa) {
+		Validador.validaString(codigoPesquisa, "Pesquisa nao pode ser nula ou vazia.");
+		Validador.isRegistered(codigoPesquisa, this.pesquisas, "Pesquisa nao encontrada.");
+	}
+	
+	public String exibeObjetivos(String codigoPesquisa) {
+		return this.pesquisas.get(codigoPesquisa).exibeObjetivos();
+	}
+	
+	public String exibeAtividades(String codigoPesquisa) {
+		return this.pesquisas.get(codigoPesquisa).exibeAtividades();
+	}
+	
+	/**
 	 * Metodo responsavel por cadastrar uma Pesquisa.
 	 * 
 	 * @param descricao        eh a descricao da Pesquisa.
