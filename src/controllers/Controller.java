@@ -92,7 +92,6 @@ public class Controller {
 	 * Desassocia um problema da a pesquisa
 	 * 
 	 * @param idPesquisa identificador da pesquisa
-	 * @param idProblema identificador do problema
 	 * 
 	 * @return boolean (true para desassociado com sucesso, false para nao
 	 *         desassociado)
@@ -456,5 +455,27 @@ public class Controller {
 
 	public String proximaAtividade(String codigoPesquisa) {
 		return pesquisaC.proximaAtividade(codigoPesquisa);		
+	}
+
+	public boolean associaAtividade(String codigoPesquisa, String codigoAtividade){
+		Validador.validaString(codigoPesquisa, "Campo codigoPesquisa nao pode ser nulo ou vazio.");
+		Validador.validaString(codigoAtividade, "Campo codigoAtividade nao pode ser nulo ou vazio.");
+
+		if(this.atividadesC.getAtividade(codigoAtividade) == null){
+			throw new IllegalArgumentException("Atividade nao encontrada");
+		}
+
+		return this.pesquisaC.associaAtividade(codigoPesquisa, codigoAtividade, this.atividadesC.getAtividade(codigoAtividade));
+	}
+
+	public boolean desassociaAtividade(String codigoPesquisa, String codigoAtividade){
+		Validador.validaString(codigoPesquisa, "Campo codigoPesquisa nao pode ser nulo ou vazio.");
+		Validador.validaString(codigoAtividade, "Campo codigoAtividade nao pode ser nulo ou vazio.");
+
+		if(this.atividadesC.getAtividade(codigoAtividade) == null){
+			throw new NullPointerException("Atividade nao encontrada");
+		}
+
+		return this.pesquisaC.desassociaAtividade(codigoPesquisa, codigoAtividade);
 	}
 }

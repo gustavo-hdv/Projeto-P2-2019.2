@@ -229,6 +229,11 @@ public class Pesquisa {
 	}
 
 	public boolean associaAtividade(String codigoAtividade, AtividadeMetodologica atividade) {
+		Validador.validaString(codigoAtividade, "Campo codigoAtividade nao pode ser nulo ou vazio.");
+		if(atividade == null){
+			throw new NullPointerException("Atividade nao encontrada");
+		}
+
 		if (this.atividadesAssociadas.containsKey(codigoAtividade)) {
 			return false;
 		}
@@ -239,6 +244,8 @@ public class Pesquisa {
 	}
 
 	public boolean desassociaAtividade(String codigoAtividade) {
+		Validador.validaString(codigoAtividade, "Campo codigoAtividade nao pode ser nulo ou vazio.");
+
 		if (!this.atividadesAssociadas.containsKey(codigoAtividade)) {
 			return false;
 		}
