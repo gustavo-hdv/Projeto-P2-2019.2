@@ -4,10 +4,9 @@ package projeto;
  * Representacao de uma atividade metodologica
  */
 
-import java.util.HashMap;
 import java.util.List;
 import java.util.ArrayList;
-import java.util.Map;
+
 
 public class AtividadeMetodologica {
 
@@ -19,6 +18,7 @@ public class AtividadeMetodologica {
 	private String descricaoRisco;
 	/** Lista de resultados com os itens cadastrados */
 	private List<Item> resultados;
+	/** Codigo de identificacao da atividade metodologica */
 	private String codigo;
 
 	/**
@@ -119,10 +119,15 @@ public class AtividadeMetodologica {
 		return this.descricao + " (" + this.nivelRisco + " - " + this.descricaoRisco + ")";
 	}
 	
+	/** Exibe os itens dos resultados da atividade 
+	 *  Estilo: "            - Estado do item - Descricao do item" \n ...
+	 *  
+	 *  @return representacao de todos os itens dos resultados
+	 */
 	public String exibeItens() {
 		String resumoItens = "";
 		for(Item itens : this.resultados) {
-			resumoItens += "\t\t\t-" + itens.exibeItem() + System.lineSeparator();
+			resumoItens += "\t\t\t- " + itens.exibeItem() + System.lineSeparator();
 		}
 		return resumoItens;
 	}

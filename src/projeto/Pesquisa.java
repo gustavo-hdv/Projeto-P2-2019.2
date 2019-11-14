@@ -2,7 +2,6 @@ package projeto;
 
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -84,7 +83,29 @@ public class Pesquisa {
 		this.objetivos = new HashMap<String, Objetivo>();
 	}
 	
-	public String exibeAtividades() {
+	/** Representacao do resumo de uma pesquisa
+	 *  Estilo: Problema: \n listagem dos problemas
+	 *          Objetivos: \n listagem dos objetivos
+	 *          Atividades: \n listagem das atividades
+	 *          
+	 *  @return resumo da pesquisa
+	 */
+	public String exibeResumoPesquisa() {
+		String problema = "\t- Problema: " + System.lineSeparator();
+		problema += (this.problema == null)?"":"\t\t" + this.problema.toString();
+		String objetivos = "\t- Objetivos: " + System.lineSeparator();
+		objetivos += exibeObjetivos();
+		String atividades = "\t- Atividades: " + System.lineSeparator();
+		atividades += exibeAtividades() + System.lineSeparator();
+		
+		return problema + objetivos + atividades;
+	}
+	
+	/** Exibe as atividades da pesquisa 
+	 * 
+	 * @return atividades da pesquisa
+	 */
+	private String exibeAtividades() {
 		String resumoAtividades = "";
 		for (Map.Entry<String, AtividadeMetodologica> atividades : this.atividadesAssociadas.entrySet()) {
 			resumoAtividades += "\t\t-" + atividades.getValue().toString() + System.lineSeparator();
@@ -93,10 +114,14 @@ public class Pesquisa {
 		return resumoAtividades;
 	}
 	
-	public String exibeObjetivos() {
+	/** Exibe os objetivos da pesquisa
+	 * 
+	 * @return objetivos da pesquisa
+	 */
+	private String exibeObjetivos() {
 		String resumoObjetivos = "";
 		for (Map.Entry<String, Objetivo> objetivos : this.objetivos.entrySet()) {
-			resumoObjetivos += objetivos.toString() + System.lineSeparator();
+			resumoObjetivos += "\t\t" + objetivos.getValue().toString() + System.lineSeparator();
 		}
 		return resumoObjetivos;
 	}
@@ -309,12 +334,20 @@ public class Pesquisa {
 		return mensagens;
 	}
 
-	public Problema getProblema() {
-		return this.problema;
-	}
-
+	/** Retorna o codigo da pesquisa 
+	 * 
+	 * @return codigo da pesquisa
+	 */
 	public String getCodigo() {
 		return this.codigo;
+	}
+	
+	/** Retorna o problema da pesquisa
+	 * 
+	 * @return problema da pesquisa (objeto Problema)
+	 */
+	public Problema getProblema() {
+		return this.problema;
 	}
 
 	public String getObjetivoIdMaior() {
@@ -337,4 +370,5 @@ public class Pesquisa {
 	public String proximaAtividade(Estrategia estrategia) {
 		return estrategia.sugestao(this.atividadesAssociadas.values());
 	}
+
 }

@@ -19,17 +19,21 @@ public class Controller {
 		this.probC = new ProblemaController();
 	}
 
+	/** Representacao do resumo de uma pesquisa
+	 *  Estilo: Pesquisa: codigo - descricao - campo de interesse
+	 *          Pesquisadores: \n listagem dos pesquisadores
+	 *  		Problema: \n listagem dos problemas
+	 *          Objetivos: \n listagem dos objetivos
+	 *          Atividades: \n listagem das atividades
+	 *          
+	 *  @return resumo da pesquisa
+	 */
 	private String getResumoPesquisa(Pesquisa pesquisa) {
-		String resumo = "-Pesquisa: " + pesquisa.toString() + System.lineSeparator();
-		resumo += "\t-Pesquisadores: " + System.lineSeparator(); //Mudar para ordem de cadastro
+		String resumo = "- Pesquisa: " + pesquisa.toString() + System.lineSeparator();
+		resumo += "\t- Pesquisadores: " + System.lineSeparator(); //Mudar para ordem de cadastro
 		resumo += this.pesquisadorC.exibePesquisadoresAssociados(pesquisa.getCodigo());
-		resumo += "\t-Problema: " + System.lineSeparator() + pesquisa.getProblema().toString();
-		resumo += "\t-Objetivos: " + System.lineSeparator();
-		resumo += this.pesquisaC.exibeObjetivos(pesquisa.getCodigo()) + System.lineSeparator();
-		resumo += "\t-Atividades: " + System.lineSeparator();
-		resumo += this.pesquisaC.exibeAtividades(pesquisa.getCodigo()) + System.lineSeparator();
+		resumo += this.pesquisaC.exibeResumoPesquisa(pesquisa.getCodigo());
 		return resumo;
-		
 	}
 	
 	/**
@@ -40,7 +44,8 @@ public class Controller {
 	public void gravarResumo(String codigoPesquisa) {
 		Validador.validaString(codigoPesquisa, "Pesquisa nao pode ser nula ou vazia.");
 		Validador.isRegistered(codigoPesquisa, this.pesquisaC.pesquisas, "Pesquisa nao encontrada.");
-		String resumo = getResumoPesquisa(this.pesquisaC.getPesquisa(codigoPesquisa));
+		//String resumo = getResumoPesquisa(this.pesquisaC.getPesquisa(codigoPesquisa));
+		//System.out.println(resumo);
 	}
 
 	/**

@@ -147,6 +147,11 @@ public class Pesquisador implements Buscavel {
 		return true;
 	}
 	
+	/** Verifica se o pesquisador esta associado a uma pesquisa
+	 * 
+	 * @param codigoPesquisa id da pesquisa
+	 * @return true para associado, false para nao associado
+	 */
 	public boolean contemPesquisaAssociada(String codigoPesquisa) {
 		Validador.validaString(codigoPesquisa, "codigoPesquisa nao pode ser nulo ou vazio.");
 		if (this.pesquisasAssociadas.containsKey(codigoPesquisa)) {

@@ -233,6 +233,12 @@ public class PesquisadorController implements Buscador {
 		return msg.substring(0, msg.length() - 3);
 	}
 	
+	/** Exibe os pesquisadores que estao associados a uma determinada pesquisa 
+	 *  Estilo: nome (funcao) - biografia - email - foto \n ...
+	 *	
+	 * @param codigoPesquisa id da pesquisa
+	 * @return representacao dos pesquisados com a pesquisa associada
+	 */
 	public String exibePesquisadoresAssociados(String codigoPesquisa) {
 		String pesquisadoresAssociados = "";
 		for (Map.Entry<String, Pesquisador> pesquisador : this.pesquisadores.entrySet()) {

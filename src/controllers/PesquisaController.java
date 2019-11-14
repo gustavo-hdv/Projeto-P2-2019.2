@@ -63,7 +63,6 @@ public class PesquisaController {
 	public void gravarResumo(String codigoPesquisa) {
 		Validador.validaString(codigoPesquisa, "Pesquisa nao pode ser nula ou vazia.");
 		Validador.isRegistered(codigoPesquisa, this.pesquisas, "Pesquisa nao encontrada.");
-		Pesquisa pesquisa = this.pesquisas.get(codigoPesquisa);
 	}
 
 	/**
@@ -76,12 +75,16 @@ public class PesquisaController {
 		Validador.isRegistered(codigoPesquisa, this.pesquisas, "Pesquisa nao encontrada.");
 	}
 	
-	public String exibeObjetivos(String codigoPesquisa) {
-		return this.pesquisas.get(codigoPesquisa).exibeObjetivos();
-	}
-	
-	public String exibeAtividades(String codigoPesquisa) {
-		return this.pesquisas.get(codigoPesquisa).exibeAtividades();
+	/** Representacao do resumo de uma pesquisa
+	 *  Estilo: Problema: \n listagem dos problemas
+	 *          Objetivos: \n listagem dos objetivos
+	 *          Atividades: \n listagem das atividades
+	 *          
+	 *  @param codigoPesquisa id da pesquisa        
+	 *  @return resumo da pesquisa
+	 */
+	public String exibeResumoPesquisa(String codigoPesquisa) {
+		return this.pesquisas.get(codigoPesquisa).exibeResumoPesquisa();
 	}
 	
 	/**
@@ -227,7 +230,14 @@ public class PesquisaController {
 		return false;
 	}
 
+	/** Retorna uma pesquisa pelo codigo
+	 * 
+	 * @param codigoPesquisa id da pesquisa
+	 * @return Objeto Pesquisa
+	 */
 	public Pesquisa getPesquisa(String codigoPesquisa) {
+		Validador.isRegistered(codigoPesquisa, this.pesquisas, "Pesquisa nao encontrada.");
+		
 		return this.pesquisas.get(codigoPesquisa);
 	}
 
