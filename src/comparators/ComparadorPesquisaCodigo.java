@@ -1,6 +1,8 @@
-package projeto;
+package comparators;
 
 import java.util.Comparator;
+
+import projeto.Pesquisa;
 
 /** Comparador de pesquisas do maior ID para o de menor ID
  *  (ORDEM: PESQUISA).

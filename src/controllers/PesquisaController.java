@@ -7,9 +7,9 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import projeto.ComparadorPesquisaObjetivos;
-import projeto.ComparadorPesquisaCodigo;
-import projeto.ComparadorPesquisaProblema;
+import comparators.ComparadorPesquisaCodigo;
+import comparators.ComparadorPesquisaObjetivos;
+import comparators.ComparadorPesquisaProblema;
 import projeto.Objetivo;
 import projeto.Pesquisa;
 import projeto.Problema;

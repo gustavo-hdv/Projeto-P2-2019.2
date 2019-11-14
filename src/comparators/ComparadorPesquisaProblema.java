@@ -1,6 +1,8 @@
-package projeto;
+package comparators;
 
 import java.util.Comparator;
+
+import projeto.Pesquisa;
 
 /** Comparador de pesquisas com associações a problemas de maior ID aparecem primeiro.
  *  Depois, aparecem as pesquisas sem problemas associados (da pesquisa com maior ID até a pesquisa para a de menor ID)
