@@ -356,4 +356,8 @@ public class Facade {
 	public String listaPesquisadores(String tipo) {
 		return controller.listaPesquisadores(tipo);
 	}
+	
+	public void configuraEstrategia(String estrategia) {
+		controller.configuraEstrategia(estrategia);
+	}
 }

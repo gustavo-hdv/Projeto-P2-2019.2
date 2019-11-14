@@ -450,4 +450,7 @@ public class Controller {
 		return pesquisadorC.listaPesquisadores(tipo);
 	}
 
+	public void configuraEstrategia(String estrategia) {
+		atividadesC.configuraEstrategia(estrategia);
+	}
 }

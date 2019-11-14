@@ -230,14 +230,15 @@ public class PesquisaController {
 		return false;
 	}
 
-	public Pesquisa getPesquisa(String codigoPesquisa){
-	    return this.pesquisas.get(codigoPesquisa);
-    }
+	public Pesquisa getPesquisa(String codigoPesquisa) {
+		return this.pesquisas.get(codigoPesquisa);
+	}
 
-	/** Associa um problema para a pesquisa 
+	/**
+	 * Associa um problema para a pesquisa
 	 * 
 	 * @param idPesquisa identificador da pesquisa
-	 * @param problema Um objeto problema
+	 * @param problema   Um objeto problema
 	 * 
 	 * @return boolean (true para associado com sucesso, false para nao associado)
 	 */
@@ -248,13 +249,15 @@ public class PesquisaController {
 		}
 		return this.pesquisas.get(idPesquisa).associaProblema(problema);
 	}
-	
-	/** Desassocia um problema da a pesquisa 
+
+	/**
+	 * Desassocia um problema da a pesquisa
 	 * 
 	 * @param idPesquisa identificador da pesquisa
-	 * @param problema Um objeto problema
+	 * @param problema   Um objeto problema
 	 * 
-	 * @return boolean (true para desassociado com sucesso, false para nao desassociado)
+	 * @return boolean (true para desassociado com sucesso, false para nao
+	 *         desassociado)
 	 */
 	public boolean desassociaProblema(String idPesquisa) {
 		Validador.validaString(idPesquisa, "Campo idPesquisa nao pode ser nulo ou vazio.");
@@ -263,11 +266,12 @@ public class PesquisaController {
 		}
 		return this.pesquisas.get(idPesquisa).desassociaProblema();
 	}
-	
-	/** Associa um objetivo para a pesquisa 
+
+	/**
+	 * Associa um objetivo para a pesquisa
 	 * 
 	 * @param idPesquisa identificador da pesquisa
-	 * @param objetivo Objetivo da pesquisa
+	 * @param objetivo   Objetivo da pesquisa
 	 * 
 	 * @return boolean (true para associado com sucesso, false para nao associado)
 	 */
@@ -289,13 +293,15 @@ public class PesquisaController {
 		}
 		return this.pesquisas.get(idPesquisa).associaObjetivo(objetivo.getCodigo(), objetivo);
 	}
-	
-	/** Desassocia um objetivo da pesquisa 
+
+	/**
+	 * Desassocia um objetivo da pesquisa
 	 * 
 	 * @param idPesquisa identificador da pesquisa
-	 * @param objetivo Objetivo da pesquisa
+	 * @param objetivo   Objetivo da pesquisa
 	 * 
-	 * @return boolean (true para desassociado com sucesso, false para nao desassociado)
+	 * @return boolean (true para desassociado com sucesso, false para nao
+	 *         desassociado)
 	 */
 	public boolean desassociaObjetivo(String idPesquisa, Objetivo objetivo) {
 		Validador.validaString(idPesquisa, "Campo idPesquisa nao pode ser nulo ou vazio.");
@@ -304,50 +310,53 @@ public class PesquisaController {
 		}
 		return this.pesquisas.get(idPesquisa).desassociaObjetivo(objetivo.getCodigo(), objetivo);
 	}
-	
-	/** Lista as pesquisas em determinada ordem
-	 *  Estilo: CÓDIGO - Descrição - Campo de interesse
+
+	/**
+	 * Lista as pesquisas em determinada ordem Estilo: CÓDIGO - Descrição - Campo de
+	 * interesse
 	 * 
 	 * @param ordem descreve o tipo da listagem das pesquisas
-	 * @return CODIGO - Descricao - Campo de interesse | CODIGO - Descricao - Campo de interesse | ...
+	 * @return CODIGO - Descricao - Campo de interesse | CODIGO - Descricao - Campo
+	 *         de interesse | ...
 	 */
 	public String listaPesquisas(String ordem) {
 		Validador.validaString(ordem, "Valor invalido da ordem");
 		if (!((ordem.equals("PROBLEMA")) | ordem.equals("OBJETIVOS") | ordem.equals("PESQUISA"))) {
 			throw new IllegalArgumentException("Valor invalido da ordem");
 		}
-		
+
 		String ordenado = "";
 		List<Pesquisa> tempPesquisas = new ArrayList<Pesquisa>();
 		for (Map.Entry<String, Pesquisa> pesquisas : this.pesquisas.entrySet()) {
 			tempPesquisas.add(pesquisas.getValue());
 		}
-		
+
 		if (ordem.equals("PROBLEMA")) {
 			Collections.sort(tempPesquisas, new ComparadorPesquisaProblema());
 			for (int i = 0; i < tempPesquisas.size(); i++) {
-				if (i != 0) ordenado += " | ";
+				if (i != 0)
+					ordenado += " | ";
 				ordenado += tempPesquisas.get(i).toString();
 			}
-		}
-		else if (ordem.equals("OBJETIVOS")) {
+		} else if (ordem.equals("OBJETIVOS")) {
 			Collections.sort(tempPesquisas, new ComparadorPesquisaObjetivos());
 			for (int i = 0; i < tempPesquisas.size(); i++) {
-				if (i != 0) ordenado += " | ";
+				if (i != 0)
+					ordenado += " | ";
 				ordenado += tempPesquisas.get(i).toString();
 			}
-		}
-		else if (ordem.equals("PESQUISA")) {
+		} else if (ordem.equals("PESQUISA")) {
 			Collections.sort(tempPesquisas, new ComparadorPesquisaCodigo());
 			for (int i = 0; i < tempPesquisas.size(); i++) {
-				if (i != 0) ordenado += " | ";
+				if (i != 0)
+					ordenado += " | ";
 				ordenado += tempPesquisas.get(i).toString();
 			}
 		}
-		
+
 		return ordenado;
 	}
-	
+
 	public List<String> busca(String termo) {
 		List<String> achados = new ArrayList<>();
 		for (Pesquisa pesquisa : this.pesquisas.values()) {

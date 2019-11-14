@@ -1,36 +1,37 @@
 package projeto;
 
-/** 
+/**
  * Representacao de um item com descricao e estado(PENDENTE ou REALIZADO)
  */
 
 public class Item {
-	
+
 	/** Descricao */
 	private String descricao;
 	/** Estado do item (PENDENTE ou REALIZADO) */
 	private String estado;
-	
-	/** Construtor de um item
-	 *  Inicia com o estado: "PENDENTE"
+
+	/**
+	 * Construtor de um item Inicia com o estado: "PENDENTE"
 	 * 
 	 * @param descricao do item (String)
 	 */
 	public Item(String descricao) {
 		Validador.validaString(descricao, "Item nao pode ser nulo ou vazio.");
-		
+
 		this.descricao = descricao;
-		this.estado = "PENDENTE";	
+		this.estado = "PENDENTE";
 	}
-	
-	/** Exibe o estado do item 
+
+	/**
+	 * Exibe o estado do item
 	 * 
 	 * @return estado do item (String)
 	 */
 	public String exibeEstado() {
 		return this.estado;
 	}
-	
+
 	/** Altera o estado do item para: "REALIZADO" */
 	public void alteraEstado() {
 		this.estado = "REALIZADO";
@@ -44,7 +45,7 @@ public class Item {
 	public String exibeItem() {
 		return this.estado + " - " + this.descricao;
 	}
-	
+
 	/** hashCode para a descricao */
 	@Override
 	public int hashCode() {
@@ -71,6 +72,5 @@ public class Item {
 			return false;
 		return true;
 	}
-	
-	
+
 }
