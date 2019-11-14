@@ -146,6 +146,14 @@ public class Pesquisador implements Buscavel {
 			return false;
 		return true;
 	}
+	
+	public boolean contemPesquisaAssociada(String codigoPesquisa) {
+		Validador.validaString(codigoPesquisa, "codigoPesquisa nao pode ser nulo ou vazio.");
+		if (this.pesquisasAssociadas.containsKey(codigoPesquisa)) {
+			return true;
+		}
+		return false;
+	}
 
 	public boolean pesquisadorEhAtivo() {
 		return this.status;

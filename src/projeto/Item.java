@@ -36,7 +36,7 @@ public class Item {
 		this.estado = "REALIZADO";
 	}
 
-	/** Exibe o item\n
+	/** Exibe o item
 	 *  Estilo: "Estado do item - Descricao do item"
 	 *  
 	 *  @return Representacao do item (String)

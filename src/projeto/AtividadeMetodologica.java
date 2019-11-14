@@ -85,7 +85,7 @@ public class AtividadeMetodologica {
 	/** Exibe a atividade no estilo:
 	 *  DESCRIÇÃO (NIVEL_RISCO - DESC_RISCO) | REALIZADO - ITEM1 | REALIZADO - ITEM2 | PENDENTE - ITEM3
 	 *  
-	 *  @return representacao de uma ativdade (String)
+	 *  @return representacao de uma atividade (String)
 	 */
 	public String exibeAtividade() {
 		String toString = this.descricao + " (" + this.nivelRisco + " - " + this.descricaoRisco + ")";
@@ -98,6 +98,23 @@ public class AtividadeMetodologica {
 			toString += resultados.get(i).exibeItem();
 		}
 		return toString;
+	}
+	
+	/** Exibe a atividade no estilo:
+	 *  DESCRIÇÃO (NIVEL_RISCO - DESC_RISCO)
+	 *  
+	 *  @return representacao de uma atividade
+	 */
+	public String toString() {
+		return this.descricao + " (" + this.nivelRisco + " - " + this.descricaoRisco + ")";
+	}
+	
+	public String exibeItens() {
+		String resumoItens = "";
+		for(Item itens : this.resultados) {
+			resumoItens += "\t\t\t-" + itens.exibeItem() + System.lineSeparator();
+		}
+		return resumoItens;
 	}
 
 	public boolean contemTermo(String termo) {
