@@ -74,7 +74,7 @@ public class PesquisadorController implements Buscador {
 			pesquisador.alteraPesquisador(atributo, novoValor);
 			pesquisadores.put(novoValor, pesquisador);
 		} else {
-			pesquisador.alteraPesquisador(atributo.toUpperCase(), novoValor);
+			pesquisador.alteraPesquisador(atributo, novoValor);
 		}
 	}
 
@@ -226,7 +226,7 @@ public class PesquisadorController implements Buscador {
 			throw new IllegalArgumentException(String.format("Tipo %s inexistente.", tipo));
 		}
 		for (Pesquisador pesquisador : pesquisadores.values()) {
-			if (pesquisador.getFuncao().toUpperCase().equals(tipo.toUpperCase())) {
+			if (pesquisador.getFuncao().toUpperCase().equals(tipo)) {
 				msg += pesquisador.toString() + " | ";
 			}
 		}
