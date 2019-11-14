@@ -116,21 +116,36 @@ public class PesquisadorController implements Buscador {
 	}
 
 	/**
-	 * GABRIEL
-	 */
-	public Pesquisador buscaPesquisador(String email) {
-		return pesquisadores.get(email);
-	}
-
-	/**
-	 * GABRIEL
+	 * Metodo que associa um Pesquisador a uma determinada pesquisa.
+	 * Retorna um valor booleano, True se o Pesquisador conseguiu ser associado e False caso nao.
+	 * 
+	 * @param idPesquisa eh a chave que identifica a pesquisa.
+	 * @param emailPesquisador eh o email do Pesquisador.
+	 * @param pesquisa eh a Pesquisa.
+	 * @return um valor booleano.
 	 */
 	public boolean associaPesquisador(String idPesquisa, String emailPesquisador, Pesquisa pesquisa) {
 		return pesquisadores.get(emailPesquisador).associaPesquisa(idPesquisa, pesquisa);
 	}
 
 	/**
-	 * GABRIEL
+	 * Metodo que desassocia um Pesquisador a uma determinada Pesquisa.
+	 * 
+	 * @param idPesquisa eh a cgave que identifica a pesquisa.
+	 * @param emailPesquisador eh o email do Pesquisador.
+	 * @return um valor Booleano.
+	 */
+	public boolean desassociaPesquisador(String idPesquisa, String emailPesquisador) {
+		return pesquisadores.get(emailPesquisador).desassociaPesqusia(idPesquisa);
+	}
+	
+	/**
+	 * Metodo que cadastra a ESpecialidade do Pesquisador como um Professor.
+	 * 
+	 * @param email eh o email do Pesquisador.
+	 * @param formacao eh a formacao do Pesquisador como um Professor.
+	 * @param unidade eh a unidade do do Pesquisador como um Professor.
+	 * @param data eh a data que aquele Pesquisador, como um Professor, foi contratado.
 	 */
 	public void cadastraEspecialidadeProfessor(String email, String formacao, String unidade, String data) {
 		Validador.validaString(email, "Campo email nao pode ser nulo ou vazio.");
@@ -170,7 +185,11 @@ public class PesquisadorController implements Buscador {
 	}
 
 	/**
-	 * GABRIEL
+	 * Metodo que cadastra a ESpecialidade do Pesquisador como um Aluno.
+	 * 
+	 * @param email eh o email do Pesqusiador como um Aluno.
+	 * @param semestre eh o semestre em que o Pesquisador, como um Aluno, está cursando.
+	 * @param IEA eh o IEA daquele Pesquisador, como um ALuno.
 	 */
 	public void cadastraEspecialidadeAluno(String email, int semestre, double IEA) {
 		Validador.validaString(email, "Campo email nao pode ser nulo ou vazio.");
@@ -194,7 +213,10 @@ public class PesquisadorController implements Buscador {
 	}
 
 	/**
-	 * GABRIEL
+	 * Metodo responsavel por listar todos os pesquisadores de uma determinada Funcao.
+	 * 
+	 * @param tipo eh a funcao.
+	 * @return retorna a respresentacao em forma de String dos pesquisadores que tem aquela determinada funcao.
 	 */
 	public String listaPesquisadores(String tipo) {
 		String msg = "";

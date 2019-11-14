@@ -11,12 +11,15 @@ public class Pesquisador implements Buscavel {
 	protected String foto;
 	protected boolean status;
 
+	/**
+	 * Eh um atributo que guarda um objeto especificacao, que por sua vez eh responsavel por armazenar 
+	 * os atributos especificos de um professor ou de um aluno, e ao mesmo tempo guarda o metodo toString() 
+	 * de um professor, aluno ou externo.
+	 */
 	protected Especificacao especificacao;
 
 	/**
-	 * GABRIEL
-	 * 
-	 * @return
+	 * Um HashMap que guarda as pesquisas que esse Pesquisador esta associado.
 	 */
 	private HashMap<String, Pesquisa> pesquisasAssociadas;
 
@@ -159,7 +162,12 @@ public class Pesquisador implements Buscavel {
 	}
 
 	/**
-	 * GABRIEL
+	 * Metodo que associa um Pesquisador a uma pesquisa.
+	 * Retorna um valor booleano, True se o Pesquisador conseguiu ser associado e False caso nao.
+	 * 
+	 * @param idPesquisa eh a chave que identifica a pesquisa.
+	 * @param pesquisa eh a Pesquisa.
+	 * @return um valor booleano.
 	 */
 	public boolean associaPesquisa(String idPesquisa,  Pesquisa pesquisa) {
 		if (pesquisasAssociadas.containsKey(idPesquisa)) {
@@ -172,7 +180,11 @@ public class Pesquisador implements Buscavel {
 	
 	
 	/**
-	 * GABRIEL
+	 * Metodo que desassocia um Pesquisador a uma determinada Pesquisa.
+	 * 
+	 * @param idPesquisa eh a cgave que identifica a pesquisa.
+	 * @param emailPesquisador eh o email do Pesquisador.
+	 * @return um valor Booleano.
 	 */
 	public boolean desassociaPesqusia(String codigoPesquisa) {
 		if (!pesquisasAssociadas.containsKey(codigoPesquisa)) {
@@ -184,52 +196,69 @@ public class Pesquisador implements Buscavel {
 	}
 
 	/**
-	 * GABRIEL
+	 * Metodo que retorna o nome do Pesquisador.
 	 * 
-	 * @return
+	 * @return retorna o nome do Pesquisador.
 	 */
 	public String getNome() {
 		return nome;
 	}
 
 	/**
-	 * GABRIEL
+	 * Metodo que retorna a Funcao do Pesquisador.
 	 * 
-	 * @return
+	 * @return retorna a Funcao do Pesquisador.
 	 */
 	public String getFuncao() {
 		return funcao;
 	}
 
 	/**
-	 * GABRIEL
+	 * Metodo que retorna a Biografia do Pesquisador.
 	 * 
-	 * @return
+	 * @return retorna a Biografia do Pesquisador.
 	 */
 	public String getBiografia() {
 		return biografia;
 	}
 
 	/**
-	 * GABRIEL
+	 * Metodo que retorna a foto do Pesquisador.
 	 * 
-	 * @return
+	 * @return retorna a foto do Pesquisador.
 	 */
 	public String getFoto() {
 		return foto;
 	}
 
 	/**
-	 * GABRIEL
+	 * Metodo que cadastra a Especialidade do Pesquisador como um Professor.
+	 * 
+	 * @param nome eh o nome do Pesquisador.
+	 * @param funcao eh a Funcao do Pesquisador.
+	 * @param biografia eh a biografia do Pesquisador.
+	 * @param email eh o email do Pesquisador.
+	 * @param foto eh a foto do Pesquisador.
+	 * @param formacao eh a formacao do Pesquisador como um Professor.
+	 * @param unidade eh a unidade do do Pesquisador como um Professor.
+	 * @param data eh a data que aquele Pesquisador, como um Professor, foi contratado.
 	 */
 	public void cadastraEspecialidadeProfessor(String nome, String funcao, String biografia, String email, String foto,
 			String formacao, String unidade, String data) {
 		this.funcao = "professor";
 		especificacao = new Professor(nome, funcao, biografia, email, foto, formacao, unidade, data);
 	}
-
+	
 	/**
-	 * GABRIEL
+	 * Metodo que cadastra a ESpecialidade do Pesquisador como um Aluno.
+	 * 
+	 * @param nome eh o nome do Pesquisador.
+	 * @param funcao eh a funcao do Pesquisador.
+	 * @param biografia eh a Biografia do Pesquisador.
+	 * @param email eh o email do Pesqusiador como um Aluno.
+	 * @param foto eh a foto do Pesquisador.
+	 * @param semestre eh o semestre em que o Pesquisador, como um Aluno, está cursando.
+	 * @param IEA eh o IEA daquele Pesquisador, como um ALuno.
 	 */
 	public void cadastraEspecialidadeAluno(String nome, String funcao, String biografia, String email, String foto,
 			int semestre, double IEA) {

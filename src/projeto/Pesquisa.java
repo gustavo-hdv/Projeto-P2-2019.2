@@ -11,9 +11,6 @@ import java.util.Map;
  * Representacao de uma pesquisa científica, que eh aquela que segue o metodo
  * cientifico para a construcao de um novo entendimento, compreensao ou
  * processo.
- * 
- * @author Gabriel Menezes Cabral - 119110372
- *
  */
 public class Pesquisa {
 

@@ -18,29 +18,33 @@ public class Controller {
 		this.probC = new ProblemaController();
 	}
 
-	/** Exporta um resumo da pesquisa em arquivo de texto
-	 *  Representado todas as entidades de um pesquisa em ordem de cadastro.
-	 *  Formato do arquivo: CODIGOPESQUISA.txt
+	/**
+	 * Exporta um resumo da pesquisa em arquivo de texto Representado todas as
+	 * entidades de um pesquisa em ordem de cadastro. Formato do arquivo:
+	 * CODIGOPESQUISA.txt
 	 */
 	public void gravarResumo(String codigoPesquisa) {
 		Validador.validaString(codigoPesquisa, "Pesquisa nao pode ser nula ou vazia.");
 		Validador.isRegistered(codigoPesquisa, this.pesquisaC.pesquisas, "Pesquisa nao encontrada.");
 	}
-	
-	/** Exporta os resultados da pesquisa em arquivo de texto
-	 *  Representado os resultados obtidos com a pesquisa.
-	 *  Formato do arquivo: CODIGOPESQUISA-Resultados.txt
+
+	/**
+	 * Exporta os resultados da pesquisa em arquivo de texto Representado os
+	 * resultados obtidos com a pesquisa. Formato do arquivo:
+	 * CODIGOPESQUISA-Resultados.txt
 	 */
 	public void gravarResultados(String codigoPesquisa) {
 		Validador.validaString(codigoPesquisa, "Pesquisa nao pode ser nula ou vazia.");
 		Validador.isRegistered(codigoPesquisa, this.pesquisaC.pesquisas, "Pesquisa nao encontrada.");
 	}
-	
-	/** Lista as pesquisas em determinada ordem
-	 *  Estilo: CODIGO - Descricao - Campo de interesse
+
+	/**
+	 * Lista as pesquisas em determinada ordem Estilo: CODIGO - Descricao - Campo de
+	 * interesse
 	 * 
 	 * @param ordem descreve o tipo da listagem das pesquisas
-	 * @return CODIGO - Descricao - Campo de interesse | CODIGO - Descricao - Campo de interesse | ...
+	 * @return CODIGO - Descricao - Campo de interesse | CODIGO - Descricao - Campo
+	 *         de interesse | ...
 	 */
 	public String listaPesquisas(String ordem) {
 		Validador.validaString(ordem, "Valor invalido da ordem");
@@ -49,7 +53,7 @@ public class Controller {
 		}
 		return this.pesquisaC.listaPesquisas(ordem);
 	}
-	
+
 	/**
 	 * Associa um problema para a pesquisa
 	 * 
@@ -355,14 +359,21 @@ public class Controller {
 		Busca busca = new Busca(pesquisadorC, pesquisaC, atividadesC, objC, probC, termo);
 		return busca.contaResultadosBusca();
 	}
+
 	/**
-	 * GABRIEL
+	 * Metodo que associa um Pesquisador a uma determinada pesquisa. Retorna um
+	 * valor booleano, True se o Pesquisador conseguiu ser associado e False caso
+	 * nao.
+	 * 
+	 * @param idPesquisa       eh a chave que identifica a pesquisa.
+	 * @param emailPesquisador eh o email do Pesquisador.
+	 * @return um valor booleano.
 	 */
 	public boolean associaPesquisador(String idPesquisa, String emailPesquisador) {
 		Validador.validaString(idPesquisa, "Campo idPesquisa nao pode ser nulo ou vazio.");
 		Validador.validaString(emailPesquisador, "Campo emailPesquisador nao pode ser nulo ou vazio.");
 		if (!pesquisaC.pesquisas.containsKey(idPesquisa)) {
-			throw new IllegalArgumentException("Pesquisa nao encontrada."); 
+			throw new IllegalArgumentException("Pesquisa nao encontrada.");
 		} else if (!pesquisaC.pesquisaEhAtiva(idPesquisa)) {
 			throw new IllegalArgumentException("Pesquisa desativada.");
 		}
@@ -370,49 +381,58 @@ public class Controller {
 	}
 
 	/**
-	 * GABRIEL
-	 * @return 
+	 * Metodo que desassocia um Pesquisador a uma determinada Pesquisa.
+	 * 
+	 * @param idPesquisa       eh a cgave que identifica a pesquisa.
+	 * @param emailPesquisador eh o email do Pesquisador.
+	 * @return um valor Booleano.
 	 */
 	public boolean desassociaPesquisador(String idPesquisa, String emailPesquisador) {
 		Validador.validaString(idPesquisa, "Campo idPesquisa nao pode ser nulo ou vazio.");
 		Validador.validaString(emailPesquisador, "Campo emailPesquisador nao pode ser nulo ou vazio.");
 		if (!pesquisaC.pesquisas.containsKey(idPesquisa)) {
-			throw new IllegalArgumentException("Pesquisa nao encontrada."); 
+			throw new IllegalArgumentException("Pesquisa nao encontrada.");
 		} else if (!pesquisaC.pesquisaEhAtiva(idPesquisa)) {
 			throw new IllegalArgumentException("Pesquisa desativada.");
 		}
-		return pesquisadorC.buscaPesquisador(emailPesquisador).desassociaPesqusia(idPesquisa);
+		return pesquisadorC.desassociaPesquisador(idPesquisa, emailPesquisador);
 	}
 
 	/**
-	 * GABRIEL
+	 * Metodo que cadastra a ESpecialidade do Pesquisador como um Professor.
 	 * 
-	 * @param email
-	 * @param formacao
-	 * @param unidade
-	 * @param data
+	 * @param email    eh o email do Pesquisador.
+	 * @param formacao eh a formacao do Pesquisador como um Professor.
+	 * @param unidade  eh a unidade do do Pesquisador como um Professor.
+	 * @param data     eh a data que aquele Pesquisador, como um Professor, foi
+	 *                 contratado.
 	 */
 	public void cadastraEspecialidadeProfessor(String email, String formacao, String unidade, String data) {
 		pesquisadorC.cadastraEspecialidadeProfessor(email, formacao, unidade, data);
 	}
 
 	/**
-	 * GABRIEL
+	 * Metodo que cadastra a ESpecialidade do Pesquisador como um Aluno.
 	 * 
-	 * @param codigoPesquisa
-	 * @param codigoAtividade
-	 * @return
+	 * @param email    eh o email do Pesqusiador como um Aluno.
+	 * @param semestre eh o semestre em que o Pesquisador, como um Aluno, está
+	 *                 cursando.
+	 * @param IEA      eh o IEA daquele Pesquisador, como um ALuno.
 	 */
 	public void cadastraEspecialidadeAluno(String email, int semestre, double IEA) {
 		pesquisadorC.cadastraEspecialidadeAluno(email, semestre, IEA);
 	}
 
 	/**
-	 * GABRIEL
+	 * Metodo responsavel por listar todos os pesquisadores de uma determinada
+	 * Funcao.
+	 * 
+	 * @param tipo eh a funcao.
+	 * @return retorna a respresentacao em forma de String dos pesquisadores que tem
+	 *         aquela determinada funcao.
 	 */
 	public String listaPesquisadores(String tipo) {
 		return pesquisadorC.listaPesquisadores(tipo);
 	}
-
 
 }
