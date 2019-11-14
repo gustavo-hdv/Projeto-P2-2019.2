@@ -261,7 +261,6 @@ public class PesquisaController {
 	 * Desassocia um problema da a pesquisa
 	 * 
 	 * @param idPesquisa identificador da pesquisa
-	 * @param problema   Um objeto problema
 	 * 
 	 * @return boolean (true para desassociado com sucesso, false para nao
 	 *         desassociado)
@@ -405,5 +404,33 @@ public class PesquisaController {
 		}
 		Pesquisa pesquisa = this.pesquisas.get(codigoPesquisa);
 		return pesquisa.proximaAtividade(this.estrategia);
+	}
+
+	public boolean associaAtividade(String codigoPesquisa, String codigoAtividade, AtividadeMetodologica atividade){
+		Validador.validaString(codigoPesquisa, "Campo codigoPesquisa nao pode ser nulo ou vazio.");
+		Validador.validaString(codigoAtividade, "Campo codigoAtividade nao pode ser nulo ou vazio.");
+		Validador.isRegistered(codigoPesquisa, this.pesquisas, "Pesquisa nao encontrada.");
+
+		if(!pesquisaEhAtiva(codigoPesquisa)){
+			throw new IllegalArgumentException("Pesquisa desativada.");
+		}
+
+		if(atividade == null){
+			throw new NullPointerException("Atividade nao encontrada");
+		}
+
+		return this.pesquisas.get(codigoPesquisa).associaAtividade(codigoAtividade, atividade);
+	}
+
+	public boolean desassociaAtividade(String codigoPesquisa, String codigoAtividade){
+		Validador.validaString(codigoPesquisa, "Campo codigoPesquisa nao pode ser nulo ou vazio.");
+		Validador.validaString(codigoAtividade, "Campo codigoAtividade nao pode ser nulo ou vazio.");
+		Validador.isRegistered(codigoPesquisa, this.pesquisas, "Pesquisa nao encontrada.");
+
+		if(!pesquisaEhAtiva(codigoPesquisa)){
+			throw new IllegalArgumentException("Pesquisa desativada.");
+		}
+
+		return this.pesquisas.get(codigoPesquisa).desassociaAtividade(codigoAtividade);
 	}
 }

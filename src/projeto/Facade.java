@@ -364,4 +364,12 @@ public class Facade {
 	public String proximaAtividade(String codigoPesquisa) {
 		return controller.proximaAtividade(codigoPesquisa);
 	}
+
+	public boolean associaAtividade(String codigoPesquisa, String codigoAtividade){
+		return this.controller.associaAtividade(codigoPesquisa, codigoAtividade);
+	}
+
+	public boolean desassociaAtividade(String codigoPesquisa, String codigoAtividade){
+		return this.controller.desassociaAtividade(codigoPesquisa, codigoAtividade);
+	}
 }
