@@ -293,6 +293,7 @@ class testPesquisadorController {
 		controlePesquisador.cadastraPesquisador("Gabriel", "Ciencista", "estuda as donzelas", "gabriel12@gmail12", "http://bielzin");
 		assertEquals(true, controlePesquisador.pesquisadorEhAtivo("gabriel12@gmail12"));
 	}
+	
 }
 
 

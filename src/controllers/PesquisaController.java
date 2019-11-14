@@ -14,6 +14,7 @@ import projeto.Objetivo;
 import projeto.Pesquisa;
 import projeto.Problema;
 import projeto.Validador;
+import projeto.qtdVezesIdPesquisaUsado;
 
 /**
  * Representação de um Controle, que é responsável por manipular os Collections,
@@ -46,7 +47,7 @@ public class PesquisaController {
 	 * desse ArrayList eh equivalente a quantidade de vezes que esse codigo com
 	 * essas 3 letras ja foram usados.
 	 */
-	private HashMap<String, ArrayList> codigos;
+	private HashMap<String, qtdVezesIdPesquisaUsado> codigos;
 
 	/**
 	 * Constroi um Controle da Pesquisa e inicializa os HashMap e o atributo codigo.
@@ -55,7 +56,7 @@ public class PesquisaController {
 		this.codigo = "";
 		this.pesquisas = new HashMap<String, Pesquisa>();
 		this.desativadas = new HashMap<String, String>();
-		this.codigos = new HashMap<String, ArrayList>();
+		this.codigos = new HashMap<String, qtdVezesIdPesquisaUsado>();
 	}
 
 	/**
@@ -84,12 +85,12 @@ public class PesquisaController {
 		}
 		String codigoLetras = campoDeInteresse.substring(0, 3).toUpperCase();
 		if (codigos.containsKey(codigoLetras)) {
-			codigos.get(codigoLetras).add(1);
-			codigo = codigoLetras + codigos.get(codigoLetras).size();
+			codigos.get(codigoLetras).somaMaisUmQuantiadadeEsteCodigoFoiUsado();
+			codigo = codigoLetras + codigos.get(codigoLetras).qtdVezesIdPesquisaFoiUsado();
 		} else {
 			codigo = codigoLetras + "1";
-			codigos.put(codigoLetras, new ArrayList<String>());
-			codigos.get(codigoLetras).add(1);
+			codigos.put(codigoLetras, new qtdVezesIdPesquisaUsado(0));
+			codigos.get(codigoLetras).somaMaisUmQuantiadadeEsteCodigoFoiUsado();
 		}
 		pesquisas.put(codigo, new Pesquisa(codigo, descricao, campoDeInteresse));
 		return codigo;
