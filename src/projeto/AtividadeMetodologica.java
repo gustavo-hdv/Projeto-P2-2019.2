@@ -129,12 +129,47 @@ public class AtividadeMetodologica {
 	 *  
 	 *  @return representacao de todos os itens dos resultados
 	 */
-	public String exibeItens() {
+	public String exibeItensEstado() {
 		String resumoItens = "";
-		for(Item itens : this.resultados) {
-			resumoItens += "\t\t\t- " + itens.exibeItem() + System.lineSeparator();
+		for (int i = 0; i < this.resultados.size(); i++) {
+			resumoItens += "\t\t\t- " + this.resultados.get(i).exibeEstado() + " - ITEM" + (i+1);
+			if (i != this.resultados.size()) {
+				resumoItens +=  System.lineSeparator();
+			}
 		}
 		return resumoItens;
+	}
+	
+	/** Exibe os itens dos resultados da atividade e a duracao
+	 *  Estilo: ITEM(id) - Duracao \n ...
+	 *  
+	 *  @return representacao de todos os itens dos resultados
+	 */
+	public String exibeItensDuracao() {
+		String itensDuracao = "";
+		for (int i = 0; i < this.resultados.size(); i++) {
+			itensDuracao += "\t\t\t- " + "ITEM" + (i+1) + " - " + (this.duracaoExecucao/this.resultados.size());
+			if (i != this.resultados.size()) {
+				itensDuracao +=  System.lineSeparator();
+			}
+		}
+		return itensDuracao;
+	}
+	
+	/** Exibe os resultados obtidos da atividade
+	 *  Estilo: descricao dos resultados obtidoss \n ...
+	 *  
+	 *  @return representacao dos resultados obtidos
+	 */
+	public String exibeResultados() {
+		String resultados = "";
+		for (int i = 0; i < this.resultadosObtidos.size(); i++) {
+			resultados += "\t\t\t- " + this.resultadosObtidos.get(i).toString();
+			if (i != this.resultadosObtidos.size()) {
+				resultados += System.lineSeparator();
+			}
+		}
+		return resultados;
 	}
 
 	public boolean contemTermo(String termo) {

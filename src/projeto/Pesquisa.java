@@ -92,11 +92,11 @@ public class Pesquisa {
 	 */
 	public String exibeResumoPesquisa() {
 		String problema = "\t- Problema: " + System.lineSeparator();
-		problema += (this.problema == null)?"":"\t\t" + this.problema.toString();
+		problema += (this.problema == null)?"":"\t\t" + this.problema.toString() + System.lineSeparator();
 		String objetivos = "\t- Objetivos: " + System.lineSeparator();
 		objetivos += exibeObjetivos();
 		String atividades = "\t- Atividades: " + System.lineSeparator();
-		atividades += exibeAtividades() + System.lineSeparator();
+		atividades += exibeAtividades();
 		
 		return problema + objetivos + atividades;
 	}
@@ -108,10 +108,24 @@ public class Pesquisa {
 	private String exibeAtividades() {
 		String resumoAtividades = "";
 		for (Map.Entry<String, AtividadeMetodologica> atividades : this.atividadesAssociadas.entrySet()) {
-			resumoAtividades += "\t\t-" + atividades.getValue().toString() + System.lineSeparator();
-			resumoAtividades += atividades.getValue().exibeItens() + System.lineSeparator();
+			resumoAtividades += "\t\t- " + atividades.getValue().toString() + System.lineSeparator();
+			resumoAtividades += atividades.getValue().exibeItensEstado();
 		}
 		return resumoAtividades;
+	}
+	
+	/** Exibe os resultados da pesquisa 
+	 * 
+	 * @return resultados da pesquisa
+	 */
+	public String exibeResultadosPesquisa() {
+		String resultadosAtividades = "";
+		for (Map.Entry<String, AtividadeMetodologica> atividades : this.atividadesAssociadas.entrySet()) {
+			resultadosAtividades += "\t\t- " + atividades.getValue().toString() + System.lineSeparator();
+			resultadosAtividades += atividades.getValue().exibeItensDuracao();
+			resultadosAtividades += atividades.getValue().exibeResultados();
+		}
+		return resultadosAtividades;
 	}
 	
 	/** Exibe os objetivos da pesquisa

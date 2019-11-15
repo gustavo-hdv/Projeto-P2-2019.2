@@ -21,10 +21,10 @@ public class Controller {
 
 	/** Representacao do resumo de uma pesquisa
 	 *  Estilo: Pesquisa: codigo - descricao - campo de interesse
-	 *          Pesquisadores: \n listagem dos pesquisadores
-	 *  		Problema: \n listagem dos problemas
-	 *          Objetivos: \n listagem dos objetivos
-	 *          Atividades: \n listagem das atividades
+	 *           Pesquisadores: \n listagem dos pesquisadores
+	 *  		 Problema: \n listagem dos problemas
+	 *           Objetivos: \n listagem dos objetivos
+	 *           Atividades: \n listagem das atividades
 	 *          
 	 *  @return resumo da pesquisa
 	 */
@@ -36,26 +36,52 @@ public class Controller {
 		return resumo;
 	}
 	
+	/** Representacao dos resultados de uma pesquisa
+	 *  Estilo: Pesquisa: codigo - descricao - campo de interesse
+	 *  		  Resultados:
+	 *  		  Descricao
+	 *  		  Item(id) - Duracao \n ...
+	 *  		  Descricao dos resultados \n ...
+	 */
+	private String getResultadosPesquisa(Pesquisa pesquisa) {
+		String resultados = "- Pesquisa: " + pesquisa.toString() + System.lineSeparator();
+		resultados += "\t- Resultados: " + System.lineSeparator();
+		resultados += this.pesquisaC.exibeResultadosPesquisa(pesquisa.getCodigo());
+		return resultados;
+	}
+	
 	/**
 	 * Exporta um resumo da pesquisa em arquivo de texto Representado todas as
 	 * entidades de um pesquisa em ordem de cadastro. Formato do arquivo:
 	 * CODIGOPESQUISA.txt
+	 * Estilo: Pesquisa: codigo - descricao - campo de interesse
+	 *           Pesquisadores: \n listagem dos pesquisadores
+	 *  		 Problema: \n listagem dos problemas
+	 *           Objetivos: \n listagem dos objetivos
+	 *           Atividades: \n listagem das atividades
 	 */
 	public void gravarResumo(String codigoPesquisa) {
 		Validador.validaString(codigoPesquisa, "Pesquisa nao pode ser nula ou vazia.");
 		Validador.isRegistered(codigoPesquisa, this.pesquisaC.pesquisas, "Pesquisa nao encontrada.");
-		//String resumo = getResumoPesquisa(this.pesquisaC.getPesquisa(codigoPesquisa));
-		//System.out.println(resumo);
+//		String resumo = getResumoPesquisa(this.pesquisaC.getPesquisa(codigoPesquisa));
+//		System.out.println(resumo);
 	}
 
 	/**
 	 * Exporta os resultados da pesquisa em arquivo de texto Representado os
 	 * resultados obtidos com a pesquisa. Formato do arquivo:
 	 * CODIGOPESQUISA-Resultados.txt
+	 * Estilo: Pesquisa: codigo - descricao - campo de interesse
+	 *  		 Resultados:
+	 *  		 Descricao
+	 *  		 Item(id) - Duracao \n ...
+	 *  		 Descricao dos resultados \n ...
 	 */
 	public void gravarResultados(String codigoPesquisa) {
 		Validador.validaString(codigoPesquisa, "Pesquisa nao pode ser nula ou vazia.");
 		Validador.isRegistered(codigoPesquisa, this.pesquisaC.pesquisas, "Pesquisa nao encontrada.");
+//		String resultados = getResultadosPesquisa(this.pesquisaC.getPesquisa(codigoPesquisa));
+//		System.out.println(resultados);
 	}
 
 	/**

@@ -1,6 +1,5 @@
 package projeto;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 
 public class Pesquisador implements Buscavel {
@@ -199,7 +198,7 @@ public class Pesquisador implements Buscavel {
 	 * @param emailPesquisador eh o email do Pesquisador.
 	 * @return um valor Booleano.
 	 */
-	public boolean desassociaPesqusia(String codigoPesquisa) {
+	public boolean desassociaPesqusia(String codigoPesquisa) { //desassocia (Pesqusia) corrigir
 		if (!pesquisasAssociadas.containsKey(codigoPesquisa)) {
 			return false;
 		} else {

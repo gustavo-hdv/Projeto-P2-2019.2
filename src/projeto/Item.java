@@ -6,7 +6,7 @@ package projeto;
 
 public class Item {
 
-	/** Descricao */
+	/** Descricao do item */
 	private String descricao;
 	/** Estado do item (PENDENTE ou REALIZADO) */
 	private String estado;

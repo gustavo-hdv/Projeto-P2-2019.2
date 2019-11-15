@@ -87,6 +87,10 @@ public class PesquisaController {
 		return this.pesquisas.get(codigoPesquisa).exibeResumoPesquisa();
 	}
 	
+	public String exibeResultadosPesquisa(String codigoPesquisa) {
+		return this.pesquisas.get(codigoPesquisa).exibeResultadosPesquisa();
+	}
+	
 	/**
 	 * Metodo responsavel por cadastrar uma Pesquisa.
 	 * 
