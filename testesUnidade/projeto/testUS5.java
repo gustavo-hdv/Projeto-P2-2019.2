@@ -12,15 +12,9 @@ import controllers.ProblemaController;
 class testUS5 {
 
 	private Controller controleGeral;
-	private ProblemaController controleProblema;
-	private ObjetivoController controleObjetivo;
-	private PesquisaController controlePesquisa;
 	
 	public testUS5() {
 		this.controleGeral = new Controller();
-		this.controleProblema = new ProblemaController();
-		this.controleObjetivo = new ObjetivoController();
-		this.controlePesquisa = new PesquisaController();
 	}
 	
 	@Test
