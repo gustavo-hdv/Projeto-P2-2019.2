@@ -6,10 +6,6 @@ package projeto;
 
 import java.util.List;
 import java.util.ArrayList;
-<<<<<<< HEAD
-
-=======
->>>>>>> 435322fc75d19553a75eba23d09059769cda5554
 
 public class AtividadeMetodologica {
 
@@ -21,11 +17,7 @@ public class AtividadeMetodologica {
 	private String descricaoRisco;
 	/** Lista de resultados com os itens cadastrados */
 	private List<Item> resultados;
-<<<<<<< HEAD
 	/** Codigo de identificacao da atividade metodologica */
-=======
-
->>>>>>> 435322fc75d19553a75eba23d09059769cda5554
 	private String codigo;
 
 	private int duracaoExecucao;
