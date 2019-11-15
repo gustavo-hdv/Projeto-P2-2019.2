@@ -3,7 +3,7 @@ package controllers;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
-import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -14,10 +14,11 @@ import projeto.Pesquisador;
 import projeto.Validador;
 
 public class PesquisadorController implements Buscador {
+	
 	private Map<String, Pesquisador> pesquisadores;
 
 	public PesquisadorController() {
-		this.pesquisadores = new HashMap<>();
+		this.pesquisadores = new LinkedHashMap<String, Pesquisador>();
 	}
 
 	private void validaEmail(String email) {
@@ -136,7 +137,7 @@ public class PesquisadorController implements Buscador {
 	 * @return um valor Booleano.
 	 */
 	public boolean desassociaPesquisador(String idPesquisa, String emailPesquisador) {
-		return pesquisadores.get(emailPesquisador).desassociaPesqusia(idPesquisa);
+		return pesquisadores.get(emailPesquisador).desassociaPesquisa(idPesquisa);
 	}
 	
 	/**

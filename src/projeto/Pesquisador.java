@@ -1,7 +1,7 @@
 package projeto;
 
-import java.util.HashMap;
 import java.util.LinkedHashMap;
+import java.util.Map;
 
 public class Pesquisador implements Buscavel {
 	protected String nome;
@@ -19,9 +19,9 @@ public class Pesquisador implements Buscavel {
 	protected Especificacao especificacao;
 
 	/**
-	 * Um HashMap que guarda as pesquisas que esse Pesquisador esta associado.
+	 * Um LinkedHashMap que guarda as pesquisas que esse Pesquisador esta associado.
 	 */
-	private HashMap<String, Pesquisa> pesquisasAssociadas;
+	private Map<String, Pesquisa> pesquisasAssociadas;
 
 	public Pesquisador(String nome, String funcao, String biografia, String email, String foto) {
 		Validador.validaString(nome, "Campo nome nao pode ser nulo ou vazio.");
@@ -199,7 +199,7 @@ public class Pesquisador implements Buscavel {
 	 * @param emailPesquisador eh o email do Pesquisador.
 	 * @return um valor Booleano.
 	 */
-	public boolean desassociaPesqusia(String codigoPesquisa) { //desassocia (Pesqusia) corrigir
+	public boolean desassociaPesquisa(String codigoPesquisa) {
 		if (!pesquisasAssociadas.containsKey(codigoPesquisa)) {
 			return false;
 		} else {
