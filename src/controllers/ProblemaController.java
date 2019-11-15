@@ -2,7 +2,7 @@ package controllers;
 
 import java.util.ArrayList;
 import java.util.Collection;
-import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.Map;
 
 import projeto.Buscador;
@@ -38,7 +38,7 @@ public class ProblemaController implements Buscador {
      * Constrói um controller para problemas.
      */
     public ProblemaController(){
-        this.problemas = new HashMap<>();
+        this.problemas = new LinkedHashMap<String, Problema>();
         this.posicao = 1;
     }
 

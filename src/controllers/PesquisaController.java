@@ -3,7 +3,7 @@ package controllers;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
-import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -25,23 +25,23 @@ public class PesquisaController {
 	private String codigo;
 
 	/**
-	 * HashMap responsavel por guardar as pesquisas cadastradas. Essas pesquisas
+	 * Map responsavel por guardar as pesquisas cadastradas. Essas pesquisas
 	 * estao associadas ao seu codigo.
 	 */
-	protected HashMap<String, Pesquisa> pesquisas;
+	protected Map<String, Pesquisa> pesquisas;
 
 	/**
-	 * HashMap responsavel por registrar as pesquisas que foram desativadas . Essas
+	 * Map responsavel por registrar as pesquisas que foram desativadas . Essas
 	 * pesquisas estao associadas ao seu codigo.
 	 */
-	private HashMap<String, String> desativadas;
+	private Map<String, String> desativadas;
 
 	/**
-	 * HashMap responsavel por guardar um codigo associado a um ArrayList, o tamanho
+	 * Map responsavel por guardar um codigo associado a um ArrayList, o tamanho
 	 * desse ArrayList eh equivalente a quantidade de vezes que esse codigo com
 	 * essas 3 letras ja foram usados.
 	 */
-	private HashMap<String, qtdVezesIdPesquisaUsado> codigos;
+	private Map<String, qtdVezesIdPesquisaUsado> codigos;
 	
 	private Estrategia estrategia;
 
@@ -50,9 +50,9 @@ public class PesquisaController {
 	 */
 	public PesquisaController() {
 		this.codigo = "";
-		this.pesquisas = new HashMap<String, Pesquisa>();
-		this.desativadas = new HashMap<String, String>();
-		this.codigos = new HashMap<String, qtdVezesIdPesquisaUsado>();
+		this.pesquisas = new LinkedHashMap<String, Pesquisa>();
+		this.desativadas = new LinkedHashMap<String, String>();
+		this.codigos = new LinkedHashMap<String, qtdVezesIdPesquisaUsado>();
 	}
 
 	/**

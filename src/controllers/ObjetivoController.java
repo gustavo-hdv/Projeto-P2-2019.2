@@ -2,7 +2,7 @@ package controllers;
 
 import java.util.ArrayList;
 import java.util.Collection;
-import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.Map;
 
 import projeto.Buscador;
@@ -30,15 +30,15 @@ public class ObjetivoController implements Buscador {
      */
     protected Map<String, Objetivo> objetivos;
     /**
-     * Posição. Corresponde a posição do próximo objetivo na lista (mapa) de objetivos a ser usada no código do objetivo.
+     * Posicao. Corresponde a posição do próoimo objetivo na lista (mapa) de objetivos a ser usada no codigo do objetivo.
      */
     private int posicao;
 
     /**
-     * Constrói um controller para objetivos.
+     * Constroi um controller para objetivos.
      */
     public ObjetivoController(){
-        this.objetivos = new HashMap<>();
+        this.objetivos = new LinkedHashMap<String, Objetivo>();
         this.posicao = 1;
     }
 

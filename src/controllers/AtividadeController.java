@@ -2,7 +2,7 @@ package controllers;
 
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 import comparators.*;
@@ -23,7 +23,7 @@ public class AtividadeController {
 
 	/** Construtor de uma atividade metodologica */
 	public AtividadeController() {
-		this.atividadesMetodologicas = new HashMap<>();
+		this.atividadesMetodologicas = new LinkedHashMap<String, AtividadeMetodologica>();
 		this.contagem = 0;
 	}
 
