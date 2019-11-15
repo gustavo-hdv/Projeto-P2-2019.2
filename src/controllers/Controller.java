@@ -478,4 +478,8 @@ public class Controller {
 
 		return this.pesquisaC.desassociaAtividade(codigoPesquisa, codigoAtividade);
 	}
+
+	public void executaAtividade(String codigoAtividade, int item, int duracao){
+		this.pesquisaC.executaAtividade(codigoAtividade, item, duracao);
+	}
 }

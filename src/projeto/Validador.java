@@ -17,6 +17,12 @@ public class Validador {
 		}
 	}
 
+	public static void validaValoresNegativos(int valor, String msg){
+		if(valor <= 0){
+			throw new IllegalArgumentException(msg);
+		}
+	}
+
 	public static void isRegistered(String chave, Map mapa, String msg){
 		if(!mapa.containsKey(chave)){
 			throw new IllegalArgumentException(msg);

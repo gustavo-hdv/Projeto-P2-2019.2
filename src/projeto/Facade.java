@@ -372,4 +372,8 @@ public class Facade {
 	public boolean desassociaAtividade(String codigoPesquisa, String codigoAtividade){
 		return this.controller.desassociaAtividade(codigoPesquisa, codigoAtividade);
 	}
+
+	public void executaAtividade(String codigoAtividade, int item, int duracao){
+		this.controller.executaAtividade(codigoAtividade, item, duracao);
+	}
 }

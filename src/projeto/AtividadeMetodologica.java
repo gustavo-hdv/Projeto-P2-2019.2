@@ -4,10 +4,8 @@ package projeto;
  * Representacao de uma atividade metodologica
  */
 
-import java.util.HashMap;
 import java.util.List;
 import java.util.ArrayList;
-import java.util.Map;
 
 public class AtividadeMetodologica {
 
@@ -19,7 +17,12 @@ public class AtividadeMetodologica {
 	private String descricaoRisco;
 	/** Lista de resultados com os itens cadastrados */
 	private List<Item> resultados;
+
 	private String codigo;
+
+	private int duracaoExecucao;
+
+	private List<Resultado> resultadosObtidos;
 
 	/**
 	 * Construtor da atividade metodologica com descricao, nivel de risco e uma
@@ -43,6 +46,8 @@ public class AtividadeMetodologica {
 		this.descricaoRisco = descricaoRisco;
 		this.resultados = new ArrayList<>();
 		this.codigo = codigo;
+		this.duracaoExecucao = 0;
+		this.resultadosObtidos = new ArrayList<>();
 	}
 
 	/**
@@ -138,5 +143,26 @@ public class AtividadeMetodologica {
 		mensagens.add(String.format("%s: %s", this.codigo, this.descricao));
 		mensagens.add(String.format("%s: %s", this.codigo, this.descricaoRisco));
 		return mensagens;
+	}
+
+	public void registrarDuracao(int duracao){
+		Validador.validaValoresNegativos(duracao, "Duracao nao pode ser nula ou negativa.");
+		this.duracaoExecucao += duracao;
+	}
+
+	public void realizarItem(int posItem){
+		Validador.validaValoresNegativos(posItem, "Item nao pode ser nulo ou negativo.");
+
+		if(posItem > this.resultados.size()){
+			throw new IndexOutOfBoundsException("Item nao encontrado.");
+		}
+
+		Item item = this.resultados.get(posItem-1);
+
+		if(item.exibeEstado().equals("REALIZADO")){
+			throw new IllegalArgumentException("Item ja executado.");
+		}
+
+		item.alteraEstado();
 	}
 }

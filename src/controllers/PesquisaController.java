@@ -423,4 +423,26 @@ public class PesquisaController {
 
 		return this.pesquisas.get(codigoPesquisa).desassociaAtividade(codigoAtividade);
 	}
+
+	public void executaAtividade(String codigoAtividade, int item, int duracao){
+		Validador.validaString(codigoAtividade, "Campo codigoAtividade nao pode ser nulo ou vazio.");
+		Validador.validaValoresNegativos(item, "Item nao pode ser nulo ou negativo.");
+		Validador.validaValoresNegativos(duracao, "Duracao nao pode ser nula ou negativa.");
+
+		boolean naoAssociada = true;
+
+		for(Pesquisa pesquisa : this.pesquisas.values()){
+			AtividadeMetodologica atividade = pesquisa.getAtividadeAssociada(codigoAtividade);
+			if(atividade != null){
+				naoAssociada = false;
+				atividade.realizarItem(item);
+				atividade.registrarDuracao(duracao);
+				break;
+			}
+		}
+
+		if(naoAssociada){
+			throw new IllegalArgumentException("Atividade sem associacoes com pesquisas.");
+		}
+	}
 }

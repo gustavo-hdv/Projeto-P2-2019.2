@@ -344,4 +344,8 @@ public class Pesquisa {
 	public String proximaAtividade(Estrategia estrategia) {
 		return estrategia.sugestao(this.atividadesAssociadas.values());
 	}
+
+	public AtividadeMetodologica getAtividadeAssociada(String codigoAtividade) {
+		return this.atividadesAssociadas.get(codigoAtividade);
+	}
 }
