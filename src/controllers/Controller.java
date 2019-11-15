@@ -75,7 +75,7 @@ public class Controller {
 		FileWriter escrever = new FileWriter(arquivo, false);
 		escrever.write(getResumoPesquisa(this.pesquisaC.getPesquisa(codigoPesquisa)));
 		escrever.close();
-		System.out.println(resumo);
+//		System.out.println(resumo);
 	}
 
 	/**
