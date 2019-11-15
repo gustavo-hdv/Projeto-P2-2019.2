@@ -156,6 +156,15 @@ public class AtividadeMetodologica {
 		return itensDuracao;
 	}
 	
+	/** Exibe a descricao da atividade 
+	 * 
+	 * @return descricao da atividade
+	 */
+	public String exibeDescricao() {
+		return this.descricao;
+	}
+	
+	
 	/** Exibe os resultados obtidos da atividade
 	 *  Estilo: descricao dos resultados obtidoss \n ...
 	 *  

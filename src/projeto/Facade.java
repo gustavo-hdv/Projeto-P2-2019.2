@@ -1,5 +1,7 @@
 package projeto;
 
+import java.io.IOException;
+
 import controllers.Controller;
 import easyaccept.EasyAccept;
 
@@ -25,14 +27,16 @@ public class Facade {
 	
 	/** Exporta um resumo da pesquisa em arquivo de texto
 	 *  Representado todas as entidades de um pesquisa em ordem de cadastro 
+	 * @throws IOException 
 	 */
-	public void gravarResumo(String codigoPesquisa) {
+	public void gravarResumo(String codigoPesquisa) throws IOException {
 		this.controller.gravarResumo(codigoPesquisa);
 	}
 	/** Exporta os resultados da pesquisa em arquivo de texto
 	 *  Representado os resultados obtidos com a pesquisa
+	 * @throws IOException 
 	 */
-	public void gravarResultados(String codigoPesquisa) {
+	public void gravarResultados(String codigoPesquisa) throws IOException {
 		this.controller.gravarResultados(codigoPesquisa);
 	}
 

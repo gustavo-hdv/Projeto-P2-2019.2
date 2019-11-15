@@ -122,7 +122,7 @@ public class Pesquisa {
 	public String exibeResultadosPesquisa() {
 		String resultadosAtividades = "";
 		for (Map.Entry<String, AtividadeMetodologica> atividades : this.atividadesAssociadas.entrySet()) {
-			resultadosAtividades += "\t\t- " + atividades.getValue().toString() + System.lineSeparator();
+			resultadosAtividades += "\t\t- " + atividades.getValue().exibeDescricao() + System.lineSeparator();
 			resultadosAtividades += atividades.getValue().exibeItensDuracao();
 			resultadosAtividades += atividades.getValue().exibeResultados();
 		}

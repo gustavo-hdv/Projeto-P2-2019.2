@@ -1,5 +1,9 @@
 package controllers;
 
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
+
 import projeto.Busca;
 import projeto.Pesquisa;
 import projeto.Validador;
@@ -29,7 +33,7 @@ public class Controller {
 	 *  @return resumo da pesquisa
 	 */
 	private String getResumoPesquisa(Pesquisa pesquisa) {
-		String resumo = "- Pesquisa: " + pesquisa.toString() + System.lineSeparator();
+		String resumo = "\"- Pesquisa: " + pesquisa.toString() + System.lineSeparator();
 		resumo += "\t- Pesquisadores: " + System.lineSeparator(); //Mudar para ordem de cadastro
 		resumo += this.pesquisadorC.exibePesquisadoresAssociados(pesquisa.getCodigo());
 		resumo += this.pesquisaC.exibeResumoPesquisa(pesquisa.getCodigo());
@@ -44,7 +48,7 @@ public class Controller {
 	 *  		  Descricao dos resultados \n ...
 	 */
 	private String getResultadosPesquisa(Pesquisa pesquisa) {
-		String resultados = "- Pesquisa: " + pesquisa.toString() + System.lineSeparator();
+		String resultados = "\"- Pesquisa: " + pesquisa.toString() + System.lineSeparator();
 		resultados += "\t- Resultados: " + System.lineSeparator();
 		resultados += this.pesquisaC.exibeResultadosPesquisa(pesquisa.getCodigo());
 		return resultados;
@@ -59,12 +63,19 @@ public class Controller {
 	 *  		 Problema: \n listagem dos problemas
 	 *           Objetivos: \n listagem dos objetivos
 	 *           Atividades: \n listagem das atividades
+	 * @throws IOException 
 	 */
-	public void gravarResumo(String codigoPesquisa) {
+	public void gravarResumo(String codigoPesquisa) throws IOException {
 		Validador.validaString(codigoPesquisa, "Pesquisa nao pode ser nula ou vazia.");
 		Validador.isRegistered(codigoPesquisa, this.pesquisaC.pesquisas, "Pesquisa nao encontrada.");
-//		String resumo = getResumoPesquisa(this.pesquisaC.getPesquisa(codigoPesquisa));
-//		System.out.println(resumo);
+		String resumo = getResumoPesquisa(this.pesquisaC.getPesquisa(codigoPesquisa));
+		resumo = resumo.replaceAll("[ \n]+$", "\"");
+		
+		File arquivo = new File(codigoPesquisa + ".txt");
+		FileWriter escrever = new FileWriter(arquivo, false);
+		escrever.write(getResumoPesquisa(this.pesquisaC.getPesquisa(codigoPesquisa)));
+		escrever.close();
+		System.out.println(resumo);
 	}
 
 	/**
@@ -76,11 +87,18 @@ public class Controller {
 	 *  		 Descricao
 	 *  		 Item(id) - Duracao \n ...
 	 *  		 Descricao dos resultados \n ...
+	 * @throws IOException 
 	 */
-	public void gravarResultados(String codigoPesquisa) {
+	public void gravarResultados(String codigoPesquisa) throws IOException {
 		Validador.validaString(codigoPesquisa, "Pesquisa nao pode ser nula ou vazia.");
 		Validador.isRegistered(codigoPesquisa, this.pesquisaC.pesquisas, "Pesquisa nao encontrada.");
-//		String resultados = getResultadosPesquisa(this.pesquisaC.getPesquisa(codigoPesquisa));
+		String resultados = getResultadosPesquisa(this.pesquisaC.getPesquisa(codigoPesquisa));
+		resultados = resultados.replaceAll("[ \n]+$", "\"");
+		
+		File arquivo = new File(codigoPesquisa + "-Resultados.txt");
+		FileWriter escrever = new FileWriter(arquivo, false);
+		escrever.write(resultados);
+		escrever.close();
 //		System.out.println(resultados);
 	}
 
