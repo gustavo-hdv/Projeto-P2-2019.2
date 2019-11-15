@@ -99,7 +99,7 @@ public class Controller {
 		FileWriter escrever = new FileWriter(arquivo, false);
 		escrever.write(resultados);
 		escrever.close();
-//		System.out.println(resultados);
+		System.out.println(resultados);
 	}
 
 	/**
