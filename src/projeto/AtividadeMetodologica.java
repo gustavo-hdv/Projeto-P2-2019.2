@@ -15,13 +15,13 @@ public class AtividadeMetodologica {
 	private String nivelRisco;
 	/** Descricao do risco */
 	private String descricaoRisco;
-	/** Lista de resultados com os itens cadastrados */
-	private List<Item> resultados;
 	/** Codigo de identificacao da atividade metodologica */
 	private String codigo;
-
+	/** Duracao de execucao da atividade*/
 	private int duracaoExecucao;
-
+	/** Lista de resultados com os itens cadastrados */
+	private List<Item> resultados;
+	/** Lista dos resultados obtidos com descricao */
 	private List<Resultado> resultadosObtidos;
 
 	/**
@@ -44,10 +44,10 @@ public class AtividadeMetodologica {
 		this.descricao = descricao;
 		this.nivelRisco = nivelRisco;
 		this.descricaoRisco = descricaoRisco;
-		this.resultados = new ArrayList<>();
 		this.codigo = codigo;
 		this.duracaoExecucao = 0;
-		this.resultadosObtidos = new ArrayList<>();
+		this.resultados = new ArrayList<Item>();
+		this.resultadosObtidos = new ArrayList<Resultado>();
 	}
 
 	/**

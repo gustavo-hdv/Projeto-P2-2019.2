@@ -2,7 +2,7 @@ package projeto;
 
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -29,14 +29,15 @@ public class Pesquisa {
 	private String campoDeInteresse;
 
 	/**
+	 * Problema da Pesquisa.
+	 */
+	private Problema problema;
+	
+	/**
 	 * Mapa de atividades associadas.
 	 */
 	private Map<String, AtividadeMetodologica> atividadesAssociadas;
 
-	/**
-	 * Problema da Pesquisa.
-	 */
-	private Problema problema;
 
 	/**
 	 * Objetivos da Pesquisa.
@@ -78,9 +79,9 @@ public class Pesquisa {
 		this.codigo = codigo;
 		this.descricao = descricao;
 		this.campoDeInteresse = campoDeInteresse;
-		this.atividadesAssociadas = new HashMap<>();
+		this.atividadesAssociadas = new LinkedHashMap<String, AtividadeMetodologica>();
 		this.problema = null;
-		this.objetivos = new HashMap<String, Objetivo>();
+		this.objetivos = new LinkedHashMap<String, Objetivo>();
 	}
 	
 	/** Representacao do resumo de uma pesquisa

@@ -340,7 +340,7 @@ public class PesquisaController {
 	 */
 	public String listaPesquisas(String ordem) {
 		Validador.validaString(ordem, "Valor invalido da ordem");
-		if (!((ordem.equals("PROBLEMA")) | ordem.equals("OBJETIVOS") | ordem.equals("PESQUISA"))) {
+		if (!(ordem.equals("PROBLEMA") | ordem.equals("OBJETIVOS") | ordem.equals("PESQUISA"))) {
 			throw new IllegalArgumentException("Valor invalido da ordem");
 		}
 
@@ -349,28 +349,18 @@ public class PesquisaController {
 		for (Map.Entry<String, Pesquisa> pesquisas : this.pesquisas.entrySet()) {
 			tempPesquisas.add(pesquisas.getValue());
 		}
-
+		
 		if (ordem.equals("PROBLEMA")) {
 			Collections.sort(tempPesquisas, new ComparadorPesquisaProblema());
-			for (int i = 0; i < tempPesquisas.size(); i++) {
-				if (i != 0)
-					ordenado += " | ";
-				ordenado += tempPesquisas.get(i).toString();
-			}
 		} else if (ordem.equals("OBJETIVOS")) {
 			Collections.sort(tempPesquisas, new ComparadorPesquisaObjetivos());
-			for (int i = 0; i < tempPesquisas.size(); i++) {
-				if (i != 0)
-					ordenado += " | ";
-				ordenado += tempPesquisas.get(i).toString();
-			}
 		} else if (ordem.equals("PESQUISA")) {
 			Collections.sort(tempPesquisas, new ComparadorPesquisaCodigo());
-			for (int i = 0; i < tempPesquisas.size(); i++) {
-				if (i != 0)
-					ordenado += " | ";
-				ordenado += tempPesquisas.get(i).toString();
-			}
+		}
+		
+		for (int i = 0; i < tempPesquisas.size(); i++) {
+			if (i != 0) ordenado += " | ";
+			ordenado += tempPesquisas.get(i).toString();
 		}
 
 		return ordenado;

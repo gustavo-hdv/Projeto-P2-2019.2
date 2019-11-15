@@ -1,6 +1,7 @@
 package projeto;
 
 import java.util.HashMap;
+import java.util.LinkedHashMap;
 
 public class Pesquisador implements Buscavel {
 	protected String nome;
@@ -37,7 +38,7 @@ public class Pesquisador implements Buscavel {
 		this.email = email;
 		this.foto = foto;
 		this.status = true;
-		this.pesquisasAssociadas = new HashMap<>();
+		this.pesquisasAssociadas = new LinkedHashMap<String, Pesquisa>();
 	}
 
 	private void validaEmail(String email) {
