@@ -87,6 +87,15 @@ public class PesquisaController {
 		return this.pesquisas.get(codigoPesquisa).exibeResumoPesquisa();
 	}
 	
+	/** Representacao dos resultados de uma pesquisa
+	 *  Estilo: Pesquisa: codigo - descricao - campo de interesse
+	 *  		  Resultados:
+	 *  		  Descricao
+	 *  		  Item(id) - Duracao \n ...
+	 *  		  Descricao dos resultados \n ...
+	 *  @param codigoPesquisa identificacao da pesquisa
+	 *  @return resultados da pesquisa
+	 */
 	public String exibeResultadosPesquisa(String codigoPesquisa) {
 		return this.pesquisas.get(codigoPesquisa).exibeResultadosPesquisa();
 	}
