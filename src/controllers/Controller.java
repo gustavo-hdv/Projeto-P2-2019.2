@@ -75,7 +75,6 @@ public class Controller {
 		FileWriter escrever = new FileWriter(arquivo, false);
 		escrever.write(getResumoPesquisa(this.pesquisaC.getPesquisa(codigoPesquisa)));
 		escrever.close();
-//		System.out.println(resumo);
 	}
 
 	/**
@@ -99,7 +98,6 @@ public class Controller {
 		FileWriter escrever = new FileWriter(arquivo, false);
 		escrever.write(resultados);
 		escrever.close();
-		System.out.println(resultados);
 	}
 
 	/**
