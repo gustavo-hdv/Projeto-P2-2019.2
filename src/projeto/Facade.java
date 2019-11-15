@@ -60,7 +60,6 @@ public class Facade {
 	/** Desassocia um problema da a pesquisa 
 	 * 
 	 * @param idPesquisa identificador da pesquisa
-	 * @param idProblema identificador do problema
 	 * 
 	 * @return boolean (true para desassociado com sucesso, false para nao desassociado)
 	 */
@@ -320,8 +319,7 @@ public class Facade {
 	
 	/**
 	 * GABRIEL
-	 * 
-	 * @param codigoPesquisa
+	 *
 	 * @param emailPesquisador
 	 * @return
 	 */
@@ -375,5 +373,21 @@ public class Facade {
 
 	public void executaAtividade(String codigoAtividade, int item, int duracao){
 		this.controller.executaAtividade(codigoAtividade, item, duracao);
+	}
+
+	public int cadastraResultado(String codigoAtividade, String resultado){
+		return this.controller.cadastraResultado(codigoAtividade, resultado);
+	}
+
+	public boolean removeResultado(String codigoAtividade, int numeroResultado){
+		return this.controller.removeResultado(codigoAtividade, numeroResultado);
+	}
+
+	public String listaResultados(String codigoAtividade){
+		return this.controller.listaResultados(codigoAtividade);
+	}
+
+	public int getDuracao(String codigoAtividade){
+		return this.controller.getDuracao(codigoAtividade);
 	}
 }

@@ -480,6 +480,56 @@ public class Controller {
 	}
 
 	public void executaAtividade(String codigoAtividade, int item, int duracao){
+		Validador.validaString(codigoAtividade, "Campo codigoAtividade nao pode ser nulo ou vazio.");
+		Validador.validaValoresNegativos(item, "Item nao pode ser nulo ou negativo.");
+		Validador.validaValoresNegativos(duracao, "Duracao nao pode ser nula ou negativa.");
+
+		if(this.atividadesC.getAtividade(codigoAtividade) == null){
+			throw new NullPointerException("Atividade nao encontrada");
+		}
+
 		this.pesquisaC.executaAtividade(codigoAtividade, item, duracao);
+	}
+
+	public int cadastraResultado(String codigoAtividade, String resultado){
+		Validador.validaString(codigoAtividade, "Campo codigoAtividade nao pode ser nulo ou vazio.");
+		Validador.validaString(resultado, "Resultado nao pode ser nulo ou vazio.");
+
+		if(this.atividadesC.getAtividade(codigoAtividade) == null){
+			throw new NullPointerException("Atividade nao encontrada");
+		}
+
+		return this.pesquisaC.cadastraResultado(codigoAtividade, resultado);
+	}
+
+	public boolean removeResultado(String codigoAtividade, int numeroResultado) {
+		Validador.validaString(codigoAtividade, "Campo codigoAtividade nao pode ser nulo ou vazio.");
+		Validador.validaValoresNegativos(numeroResultado, "numeroResultado nao pode ser nulo ou negativo.");
+
+		if(this.atividadesC.getAtividade(codigoAtividade) == null){
+			throw new NullPointerException("Atividade nao encontrada");
+		}
+
+		return this.pesquisaC.removeResultado(codigoAtividade, numeroResultado);
+	}
+
+	public String listaResultados(String codigoAtividade) {
+		Validador.validaString(codigoAtividade, "Campo codigoAtividade nao pode ser nulo ou vazio.");
+
+		if(this.atividadesC.getAtividade(codigoAtividade) == null){
+			throw new NullPointerException("Atividade nao encontrada");
+		}
+
+		return this.pesquisaC.listaResultados(codigoAtividade);
+	}
+
+	public int getDuracao(String codigoAtividade) {
+		Validador.validaString(codigoAtividade, "Campo codigoAtividade nao pode ser nulo ou vazio.");
+
+		if(this.atividadesC.getAtividade(codigoAtividade) == null){
+			throw new NullPointerException("Atividade nao encontrada");
+		}
+
+		return this.pesquisaC.getDuracao(codigoAtividade);
 	}
 }

@@ -165,4 +165,44 @@ public class AtividadeMetodologica {
 
 		item.alteraEstado();
 	}
+
+	public int cadastraResultado(String resultado){
+		Validador.validaString(resultado, "Resultado nao pode ser nulo ou vazio.");
+
+		this.resultadosObtidos.add(new Resultado(resultado));
+
+		return this.resultadosObtidos.size();
+	}
+
+	public boolean removeResultado(int numeroResultado){
+		Validador.validaValoresNegativos(numeroResultado, "numeroResultado nao pode ser nulo ou negativo.");
+
+		if(numeroResultado > this.resultadosObtidos.size()){
+			throw new IndexOutOfBoundsException("Resultado nao encontrado.");
+		}
+
+		this.resultadosObtidos.remove(numeroResultado-1);
+
+		return true;
+	}
+
+	public String listaResultados(){
+		String str = "";
+
+		for(Resultado resultado : this.resultadosObtidos){
+			str += resultado.toString() + " | ";
+		}
+
+		int index  = str.trim().lastIndexOf("|");
+
+		if(index == -1){
+			return str.trim();
+		}
+
+		return str.trim().substring(0, index-1);
+	}
+
+	public int getDuracao() {
+		return this.duracaoExecucao;
+	}
 }
