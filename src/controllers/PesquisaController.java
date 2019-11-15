@@ -433,4 +433,82 @@ public class PesquisaController {
 
 		return this.pesquisas.get(codigoPesquisa).desassociaAtividade(codigoAtividade);
 	}
+
+	public void executaAtividade(String codigoAtividade, int item, int duracao){
+		Validador.validaString(codigoAtividade, "Campo codigoAtividade nao pode ser nulo ou vazio.");
+		Validador.validaValoresNegativos(item, "Item nao pode ser nulo ou negativo.");
+		Validador.validaValoresNegativos(duracao, "Duracao nao pode ser nula ou negativa.");
+
+		boolean naoAssociada = true;
+
+		for(Pesquisa pesquisa : this.pesquisas.values()){
+			AtividadeMetodologica atividade = pesquisa.getAtividadeAssociada(codigoAtividade);
+			if(atividade != null){
+				naoAssociada = false;
+				atividade.realizarItem(item);
+				atividade.registrarDuracao(duracao);
+				break;
+			}
+		}
+
+		if(naoAssociada){
+			throw new IllegalArgumentException("Atividade sem associacoes com pesquisas.");
+		}
+	}
+
+	public int cadastraResultado(String codigoAtividade, String resultado){
+		Validador.validaString(codigoAtividade, "Campo codigoAtividade nao pode ser nulo ou vazio.");
+		Validador.validaString(resultado, "Resultado nao pode ser nulo ou vazio.");
+
+		for(Pesquisa pesquisa : this.pesquisas.values()){
+			AtividadeMetodologica atividade = pesquisa.getAtividadeAssociada(codigoAtividade);
+			if(atividade != null){
+				return atividade.cadastraResultado(resultado);
+			}
+		}
+
+		throw new IllegalArgumentException("Atividade sem associacoes com pesquisas.");
+	}
+
+	public boolean removeResultado(String codigoAtividade, int numeroResultado){
+		Validador.validaString(codigoAtividade, "Campo codigoAtividade nao pode ser nulo ou vazio.");
+		Validador.validaValoresNegativos(numeroResultado, "numeroResultado nao pode ser nulo ou negativo.");
+
+		for(Pesquisa pesquisa : this.pesquisas.values()){
+			AtividadeMetodologica atividade = pesquisa.getAtividadeAssociada(codigoAtividade);
+			if(atividade != null){
+				return atividade.removeResultado(numeroResultado);
+			}
+		}
+
+		throw new IllegalArgumentException("Atividade sem associacoes com pesquisas.");
+	}
+
+	public String listaResultados(String codigoAtividade){
+		Validador.validaString(codigoAtividade, "Campo codigoAtividade nao pode ser nulo ou vazio.");
+
+		for(Pesquisa pesquisa : this.pesquisas.values()){
+			AtividadeMetodologica atividade = pesquisa.getAtividadeAssociada(codigoAtividade);
+
+			if(atividade != null){
+				return atividade.listaResultados();
+			}
+		}
+
+		throw new IllegalArgumentException("Atividade sem associacoes com pesquisas.");
+	}
+
+	public int getDuracao(String codigoAtividade){
+		Validador.validaString(codigoAtividade, "Campo codigoAtividade nao pode ser nulo ou vazio.");
+
+		for(Pesquisa pesquisa : this.pesquisas.values()){
+			AtividadeMetodologica atividade = pesquisa.getAtividadeAssociada(codigoAtividade);
+
+			if(atividade != null){
+				return atividade.getDuracao();
+			}
+		}
+
+		throw new IllegalArgumentException("Atividade sem associacoes com pesquisas.");
+	}
 }

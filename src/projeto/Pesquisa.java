@@ -378,4 +378,10 @@ public class Pesquisa {
 		return estrategia.sugestao(this.atividadesAssociadas.values());
 	}
 
+<<<<<<< HEAD
+=======
+	public AtividadeMetodologica getAtividadeAssociada(String codigoAtividade) {
+		return this.atividadesAssociadas.get(codigoAtividade);
+	}
+>>>>>>> 435322fc75d19553a75eba23d09059769cda5554
 }

@@ -6,7 +6,10 @@ package projeto;
 
 import java.util.List;
 import java.util.ArrayList;
+<<<<<<< HEAD
 
+=======
+>>>>>>> 435322fc75d19553a75eba23d09059769cda5554
 
 public class AtividadeMetodologica {
 
@@ -18,8 +21,16 @@ public class AtividadeMetodologica {
 	private String descricaoRisco;
 	/** Lista de resultados com os itens cadastrados */
 	private List<Item> resultados;
+<<<<<<< HEAD
 	/** Codigo de identificacao da atividade metodologica */
+=======
+
+>>>>>>> 435322fc75d19553a75eba23d09059769cda5554
 	private String codigo;
+
+	private int duracaoExecucao;
+
+	private List<Resultado> resultadosObtidos;
 
 	/**
 	 * Construtor da atividade metodologica com descricao, nivel de risco e uma
@@ -43,6 +54,8 @@ public class AtividadeMetodologica {
 		this.descricaoRisco = descricaoRisco;
 		this.resultados = new ArrayList<>();
 		this.codigo = codigo;
+		this.duracaoExecucao = 0;
+		this.resultadosObtidos = new ArrayList<>();
 	}
 
 	/**
@@ -143,5 +156,66 @@ public class AtividadeMetodologica {
 		mensagens.add(String.format("%s: %s", this.codigo, this.descricao));
 		mensagens.add(String.format("%s: %s", this.codigo, this.descricaoRisco));
 		return mensagens;
+	}
+
+	public void registrarDuracao(int duracao){
+		Validador.validaValoresNegativos(duracao, "Duracao nao pode ser nula ou negativa.");
+		this.duracaoExecucao += duracao;
+	}
+
+	public void realizarItem(int posItem){
+		Validador.validaValoresNegativos(posItem, "Item nao pode ser nulo ou negativo.");
+
+		if(posItem > this.resultados.size()){
+			throw new IndexOutOfBoundsException("Item nao encontrado.");
+		}
+
+		Item item = this.resultados.get(posItem-1);
+
+		if(item.exibeEstado().equals("REALIZADO")){
+			throw new IllegalArgumentException("Item ja executado.");
+		}
+
+		item.alteraEstado();
+	}
+
+	public int cadastraResultado(String resultado){
+		Validador.validaString(resultado, "Resultado nao pode ser nulo ou vazio.");
+
+		this.resultadosObtidos.add(new Resultado(resultado));
+
+		return this.resultadosObtidos.size();
+	}
+
+	public boolean removeResultado(int numeroResultado){
+		Validador.validaValoresNegativos(numeroResultado, "numeroResultado nao pode ser nulo ou negativo.");
+
+		if(numeroResultado > this.resultadosObtidos.size()){
+			throw new IndexOutOfBoundsException("Resultado nao encontrado.");
+		}
+
+		this.resultadosObtidos.remove(numeroResultado-1);
+
+		return true;
+	}
+
+	public String listaResultados(){
+		String str = "";
+
+		for(Resultado resultado : this.resultadosObtidos){
+			str += resultado.toString() + " | ";
+		}
+
+		int index  = str.trim().lastIndexOf("|");
+
+		if(index == -1){
+			return str.trim();
+		}
+
+		return str.trim().substring(0, index-1);
+	}
+
+	public int getDuracao() {
+		return this.duracaoExecucao;
 	}
 }
