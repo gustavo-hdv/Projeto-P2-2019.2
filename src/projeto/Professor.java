@@ -23,14 +23,14 @@ public class Professor extends Especificacao {
 	/**
 	 * Controi um professor
 	 * 
-	 * @param nome eh o nome do professor.
-	 * @param funcao eh a funcao, que eh professor.
-	 * @param biografia eh a biografia do professor.
-	 * @param email eh o email do professor.
-	 * @param foto eh a foto do professor.
-	 * @param formacao eh a formcao do professor.
-	 * @param unidade eh a unidade do professor.
-	 * @param data eh a data em que o professor foi contratado.
+	 * @param nome nome do professor.
+	 * @param funcao funcao, que eh professor.
+	 * @param biografia biografia do professor.
+	 * @param email email do professor.
+	 * @param foto foto do professor.
+	 * @param formacao formcao do professor.
+	 * @param unidade unidade do professor.
+	 * @param data data em que o professor foi contratado.
 	 */
 	public Professor(String nome, String funcao, String biografia, String email, String foto, String formacao,
 			String unidade, String data) {
@@ -96,7 +96,7 @@ public class Professor extends Especificacao {
 
 	/**
 	 * Metodo que retorna a representacao em forma de String do professor.
-	 * Segue o formato: NOME (FUNÇÃO) - BIOGRAFIA - EMAIL - FOTO - FORMCAO - UNIDADE - DATA.
+	 * Segue o formato: NOME (FUNCAO) - BIOGRAFIA - EMAIL - FOTO - FORMCAO - UNIDADE - DATA.
 	 * 
 	 * @return retorna a representacao em forma de String do professor.
 	 */

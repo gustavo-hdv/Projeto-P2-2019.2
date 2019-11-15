@@ -33,11 +33,11 @@ public abstract class Especificacao{
 	/**
 	 * Constroi uma especificacao do Pesquisador.
 	 * 
-	 * @param nome eh o nome do Pesquisador.
-	 * @param funcao eh a funcao do Pesquisador.
-	 * @param biografia eh a biografia do Pesquisador.
-	 * @param email eh o email do Pesquisador.
-	 * @param foto a foto do Pesquisador.
+	 * @param nome nome do Pesquisador.
+	 * @param funcao funcao do Pesquisador.
+	 * @param biografia biografia do Pesquisador.
+	 * @param email email do Pesquisador.
+	 * @param foto foto do Pesquisador.
 	 */
 	public Especificacao(String nome, String funcao, String biografia, String email, String foto) {
 		this.nome = nome;

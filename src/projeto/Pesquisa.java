@@ -7,7 +7,7 @@ import java.util.List;
 import java.util.Map;
 
 /**
- * Representacao de uma pesquisa científica, que eh aquela que segue o metodo
+ * Representacao de uma pesquisa cientifica, segue o metodo
  * cientifico para a construcao de um novo entendimento, compreensao ou
  * processo.
  */
@@ -48,9 +48,9 @@ public class Pesquisa {
 	 * Constroi uma Pesquisa, a partir do seu codigo, descricao e campo de
 	 * interesse.
 	 * 
-	 * @param codigo           eh o codigo que identifica a Pesquisa.
-	 * @param descricao        eh a descricao da Pesquisa.
-	 * @param campoDeInteresse eh o campo de interesse da Pesquisa.
+	 * @param codigo           codigo que identifica a Pesquisa.
+	 * @param descricao        descricao da Pesquisa.
+	 * @param campoDeInteresse campo de interesse da Pesquisa.
 	 */
 	public Pesquisa(String codigo, String descricao, String campoDeInteresse) {
 		Validador.validaString(codigo, "Codigo nao pode ser nula ou vazia.");
@@ -234,7 +234,7 @@ public class Pesquisa {
 	/**
 	 * Metodo Set que altera a descricao da Pesquisa.
 	 * 
-	 * @param descricao eh a descricao da Pesquisa.
+	 * @param descricao descricao da Pesquisa.
 	 */
 	public void setDescricao(String descricao) {
 		Validador.validaString(descricao, "Descricao nao pode ser nula ou vazia.");
@@ -244,7 +244,7 @@ public class Pesquisa {
 	/**
 	 * Metodo Set que altera o campo de interesse da Pesquisa.
 	 * 
-	 * @param campoDeInteresse eh o campo de interesse da pesquisa.
+	 * @param campoDeInteresse campo de interesse da pesquisa.
 	 */
 	public void setCampoDeInteresse(String campoDeInteresse) {
 		Validador.validaString(campoDeInteresse, "Formato do campo de interesse invalido.");

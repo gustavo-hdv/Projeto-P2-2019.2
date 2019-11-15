@@ -96,7 +96,7 @@ public class AtividadeMetodologica {
 	}
 
 	/**
-	 * Exibe a atividade no estilo: DESCRIÇÃO (NIVEL_RISCO - DESC_RISCO) | REALIZADO
+	 * Exibe a atividade no estilo: DESCRICAO (NIVEL_RISCO - DESC_RISCO) | REALIZADO
 	 * - ITEM1 | REALIZADO - ITEM2 | PENDENTE - ITEM3
 	 * 
 	 * @return representacao de uma ativdade (String)
@@ -116,7 +116,7 @@ public class AtividadeMetodologica {
 	}
 	
 	/** Exibe a atividade no estilo:
-	 *  DESCRIÇÃO (NIVEL_RISCO - DESC_RISCO)
+	 *  DESCRICAO (NIVEL_RISCO - DESC_RISCO)
 	 *  
 	 *  @return representacao de uma atividade
 	 */

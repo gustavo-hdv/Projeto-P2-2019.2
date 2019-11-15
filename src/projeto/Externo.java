@@ -9,11 +9,11 @@ public class Externo extends Especificacao{
 	/**
 	 * Controi um Pesquisador Externo.
 	 * 
-	 * @param nome eh o nome do Pesquisador Externo.
-	 * @param funcao eh a funcao do Pesquisador Externo.
-	 * @param biografia eh a biografia do Pesquisador Externo.
-	 * @param email eh o email do do Pesquisador Externo.
-	 * @param foto eh a foto do do Pesquisador Externo.
+	 * @param nome nome do Pesquisador Externo.
+	 * @param funcao funcao do Pesquisador Externo.
+	 * @param biografia biografia do Pesquisador Externo.
+	 * @param email email do Pesquisador Externo.
+	 * @param foto foto do Pesquisador Externo.
 	 */
 	public Externo(String nome, String funcao, String biografia, String email, String foto) {
 		super(nome, funcao, biografia, email, foto);
@@ -21,7 +21,7 @@ public class Externo extends Especificacao{
 
 	/**
 	 * Metodo que retorna a representacao em forma de String do Pesquisador Externo.
-	 * Segue o formato: NOME (FUNÇÃO) - BIOGRAFIA - EMAIL - FOTO.
+	 * Segue o formato: NOME (FUNCAO) - BIOGRAFIA - EMAIL - FOTO.
 	 * 
 	 * @return retorna a representacao em forma de String do Pesquisador Externo.
 	 */

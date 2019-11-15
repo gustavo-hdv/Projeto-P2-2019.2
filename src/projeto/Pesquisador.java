@@ -12,14 +12,14 @@ public class Pesquisador implements Buscavel {
 	protected boolean status;
 
 	/**
-	 * Eh um atributo que guarda um objeto especificacao, que por sua vez eh responsavel por armazenar 
+	 * Atributo que guarda um objeto especificacao, que por sua vez eh responsavel por armazenar 
 	 * os atributos especificos de um professor ou de um aluno, e ao mesmo tempo guarda o metodo toString() 
 	 * de um professor, aluno ou externo.
 	 */
 	protected Especificacao especificacao;
 
 	/**
-	 * Um LinkedHashMap que guarda as pesquisas que esse Pesquisador esta associado.
+	 * LinkedHashMap que guarda as pesquisas que esse Pesquisador esta associado.
 	 */
 	private Map<String, Pesquisa> pesquisasAssociadas;
 

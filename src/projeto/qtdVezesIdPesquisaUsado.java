@@ -2,20 +2,20 @@ package projeto;
 
 /**
  * Representacao da quantidade de vezes que determinado codigo de letras (3 primeiras letras), 
- * já foram usadas para identificar uma pesquisa.
+ * ja foram usadas para identificar uma pesquisa.
  */
 public class qtdVezesIdPesquisaUsado {
 
 	/**
-	 * Contador que conta quantas vezes aquelas 3 primeiras letras já foram usadas para identificar uma pesquisa.
+	 * Contador que conta quantas vezes as 3 primeiras letras ja foram usadas para identificar uma pesquisa.
 	 */
 	private int contador;
 
 	/**
-	 * Constroi um objeto que guarda a quantidade de vezes que aquelas 3 primeiras letras já 
+	 * Constroi um objeto que guarda a quantidade de vezes que as 3 primeiras letras ja 
 	 * foram usadas para identificar uma pesquisa.
 	 * 
-	 * @param contador eh a quantidade de vezes que aquelas 3 primeiras letras já 
+	 * @param retorna a quantidade de vezes que as 3 primeiras letras ja 
 	 * foram usadas para identificar uma pesquisa.
 	 */
 	public qtdVezesIdPesquisaUsado(int contador) {

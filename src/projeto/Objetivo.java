@@ -1,22 +1,12 @@
 package projeto;
 
 /**
- * Laboratório de Programação 2 - Projeto
- *
- * @author Marcos Vinícius Santos Silva - 119111008
- */
-
-/**
-
- * Representação de um Objetivo.
-
- * @author Marcos Silva
-
+ * Representacao de um Objetivo.
  */
 
 public class Objetivo implements Buscavel {
     /**
-     * Código. Corresponde ao código do objetivo.
+     * Codigo. Corresponde ao codigo do objetivo.
      */
     private String codigo;
     /**
@@ -24,7 +14,7 @@ public class Objetivo implements Buscavel {
      */
     private String tipo;
     /**
-     * Descrição. Corresponde a descrição do objetivo.
+     * Descricao. Corresponde a descricao do objetivo.
      */
     private String descricao;
     /**
@@ -33,11 +23,11 @@ public class Objetivo implements Buscavel {
     private int valor;
 
     /**
-     * Constrói um objetivo a partir do seu código, do seu tipo, da sua descrição, da sua aderencia e da sua viabilidade.
+     * Constroi um objetivo a partir do seu codigo, do seu tipo, da sua descricao, da sua aderencia e da sua viabilidade.
      *
-     * @param codigo código do objetivo
+     * @param codigo codigo do objetivo
      * @param tipo tipo do objetivo
-     * @param descricao a descrição do objetivo
+     * @param descricao a descricao do objetivo
      * @param aderencia a aderência do objetivo
      * @param viabilidade a viabilidade do objetivo
      */
@@ -56,9 +46,9 @@ public class Objetivo implements Buscavel {
     }
 
     /**
-     * Retorna o código do objetivo.
+     * Retorna o codigo do objetivo.
      *
-     * @return uma String representando o código do objetivo.
+     * @return uma String representando o codigo do objetivo.
      */
     public String getCodigo() {
         return this.codigo;
@@ -67,7 +57,7 @@ public class Objetivo implements Buscavel {
     /**
      * Retorna a String que representa o Objetivo.
      *
-     * @return uma String representando o Objetivo no formato "Código - Tipo - Descrição - Valor".
+     * @return uma String representando o Objetivo no formato "Codigo - Tipo - Descricao - Valor".
      */
     @Override
     public String toString() {
