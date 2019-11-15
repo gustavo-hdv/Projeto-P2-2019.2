@@ -11,18 +11,7 @@ import projeto.Problema;
 import projeto.Validador;
 
 /**
- * Laboratório de Programação 2 - Projeto
- *
- * @author Marcos Vinícius Santos Silva - 119111008
- */
-
-/**
-
- * Representação de um Controller dos Problemas.
- *
-
- * @author Marcos Silva
-
+ * Representacao de um Controller dos Problemas.
  */
 public class ProblemaController implements Buscador {
     /**
@@ -30,12 +19,12 @@ public class ProblemaController implements Buscador {
      */
     protected Map<String, Problema> problemas;
     /**
-     * Posição. Corresponde a posição do próximo problema na lista (mapa) de problemas a ser usada no código do problema.
+     * Posicao. Corresponde a posicao do proximo problema na lista (mapa) de problemas a ser usada no codigo do problema.
      */
     private int posicao;
 
     /**
-     * Constrói um controller para problemas.
+     * Constroi um controller para problemas.
      */
     public ProblemaController(){
         this.problemas = new LinkedHashMap<String, Problema>();
@@ -47,7 +36,7 @@ public class ProblemaController implements Buscador {
      * Cadastra um novo problema.
      * Adiciona um objeto do tipo Problema no mapa de problemas.
      
-     * @param descricao descrição do problema
+     * @param descricao descricao do problema
      * @param viabilidade viabilidade do problema
      *
      */
@@ -63,8 +52,8 @@ public class ProblemaController implements Buscador {
     /**
      * Retorna a String que representa o problema existente na chave passada por parâmetro.
      *
-     * @param codigo o código e chave do problema no mapa
-     * @return a representação em String do problema pesquisado
+     * @param codigo o codigo e chave do problema no mapa
+     * @return a representacao em String do problema pesquisado
      */
     public String exibeProblema(String codigo){
         Validador.validaString(codigo, "Campo codigo nao pode ser nulo ou vazio.");
@@ -76,7 +65,7 @@ public class ProblemaController implements Buscador {
     /**
      * Remove um problema do mapa de problemas.
      *
-     * @param codigo código do problema a ser removido
+     * @param codigo codigo do problema a ser removido
      */
     public void apagarProblema(String codigo){
         Validador.validaString(codigo, "Campo codigo nao pode ser nulo ou vazio.");

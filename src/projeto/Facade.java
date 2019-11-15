@@ -37,7 +37,7 @@ public class Facade {
 	}
 
 	/** Lista as pesquisas em determinada ordem
-	 *  Estilo: CÓDIGO - Descrição - Campo de interesse
+	 *  Estilo: CODIGO - Descricao - Campo de interesse
 	 * 
 	 * @param ordem descreve o tipo da listagem das pesquisas
 	 * @return CODIGO - Descricao - Campo de interesse | CODIGO - Descricao - Campo de interesse | ...
@@ -94,7 +94,7 @@ public class Facade {
 	 * objetivos.
 	 * 
 	 * @param tipo        tipo do objetivo
-	 * @param descricao   descrição do objetivo
+	 * @param descricao   descricao do objetivo
 	 * @param aderencia   aderência do objetivo
 	 * @param viabilidade viabilidade do objetivo
 	 */
@@ -106,8 +106,8 @@ public class Facade {
 	 * Retorna a String que representa o objetivo existente na chave passada por
 	 * parâmetro.
 	 *
-	 * @param codigo o código e chave do objetivo no mapa
-	 * @return a representação em String do objetivo pesquisado
+	 * @param codigo o codigo e chave do objetivo no mapa
+	 * @return a representacao em String do objetivo pesquisado
 	 */
 	public String exibeObjetivo(String codigo) {
 		return controller.exibeObjetivo(codigo);
@@ -116,7 +116,7 @@ public class Facade {
 	/**
 	 * Remove um objetivo do mapa de objetivos.
 	 *
-	 * @param codigo código do objetivo a ser removido
+	 * @param codigo codigo do objetivo a ser removido
 	 */
 	public void apagarObjetivo(String codigo) {
 		controller.apagarObjetivo(codigo);
@@ -126,7 +126,7 @@ public class Facade {
 	 * Cadastra um novo problema. Adiciona um objeto do tipo Problema no mapa de
 	 * problemas.
 	 * 
-	 * @param descricao   descrição do problema
+	 * @param descricao   descricao do problema
 	 * @param viabilidade viabilidade do problema
 	 */
 	public void cadastraProblema(String descricao, int viabilidade) {
@@ -137,8 +137,8 @@ public class Facade {
 	 * Retorna a String que representa o problema existente na chave passada por
 	 * parâmetro.
 	 *
-	 * @param codigo o código e chave do problema no mapa
-	 * @return a representação em String do problema pesquisado
+	 * @param codigo o codigo e chave do problema no mapa
+	 * @return a representacao em String do problema pesquisado
 	 */
 	public String exibeProblema(String codigo) {
 		return controller.exibeProblema(codigo);
@@ -147,7 +147,7 @@ public class Facade {
 	/**
 	 * Remove um problema do mapa de problemas.
 	 *
-	 * @param codigo código do problema a ser removido
+	 * @param codigo codigo do problema a ser removido
 	 */
 	public void apagarProblema(String codigo) {
 		controller.apagarProblema(codigo);
@@ -186,7 +186,7 @@ public class Facade {
 	}
 
 	/**
-	 * Exibe uma atividade no estilo: DESCRIÇÃO (NIVEL_RISCO - DESC_RISCO) |
+	 * Exibe uma atividade no estilo: DESCRICAO (NIVEL_RISCO - DESC_RISCO) |
 	 * REALIZADO - ITEM1 | REALIZADO - ITEM2 | PENDENTE - ITEM3
 	 * 
 	 * @param codigo da atividade (String)

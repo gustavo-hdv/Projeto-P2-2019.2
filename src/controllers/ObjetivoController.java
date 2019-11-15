@@ -11,18 +11,7 @@ import projeto.Objetivo;
 import projeto.Validador;
 
 /**
- * Laboratório de Programação 2 - Projeto
- *
- * @author Marcos Vinícius Santos Silva - 119111008
- */
-
-/**
-
- * Representação de um Controller dos Objetivos.
- *
-
- * @author Marcos Silva
-
+ * Representacao de um Controller dos Objetivos.
  */
 public class ObjetivoController implements Buscador {
     /**
@@ -30,7 +19,7 @@ public class ObjetivoController implements Buscador {
      */
     protected Map<String, Objetivo> objetivos;
     /**
-     * Posicao. Corresponde a posição do próoimo objetivo na lista (mapa) de objetivos a ser usada no codigo do objetivo.
+     * Posicao. Corresponde a posicao do proximo objetivo na lista (mapa) de objetivos a ser usada no codigo do objetivo.
      */
     private int posicao;
 
@@ -47,7 +36,7 @@ public class ObjetivoController implements Buscador {
      * Adiciona um objeto do tipo Objetivo no mapa de objetivos.
 
      * @param tipo tipo do objetivo
-     * @param descricao descrição do objetivo
+     * @param descricao descricao do objetivo
      * @param aderencia aderência do objetivo
      * @param viabilidade viabilidade do objetivo
      *
@@ -67,8 +56,8 @@ public class ObjetivoController implements Buscador {
     /**
      * Retorna a String que representa o objetivo existente na chave passada por parâmetro.
      *
-     * @param codigo o código e chave do objetivo no mapa
-     * @return a representação em String do objetivo pesquisado
+     * @param codigo o codigo e chave do objetivo no mapa
+     * @return a representacao em String do objetivo pesquisado
      */
     public String exibeObjetivo(String codigo){
         Validador.validaString(codigo, "Campo codigo nao pode ser nulo ou vazio.");
@@ -80,7 +69,7 @@ public class ObjetivoController implements Buscador {
     /**
      * Remove um objetivo do mapa de objetivos.
      *
-     * @param codigo código do objetivo a ser removido
+     * @param codigo codigo do objetivo a ser removido
      */
     public void apagarObjetivo(String codigo){
         Validador.validaString(codigo, "Campo codigo nao pode ser nulo ou vazio.");

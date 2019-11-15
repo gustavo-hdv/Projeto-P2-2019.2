@@ -11,11 +11,8 @@ import comparators.*;
 import projeto.*;
 
 /**
- * Representação de um Controle, que é responsável por manipular os Collections,
- * e guardar alguns métodos do programa que sejam referentes a Classe Pesquisa.
- * 
- * @author Gabriel Menezes Cabral - 119110372.
- *
+ * Representacao de um Controle, que e responsavel por manipular os Collections,
+ * e guardar alguns metodos do programa que sejam referentes a Classe Pesquisa.
  */
 public class PesquisaController {
 
@@ -331,7 +328,7 @@ public class PesquisaController {
 	}
 
 	/**
-	 * Lista as pesquisas em determinada ordem Estilo: CÓDIGO - Descrição - Campo de
+	 * Lista as pesquisas em determinada ordem Estilo: CODIGO - Descricao - Campo de
 	 * interesse
 	 * 
 	 * @param ordem descreve o tipo da listagem das pesquisas

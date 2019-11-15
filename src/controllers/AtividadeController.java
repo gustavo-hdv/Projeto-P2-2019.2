@@ -80,7 +80,7 @@ public class AtividadeController {
 	}
 
 	/**
-	 * Exibe uma atividade no estilo: DESCRIÇÃO (NIVEL_RISCO - DESC_RISCO) |
+	 * Exibe uma atividade no estilo: DESCRICAO (NIVEL_RISCO - DESC_RISCO) |
 	 * REALIZADO - ITEM1 | REALIZADO - ITEM2 | PENDENTE - ITEM3
 	 * 
 	 * @param codigo da atividade (String)

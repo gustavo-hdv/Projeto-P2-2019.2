@@ -1,6 +1,7 @@
 package controllers;
 
 import java.util.ArrayList;
+
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.LinkedHashMap;
@@ -12,6 +13,8 @@ import projeto.Buscavel;
 import projeto.Pesquisa;
 import projeto.Pesquisador;
 import projeto.Validador;
+
+/** Representacao de um contrador de pesquisadores */
 
 public class PesquisadorController implements Buscador {
 	
