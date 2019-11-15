@@ -21,6 +21,9 @@ public class ComparadorPesquisaObjetivos implements Comparator<Pesquisa> {
 		}
 		if (arg1.quantidadeObjetivos() == arg0.quantidadeObjetivos()) {
 			if (arg1.getObjetivoIdMaior() != null && arg0.getObjetivoIdMaior() != null) {
+				if (arg1.getObjetivoIdMaior() == arg0.getObjetivoIdMaior()) {
+					return arg1.getCodigo().compareTo(arg0.getCodigo());
+				}
 				return arg1.getObjetivoIdMaior().compareTo(arg0.getObjetivoIdMaior());
 			}
 			if (arg1.getObjetivoIdMaior() == null && arg0.getObjetivoIdMaior() != null) {

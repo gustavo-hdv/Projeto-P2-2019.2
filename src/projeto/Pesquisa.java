@@ -376,7 +376,7 @@ public class Pesquisa {
 		if (this.objetivos.size() == 0) {
 			return null;
 		}
-		String maiorID = null;
+		String maiorID = "";
 		for (Map.Entry<String, Objetivo> CodigoObjetivo : this.objetivos.entrySet()) {
 			if (maiorID.compareTo(CodigoObjetivo.getValue().getCodigo()) == -1) {
 				maiorID = CodigoObjetivo.getValue().getCodigo();
