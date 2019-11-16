@@ -34,13 +34,17 @@ public class PesquisaController {
 	 * pesquisas estao associadas ao seu codigo.
 	 */
 	private Map<String, String> desativadas;
+	
+	private Integer vrau; 
+	
+//	qtdVezesIdPesquisaUsado
 
 	/**
 	 * Map responsavel por guardar um codigo associado a um ArrayList, o tamanho
 	 * desse ArrayList eh equivalente a quantidade de vezes que esse codigo com
 	 * essas 3 letras ja foram usados.
 	 */
-	private Map<String, qtdVezesIdPesquisaUsado> codigos;
+	private Map<String, QtdVezesIdPesquisaUsado> codigos;
 	
 	private Comparator<AtividadeMetodologica> estrategia;
 
@@ -51,7 +55,7 @@ public class PesquisaController {
 		this.codigo = "";
 		this.pesquisas = new LinkedHashMap<String, Pesquisa>();
 		this.desativadas = new LinkedHashMap<String, String>();
-		this.codigos = new LinkedHashMap<String, qtdVezesIdPesquisaUsado>();
+		this.codigos = new LinkedHashMap<String, QtdVezesIdPesquisaUsado>();
 	}
 
 	/**
@@ -129,7 +133,7 @@ public class PesquisaController {
 			codigo = codigoLetras + codigos.get(codigoLetras).qtdVezesIdPesquisaFoiUsado();
 		} else {
 			codigo = codigoLetras + "1";
-			codigos.put(codigoLetras, new qtdVezesIdPesquisaUsado(0));
+			codigos.put(codigoLetras, new QtdVezesIdPesquisaUsado(0));
 			codigos.get(codigoLetras).somaMaisUmQuantiadadeEsteCodigoFoiUsado();
 		}
 		this.estrategia = new AtividadeMaisAntiga();

@@ -394,4 +394,5 @@ public class Facade {
 	public int getDuracao(String codigoAtividade){
 		return this.controller.getDuracao(codigoAtividade);
 	}
+	
 }

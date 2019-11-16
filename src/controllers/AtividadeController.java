@@ -137,4 +137,62 @@ public class AtividadeController {
 		return achados;
 	}
 
+	/**
+	 * GABRIEL
+	 */
+	public void defineProximaAtividade(String idPrecedente, String idSubsequente) {
+		this.atividadesMetodologicas.get(idPrecedente).defineProximaAtividade(idSubsequente);
+	}
+
+	/**
+	 * GABRIEL
+	 */
+	public void tiraProximaAtividade(String idPrecedente) {
+		this.atividadesMetodologicas.get(idPrecedente).tiraProximaAtividade();
+	}
+
+	/**
+	 * GABRIEL
+	 */
+	public int contaProximos(String idPrecedente) {
+		int contador = 0;
+		String atividadeAtual = idPrecedente;
+		while (!this.atividadesMetodologicas.get(atividadeAtual).getSubsequente().equals("")) {
+			contador += 1;
+			atividadeAtual = this.atividadesMetodologicas.get(atividadeAtual).getSubsequente();
+		}
+		if (this.atividadesMetodologicas.get(idPrecedente).getSubsequente().equals("")) {
+			contador = 0;
+		}
+		return contador;
+	}
+
+	/**
+	 * GABRIEL
+	 */
+	public String pegaProximo(String idAtividade, int enesimaAtividade) {
+		int contador = 0;
+		String atividadeAtual = idAtividade;
+		while (contador < enesimaAtividade) {
+			if (!this.atividadesMetodologicas.get(atividadeAtual).getSubsequente().equals("")) {
+				contador += 1;
+				atividadeAtual = this.atividadesMetodologicas.get(atividadeAtual).getSubsequente();
+			}
+		}
+		return atividadeAtual;
+	}
+
+	/**
+	 * GABRIEL
+	 */
+	public String pegaMaiorRiscoAtividades(String idAtividade) {
+		int contador = 0;
+		String atividadeAtual = idAtividade;
+		while (!this.atividadesMetodologicas.get(atividadeAtual).getSubsequente().equals("")) {
+			contador += 1;
+			atividadeAtual = this.atividadesMetodologicas.get(atividadeAtual).getSubsequente();
+		}
+		return atividadeAtual;
+	}
+
 }

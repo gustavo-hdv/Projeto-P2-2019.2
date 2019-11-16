@@ -4,7 +4,7 @@ package projeto;
  * Representacao da quantidade de vezes que determinado codigo de letras (3 primeiras letras), 
  * ja foram usadas para identificar uma pesquisa.
  */
-public class qtdVezesIdPesquisaUsado {
+public class QtdVezesIdPesquisaUsado {
 
 	/**
 	 * Contador que conta quantas vezes as 3 primeiras letras ja foram usadas para identificar uma pesquisa.
@@ -18,7 +18,7 @@ public class qtdVezesIdPesquisaUsado {
 	 * @param retorna a quantidade de vezes que as 3 primeiras letras ja 
 	 * foram usadas para identificar uma pesquisa.
 	 */
-	public qtdVezesIdPesquisaUsado(int contador) {
+	public QtdVezesIdPesquisaUsado(int contador) {
 			this.contador = contador;
 	}
 

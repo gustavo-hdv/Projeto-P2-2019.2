@@ -23,14 +23,13 @@ public class Controller {
 		this.probC = new ProblemaController();
 	}
 
-	/** Representacao do resumo de uma pesquisa
-	 *  Estilo: Pesquisa: codigo - descricao - campo de interesse
-	 *           Pesquisadores: \n listagem dos pesquisadores
-	 *  		 Problema: \n listagem dos problemas
-	 *           Objetivos: \n listagem dos objetivos
-	 *           Atividades: \n listagem das atividades
-	 *          
-	 *  @return resumo da pesquisa
+	/**
+	 * Representacao do resumo de uma pesquisa Estilo: Pesquisa: codigo - descricao
+	 * - campo de interesse Pesquisadores: \n listagem dos pesquisadores Problema:
+	 * \n listagem dos problemas Objetivos: \n listagem dos objetivos Atividades: \n
+	 * listagem das atividades
+	 * 
+	 * @return resumo da pesquisa
 	 */
 	private String getResumoPesquisa(Pesquisa pesquisa) {
 		String resumo = "\"- Pesquisa: " + pesquisa.toString() + System.lineSeparator();
@@ -40,13 +39,11 @@ public class Controller {
 		resumo = resumo.replaceAll("[ \n]+$", "\"");
 		return resumo;
 	}
-	
-	/** Representacao dos resultados de uma pesquisa
-	 *  Estilo: Pesquisa: codigo - descricao - campo de interesse
-	 *  		  Resultados:
-	 *  		  Descricao
-	 *  		  Item(id) - Duracao \n ...
-	 *  		  Descricao dos resultados \n ...
+
+	/**
+	 * Representacao dos resultados de uma pesquisa Estilo: Pesquisa: codigo -
+	 * descricao - campo de interesse Resultados: Descricao Item(id) - Duracao \n
+	 * ... Descricao dos resultados \n ...
 	 */
 	private String getResultadosPesquisa(Pesquisa pesquisa) {
 		String resultados = "\"- Pesquisa: " + pesquisa.toString() + System.lineSeparator();
@@ -55,23 +52,22 @@ public class Controller {
 		resultados = resultados.replaceAll("[ \n]+$", "\"");
 		return resultados;
 	}
-	
+
 	/**
 	 * Exporta um resumo da pesquisa em arquivo de texto Representado todas as
 	 * entidades de um pesquisa em ordem de cadastro. Formato do arquivo:
-	 * CODIGOPESQUISA.txt
-	 * Estilo: Pesquisa: codigo - descricao - campo de interesse
-	 *           Pesquisadores: \n listagem dos pesquisadores
-	 *  		 Problema: \n listagem dos problemas
-	 *           Objetivos: \n listagem dos objetivos
-	 *           Atividades: \n listagem das atividades
-	 * @throws IOException 
+	 * CODIGOPESQUISA.txt Estilo: Pesquisa: codigo - descricao - campo de interesse
+	 * Pesquisadores: \n listagem dos pesquisadores Problema: \n listagem dos
+	 * problemas Objetivos: \n listagem dos objetivos Atividades: \n listagem das
+	 * atividades
+	 * 
+	 * @throws IOException
 	 */
 	public void gravarResumo(String codigoPesquisa) throws IOException {
 		Validador.validaString(codigoPesquisa, "Pesquisa nao pode ser nula ou vazia.");
 		Validador.isRegistered(codigoPesquisa, this.pesquisaC.pesquisas, "Pesquisa nao encontrada.");
 		String resumo = getResumoPesquisa(this.pesquisaC.getPesquisa(codigoPesquisa));
-		
+
 		File arquivo = new File(codigoPesquisa + "-temp.txt");
 		FileWriter escrever = new FileWriter(arquivo, false);
 		escrever.write(resumo);
@@ -81,19 +77,17 @@ public class Controller {
 	/**
 	 * Exporta os resultados da pesquisa em arquivo de texto Representado os
 	 * resultados obtidos com a pesquisa. Formato do arquivo:
-	 * CODIGOPESQUISA-Resultados.txt
-	 * Estilo: Pesquisa: codigo - descricao - campo de interesse
-	 *  		 Resultados:
-	 *  		 Descricao
-	 *  		 Item(id) - Duracao \n ...
-	 *  		 Descricao dos resultados \n ...
-	 * @throws IOException 
+	 * CODIGOPESQUISA-Resultados.txt Estilo: Pesquisa: codigo - descricao - campo de
+	 * interesse Resultados: Descricao Item(id) - Duracao \n ... Descricao dos
+	 * resultados \n ...
+	 * 
+	 * @throws IOException
 	 */
 	public void gravarResultados(String codigoPesquisa) throws IOException {
 		Validador.validaString(codigoPesquisa, "Pesquisa nao pode ser nula ou vazia.");
 		Validador.isRegistered(codigoPesquisa, this.pesquisaC.pesquisas, "Pesquisa nao encontrada.");
 		String resultados = getResultadosPesquisa(this.pesquisaC.getPesquisa(codigoPesquisa));
-		
+
 		File arquivo = new File(codigoPesquisa + "-Resultados.txt");
 		FileWriter escrever = new FileWriter(arquivo, false);
 		escrever.write(resultados);
@@ -501,48 +495,49 @@ public class Controller {
 	}
 
 	public String proximaAtividade(String codigoPesquisa) {
-		return pesquisaC.proximaAtividade(codigoPesquisa);		
+		return pesquisaC.proximaAtividade(codigoPesquisa);
 	}
 
-	public boolean associaAtividade(String codigoPesquisa, String codigoAtividade){
+	public boolean associaAtividade(String codigoPesquisa, String codigoAtividade) {
 		Validador.validaString(codigoPesquisa, "Campo codigoPesquisa nao pode ser nulo ou vazio.");
 		Validador.validaString(codigoAtividade, "Campo codigoAtividade nao pode ser nulo ou vazio.");
 
-		if(this.atividadesC.getAtividade(codigoAtividade) == null){
+		if (this.atividadesC.getAtividade(codigoAtividade) == null) {
 			throw new IllegalArgumentException("Atividade nao encontrada");
 		}
 
-		return this.pesquisaC.associaAtividade(codigoPesquisa, codigoAtividade, this.atividadesC.getAtividade(codigoAtividade));
+		return this.pesquisaC.associaAtividade(codigoPesquisa, codigoAtividade,
+				this.atividadesC.getAtividade(codigoAtividade));
 	}
 
-	public boolean desassociaAtividade(String codigoPesquisa, String codigoAtividade){
+	public boolean desassociaAtividade(String codigoPesquisa, String codigoAtividade) {
 		Validador.validaString(codigoPesquisa, "Campo codigoPesquisa nao pode ser nulo ou vazio.");
 		Validador.validaString(codigoAtividade, "Campo codigoAtividade nao pode ser nulo ou vazio.");
 
-		if(this.atividadesC.getAtividade(codigoAtividade) == null){
+		if (this.atividadesC.getAtividade(codigoAtividade) == null) {
 			throw new NullPointerException("Atividade nao encontrada");
 		}
 
 		return this.pesquisaC.desassociaAtividade(codigoPesquisa, codigoAtividade);
 	}
 
-	public void executaAtividade(String codigoAtividade, int item, int duracao){
+	public void executaAtividade(String codigoAtividade, int item, int duracao) {
 		Validador.validaString(codigoAtividade, "Campo codigoAtividade nao pode ser nulo ou vazio.");
 		Validador.validaValoresNegativos(item, "Item nao pode ser nulo ou negativo.");
 		Validador.validaValoresNegativos(duracao, "Duracao nao pode ser nula ou negativa.");
 
-		if(this.atividadesC.getAtividade(codigoAtividade) == null){
+		if (this.atividadesC.getAtividade(codigoAtividade) == null) {
 			throw new NullPointerException("Atividade nao encontrada");
 		}
 
 		this.pesquisaC.executaAtividade(codigoAtividade, item, duracao);
 	}
 
-	public int cadastraResultado(String codigoAtividade, String resultado){
+	public int cadastraResultado(String codigoAtividade, String resultado) {
 		Validador.validaString(codigoAtividade, "Campo codigoAtividade nao pode ser nulo ou vazio.");
 		Validador.validaString(resultado, "Resultado nao pode ser nulo ou vazio.");
 
-		if(this.atividadesC.getAtividade(codigoAtividade) == null){
+		if (this.atividadesC.getAtividade(codigoAtividade) == null) {
 			throw new NullPointerException("Atividade nao encontrada");
 		}
 
@@ -553,7 +548,7 @@ public class Controller {
 		Validador.validaString(codigoAtividade, "Campo codigoAtividade nao pode ser nulo ou vazio.");
 		Validador.validaValoresNegativos(numeroResultado, "numeroResultado nao pode ser nulo ou negativo.");
 
-		if(this.atividadesC.getAtividade(codigoAtividade) == null){
+		if (this.atividadesC.getAtividade(codigoAtividade) == null) {
 			throw new NullPointerException("Atividade nao encontrada");
 		}
 
@@ -563,7 +558,7 @@ public class Controller {
 	public String listaResultados(String codigoAtividade) {
 		Validador.validaString(codigoAtividade, "Campo codigoAtividade nao pode ser nulo ou vazio.");
 
-		if(this.atividadesC.getAtividade(codigoAtividade) == null){
+		if (this.atividadesC.getAtividade(codigoAtividade) == null) {
 			throw new NullPointerException("Atividade nao encontrada");
 		}
 
@@ -573,10 +568,46 @@ public class Controller {
 	public int getDuracao(String codigoAtividade) {
 		Validador.validaString(codigoAtividade, "Campo codigoAtividade nao pode ser nulo ou vazio.");
 
-		if(this.atividadesC.getAtividade(codigoAtividade) == null){
+		if (this.atividadesC.getAtividade(codigoAtividade) == null) {
 			throw new NullPointerException("Atividade nao encontrada");
 		}
 
 		return this.pesquisaC.getDuracao(codigoAtividade);
 	}
+
+	/**
+	 * GABRIEL
+	 */
+	public void defineProximaAtividade(String idPrecedente, String idSubsequente) {
+		atividadesC.defineProximaAtividade(idPrecedente, idSubsequente);
+	}
+
+	/**
+	 * GABRIEL
+	 */
+	public void tiraProximaAtividade(String idPrecedente) {
+		atividadesC.tiraProximaAtividade(idPrecedente);
+	}
+
+	/**
+	 * GABRIEL
+	 */
+	public int contaProximos(String idPrecedente) {
+		return atividadesC.contaProximos(idPrecedente);
+	}
+
+	/**
+	 * GABRIEL
+	 */
+	public String pegaProximo(String idAtividade, int enesimaAtividade) {
+		return atividadesC.pegaProximo(idAtividade, enesimaAtividade);
+	}
+
+	/**
+	 * GABRIEL
+	 */
+	public String pegaMaiorRiscoAtividades(String idAtividade) {
+		return atividadesC.pegaMaiorRiscoAtividades(idAtividade);
+	}
+
 }
