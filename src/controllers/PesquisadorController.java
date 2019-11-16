@@ -247,7 +247,7 @@ public class PesquisadorController implements Buscador {
 		String pesquisadoresAssociados = "";
 		for (Map.Entry<String, Pesquisador> pesquisador : this.pesquisadores.entrySet()) {
 			if (pesquisador.getValue().contemPesquisaAssociada(codigoPesquisa)) {
-				pesquisadoresAssociados += "\t\t-" + pesquisador.toString() + System.lineSeparator();
+				pesquisadoresAssociados += "\t\t- " + pesquisador.getValue().toString() + System.lineSeparator();
 			}
 		}
 		return pesquisadoresAssociados;

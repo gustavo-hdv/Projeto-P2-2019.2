@@ -99,8 +99,8 @@ public class Pesquisa {
 	 */
 	public String exibeResumoPesquisa() {
 		String problema = "\t- Problema: " + System.lineSeparator();
-		problema += (this.problema == null)?"":"\t\t" + this.problema.toString() + System.lineSeparator();
-		String objetivos = "\t- Objetivos: " + System.lineSeparator();
+		problema += (this.problema == null)?"":"\t\t- " + this.problema.toString() + System.lineSeparator();
+		String objetivos = "\t- Objetivo: " + System.lineSeparator();
 		objetivos += exibeObjetivos();
 		String atividades = "\t- Atividades: " + System.lineSeparator();
 		atividades += exibeAtividades();
@@ -142,7 +142,7 @@ public class Pesquisa {
 	private String exibeObjetivos() {
 		String resumoObjetivos = "";
 		for (Map.Entry<String, Objetivo> objetivos : this.objetivos.entrySet()) {
-			resumoObjetivos += "\t\t" + objetivos.getValue().toString() + System.lineSeparator();
+			resumoObjetivos += "\t\t- " + objetivos.getValue().toString() + System.lineSeparator();
 		}
 		return resumoObjetivos;
 	}

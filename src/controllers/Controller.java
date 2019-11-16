@@ -34,9 +34,10 @@ public class Controller {
 	 */
 	private String getResumoPesquisa(Pesquisa pesquisa) {
 		String resumo = "\"- Pesquisa: " + pesquisa.toString() + System.lineSeparator();
-		resumo += "\t- Pesquisadores: " + System.lineSeparator(); //Mudar para ordem de cadastro
+		resumo += "\t- Pesquisadores: " + System.lineSeparator();
 		resumo += this.pesquisadorC.exibePesquisadoresAssociados(pesquisa.getCodigo());
 		resumo += this.pesquisaC.exibeResumoPesquisa(pesquisa.getCodigo());
+		resumo = resumo.replaceAll("[ \n]+$", "\"");
 		return resumo;
 	}
 	
@@ -51,6 +52,7 @@ public class Controller {
 		String resultados = "\"- Pesquisa: " + pesquisa.toString() + System.lineSeparator();
 		resultados += "\t- Resultados: " + System.lineSeparator();
 		resultados += this.pesquisaC.exibeResultadosPesquisa(pesquisa.getCodigo());
+		resultados = resultados.replaceAll("[ \n]+$", "\"");
 		return resultados;
 	}
 	
@@ -69,11 +71,10 @@ public class Controller {
 		Validador.validaString(codigoPesquisa, "Pesquisa nao pode ser nula ou vazia.");
 		Validador.isRegistered(codigoPesquisa, this.pesquisaC.pesquisas, "Pesquisa nao encontrada.");
 		String resumo = getResumoPesquisa(this.pesquisaC.getPesquisa(codigoPesquisa));
-		resumo = resumo.replaceAll("[ \n]+$", "\"");
 		
 		File arquivo = new File(codigoPesquisa + "-temp.txt");
 		FileWriter escrever = new FileWriter(arquivo, false);
-		escrever.write(getResumoPesquisa(this.pesquisaC.getPesquisa(codigoPesquisa)));
+		escrever.write(resumo);
 		escrever.close();
 	}
 
@@ -92,7 +93,6 @@ public class Controller {
 		Validador.validaString(codigoPesquisa, "Pesquisa nao pode ser nula ou vazia.");
 		Validador.isRegistered(codigoPesquisa, this.pesquisaC.pesquisas, "Pesquisa nao encontrada.");
 		String resultados = getResultadosPesquisa(this.pesquisaC.getPesquisa(codigoPesquisa));
-		resultados = resultados.replaceAll("[ \n]+$", "\"");
 		
 		File arquivo = new File(codigoPesquisa + "-Resultados.txt");
 		FileWriter escrever = new FileWriter(arquivo, false);
