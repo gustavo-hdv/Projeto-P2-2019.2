@@ -21,36 +21,45 @@ public class Facade {
 		args = new String[] { "projeto.Facade", "TestesAceitacao/use_case_1.txt", "TestesAceitacao/use_case_2.txt",
 				"TestesAceitacao/use_case_3.txt", "TestesAceitacao/use_case_4.txt", "TestesAceitacao/use_case_5.txt",
 				"TestesAceitacao/use_case_6.txt", "TestesAceitacao/use_case_7.txt", "TestesAceitacao/use_case_8.txt",
-				"TestesAceitacao/use_case_9.txt", "TestesAceitacao/use_case_10.txt", "TestesAceitacao/use_case_11.txt"};
+				"TestesAceitacao/use_case_9.txt", "TestesAceitacao/use_case_10.txt",
+				"TestesAceitacao/use_case_11.txt" };
 		EasyAccept.main(args);
 	}
-	
-	/** Exporta um resumo da pesquisa em arquivo de texto
-	 *  Representado todas as entidades de um pesquisa em ordem de cadastro 
-	 * @throws IOException 
+
+	/**
+	 * Exporta um resumo da pesquisa em arquivo de texto Representado todas as
+	 * entidades de um pesquisa em ordem de cadastro
+	 * 
+	 * @throws IOException
 	 */
 	public void gravarResumo(String codigoPesquisa) throws IOException {
 		this.controller.gravarResumo(codigoPesquisa);
 	}
-	/** Exporta os resultados da pesquisa em arquivo de texto
-	 *  Representado os resultados obtidos com a pesquisa
-	 * @throws IOException 
+
+	/**
+	 * Exporta os resultados da pesquisa em arquivo de texto Representado os
+	 * resultados obtidos com a pesquisa
+	 * 
+	 * @throws IOException
 	 */
 	public void gravarResultados(String codigoPesquisa) throws IOException {
 		this.controller.gravarResultados(codigoPesquisa);
 	}
 
-	/** Lista as pesquisas em determinada ordem
-	 *  Estilo: CODIGO - Descricao - Campo de interesse
+	/**
+	 * Lista as pesquisas em determinada ordem Estilo: CODIGO - Descricao - Campo de
+	 * interesse
 	 * 
 	 * @param ordem descreve o tipo da listagem das pesquisas
-	 * @return CODIGO - Descricao - Campo de interesse | CODIGO - Descricao - Campo de interesse | ...
+	 * @return CODIGO - Descricao - Campo de interesse | CODIGO - Descricao - Campo
+	 *         de interesse | ...
 	 */
 	public String listaPesquisas(String ordem) {
 		return this.controller.listaPesquisas(ordem);
 	}
-	
-	/** Associa um problema para a pesquisa 
+
+	/**
+	 * Associa um problema para a pesquisa
 	 * 
 	 * @param idPesquisa identificador da pesquisa
 	 * @param idProblema identificador do problema
@@ -60,18 +69,21 @@ public class Facade {
 	public boolean associaProblema(String idPesquisa, String idProblema) {
 		return this.controller.associaProblema(idPesquisa, idProblema);
 	}
-	
-	/** Desassocia um problema da a pesquisa 
+
+	/**
+	 * Desassocia um problema da a pesquisa
 	 * 
 	 * @param idPesquisa identificador da pesquisa
 	 * 
-	 * @return boolean (true para desassociado com sucesso, false para nao desassociado)
+	 * @return boolean (true para desassociado com sucesso, false para nao
+	 *         desassociado)
 	 */
 	public boolean desassociaProblema(String idPesquisa) {
 		return this.controller.desassociaProblema(idPesquisa);
 	}
-	
-	/** Associa um objetivo para a pesquisa 
+
+	/**
+	 * Associa um objetivo para a pesquisa
 	 * 
 	 * @param idPesquisa identificador da pesquisa
 	 * @param idObjetivo identificador do objetivo
@@ -81,18 +93,20 @@ public class Facade {
 	public boolean associaObjetivo(String idPesquisa, String idObjetivo) {
 		return this.controller.associaObjetivo(idPesquisa, idObjetivo);
 	}
-	
-	/** Desassocia um objetivo para a pesquisa 
+
+	/**
+	 * Desassocia um objetivo para a pesquisa
 	 * 
 	 * @param idPesquisa identificador da pesquisa
 	 * @param idObjetivo identificador do objetivo
 	 * 
-	 * @return boolean (true para desassociado com sucesso, false para nao desassociado)
+	 * @return boolean (true para desassociado com sucesso, false para nao
+	 *         desassociado)
 	 */
 	public boolean desassociaObjetivo(String idPesquisa, String idObjetivo) {
 		return this.controller.desassociaObjetivo(idPesquisa, idObjetivo);
 	}
-	
+
 	/**
 	 * Cadastra um novo objetivo. Adiciona um objeto do tipo Objetivo no mapa de
 	 * objetivos.
@@ -312,15 +326,15 @@ public class Facade {
 	public String busca(String termo) {
 		return controller.busca(termo);
 	}
-	
+
 	public String busca(String termo, int indiceResultado) {
 		return controller.busca(termo, indiceResultado);
 	}
-	
+
 	public int contaResultadosBusca(String termo) {
 		return controller.contaResultadosBusca(termo);
 	}
-	
+
 	/**
 	 * GABRIEL
 	 *
@@ -330,69 +344,104 @@ public class Facade {
 	public boolean associaPesquisador(String idPesquisa, String emailPesquisador) {
 		return controller.associaPesquisador(idPesquisa, emailPesquisador);
 	}
-	
+
 	/**
 	 * GABRIEL
 	 */
 	public boolean desassociaPesquisador(String idPesquisa, String emailPesquisador) {
 		return controller.desassociaPesquisador(idPesquisa, emailPesquisador);
 	}
-	
+
 	/**
 	 * GABRIEL
 	 */
 	public void cadastraEspecialidadeProfessor(String email, String formacao, String unidade, String data) {
 		controller.cadastraEspecialidadeProfessor(email, formacao, unidade, data);
 	}
-	
+
 	/**
 	 * GABRIEL
 	 */
 	public void cadastraEspecialidadeAluno(String email, int semestre, double IEA) {
 		controller.cadastraEspecialidadeAluno(email, semestre, IEA);
 	}
-	
+
 	/**
 	 * GABRIEL
 	 */
 	public String listaPesquisadores(String tipo) {
 		return controller.listaPesquisadores(tipo);
 	}
-	
+
 	public void configuraEstrategia(String estrategia) {
 		controller.configuraEstrategia(estrategia);
 	}
-	
+
 	public String proximaAtividade(String codigoPesquisa) {
 		return controller.proximaAtividade(codigoPesquisa);
 	}
 
-	public boolean associaAtividade(String codigoPesquisa, String codigoAtividade){
+	public boolean associaAtividade(String codigoPesquisa, String codigoAtividade) {
 		return this.controller.associaAtividade(codigoPesquisa, codigoAtividade);
 	}
 
-	public boolean desassociaAtividade(String codigoPesquisa, String codigoAtividade){
+	public boolean desassociaAtividade(String codigoPesquisa, String codigoAtividade) {
 		return this.controller.desassociaAtividade(codigoPesquisa, codigoAtividade);
 	}
 
-	public void executaAtividade(String codigoAtividade, int item, int duracao){
+	public void executaAtividade(String codigoAtividade, int item, int duracao) {
 		this.controller.executaAtividade(codigoAtividade, item, duracao);
 	}
 
-	public int cadastraResultado(String codigoAtividade, String resultado){
+	public int cadastraResultado(String codigoAtividade, String resultado) {
 		return this.controller.cadastraResultado(codigoAtividade, resultado);
 	}
 
-	public boolean removeResultado(String codigoAtividade, int numeroResultado){
+	public boolean removeResultado(String codigoAtividade, int numeroResultado) {
 		return this.controller.removeResultado(codigoAtividade, numeroResultado);
 	}
 
-	public String listaResultados(String codigoAtividade){
+	public String listaResultados(String codigoAtividade) {
 		return this.controller.listaResultados(codigoAtividade);
 	}
 
-	public int getDuracao(String codigoAtividade){
+	public int getDuracao(String codigoAtividade) {
 		return this.controller.getDuracao(codigoAtividade);
 	}
-	
+
+	/**
+	 * GABRIEL
+	 */
+	public void defineProximaAtividade(String idPrecedente, String idSubsequente) {
+		this.controller.defineProximaAtividade(idPrecedente, idSubsequente);
+	}
+
+	/**
+	 * GABRIEL
+	 */
+	public void tiraProximaAtividade(String idPrecedente) {
+		this.controller.tiraProximaAtividade(idPrecedente);
+	}
+
+	/**
+	 * GABRIEL
+	 */
+	public int contaProximos(String idPrecedente) {
+		return this.controller.contaProximos(idPrecedente);
+	}
+
+	/**
+	 * GABRIEL
+	 */
+	public String pegaProximo(String idAtividade, int enesimaAtividade) {
+		return this.controller.pegaProximo(idAtividade, enesimaAtividade);
+	}
+
+	/**
+	 * GABRIEL
+	 */
+	public String pegaMaiorRiscoAtividades(String idAtividade) {
+		return this.controller.pegaMaiorRiscoAtividades(idAtividade);
+	}
+
 }
