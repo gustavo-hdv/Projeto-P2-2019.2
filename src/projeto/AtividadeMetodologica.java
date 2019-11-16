@@ -254,4 +254,12 @@ public class AtividadeMetodologica {
 	public int getDuracao() {
 		return this.duracaoExecucao;
 	}
+	
+	public String getCodigo() {
+		return this.codigo;
+	}
+
+	public String getRisco() {
+		return this.nivelRisco;
+	}
 }

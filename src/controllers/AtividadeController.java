@@ -2,6 +2,7 @@ package controllers;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Comparator;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
@@ -18,8 +19,6 @@ public class AtividadeController {
 	private Map<String, AtividadeMetodologica> atividadesMetodologicas;
 	/** Numero para gerar o codigo de uma atividade */
 	private int contagem;
-	
-	private Estrategia estrategia;
 
 	/** Construtor de uma atividade metodologica */
 	public AtividadeController() {

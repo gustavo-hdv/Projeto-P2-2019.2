@@ -1,15 +1,20 @@
 package comparators;
 
-import java.util.Collection;
+import java.util.Comparator;
 import projeto.AtividadeMetodologica;
-import projeto.Estrategia;
 
-public class AtividadeMenosPendencias implements Estrategia {
+public class AtividadeMenosPendencias implements Comparator<AtividadeMetodologica> {
 
 	@Override
-	public String sugestao(Collection<AtividadeMetodologica> atividades) {
-		// TODO Auto-generated method stub
-		return null;
+	public int compare(AtividadeMetodologica atv1, AtividadeMetodologica atv2) {
+		int res = atv1.contaItensPendentes() - atv2.contaItensPendentes();
+		if (atv1.contaItensPendentes() == 0) return 1;
+		if (atv2.contaItensPendentes() == 0) return -1;
+		if (res == 0) {
+			Comparator<AtividadeMetodologica> estrategia = new AtividadeMaisAntiga();
+			return estrategia.compare(atv1, atv2);
+		}
+		return res;
 	}
 
 }

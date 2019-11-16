@@ -71,7 +71,7 @@ public class Controller {
 		String resumo = getResumoPesquisa(this.pesquisaC.getPesquisa(codigoPesquisa));
 		resumo = resumo.replaceAll("[ \n]+$", "\"");
 		
-		File arquivo = new File(codigoPesquisa + ".txt");
+		File arquivo = new File(codigoPesquisa + "-temp.txt");
 		FileWriter escrever = new FileWriter(arquivo, false);
 		escrever.write(getResumoPesquisa(this.pesquisaC.getPesquisa(codigoPesquisa)));
 		escrever.close();
