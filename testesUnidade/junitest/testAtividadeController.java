@@ -1,4 +1,4 @@
-package projeto;
+package junitest;
 
 import org.junit.jupiter.api.Test;
 

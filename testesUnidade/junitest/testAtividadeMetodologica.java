@@ -1,6 +1,8 @@
-package projeto;
+package junitest;
 
 import org.junit.jupiter.api.Test;
+
+import projeto.AtividadeMetodologica;
 
 import static org.junit.jupiter.api.Assertions.*;
 
