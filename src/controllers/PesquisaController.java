@@ -3,6 +3,7 @@ package controllers;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
+import java.util.Comparator;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
@@ -40,7 +41,7 @@ public class PesquisaController {
 	 */
 	private Map<String, qtdVezesIdPesquisaUsado> codigos;
 	
-	private Estrategia estrategia;
+	private Comparator<AtividadeMetodologica> estrategia;
 
 	/**
 	 * Constroi um Controle da Pesquisa e inicializa os HashMap e o atributo codigo.
@@ -399,9 +400,13 @@ public class PesquisaController {
 
 	public String proximaAtividade(String codigoPesquisa) {
 		Validador.validaString(codigoPesquisa, "Pesquisa nao pode ser nula ou vazia.");
+		
 		if (!this.pesquisas.containsKey(codigoPesquisa)) {
 			throw new IllegalArgumentException("Pesquisa nao encontrada.");
+		} else if (this.desativadas.containsKey(codigoPesquisa)) {
+			throw new IllegalArgumentException("Pesquisa desativada.");
 		}
+		
 		Pesquisa pesquisa = this.pesquisas.get(codigoPesquisa);
 		return pesquisa.proximaAtividade(this.estrategia);
 	}

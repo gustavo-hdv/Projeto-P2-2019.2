@@ -2,6 +2,9 @@ package projeto;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
@@ -389,8 +392,18 @@ public class Pesquisa {
 		return this.objetivos.size();
 	}
 
-	public String proximaAtividade(Estrategia estrategia) {
-		return estrategia.sugestao(this.atividadesAssociadas.values());
+	public String proximaAtividade(Comparator<AtividadeMetodologica> estrategia) {
+		ArrayList<AtividadeMetodologica> atividades = new ArrayList<AtividadeMetodologica>(this.atividadesAssociadas.values());
+		boolean possuiPendencias = false;
+		for (AtividadeMetodologica atividade : atividades) {
+			if (atividade.contaItensPendentes() > 0) {
+				possuiPendencias = true;
+				break;
+			}
+		}
+		if (!possuiPendencias) throw new RuntimeException("Pesquisa sem atividades com pendencias.");
+		Collections.sort(atividades, estrategia);
+		return atividades.get(0).getCodigo();
 	}
 
 	public AtividadeMetodologica getAtividadeAssociada(String codigoAtividade) {
