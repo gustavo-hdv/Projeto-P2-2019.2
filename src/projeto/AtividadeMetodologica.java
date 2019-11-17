@@ -25,7 +25,7 @@ public class AtividadeMetodologica {
 	private List<Resultado> resultadosObtidos;
 
 	/**
-	 * GABRIEL
+	 * Eh a atividade Subsequente a essa.
 	 */
 	private String subsequente;
 

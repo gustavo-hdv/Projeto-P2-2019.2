@@ -141,7 +141,10 @@ public class AtividadeController {
 	}
 
 	/**
-	 * GABRIEL
+	 * Metodo responsavel por definir uma atividade(subsequente) recomendavel a ser executada depois de determinada atividade(precedente).
+	 * 
+	 * @param idPrecedente eh o ID que identifica a atividade Precedente.
+	 * @param idSubsequente eh o ID que identifica a atividade Subsequente.
 	 */
 	public void defineProximaAtividade(String idPrecedente, String idSubsequente) {
 		Validador.validaString(idPrecedente, "Atividade nao pode ser nulo ou vazio.");
@@ -162,10 +165,10 @@ public class AtividadeController {
 	}
 
 	/**
-	 * GABRIEL
+	 * Metodo que verifica se tem um loop em determinada associacao de atividades.
 	 * 
-	 * @param idAtividade
-	 * @return
+	 * @param idAtividade eh o ID da atividade que esta sendo passada como idSubsequente no metodo: defineProximaAtividade.
+	 * @return retorna um valor booleano, true se tiver loop, false se nao tiver.
 	 */
 	public boolean verificaSeTemLoop(String idPrecedente, String idSubsequente) {
 		String atividadeAtual = idSubsequente;
@@ -181,7 +184,9 @@ public class AtividadeController {
 	
 	
 	/**
-	 * GABRIEL
+	 * Metodo responsavel tirar um subsequente de determinada atividade.
+	 * 
+	 * @param idPrecedente eh o ID da pesquisa que tera seu subsequente retirado.
 	 */
 	public void tiraProximaAtividade(String idPrecedente) {
 		Validador.validaString(idPrecedente, "Atividade nao pode ser nulo ou vazio.");
@@ -192,10 +197,10 @@ public class AtividadeController {
 	}
 
 	/**
-	 * GABRIEL
+	 * Metodo que conta quantos atividades estao sendo recomendadas depois de determinada atividade.
 	 * 
-	 * @param idPrecedente
-	 * @return
+	 * @param idPrecedente eh o ID da atividade que será passada como ponto de partida para se contar quantas atividades vem depois.
+	 * @return retorna a quantidade de atividades que vem depois da atividade passada.
 	 */
 	public int contaProximos(String idPrecedente) {
 		Validador.validaString(idPrecedente, "Atividade nao pode ser nulo ou vazio.");
@@ -212,7 +217,12 @@ public class AtividadeController {
 	}
 
 	/**
-	 * GABRIEL
+	 * Metodo que retorna o ID da atividade que ocupa a posicao passada, dentro da corrrente de atividades asossiadas,
+	 * contando a partir da atividade passada como parametro.
+	 * 
+	 * @param idAtividade eh o ID da atividade que é utilizada como ponto de partida.
+	 * @param enesimaAtividade eh a posicao da atividade que ele deseja saber.
+	 * @return retorna o ID da atividade que ocupa a posicao passada.
 	 */
 	public String pegaProximo(String idAtividade, int enesimaAtividade) {
 		Validador.validaString(idAtividade, "Atividade nao pode ser nulo ou vazio.");
@@ -240,7 +250,11 @@ public class AtividadeController {
 	}
 
 	/**
-	 * GABRIEL
+	 * Metodo que retorna a ultima atividade com o maior risco, dentro da corrente de cadeias associadas,
+	 * a partir de determinada atividade.
+	 * 
+	 * @param idAtividade eh o ID de uma atividade, que serve como o ponto inicial de partida.
+	 * @return retorna o ID da ultima pesquisa que tiver o maior risco. 
 	 */
 	public String pegaMaiorRiscoAtividades(String idAtividade) {
 		Validador.validaString(idAtividade, "Atividade nao pode ser nulo ou vazio.");
@@ -266,8 +280,14 @@ public class AtividadeController {
 		}
 			return idAtividadeMaiorRisco;
 		}
+
 	/**
-	 * GABRIEL
+	 * Metodo que avalia qual a atividade que tem o maior risco, dentre as duas passadas, ou se sao iguais.
+	 * 
+	 * @param risco eh o risco da atividade que se esta avaliando no momento.
+	 * @param maiorRisco eh o maior risco achado ate entao no metodo: pegaMaiorRiscoAtividades.
+	 * @return retorna um valor booleano, true se se o risco da atividade que se esta avaliando atualmente
+	 * eh maior do que a o maior ou igual ao maior risco cadastrado ate ent.
 	 */
 	public boolean analisaMaiorRisco(String risco, String maiorRisco) {
 		HashMap<String, Integer> riscos = new HashMap<>();
@@ -281,6 +301,6 @@ public class AtividadeController {
 		} else {
 			return false;
 		}
-	}
+	} 
 	
 }

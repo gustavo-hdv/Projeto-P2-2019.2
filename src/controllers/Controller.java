@@ -587,35 +587,52 @@ public class Controller {
 	}
 
 	/**
-	 * GABRIEL
+	 * Metodo responsavel por definir uma atividade(subsequente) recomendavel a ser executada depois de determinada atividade(precedente).
+	 * 
+	 * @param idPrecedente eh o ID que identifica a atividade Precedente.
+	 * @param idSubsequente eh o ID que identifica a atividade Subsequente.
 	 */
 	public void defineProximaAtividade(String idPrecedente, String idSubsequente) {
 		atividadesC.defineProximaAtividade(idPrecedente, idSubsequente);
 	}
 
 	/**
-	 * GABRIEL
+	 * Metodo responsavel tirar um subsequente de determinada atividade.
+	 * 
+	 * @param idPrecedente eh o ID da pesquisa que tera seu subsequente retirado.
 	 */
 	public void tiraProximaAtividade(String idPrecedente) {
 		atividadesC.tiraProximaAtividade(idPrecedente);
 	}
 
 	/**
-	 * GABRIEL
+	 * Metodo que conta quantos atividades estao sendo recomendadas depois de determinada atividade.
+	 * 
+	 * @param idPrecedente eh o ID da atividade que será passada como ponto de partida para se contar quantas atividades vem depois.
+	 * @return retorna a quantidade de atividades que vem depois da atividade passada.
 	 */
 	public int contaProximos(String idPrecedente) {
 		return atividadesC.contaProximos(idPrecedente);
 	}
 
 	/**
-	 * GABRIEL
+	 * Metodo que retorna o ID da atividade que ocupa a posicao passada, dentro da corrrente de atividades asossiadas,
+	 * contando a partir da atividade passada como parametro.
+	 * 
+	 * @param idAtividade eh o ID da atividade que é utilizada como ponto de partida.
+	 * @param enesimaAtividade eh a posicao da atividade que ele deseja saber.
+	 * @return retorna o ID da atividade que ocupa a posicao passada.
 	 */
 	public String pegaProximo(String idAtividade, int enesimaAtividade) {
 		return atividadesC.pegaProximo(idAtividade, enesimaAtividade);
 	}
 
 	/**
-	 * GABRIEL
+	 * Metodo que retorna a ultima atividade com o maior risco, dentro da corrente de cadeias associadas,
+	 * a partir de determinada atividade.
+	 * 
+	 * @param idAtividade eh o ID de uma atividade, que serve como o ponto inicial de partida.
+	 * @return retorna o ID da ultima pesquisa que tiver o maior risco. 
 	 */
 	public String pegaMaiorRiscoAtividades(String idAtividade) {
 		return atividadesC.pegaMaiorRiscoAtividades(idAtividade);
