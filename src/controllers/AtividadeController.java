@@ -144,9 +144,9 @@ public class AtividadeController {
 	 * GABRIEL
 	 */
 	public void defineProximaAtividade(String idPrecedente, String idSubsequente) {
-		System.out.println(atividadesMetodologicas.values());
-		System.out.println(idPrecedente);
-		System.out.println(idSubsequente);
+		//System.out.println(atividadesMetodologicas.values());
+		//System.out.println(idPrecedente);
+		//System.out.println(idSubsequente);
 		Validador.validaString(idPrecedente, "Atividade nao pode ser nulo ou vazio.");
 		Validador.validaString(idSubsequente, "Atividade nao pode ser nulo ou vazio.");
 		if (!this.atividadesMetodologicas.containsKey(idPrecedente)) {
