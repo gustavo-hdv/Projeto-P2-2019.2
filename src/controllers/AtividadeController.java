@@ -144,64 +144,71 @@ public class AtividadeController {
 	 * GABRIEL
 	 */
 	public void defineProximaAtividade(String idPrecedente, String idSubsequente) {
-		//System.out.println(atividadesMetodologicas.values());
-		//System.out.println(idPrecedente);
-		//System.out.println(idSubsequente);
 		Validador.validaString(idPrecedente, "Atividade nao pode ser nulo ou vazio.");
 		Validador.validaString(idSubsequente, "Atividade nao pode ser nulo ou vazio.");
 		if (!this.atividadesMetodologicas.containsKey(idPrecedente)) {
-			throw new IllegalArgumentException("Atividade nao encontrada");
+			throw new IllegalArgumentException("Atividade nao encontrada.");
 		}
 		if (!this.atividadesMetodologicas.containsKey(idSubsequente)) {
-			throw new IllegalArgumentException("Atividade nao encontrada");
+			throw new IllegalArgumentException("Atividade nao encontrada.");
 		}
 		if (!this.atividadesMetodologicas.get(idPrecedente).getSubsequente().equals("")) {
 			throw new IllegalArgumentException("Atividade ja possui uma subsequente.");
 		}
-		String atividadeAtual = idSubsequente;
-		while (!this.atividadesMetodologicas.get(atividadeAtual).getSubsequente().equals("")) {
-			if (this.atividadesMetodologicas.get(atividadeAtual).getSubsequente().equals(idSubsequente)) {
-				throw new IllegalArgumentException("Criacao de loops negada.");
-			}
-			atividadeAtual = this.atividadesMetodologicas.get(atividadeAtual).getSubsequente();
+		if (this.verificaSeTemLoop(idPrecedente, idSubsequente)) {
+			throw new IllegalArgumentException("Criacao de loops negada.");
 		}
 		this.atividadesMetodologicas.get(idPrecedente).defineProximaAtividade(idSubsequente);
 	}
 
 	/**
 	 * GABRIEL
+	 * 
+	 * @param idAtividade
+	 * @return
+	 */
+	public boolean verificaSeTemLoop(String idPrecedente, String idSubsequente) {
+		String atividadeAtual = idSubsequente;
+		if (this.atividadesMetodologicas.get(atividadeAtual).getSubsequente().equals(idPrecedente)) {
+			return true;
+		} else if (this.atividadesMetodologicas.get(atividadeAtual).getSubsequente().equals("")) {
+			return false;
+		} else {
+			atividadeAtual = this.atividadesMetodologicas.get(atividadeAtual).getSubsequente();
+			return verificaSeTemLoop(idPrecedente, atividadeAtual);
+		}
+	}
+	
+	
+	/**
+	 * GABRIEL
 	 */
 	public void tiraProximaAtividade(String idPrecedente) {
 		Validador.validaString(idPrecedente, "Atividade nao pode ser nulo ou vazio.");
 		if (!this.atividadesMetodologicas.containsKey(idPrecedente)) {
-			throw new IllegalArgumentException("Atividade nao encontrada");
+			throw new IllegalArgumentException("Atividade nao encontrada.");
 		}
 		this.atividadesMetodologicas.get(idPrecedente).tiraProximaAtividade();
 	}
 
 	/**
 	 * GABRIEL
+	 * 
+	 * @param idPrecedente
+	 * @return
 	 */
 	public int contaProximos(String idPrecedente) {
 		Validador.validaString(idPrecedente, "Atividade nao pode ser nulo ou vazio.");
 		if (!this.atividadesMetodologicas.containsKey(idPrecedente)) {
-			throw new IllegalArgumentException("Atividade nao encontrada");
+			throw new IllegalArgumentException("Atividade nao encontrada.");
 		}
-		int contador = 0;
 		String atividadeAtual = idPrecedente;
-		while (true) {
-			if (!this.atividadesMetodologicas.get(atividadeAtual).getSubsequente().equals("")) {
-				contador += 1;
-				atividadeAtual = this.atividadesMetodologicas.get(atividadeAtual).getSubsequente();
-			} else {
-				break;
-			}
-		
+		if (this.atividadesMetodologicas.get(atividadeAtual).getSubsequente().equals("")) {
+			return 0;
 		}
-		if (this.atividadesMetodologicas.get(idPrecedente).getSubsequente().equals("")) {
-			contador = 0;
-		}
-		return contador;
+
+		atividadeAtual = this.atividadesMetodologicas.get(atividadeAtual).getSubsequente();
+		return contaProximos(atividadeAtual) + 1;
 	}
 
 	/**
@@ -210,7 +217,7 @@ public class AtividadeController {
 	public String pegaProximo(String idAtividade, int enesimaAtividade) {
 		Validador.validaString(idAtividade, "Atividade nao pode ser nulo ou vazio.");
 		if (!this.atividadesMetodologicas.containsKey(idAtividade)) {
-			throw new IllegalArgumentException("Atividade nao encontrada");
+			throw new IllegalArgumentException("Atividade nao encontrada.");
 		}
 		if (enesimaAtividade < 0 || enesimaAtividade == 0) {
 			throw new ArgumentAccessException("EnesimaAtividade nao pode ser negativa ou zero.");
@@ -238,21 +245,42 @@ public class AtividadeController {
 	public String pegaMaiorRiscoAtividades(String idAtividade) {
 		Validador.validaString(idAtividade, "Atividade nao pode ser nulo ou vazio.");
 		if (!this.atividadesMetodologicas.containsKey(idAtividade)) {
-			throw new IllegalArgumentException("Atividade nao encontrada");
+			throw new IllegalArgumentException("Atividade nao encontrada.");
 		}
-		int contador = 0;
+		if (this.atividadesMetodologicas.get(idAtividade).getSubsequente().equals("")) {
+			throw new IllegalArgumentException("Nao existe proxima atividade.");
+		}
 		String atividadeAtual = idAtividade;
-		String maiorRisco = "";
+		String maiorRisco = "BAIXO";
 		String idAtividadeMaiorRisco = "";
 		while (true) {
 			if (!this.atividadesMetodologicas.get(atividadeAtual).getSubsequente().equals("")) {
-				contador += 1;
 				atividadeAtual = this.atividadesMetodologicas.get(atividadeAtual).getSubsequente();
+				if (analisaMaiorRisco(this.atividadesMetodologicas.get(atividadeAtual).getRisco(), maiorRisco)) {
+					idAtividadeMaiorRisco = atividadeAtual;
+					maiorRisco = this.atividadesMetodologicas.get(atividadeAtual).getRisco();
+				}
 			} else {
 				break;
 			}
 		}
-		return atividadeAtual;
+			return idAtividadeMaiorRisco;
+		}
+	/**
+	 * GABRIEL
+	 */
+	public boolean analisaMaiorRisco(String risco, String maiorRisco) {
+		HashMap<String, Integer> riscos = new HashMap<>();
+		riscos.put("BAIXO", 1);
+		riscos.put("MEDIO", 2);
+		riscos.put("ALTO", 3);
+		if (riscos.get(risco) > riscos.get(maiorRisco)) {
+			return true;
+		} else if (riscos.get(risco) == riscos.get(maiorRisco)) {
+			return true;
+		} else {
+			return false;
+		}
 	}
-
+	
 }
