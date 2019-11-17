@@ -48,7 +48,6 @@ public class AtividadeController {
 				|| nivelRisco.equalsIgnoreCase("ALTO"))) {
 			throw new IllegalArgumentException("Valor invalido do nivel do risco.");
 		}
-
 		String codigo = "A" + (++this.contagem);
 		this.atividadesMetodologicas.put(codigo,
 				new AtividadeMetodologica(descricao, nivelRisco, descricaoRisco, codigo));
@@ -190,9 +189,14 @@ public class AtividadeController {
 		}
 		int contador = 0;
 		String atividadeAtual = idPrecedente;
-		while (!this.atividadesMetodologicas.get(atividadeAtual).getSubsequente().equals("")) {
-			contador += 1;
-			atividadeAtual = this.atividadesMetodologicas.get(atividadeAtual).getSubsequente();
+		while (true) {
+			if (!this.atividadesMetodologicas.get(atividadeAtual).getSubsequente().equals("")) {
+				contador += 1;
+				atividadeAtual = this.atividadesMetodologicas.get(atividadeAtual).getSubsequente();
+			} else {
+				break;
+			}
+		
 		}
 		if (this.atividadesMetodologicas.get(idPrecedente).getSubsequente().equals("")) {
 			contador = 0;
@@ -213,12 +217,16 @@ public class AtividadeController {
 		}
 		int contador = 0;
 		String atividadeAtual = idAtividade;
-		while (contador < enesimaAtividade) {
-			if (!this.atividadesMetodologicas.get(atividadeAtual).getSubsequente().equals("")) {
-				contador += 1;
-				atividadeAtual = this.atividadesMetodologicas.get(atividadeAtual).getSubsequente();
+		while (true) {
+			if (contador < enesimaAtividade) {
+				if (!this.atividadesMetodologicas.get(atividadeAtual).getSubsequente().equals("")) {
+					contador += 1;
+					atividadeAtual = this.atividadesMetodologicas.get(atividadeAtual).getSubsequente();
+				} else {
+					throw new IllegalArgumentException("Atividade inexistente.");
+				}
 			} else {
-				throw new IllegalArgumentException("Atividade inexistente.");
+				break;
 			}
 		}
 		return atividadeAtual;
@@ -234,9 +242,15 @@ public class AtividadeController {
 		}
 		int contador = 0;
 		String atividadeAtual = idAtividade;
-		while (!this.atividadesMetodologicas.get(atividadeAtual).getSubsequente().equals("")) {
-			contador += 1;
-			atividadeAtual = this.atividadesMetodologicas.get(atividadeAtual).getSubsequente();
+		String maiorRisco = "";
+		String idAtividadeMaiorRisco = "";
+		while (true) {
+			if (!this.atividadesMetodologicas.get(atividadeAtual).getSubsequente().equals("")) {
+				contador += 1;
+				atividadeAtual = this.atividadesMetodologicas.get(atividadeAtual).getSubsequente();
+			} else {
+				break;
+			}
 		}
 		return atividadeAtual;
 	}
