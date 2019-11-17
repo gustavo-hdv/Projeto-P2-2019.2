@@ -395,6 +395,12 @@ public class Pesquisa {
 		return this.objetivos.size();
 	}
 
+	/**
+	 * Sugere a proxima atividade a ser realizada dentro da pesquisa.
+	 * 
+	 * @param estrategia A estrategia de comparacao de atividades a ser utilizada para a sugestao.
+	 * @return O codigo da atividade sugerida.
+	 */
 	public String proximaAtividade(Comparator<AtividadeMetodologica> estrategia) {
 		ArrayList<AtividadeMetodologica> atividades = new ArrayList<AtividadeMetodologica>(this.atividadesAssociadas.values());
 		boolean possuiPendencias = false;

@@ -388,6 +388,11 @@ public class PesquisaController {
 		return pesquisas.get(codigo);
 	}
 	
+	/**
+	 * Define a estrategia de sugestao de atividades.
+	 * 
+	 * @param estrategia Uma String indicando a estrategia que deve ser utlizada.
+	 */
 	public void configuraEstrategia(String estrategia) {
 		Validador.validaString(estrategia, "Estrategia nao pode ser nula ou vazia.");
 		if (estrategia.equals("MAIS_ANTIGA")) {
@@ -403,6 +408,12 @@ public class PesquisaController {
 		}
 	}
 
+	/**
+	 * Sugere a proxima atividade a ser realizada em uma pesquisa.
+	 * 
+	 * @param codigoPesquisa O identificador da pesquisa.
+	 * @return O codigo da atividade sugerida.
+	 */
 	public String proximaAtividade(String codigoPesquisa) {
 		Validador.validaString(codigoPesquisa, "Pesquisa nao pode ser nula ou vazia.");
 		
