@@ -424,40 +424,35 @@ public class Facade {
 	 * GABRIEL
 	 */
 	public void defineProximaAtividade(String idPrecedente, String idSubsequente) {
-		Controller controle = new Controller();
-		controle.defineProximaAtividade(idPrecedente, idSubsequente);
+		this.controller.defineProximaAtividade(idPrecedente, idSubsequente);
 	}
 
 	/**
 	 * GABRIEL
 	 */
 	public void tiraProximaAtividade(String idPrecedente) {
-		Controller controle = new Controller();
-		controle.tiraProximaAtividade(idPrecedente);
+		this.controller.tiraProximaAtividade(idPrecedente);
 	}
 
 	/**
 	 * GABRIEL
 	 */
 	public int contaProximos(String idPrecedente) {
-		Controller controle = new Controller();
-		return controle.contaProximos(idPrecedente);
+		return this.controller.contaProximos(idPrecedente);
 	}
 
 	/**
 	 * GABRIEL
 	 */
 	public String pegaProximo(String idAtividade, int enesimaAtividade) {
-		Controller controle = new Controller();
-		return controle.pegaProximo(idAtividade, enesimaAtividade);
+		return this.controller.pegaProximo(idAtividade, enesimaAtividade);
 	}
 
 	/**
 	 * GABRIEL
 	 */
 	public String pegaMaiorRiscoAtividades(String idAtividade) {
-		Controller controle = new Controller();
-		return controle.pegaMaiorRiscoAtividades(idAtividade);
+		return this.controller.pegaMaiorRiscoAtividades(idAtividade);
 	}
 
 }
