@@ -3,9 +3,13 @@ package controllers;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
+import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
+
+import org.junit.jupiter.params.aggregator.ArgumentAccessException;
+
 import comparators.*;
 import projeto.*;
 
@@ -141,6 +145,27 @@ public class AtividadeController {
 	 * GABRIEL
 	 */
 	public void defineProximaAtividade(String idPrecedente, String idSubsequente) {
+		System.out.println(atividadesMetodologicas.values());
+		System.out.println(idPrecedente);
+		System.out.println(idSubsequente);
+		Validador.validaString(idPrecedente, "Atividade nao pode ser nulo ou vazio.");
+		Validador.validaString(idSubsequente, "Atividade nao pode ser nulo ou vazio.");
+		if (!this.atividadesMetodologicas.containsKey(idPrecedente)) {
+			throw new IllegalArgumentException("Atividade nao encontrada");
+		}
+		if (!this.atividadesMetodologicas.containsKey(idSubsequente)) {
+			throw new IllegalArgumentException("Atividade nao encontrada");
+		}
+		if (!this.atividadesMetodologicas.get(idPrecedente).getSubsequente().equals("")) {
+			throw new IllegalArgumentException("Atividade ja possui uma subsequente.");
+		}
+		String atividadeAtual = idSubsequente;
+		while (!this.atividadesMetodologicas.get(atividadeAtual).getSubsequente().equals("")) {
+			if (this.atividadesMetodologicas.get(atividadeAtual).getSubsequente().equals(idSubsequente)) {
+				throw new IllegalArgumentException("Criacao de loops negada.");
+			}
+			atividadeAtual = this.atividadesMetodologicas.get(atividadeAtual).getSubsequente();
+		}
 		this.atividadesMetodologicas.get(idPrecedente).defineProximaAtividade(idSubsequente);
 	}
 
@@ -148,6 +173,10 @@ public class AtividadeController {
 	 * GABRIEL
 	 */
 	public void tiraProximaAtividade(String idPrecedente) {
+		Validador.validaString(idPrecedente, "Atividade nao pode ser nulo ou vazio.");
+		if (!this.atividadesMetodologicas.containsKey(idPrecedente)) {
+			throw new IllegalArgumentException("Atividade nao encontrada");
+		}
 		this.atividadesMetodologicas.get(idPrecedente).tiraProximaAtividade();
 	}
 
@@ -155,6 +184,10 @@ public class AtividadeController {
 	 * GABRIEL
 	 */
 	public int contaProximos(String idPrecedente) {
+		Validador.validaString(idPrecedente, "Atividade nao pode ser nulo ou vazio.");
+		if (!this.atividadesMetodologicas.containsKey(idPrecedente)) {
+			throw new IllegalArgumentException("Atividade nao encontrada");
+		}
 		int contador = 0;
 		String atividadeAtual = idPrecedente;
 		while (!this.atividadesMetodologicas.get(atividadeAtual).getSubsequente().equals("")) {
@@ -171,12 +204,21 @@ public class AtividadeController {
 	 * GABRIEL
 	 */
 	public String pegaProximo(String idAtividade, int enesimaAtividade) {
+		Validador.validaString(idAtividade, "Atividade nao pode ser nulo ou vazio.");
+		if (!this.atividadesMetodologicas.containsKey(idAtividade)) {
+			throw new IllegalArgumentException("Atividade nao encontrada");
+		}
+		if (enesimaAtividade < 0 || enesimaAtividade == 0) {
+			throw new ArgumentAccessException("EnesimaAtividade nao pode ser negativa ou zero.");
+		}
 		int contador = 0;
 		String atividadeAtual = idAtividade;
 		while (contador < enesimaAtividade) {
 			if (!this.atividadesMetodologicas.get(atividadeAtual).getSubsequente().equals("")) {
 				contador += 1;
 				atividadeAtual = this.atividadesMetodologicas.get(atividadeAtual).getSubsequente();
+			} else {
+				throw new IllegalArgumentException("Atividade inexistente.");
 			}
 		}
 		return atividadeAtual;
@@ -186,6 +228,10 @@ public class AtividadeController {
 	 * GABRIEL
 	 */
 	public String pegaMaiorRiscoAtividades(String idAtividade) {
+		Validador.validaString(idAtividade, "Atividade nao pode ser nulo ou vazio.");
+		if (!this.atividadesMetodologicas.containsKey(idAtividade)) {
+			throw new IllegalArgumentException("Atividade nao encontrada");
+		}
 		int contador = 0;
 		String atividadeAtual = idAtividade;
 		while (!this.atividadesMetodologicas.get(atividadeAtual).getSubsequente().equals("")) {
