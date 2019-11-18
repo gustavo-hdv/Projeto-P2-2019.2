@@ -156,7 +156,7 @@ public class AtividadeMetodologica {
 	public String exibeItensDuracao() {
 		String itensDuracao = "";
 		for (int i = 0; i < this.resultados.size(); i++) {
-			itensDuracao += "\t\t\t- " + "ITEM" + (i + 1) + " - " + ((int) Math.ceil(this.duracaoExecucao / this.resultados.size()));
+			itensDuracao += "\t\t\t- " + "ITEM" + (i + 1) + " - " + ((int) Math.ceil((float) this.duracaoExecucao / (float) this.resultados.size()));
 			if (i != this.resultados.size()) {
 				itensDuracao += System.lineSeparator();
 			}
