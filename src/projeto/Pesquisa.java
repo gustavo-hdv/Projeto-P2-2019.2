@@ -100,7 +100,7 @@ public class Pesquisa {
 	public String exibeResumoPesquisa() {
 		String problema = "\t- Problema: " + System.lineSeparator();
 		problema += (this.problema == null)?"":"\t\t- " + this.problema.toString() + System.lineSeparator();
-		String objetivos = "\t- Objetivo: " + System.lineSeparator();
+		String objetivos = "\t- Objetivos: " + System.lineSeparator();
 		objetivos += exibeObjetivos();
 		String atividades = "\t- Atividades: " + System.lineSeparator();
 		atividades += exibeAtividades();

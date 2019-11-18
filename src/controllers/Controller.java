@@ -32,11 +32,11 @@ public class Controller {
 	 * @return resumo da pesquisa
 	 */
 	private String getResumoPesquisa(Pesquisa pesquisa) {
-		String resumo = "\"- Pesquisa: " + pesquisa.toString() + System.lineSeparator();
+		String resumo = "- Pesquisa: " + pesquisa.toString() + System.lineSeparator();
 		resumo += "\t- Pesquisadores: " + System.lineSeparator();
 		resumo += this.pesquisadorC.exibePesquisadoresAssociados(pesquisa.getCodigo());
 		resumo += this.pesquisaC.exibeResumoPesquisa(pesquisa.getCodigo());
-		resumo = resumo.replaceAll("[ \n]+$", "\"");
+		//resumo = resumo.replaceAll("[ \n]+$", "\"");
 		return resumo;
 	}
 
@@ -68,7 +68,7 @@ public class Controller {
 		Validador.isRegistered(codigoPesquisa, this.pesquisaC.pesquisas, "Pesquisa nao encontrada.");
 		String resumo = getResumoPesquisa(this.pesquisaC.getPesquisa(codigoPesquisa));
 
-		File arquivo = new File(codigoPesquisa + "-temp.txt");
+		File arquivo = new File("_" + codigoPesquisa + ".txt");
 		FileWriter escrever = new FileWriter(arquivo, false);
 		escrever.write(resumo);
 		escrever.close();
