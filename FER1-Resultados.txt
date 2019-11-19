@@ -1,0 +1,6 @@
+- Pesquisa: FER1 - Aspectos da fermentacao do mosto cervejeiro por leveduras nao-Saccharomyces. - fermentacao, cerveja
+	- Resultados: 
+		- Hidrolise durante o processo fermentativo.
+			- ITEM1 - 3
+			- ITEM2 - 15
+			- Viabilizacao da exploracao do potencial das leveduras na cervejaria.
