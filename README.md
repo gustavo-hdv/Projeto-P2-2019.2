@@ -5,7 +5,8 @@
 - Gustavo Henrique Dias Ventura  | 119110971
 - Carlos Henrique Gonçalves Ribeiro | 119110730
 - Gabriel Menezes Cabral | 119110372
--
+- Marcos Vinícius Santos Silva | 119111008
+
 ## Links uteis:
 
 - Especificação: https://docs.google.com/document/d/e/2PACX-1vRKnuseh-1y300CI4fTlgVB8XMx3yDhEl9fg2NfkyrBDqYT9-tTjHTgSdD59htIIxDtJQDdSSYLzrnv/pub
