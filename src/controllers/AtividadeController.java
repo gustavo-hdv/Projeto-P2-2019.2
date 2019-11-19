@@ -230,7 +230,7 @@ public class AtividadeController {
 			throw new IllegalArgumentException("Atividade nao encontrada.");
 		}
 		if (enesimaAtividade < 0 || enesimaAtividade == 0) {
-			throw new ArgumentAccessException("EnesimaAtividade nao pode ser negativa ou zero.");
+			throw new IllegalArgumentException("EnesimaAtividade nao pode ser negativa ou zero.");
 		}
 		int contador = 0;
 		String atividadeAtual = idAtividade;
