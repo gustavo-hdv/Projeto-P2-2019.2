@@ -431,7 +431,7 @@ public class PesquisaController {
 			if(atividade != null){
 				naoAssociada = false;
 				atividade.realizarItem(item);
-				atividade.registrarDuracao(duracao);
+				atividade.registrarDuracao(duracao, item);
 				break;
 			}
 		}
