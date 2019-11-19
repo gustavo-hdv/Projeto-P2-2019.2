@@ -173,8 +173,6 @@ public class Pesquisador implements Buscavel {
 			msg = ((Professor) especificacao).toString();
 		} else if (especificacao instanceof Aluno) {
 			msg = ((Aluno) especificacao).toString();
-		} else if (especificacao instanceof Externo) {
-			msg = ((Externo) especificacao).toString();
 		} else {
 			msg = String.format("%s (%s) - %s - %s - %s", this.nome, this.funcao, this.biografia, this.email,
 					this.foto);
@@ -324,7 +322,6 @@ public class Pesquisador implements Buscavel {
 	 */
 	public void cadastraEspecialidadeProfessor(String nome, String funcao, String biografia, String email, String foto,
 			String formacao, String unidade, String data) {
-		this.funcao = "professor";
 		especificacao = new Professor(nome, funcao, biografia, email, foto, formacao, unidade, data);
 	}
 
@@ -342,7 +339,6 @@ public class Pesquisador implements Buscavel {
 	 */
 	public void cadastraEspecialidadeAluno(String nome, String funcao, String biografia, String email, String foto,
 			int semestre, double IEA) {
-		this.funcao = "estudante";
 		especificacao = new Aluno(nome, funcao, biografia, email, foto, semestre, IEA);
 	}
 }
