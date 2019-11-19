@@ -238,23 +238,7 @@ public class Pesquisa {
 	 */
 	public void setCampoDeInteresse(String campoDeInteresse) {
 		Validador.validaString(campoDeInteresse, "Formato do campo de interesse invalido.");
-		if (campoDeInteresse.length() > 255) {
-			throw new IllegalArgumentException("Formato do campo de interesse invalido.");
-		}
-		if (campoDeInteresse.contains(", ,")) {
-			throw new IllegalArgumentException("Formato do campo de interesse invalido.");
-		}
-		if (campoDeInteresse.length() < 3) {
-			throw new IllegalArgumentException("Formato do campo de interesse invalido.");
-		}
-		for (int i = 0; i < campoDeInteresse.length(); i++) {
-			if (campoDeInteresse.length() - campoDeInteresse.replaceAll(",", "").length() > 3) {
-				throw new IllegalArgumentException("Formato do campo de interesse invalido.");
-			}
-		}
-		if (campoDeInteresse.contains(",,")) {
-			throw new IllegalArgumentException("Formato de campo de interesse invalido.");
-		}
+		Validador.validaCampoDeInteresse(campoDeInteresse);
 		this.campoDeInteresse = campoDeInteresse;
 	}
 

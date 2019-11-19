@@ -10,6 +10,8 @@ public class Item {
 	private String descricao;
 	/** Estado do item (PENDENTE ou REALIZADO) */
 	private String estado;
+	/** Tempo de duracao do item */
+	private int duracao;
 
 	/**
 	 * Construtor de um item Inicia com o estado: "PENDENTE"
@@ -21,8 +23,26 @@ public class Item {
 
 		this.descricao = descricao;
 		this.estado = "PENDENTE";
+		this.duracao = 0;
 	}
 
+	/** Define um tempo de duracao para o item 
+	 * 
+	 * @param duracao tempo de duracao do item
+	 */
+	public void registrarDuracao(int duracao) {
+		Validador.validaValoresNegativos(duracao, "Duracao nao pode ser nula ou negativa.");
+		this.duracao = duracao;
+	}
+	
+	/** Exibe a duracao do item 
+	 * 
+	 * @return duracao do item
+	 */
+	public int exibeDuracao() {
+		return this.duracao;
+	}
+	
 	/**
 	 * Exibe o estado do item
 	 * 

@@ -4,7 +4,7 @@
 
 - Gustavo Henrique Dias Ventura  | 119110971
 - Carlos Henrique Gonçalves Ribeiro | 119110730
--
+- Gabriel Menezes Cabral | 119110372
 -
 ## Links uteis:
 

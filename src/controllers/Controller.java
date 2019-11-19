@@ -36,7 +36,6 @@ public class Controller {
 		resumo += "\t- Pesquisadores: " + System.lineSeparator();
 		resumo += this.pesquisadorC.exibePesquisadoresAssociados(pesquisa.getCodigo());
 		resumo += this.pesquisaC.exibeResumoPesquisa(pesquisa.getCodigo());
-		//resumo = resumo.replaceAll("[ \n]+$", "\"");
 		return resumo;
 	}
 
@@ -46,10 +45,9 @@ public class Controller {
 	 * ... Descricao dos resultados \n ...
 	 */
 	private String getResultadosPesquisa(Pesquisa pesquisa) {
-		String resultados = "\"- Pesquisa: " + pesquisa.toString() + System.lineSeparator();
+		String resultados = "- Pesquisa: " + pesquisa.toString() + System.lineSeparator();
 		resultados += "\t- Resultados: " + System.lineSeparator();
 		resultados += this.pesquisaC.exibeResultadosPesquisa(pesquisa.getCodigo());
-		resultados = resultados.replaceAll("[ \n]+$", "\"");
 		return resultados;
 	}
 
