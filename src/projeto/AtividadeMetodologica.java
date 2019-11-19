@@ -140,9 +140,7 @@ public class AtividadeMetodologica {
 		String resumoItens = "";
 		for (int i = 0; i < this.resultados.size(); i++) {
 			resumoItens += "\t\t\t- " + this.resultados.get(i).exibeEstado() + " - ITEM" + (i + 1);
-			if (i != this.resultados.size()) {
-				resumoItens += System.lineSeparator();
-			}
+			if (i != this.resultados.size()) resumoItens += System.lineSeparator();
 		}
 		return resumoItens;
 	}
@@ -157,17 +155,12 @@ public class AtividadeMetodologica {
 		String itensDuracao = "";
 		int itensRealizados = 0;
 		for (int i = 0; i < this.resultados.size(); i++) {
-			if (this.resultados.get(i).exibeEstado().equals("REALIZADO")) {
-				itensRealizados++;
-			}
+			if (this.resultados.get(i).exibeEstado().equals("REALIZADO")) itensRealizados++;
 		}
 		for (int i = 0; i < this.resultados.size(); i++) {
 			if (this.resultados.get(i).exibeEstado().equals("REALIZADO")) {
-//				itensDuracao += "\t\t\t- " + "ITEM" + (i + 1) + " - " + ((int) Math.ceil((float) this.duracaoExecucao / (float) this.resultados.size()));
 				itensDuracao += "\t\t\t- " + "ITEM" + (i + 1) + " - " + this.resultados.get(i).exibeDuracao();
-				if (itensRealizados != 0) {
-					itensDuracao += System.lineSeparator();
-				}
+				if (itensRealizados != 0) itensDuracao += System.lineSeparator();
 				itensRealizados--;
 			}
 		}

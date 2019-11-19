@@ -36,7 +36,6 @@ public class Controller {
 		resumo += "\t- Pesquisadores: " + System.lineSeparator();
 		resumo += this.pesquisadorC.exibePesquisadoresAssociados(pesquisa.getCodigo());
 		resumo += this.pesquisaC.exibeResumoPesquisa(pesquisa.getCodigo());
-		//resumo = resumo.replaceAll("[ \n]+$", "\"");
 		return resumo;
 	}
 
