@@ -12,9 +12,25 @@ import controllers.PesquisaController;
 import controllers.PesquisadorController;
 import controllers.ProblemaController;
 
+/**
+ * Entidade que representa a busca por um termo no sistema.
+ * 
+ * @author Carlos Ribeiro
+ */
 public class Busca {
+	/**
+	 * Entidades responsaveis por vasculhar o sistema.
+	 */
 	private List<Buscador> buscadores;
+	
+	/**
+	 * Entidades encontradas apos uma busca no sistema.
+	 */
 	private List<String> resultados;
+	
+	/**
+	 * Termo a ser buscado no sistema.
+	 */
 	private String termo;
 	private PesquisaController pesquisaC;
 	private AtividadeController atividadesC;
