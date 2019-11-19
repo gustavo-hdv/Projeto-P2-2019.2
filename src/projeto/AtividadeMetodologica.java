@@ -140,9 +140,7 @@ public class AtividadeMetodologica {
 		String resumoItens = "";
 		for (int i = 0; i < this.resultados.size(); i++) {
 			resumoItens += "\t\t\t- " + this.resultados.get(i).exibeEstado() + " - ITEM" + (i + 1);
-			if (i != this.resultados.size()) {
-				resumoItens += System.lineSeparator();
-			}
+			if (i != this.resultados.size()) resumoItens += System.lineSeparator();
 		}
 		return resumoItens;
 	}
@@ -155,10 +153,15 @@ public class AtividadeMetodologica {
 	 */
 	public String exibeItensDuracao() {
 		String itensDuracao = "";
+		int itensRealizados = 0;
 		for (int i = 0; i < this.resultados.size(); i++) {
-			itensDuracao += "\t\t\t- " + "ITEM" + (i + 1) + " - " + ((int) Math.ceil((float) this.duracaoExecucao / (float) this.resultados.size()));
-			if (i != this.resultados.size()) {
-				itensDuracao += System.lineSeparator();
+			if (this.resultados.get(i).exibeEstado().equals("REALIZADO")) itensRealizados++;
+		}
+		for (int i = 0; i < this.resultados.size(); i++) {
+			if (this.resultados.get(i).exibeEstado().equals("REALIZADO")) {
+				itensDuracao += "\t\t\t- " + "ITEM" + (i + 1) + " - " + this.resultados.get(i).exibeDuracao();
+				if (itensRealizados != 0) itensDuracao += System.lineSeparator();
+				itensRealizados--;
 			}
 		}
 		return itensDuracao;
@@ -203,8 +206,10 @@ public class AtividadeMetodologica {
 		return mensagens;
 	}
 
-	public void registrarDuracao(int duracao) {
+	public void registrarDuracao(int duracao, int item) {
+		Validador.validaValoresNegativos(item, "Item nao pode ser nulo ou negativo.");
 		Validador.validaValoresNegativos(duracao, "Duracao nao pode ser nula ou negativa.");
+		this.resultados.get(item-1).registrarDuracao(duracao);
 		this.duracaoExecucao += duracao;
 	}
 
