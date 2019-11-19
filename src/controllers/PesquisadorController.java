@@ -206,27 +206,10 @@ public class PesquisadorController implements Buscador {
 		if (!pesquisadores.containsKey(email)) {
 			throw new IllegalArgumentException("Pesquisadora nao encontrada.");
 		}
-		List<String> listaData = Arrays.asList(data.split("/"));
-		if (listaData.size() != 3) {
-			throw new IllegalArgumentException("Atributo data com formato invalido.");
-		} else if (listaData.get(0).length() != 2) {
-			throw new IllegalArgumentException("Atributo data com formato invalido.");
-		} else if (listaData.get(1).length() != 2) {
-			throw new IllegalArgumentException("Atributo data com formato invalido.");
-		} else if (listaData.get(2).length() != 4) {
-			throw new IllegalArgumentException("Atributo data com formato invalido.");
-		}
-		int dia = Integer.parseInt(listaData.get(0));
-		int mes = Integer.parseInt(listaData.get(1));
-		if (dia < 00 || dia > 31) {
-			throw new IllegalArgumentException("Atributo data com formato invalido.");
-		} else if (mes < 00 || mes > 12) {
-			throw new IllegalArgumentException("Atributo data com formato invalido.");
-		}
 		if (!pesquisadores.get(email).getFuncao().toUpperCase().equals("PROFESSOR")) {
 			throw new IllegalArgumentException("Pesquisador nao compativel com a especialidade.");
 		}
-
+		Validador.validaData(data);
 		String nome = pesquisadores.get(email).getNome();
 		String funcao = pesquisadores.get(email).getFuncao();
 		String biografia = pesquisadores.get(email).getBiografia();

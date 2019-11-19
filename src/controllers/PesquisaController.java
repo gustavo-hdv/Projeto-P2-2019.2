@@ -113,20 +113,7 @@ public class PesquisaController {
 	public String cadastraPesquisa(String descricao, String campoDeInteresse) {
 		Validador.validaString(descricao, "Descricao nao pode ser nula ou vazia.");
 		Validador.validaString(campoDeInteresse, "Formato do campo de interesse invalido.");
-		if (campoDeInteresse.length() > 255) {
-			throw new IllegalArgumentException("Formato do campo de interesse invalido.");
-		}
-		List<String> camposDeInteresse = Arrays.asList(campoDeInteresse.split(","));
-		for (int i = 0; i < camposDeInteresse.size(); i++) {
-			if (camposDeInteresse.get(i).length() < 3) {
-				throw new IllegalArgumentException("Formato do campo de interesse invalido.");
-			}
-		}
-		for (int i = 0; i < campoDeInteresse.length(); i++) {
-			if (campoDeInteresse.length() - campoDeInteresse.replaceAll(",", "").length() > 3) {
-				throw new IllegalArgumentException("Formato do campo de interesse invalido.");
-			}
-		}
+		Validador.validaCampoDeInteresse(campoDeInteresse);
 		String codigoLetras = campoDeInteresse.substring(0, 3).toUpperCase();
 		if (codigos.containsKey(codigoLetras)) {
 			codigos.get(codigoLetras).somaMaisUmQuantiadadeEsteCodigoFoiUsado();
@@ -156,9 +143,6 @@ public class PesquisaController {
 		if (desativadas.containsKey(codigo)) {
 			throw new IllegalArgumentException("Pesquisa desativada.");
 		}
-		if (novoConteudo.length() > 255) {
-			throw new IllegalArgumentException("Formato do campo de interesse invalido.");
-		}
 		Validador.validaString(conteudoASerAlterado, "Conteudo a ser alterado nao pode ser vazio ou nulo.");
 		if (conteudoASerAlterado.equals("DESCRICAO")) {
 			Validador.validaString(novoConteudo, "Descricao nao pode ser nula ou vazia.");
@@ -167,12 +151,7 @@ public class PesquisaController {
 		} else {
 			throw new IllegalArgumentException("Nao e possivel alterar esse valor de pesquisa.");
 		}
-		List<String> novoConteudoList = Arrays.asList(novoConteudo.split(","));
-		for (int i = 0; i < novoConteudoList.size(); i++) {
-			if (novoConteudoList.get(i).length() < 3) {
-				throw new IllegalArgumentException("Formato do campo de interesse invalido.");
-			}
-		}
+		Validador.validaCampoDeInteresse(novoConteudo);
 		if (conteudoASerAlterado.equals("DESCRICAO")) {
 			pesquisas.get(codigo).setDescricao(novoConteudo);
 		} else if (conteudoASerAlterado.equals("CAMPO")) {
