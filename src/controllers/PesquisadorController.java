@@ -203,9 +203,7 @@ public class PesquisadorController implements Buscador {
 		Validador.validaString(formacao, "Campo formacao nao pode ser nulo ou vazio.");
 		Validador.validaString(unidade, "Campo unidade nao pode ser nulo ou vazio.");
 		Validador.validaString(data, "Campo data nao pode ser nulo ou vazio.");
-		if (!pesquisadores.containsKey(email)) {
-			throw new IllegalArgumentException("Pesquisadora nao encontrada.");
-		}
+		Validador.isRegistered(email, pesquisadores, "Pesquisadora nao encontrada.");
 		if (!pesquisadores.get(email).getFuncao().toUpperCase().equals("PROFESSOR")) {
 			throw new IllegalArgumentException("Pesquisador nao compativel com a especialidade.");
 		}
@@ -228,15 +226,9 @@ public class PesquisadorController implements Buscador {
 	 */
 	public void cadastraEspecialidadeAluno(String email, int semestre, double IEA) {
 		Validador.validaString(email, "Campo email nao pode ser nulo ou vazio.");
-		if (semestre < 1 || semestre > 4) {
-			throw new IllegalArgumentException("Atributo semestre com formato invalido.");
-		}
-		if (IEA < 0 || IEA > 10) {
-			throw new IllegalArgumentException("Atributo IEA com formato invalido.");
-		}
-		if (!pesquisadores.containsKey(email)) {
-			throw new IllegalArgumentException("Pesquisadora nao encontrada.");
-		}
+		Validador.validaSemestre(semestre);
+		Validador.validaIEA(IEA);
+		Validador.isRegistered(email, pesquisadores, "Pesquisadora nao encontrada.");
 		if (!pesquisadores.get(email).getFuncao().toUpperCase().equals("ESTUDANTE")) {
 			throw new IllegalArgumentException("Pesquisador nao compativel com a especialidade.");
 		}

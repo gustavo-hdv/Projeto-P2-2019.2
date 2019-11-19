@@ -137,12 +137,8 @@ public class PesquisaController {
 	 *                             antigo.
 	 */
 	public void alteraPesquisa(String codigo, String conteudoASerAlterado, String novoConteudo) {
-		if (!pesquisas.containsKey(codigo)) {
-			throw new IllegalArgumentException("Pesquisa nao encontrada.");
-		}
-		if (desativadas.containsKey(codigo)) {
-			throw new IllegalArgumentException("Pesquisa desativada.");
-		}
+		Validador.isRegistered(codigo, pesquisas, "Pesquisa nao encontrada.");
+		Validador.ehDesativada(codigo, desativadas, "Pesquisa desativada.");
 		Validador.validaString(conteudoASerAlterado, "Conteudo a ser alterado nao pode ser vazio ou nulo.");
 		if (conteudoASerAlterado.equals("DESCRICAO")) {
 			Validador.validaString(novoConteudo, "Descricao nao pode ser nula ou vazia.");
@@ -168,12 +164,8 @@ public class PesquisaController {
 	public void encerraPesquisa(String codigo, String motivo) {
 		Validador.validaString(codigo, "Codigo nao pode ser nulo ou vazio.");
 		Validador.validaString(motivo, "Motivo nao pode ser nulo ou vazio.");
-		if (!pesquisas.containsKey(codigo)) {
-			throw new IllegalArgumentException("Pesquisa nao encontrada.");
-		}
-		if (desativadas.containsKey(codigo)) {
-			throw new IllegalArgumentException("Pesquisa desativada.");
-		}
+		Validador.isRegistered(codigo, pesquisas, "Pesquisa nao encontrada.");
+		Validador.ehDesativada(codigo, desativadas, "Pesquisa desativada.");
 		desativadas.put(codigo, motivo);
 	}
 
@@ -184,9 +176,7 @@ public class PesquisaController {
 	 */
 	public void ativaPesquisa(String codigo) {
 		Validador.validaString(codigo, "Codigo nao pode ser nulo ou vazio.");
-		if (!pesquisas.containsKey(codigo)) {
-			throw new IllegalArgumentException("Pesquisa nao encontrada.");
-		}
+		Validador.isRegistered(codigo, pesquisas, "Pesquisa nao encontrada.");
 		if (!desativadas.containsKey(codigo)) {
 			throw new IllegalArgumentException("Pesquisa ja ativada.");
 		}
@@ -202,9 +192,7 @@ public class PesquisaController {
 	 */
 	public String exibePesquisa(String codigo) {
 		Validador.validaString(codigo, "Codigo nao pode ser nulo ou vazio.");
-		if (!pesquisas.containsKey(codigo)) {
-			throw new IllegalArgumentException("Pesquisa nao encontrada.");
-		}
+		Validador.isRegistered(codigo, pesquisas, "Pesquisa nao encontrada.");
 		return pesquisas.get(codigo).toString();
 	}
 
@@ -216,9 +204,7 @@ public class PesquisaController {
 	 */
 	public boolean pesquisaEhAtiva(String codigo) {
 		Validador.validaString(codigo, "Codigo nao pode ser nulo ou vazio.");
-		if (!this.pesquisas.containsKey(codigo)) {
-			throw new IllegalArgumentException("Pesquisa nao encontrada.");
-		}
+		Validador.isRegistered(codigo, pesquisas, "Pesquisa nao encontrada.");
 		if (!this.desativadas.containsKey(codigo)) {
 			return true;
 		}
@@ -232,7 +218,6 @@ public class PesquisaController {
 	 */
 	public Pesquisa getPesquisa(String codigoPesquisa) {
 		Validador.isRegistered(codigoPesquisa, this.pesquisas, "Pesquisa nao encontrada.");
-		
 		return this.pesquisas.get(codigoPesquisa);
 	}
 

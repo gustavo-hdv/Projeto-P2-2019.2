@@ -30,6 +30,12 @@ public class Validador {
 			throw new IllegalArgumentException(msg);
 		}
 	}
+	
+	public static void ehDesativada(String chave, Map mapa, String msg){
+		if(mapa.containsKey(chave)){
+			throw new IllegalArgumentException(msg);
+		}
+	}
 
 	public static void validaTipo(String tipo, String msg){
 		if(!tipo.equals("GERAL") && !tipo.equals("ESPECIFICO")){
@@ -71,6 +77,18 @@ public class Validador {
 			throw new IllegalArgumentException("Atributo data com formato invalido.");
 		} else if (mes < 00 || mes > 12) {
 			throw new IllegalArgumentException("Atributo data com formato invalido.");
+		}
+	}
+	
+	public static void validaSemestre(int semestre) {
+		if (semestre < 1 || semestre > 4) {
+			throw new IllegalArgumentException("Atributo semestre com formato invalido.");
+		}
+	}
+	
+	public static void validaIEA(double IEA) {
+		if (IEA < 0 || IEA > 10) {
+			throw new IllegalArgumentException("Atributo IEA com formato invalido.");
 		}
 	}
 }

@@ -149,12 +149,8 @@ public class AtividadeController {
 	public void defineProximaAtividade(String idPrecedente, String idSubsequente) {
 		Validador.validaString(idPrecedente, "Atividade nao pode ser nulo ou vazio.");
 		Validador.validaString(idSubsequente, "Atividade nao pode ser nulo ou vazio.");
-		if (!this.atividadesMetodologicas.containsKey(idPrecedente)) {
-			throw new IllegalArgumentException("Atividade nao encontrada.");
-		}
-		if (!this.atividadesMetodologicas.containsKey(idSubsequente)) {
-			throw new IllegalArgumentException("Atividade nao encontrada.");
-		}
+		Validador.isRegistered(idPrecedente, atividadesMetodologicas, "Atividade nao encontrada.");
+		Validador.isRegistered(idSubsequente, atividadesMetodologicas, "Atividade nao encontrada.");
 		if (!this.atividadesMetodologicas.get(idPrecedente).getSubsequente().equals("")) {
 			throw new IllegalArgumentException("Atividade ja possui uma subsequente.");
 		}
@@ -190,9 +186,7 @@ public class AtividadeController {
 	 */
 	public void tiraProximaAtividade(String idPrecedente) {
 		Validador.validaString(idPrecedente, "Atividade nao pode ser nulo ou vazio.");
-		if (!this.atividadesMetodologicas.containsKey(idPrecedente)) {
-			throw new IllegalArgumentException("Atividade nao encontrada.");
-		}
+		Validador.isRegistered(idPrecedente, atividadesMetodologicas, "Atividade nao encontrada.");
 		this.atividadesMetodologicas.get(idPrecedente).tiraProximaAtividade();
 	}
 
@@ -204,9 +198,7 @@ public class AtividadeController {
 	 */
 	public int contaProximos(String idPrecedente) {
 		Validador.validaString(idPrecedente, "Atividade nao pode ser nulo ou vazio.");
-		if (!this.atividadesMetodologicas.containsKey(idPrecedente)) {
-			throw new IllegalArgumentException("Atividade nao encontrada.");
-		}
+		Validador.isRegistered(idPrecedente, atividadesMetodologicas, "Atividade nao encontrada.");
 		String atividadeAtual = idPrecedente;
 		if (this.atividadesMetodologicas.get(atividadeAtual).getSubsequente().equals("")) {
 			return 0;
@@ -226,9 +218,7 @@ public class AtividadeController {
 	 */
 	public String pegaProximo(String idAtividade, int enesimaAtividade) {
 		Validador.validaString(idAtividade, "Atividade nao pode ser nulo ou vazio.");
-		if (!this.atividadesMetodologicas.containsKey(idAtividade)) {
-			throw new IllegalArgumentException("Atividade nao encontrada.");
-		}
+		Validador.isRegistered(idAtividade, atividadesMetodologicas, "Atividade nao encontrada.");
 		if (enesimaAtividade < 0 || enesimaAtividade == 0) {
 			throw new IllegalArgumentException("EnesimaAtividade nao pode ser negativa ou zero.");
 		}
@@ -258,9 +248,7 @@ public class AtividadeController {
 	 */
 	public String pegaMaiorRiscoAtividades(String idAtividade) {
 		Validador.validaString(idAtividade, "Atividade nao pode ser nulo ou vazio.");
-		if (!this.atividadesMetodologicas.containsKey(idAtividade)) {
-			throw new IllegalArgumentException("Atividade nao encontrada.");
-		}
+		Validador.isRegistered(idAtividade, atividadesMetodologicas, "Atividade nao encontrada.");
 		if (this.atividadesMetodologicas.get(idAtividade).getSubsequente().equals("")) {
 			throw new IllegalArgumentException("Nao existe proxima atividade.");
 		}
