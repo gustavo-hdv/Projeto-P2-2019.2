@@ -49,7 +49,7 @@ public class Pesquisa {
 	 * Objetivos da Pesquisa.
 	 */
 	private Map<String, Objetivo> objetivos;
-
+	
 	/**
 	 * Constroi uma Pesquisa, a partir do seu codigo, descricao e campo de
 	 * interesse.
@@ -62,26 +62,10 @@ public class Pesquisa {
 		Validador.validaString(codigo, "Codigo nao pode ser nula ou vazia.");
 		Validador.validaString(descricao, "Descricao nao pode ser nula ou vazia.");
 		Validador.validaString(campoDeInteresse, "Formato do campo de interesse invalido");
-		if (campoDeInteresse.length() > 255) {
-			throw new IllegalArgumentException("Formato do campo de interesse invalido.");
-		}
 		if (descricao.length() > 255) {
 			throw new IllegalArgumentException("Formato do campo de interesse invalido.");
 		}
-		if (campoDeInteresse.length() < 3) {
-			throw new IllegalArgumentException("Formato do campo de interesse invalido.");
-		}
-		for (int i = 0; i < campoDeInteresse.length(); i++) {
-			if (campoDeInteresse.length() - campoDeInteresse.replaceAll(",", "").length() > 3) {
-				throw new IllegalArgumentException("Formato do campo de interesse invalido.");
-			}
-		}
-		List<String> camposDeInteresse = Arrays.asList(campoDeInteresse.split(","));
-		for (int i = 0; i < camposDeInteresse.size(); i++) {
-			if (camposDeInteresse.get(i).length() < 3) {
-				throw new IllegalArgumentException("Formato do campo de interesse invalido.");
-			}
-		}
+		Validador.validaCampoDeInteresse(campoDeInteresse);
 		this.codigo = codigo;
 		this.descricao = descricao;
 		this.campoDeInteresse = campoDeInteresse;
@@ -89,7 +73,7 @@ public class Pesquisa {
 		this.problema = null;
 		this.objetivos = new LinkedHashMap<String, Objetivo>();
 	}
-	
+
 	/** Representacao do resumo de uma pesquisa
 	 *  Estilo: Problema: \n listagem dos problemas
 	 *          Objetivos: \n listagem dos objetivos

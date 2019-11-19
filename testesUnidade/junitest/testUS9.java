@@ -16,6 +16,8 @@ class testUS9 {
 		controle.cadastraAtividade("Plantio de um grao de feijao em um algodao.", "ALTO", "Por se tratar de uma vida, o risco e extremamente elevado.");
 		controle.cadastraAtividade("Plantio de um grao de milho.", "MEDIO", "Por ser um grao de milho, que eh mais resistente, nao tem muito perigo");
 		controle.cadastraAtividade("Plantio de um grao de pe de tambor.", "BAIXO", "Por se tratar de um grao muito resistente.");
+		controle.defineProximaAtividade("A1", "A2");
+		controle.defineProximaAtividade("A2", "A3");
 		try {
 			controle.defineProximaAtividade("", "A2");
 			fail("Era esperado excecao");
@@ -29,6 +31,8 @@ class testUS9 {
 		controle.cadastraAtividade("Plantio de um grao de feijao em um algodao.", "ALTO", "Por se tratar de uma vida, o risco e extremamente elevado.");
 		controle.cadastraAtividade("Plantio de um grao de milho.", "MEDIO", "Por ser um grao de milho, que eh mais resistente, nao tem muito perigo");
 		controle.cadastraAtividade("Plantio de um grao de pe de tambor.", "BAIXO", "Por se tratar de um grao muito resistente.");
+		controle.defineProximaAtividade("A1", "A2");
+		controle.defineProximaAtividade("A2", "A3");
 		try {
 			controle.defineProximaAtividade("A1", "");
 			fail("Era esperado excecao");
@@ -42,6 +46,8 @@ class testUS9 {
 		controle.cadastraAtividade("Plantio de um grao de feijao em um algodao.", "ALTO", "Por se tratar de uma vida, o risco e extremamente elevado.");
 		controle.cadastraAtividade("Plantio de um grao de milho.", "MEDIO", "Por ser um grao de milho, que eh mais resistente, nao tem muito perigo");
 		controle.cadastraAtividade("Plantio de um grao de pe de tambor.", "BAIXO", "Por se tratar de um grao muito resistente.");
+		controle.defineProximaAtividade("A1", "A2");
+		controle.defineProximaAtividade("A2", "A3");
 		try {
 			controle.defineProximaAtividade(null, "A2");
 			fail("Era esperado excecao");
@@ -55,6 +61,8 @@ class testUS9 {
 		controle.cadastraAtividade("Plantio de um grao de feijao em um algodao.", "ALTO", "Por se tratar de uma vida, o risco e extremamente elevado.");
 		controle.cadastraAtividade("Plantio de um grao de milho.", "MEDIO", "Por ser um grao de milho, que eh mais resistente, nao tem muito perigo");
 		controle.cadastraAtividade("Plantio de um grao de pe de tambor.", "BAIXO", "Por se tratar de um grao muito resistente.");
+		controle.defineProximaAtividade("A1", "A2");
+		controle.defineProximaAtividade("A2", "A3");
 		try {
 			controle.defineProximaAtividade("A1", null);
 			fail("Era esperado excecao");
@@ -78,6 +86,8 @@ class testUS9 {
 		controle.cadastraAtividade("Plantio de um grao de feijao em um algodao.", "ALTO", "Por se tratar de uma vida, o risco e extremamente elevado.");
 		controle.cadastraAtividade("Plantio de um grao de milho.", "MEDIO", "Por ser um grao de milho, que eh mais resistente, nao tem muito perigo");
 		controle.cadastraAtividade("Plantio de um grao de pe de tambor.", "BAIXO", "Por se tratar de um grao muito resistente.");
+		controle.defineProximaAtividade("A1", "A2");
+		controle.defineProximaAtividade("A2", "A3");
 		try {
 			controle.tiraProximaAtividade("");
 			fail("Era esperado excecao");
@@ -91,6 +101,8 @@ class testUS9 {
 		controle.cadastraAtividade("Plantio de um grao de feijao em um algodao.", "ALTO", "Por se tratar de uma vida, o risco e extremamente elevado.");
 		controle.cadastraAtividade("Plantio de um grao de milho.", "MEDIO", "Por ser um grao de milho, que eh mais resistente, nao tem muito perigo");
 		controle.cadastraAtividade("Plantio de um grao de pe de tambor.", "BAIXO", "Por se tratar de um grao muito resistente.");
+		controle.defineProximaAtividade("A1", "A2");
+		controle.defineProximaAtividade("A2", "A3");
 		try {
 			controle.tiraProximaAtividade(null);
 			fail("Era esperado excecao");
@@ -104,6 +116,8 @@ class testUS9 {
 		controle.cadastraAtividade("Plantio de um grao de feijao em um algodao.", "ALTO", "Por se tratar de uma vida, o risco e extremamente elevado.");
 		controle.cadastraAtividade("Plantio de um grao de milho.", "MEDIO", "Por ser um grao de milho, que eh mais resistente, nao tem muito perigo");
 		controle.cadastraAtividade("Plantio de um grao de pe de tambor.", "BAIXO", "Por se tratar de um grao muito resistente.");
+		controle.defineProximaAtividade("A1", "A2");
+		controle.defineProximaAtividade("A2", "A3");
 		controle.tiraProximaAtividade("A1");
 		controle.tiraProximaAtividade("A2");
 	}
@@ -114,6 +128,8 @@ class testUS9 {
 		controle.cadastraAtividade("Plantio de um grao de feijao em um algodao.", "ALTO", "Por se tratar de uma vida, o risco e extremamente elevado.");
 		controle.cadastraAtividade("Plantio de um grao de milho.", "MEDIO", "Por ser um grao de milho, que eh mais resistente, nao tem muito perigo");
 		controle.cadastraAtividade("Plantio de um grao de pe de tambor.", "BAIXO", "Por se tratar de um grao muito resistente.");
+		controle.defineProximaAtividade("A1", "A2");
+		controle.defineProximaAtividade("A2", "A3");
 		try {
 			controle.contaProximos("");
 			fail("Era esperado excecao");
@@ -127,6 +143,8 @@ class testUS9 {
 		controle.cadastraAtividade("Plantio de um grao de feijao em um algodao.", "ALTO", "Por se tratar de uma vida, o risco e extremamente elevado.");
 		controle.cadastraAtividade("Plantio de um grao de milho.", "MEDIO", "Por ser um grao de milho, que eh mais resistente, nao tem muito perigo");
 		controle.cadastraAtividade("Plantio de um grao de pe de tambor.", "BAIXO", "Por se tratar de um grao muito resistente.");
+		controle.defineProximaAtividade("A1", "A2");
+		controle.defineProximaAtividade("A2", "A3");
 		try {
 			controle.contaProximos(null);
 			fail("Era esperado excecao");
@@ -140,6 +158,8 @@ class testUS9 {
 		controle.cadastraAtividade("Plantio de um grao de feijao em um algodao.", "ALTO", "Por se tratar de uma vida, o risco e extremamente elevado.");
 		controle.cadastraAtividade("Plantio de um grao de milho.", "MEDIO", "Por ser um grao de milho, que eh mais resistente, nao tem muito perigo");
 		controle.cadastraAtividade("Plantio de um grao de pe de tambor.", "BAIXO", "Por se tratar de um grao muito resistente.");
+		controle.defineProximaAtividade("A1", "A2");
+		controle.defineProximaAtividade("A2", "A3");
 		controle.contaProximos("A1");
 	}
 	
@@ -149,6 +169,8 @@ class testUS9 {
 		controle.cadastraAtividade("Plantio de um grao de feijao em um algodao.", "ALTO", "Por se tratar de uma vida, o risco e extremamente elevado.");
 		controle.cadastraAtividade("Plantio de um grao de milho.", "MEDIO", "Por ser um grao de milho, que eh mais resistente, nao tem muito perigo");
 		controle.cadastraAtividade("Plantio de um grao de pe de tambor.", "BAIXO", "Por se tratar de um grao muito resistente.");
+		controle.defineProximaAtividade("A1", "A2");
+		controle.defineProximaAtividade("A2", "A3");
 		try {
 			controle.pegaProximo("", 2);
 			fail("Era esperado excecao");
@@ -162,6 +184,8 @@ class testUS9 {
 		controle.cadastraAtividade("Plantio de um grao de feijao em um algodao.", "ALTO", "Por se tratar de uma vida, o risco e extremamente elevado.");
 		controle.cadastraAtividade("Plantio de um grao de milho.", "MEDIO", "Por ser um grao de milho, que eh mais resistente, nao tem muito perigo");
 		controle.cadastraAtividade("Plantio de um grao de pe de tambor.", "BAIXO", "Por se tratar de um grao muito resistente.");
+		controle.defineProximaAtividade("A1", "A2");
+		controle.defineProximaAtividade("A2", "A3");
 		try {
 			controle.pegaProximo(null, 2);
 			fail("Era esperado excecao");
@@ -175,6 +199,8 @@ class testUS9 {
 		controle.cadastraAtividade("Plantio de um grao de feijao em um algodao.", "ALTO", "Por se tratar de uma vida, o risco e extremamente elevado.");
 		controle.cadastraAtividade("Plantio de um grao de milho.", "MEDIO", "Por ser um grao de milho, que eh mais resistente, nao tem muito perigo");
 		controle.cadastraAtividade("Plantio de um grao de pe de tambor.", "BAIXO", "Por se tratar de um grao muito resistente.");
+		controle.defineProximaAtividade("A1", "A2");
+		controle.defineProximaAtividade("A2", "A3");
 		try {
 			controle.pegaProximo("A1", -5);
 			fail("Era esperado excecao");
@@ -188,6 +214,8 @@ class testUS9 {
 		controle.cadastraAtividade("Plantio de um grao de feijao em um algodao.", "ALTO", "Por se tratar de uma vida, o risco e extremamente elevado.");
 		controle.cadastraAtividade("Plantio de um grao de milho.", "MEDIO", "Por ser um grao de milho, que eh mais resistente, nao tem muito perigo");
 		controle.cadastraAtividade("Plantio de um grao de pe de tambor.", "BAIXO", "Por se tratar de um grao muito resistente.");
+		controle.defineProximaAtividade("A1", "A2");
+		controle.defineProximaAtividade("A2", "A3");
 		try {
 			controle.pegaProximo("A1", 0);
 			fail("Era esperado excecao");
@@ -201,6 +229,8 @@ class testUS9 {
 		controle.cadastraAtividade("Plantio de um grao de feijao em um algodao.", "ALTO", "Por se tratar de uma vida, o risco e extremamente elevado.");
 		controle.cadastraAtividade("Plantio de um grao de milho.", "MEDIO", "Por ser um grao de milho, que eh mais resistente, nao tem muito perigo");
 		controle.cadastraAtividade("Plantio de um grao de pe de tambor.", "BAIXO", "Por se tratar de um grao muito resistente.");
+		controle.defineProximaAtividade("A1", "A2");
+		controle.defineProximaAtividade("A2", "A3");
 		controle.pegaProximo("A1", 2);
 	}
 	
@@ -210,6 +240,8 @@ class testUS9 {
 		controle.cadastraAtividade("Plantio de um grao de feijao em um algodao.", "ALTO", "Por se tratar de uma vida, o risco e extremamente elevado.");
 		controle.cadastraAtividade("Plantio de um grao de milho.", "MEDIO", "Por ser um grao de milho, que eh mais resistente, nao tem muito perigo");
 		controle.cadastraAtividade("Plantio de um grao de pe de tambor.", "BAIXO", "Por se tratar de um grao muito resistente.");
+		controle.defineProximaAtividade("A1", "A2");
+		controle.defineProximaAtividade("A2", "A3");
 		try {
 			controle.pegaMaiorRiscoAtividades("");
 			fail("Era esperado excecao");
@@ -223,6 +255,8 @@ class testUS9 {
 		controle.cadastraAtividade("Plantio de um grao de feijao em um algodao.", "ALTO", "Por se tratar de uma vida, o risco e extremamente elevado.");
 		controle.cadastraAtividade("Plantio de um grao de milho.", "MEDIO", "Por ser um grao de milho, que eh mais resistente, nao tem muito perigo");
 		controle.cadastraAtividade("Plantio de um grao de pe de tambor.", "BAIXO", "Por se tratar de um grao muito resistente.");
+		controle.defineProximaAtividade("A1", "A2");
+		controle.defineProximaAtividade("A2", "A3");
 		try {
 			controle.pegaMaiorRiscoAtividades(null);
 			fail("Era esperado excecao");
@@ -238,6 +272,8 @@ class testUS9 {
 		controle.cadastraAtividade("Plantio de um grao de pe de tambor.", "BAIXO", "Por se tratar de um grao muito resistente.");
 		controle.cadastraAtividade("Plantio de um grao de laranja.", "ALTO", "Por se tratar de um grao que precisa de muita umidade.");
 		controle.cadastraAtividade("Plantio de um grao de bananeira", "MEDIO", "Por se tratar de um grao que se adpta relativamente facil ao terreno.");
+		controle.defineProximaAtividade("A1", "A2");
+		controle.defineProximaAtividade("A2", "A3");
 		controle.pegaMaiorRiscoAtividades("A1");
 	}
 }
