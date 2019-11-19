@@ -3,10 +3,7 @@ package controllers;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
-
-import projeto.Busca;
-import projeto.Pesquisa;
-import projeto.Validador;
+import entidades.*;
 
 public class Controller {
 	private PesquisadorController pesquisadorC;
@@ -392,12 +389,23 @@ public class Controller {
 		return atividadesC.contaItensRealizados(codigo);
 	}
 
+	/**
+	 * Exibe a representacao de cada uma das entidades encontradas em uma busca por um termo no sistema.
+	 * 
+	 * @param termo O termo a ser buscado.
+	 * @return A representacao de cada um dos termos encontrados.
+	 */
 	public String busca(String termo) {
 		Validador.validaString(termo, "Campo termo nao pode ser nulo ou vazio.");
 		Busca busca = new Busca(pesquisadorC, pesquisaC, atividadesC, objC, probC, termo);
 		return busca.toString();
 	}
 
+	/**
+	 * Retorna o resultado associado a um indice na busca.
+	 * 
+	 * @param indice O indice do resultado.
+	 */
 	public String busca(String termo, int indiceResultado) {
 		Validador.validaString(termo, "Campo termo nao pode ser nulo ou vazio.");
 		if (indiceResultado < 0) {
@@ -407,6 +415,11 @@ public class Controller {
 		return busca.getResultado(indiceResultado);
 	}
 
+	/**
+	 * Retorna o numero de resultados que a busca por um termo obteve no sistema.
+	 * 
+	 * @param termo O termo a ser buscado.
+	 */
 	public int contaResultadosBusca(String termo) {
 		Validador.validaString(termo, "Campo termo nao pode ser nulo ou vazio.");
 		Busca busca = new Busca(pesquisadorC, pesquisaC, atividadesC, objC, probC, termo);

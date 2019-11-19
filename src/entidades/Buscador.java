@@ -1,4 +1,4 @@
-package projeto;
+package entidades;
 
 import java.util.Collection;
 

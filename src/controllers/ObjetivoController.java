@@ -5,10 +5,10 @@ import java.util.Collection;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
-import projeto.Buscador;
-import projeto.Buscavel;
-import projeto.Objetivo;
-import projeto.Validador;
+import entidades.Buscador;
+import entidades.Buscavel;
+import entidades.Objetivo;
+import entidades.Validador;
 
 /**
  * Representacao de um Controller dos Objetivos.

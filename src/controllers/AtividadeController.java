@@ -11,7 +11,7 @@ import java.util.Map;
 import org.junit.jupiter.params.aggregator.ArgumentAccessException;
 
 import comparators.*;
-import projeto.*;
+import entidades.*;
 
 /**
  * Representacao de um controlador de atividades metodologicas

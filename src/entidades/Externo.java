@@ -1,4 +1,4 @@
-package projeto;
+package entidades;
 
 /**
  * Representacao de um Pesquisador Externo.

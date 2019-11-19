@@ -8,11 +8,11 @@ import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 
-import projeto.Buscador;
-import projeto.Buscavel;
-import projeto.Pesquisa;
-import projeto.Pesquisador;
-import projeto.Validador;
+import entidades.Buscador;
+import entidades.Buscavel;
+import entidades.Pesquisa;
+import entidades.Pesquisador;
+import entidades.Validador;
 
 /** Representacao de um contrador de pesquisadores */
 

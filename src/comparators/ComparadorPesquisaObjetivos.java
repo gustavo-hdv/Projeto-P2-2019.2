@@ -2,7 +2,7 @@ package comparators;
 
 import java.util.Comparator;
 
-import projeto.Pesquisa;
+import entidades.Pesquisa;
 
 /** Comparador de pesquisas com mais objetivos associados.
  *  Em caso de empate, lista primeiro a pesquisa com objetivo de maior ID.

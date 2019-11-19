@@ -1,4 +1,4 @@
-package projeto;
+package entidades;
 
 /**
  * Representacao de um item com descricao e estado(PENDENTE ou REALIZADO)

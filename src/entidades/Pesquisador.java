@@ -1,4 +1,4 @@
-package projeto;
+package entidades;
 
 import java.util.LinkedHashMap;
 import java.util.Map;

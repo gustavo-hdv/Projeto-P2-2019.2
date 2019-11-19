@@ -10,7 +10,7 @@ import java.util.List;
 import java.util.Map;
 
 import comparators.*;
-import projeto.*;
+import entidades.*;
 
 /**
  * Representacao de um Controle, que e responsavel por manipular os Collections,

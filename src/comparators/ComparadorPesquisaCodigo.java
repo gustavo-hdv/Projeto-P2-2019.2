@@ -2,7 +2,7 @@ package comparators;
 
 import java.util.Comparator;
 
-import projeto.Pesquisa;
+import entidades.Pesquisa;
 
 /** Comparador de pesquisas do maior ID para o de menor ID
  *  (ORDEM: PESQUISA).

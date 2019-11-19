@@ -3,7 +3,8 @@ package junitest;
 import static org.junit.jupiter.api.Assertions.*;
 
 import org.junit.jupiter.api.Test;
-import projeto.Objetivo;
+
+import entidades.Objetivo;
 
 public class testObjetivo {
 

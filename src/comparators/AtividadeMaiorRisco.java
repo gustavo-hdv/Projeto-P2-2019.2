@@ -3,7 +3,7 @@ package comparators;
 import java.util.Comparator;
 import java.util.HashMap;
 
-import projeto.AtividadeMetodologica;
+import entidades.AtividadeMetodologica;
 
 /**
  * Estrategia de comparacao baseada no risco das atividades em uma pesquisa.

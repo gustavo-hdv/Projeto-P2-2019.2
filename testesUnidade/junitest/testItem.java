@@ -2,7 +2,7 @@ package junitest;
 
 import org.junit.jupiter.api.Test;
 
-import projeto.Item;
+import entidades.Item;
 
 import static org.junit.jupiter.api.Assertions.*;
 

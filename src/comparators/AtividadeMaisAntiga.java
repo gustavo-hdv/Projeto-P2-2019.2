@@ -1,7 +1,8 @@
 package comparators;
 
 import java.util.Comparator;
-import projeto.AtividadeMetodologica;
+
+import entidades.AtividadeMetodologica;
 
 /**
  * Estrategia de comparacao baseada na ordem de cadastro das atividades em uma
