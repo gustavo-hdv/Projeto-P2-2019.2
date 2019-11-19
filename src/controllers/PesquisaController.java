@@ -33,9 +33,7 @@ public class PesquisaController {
 	 * Map responsavel por registrar as pesquisas que foram desativadas . Essas
 	 * pesquisas estao associadas ao seu codigo.
 	 */
-	private Map<String, String> desativadas;
-	
-	private Integer vrau; 
+	private Map<String, String> desativadas; 
 	
 //	qtdVezesIdPesquisaUsado
 
@@ -44,7 +42,7 @@ public class PesquisaController {
 	 * desse ArrayList eh equivalente a quantidade de vezes que esse codigo com
 	 * essas 3 letras ja foram usados.
 	 */
-	private Map<String, QtdVezesIdPesquisaUsado> codigos;
+	private Map<String, Integer> codigos;
 	
 	private Comparator<AtividadeMetodologica> estrategia;
 
@@ -55,7 +53,7 @@ public class PesquisaController {
 		this.codigo = "";
 		this.pesquisas = new LinkedHashMap<String, Pesquisa>();
 		this.desativadas = new LinkedHashMap<String, String>();
-		this.codigos = new LinkedHashMap<String, QtdVezesIdPesquisaUsado>();
+		this.codigos = new LinkedHashMap<String, Integer>();
 	}
 
 	/**
@@ -116,12 +114,14 @@ public class PesquisaController {
 		Validador.validaCampoDeInteresse(campoDeInteresse);
 		String codigoLetras = campoDeInteresse.substring(0, 3).toUpperCase();
 		if (codigos.containsKey(codigoLetras)) {
-			codigos.get(codigoLetras).somaMaisUmQuantiadadeEsteCodigoFoiUsado();
-			codigo = codigoLetras + codigos.get(codigoLetras).qtdVezesIdPesquisaFoiUsado();
+			int contador = codigos.get(codigoLetras);
+			contador++;
+			codigos.replace(codigoLetras, contador);
+			codigo = codigoLetras + codigos.get(codigoLetras).intValue();
 		} else {
 			codigo = codigoLetras + "1";
-			codigos.put(codigoLetras, new QtdVezesIdPesquisaUsado(0));
-			codigos.get(codigoLetras).somaMaisUmQuantiadadeEsteCodigoFoiUsado();
+			codigos.put(codigoLetras, 1);
+			codigos.get(codigoLetras).intValue();
 		}
 		this.estrategia = new AtividadeMaisAntiga();
 		pesquisas.put(codigo, new Pesquisa(codigo, descricao, campoDeInteresse));
