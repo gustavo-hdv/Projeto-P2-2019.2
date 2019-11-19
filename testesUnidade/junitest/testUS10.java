@@ -30,7 +30,7 @@ public class testUS10 {
 	@Test
 	public void testProximaAtividadeSemPendentes() {
 		try {
-			 C.proximaAtividade("COM1");
+			C.proximaAtividade("COM1");
 			fail();
 		} catch (RuntimeException RTE) {
 		}
@@ -42,27 +42,30 @@ public class testUS10 {
 		C.cadastraItem("A2", "Escutar Evolve");
 		C.cadastraItem("A3", "Analisar as redes socias dos individuos ativos nos eventos dessa discurssao");
 		assertEquals("A1", C.proximaAtividade("COM1"));
-		
+
 		C.configuraEstrategia("MAIS_ANTIGA");
 		assertEquals("A1", C.proximaAtividade("COM1"));
 	}
-	
+
 	@Test
 	public void testProximaAtividadeMenosPendencias() {
 		C.configuraEstrategia("MENOS_PENDENCIAS");
 		C.cadastraItem("A1", "Busca por provas que a netflix esta se auto sabotando cancelando seus melhores shows");
 		C.cadastraItem("A1", "Escutar Night Visions");
 		C.cadastraItem("A1", "Escutar Smoke + Mirrors");
-		C.cadastraItem("A2", "Escutar Evolve");
+		C.cadastraItem("A1", "Escutar Evolve");
 		C.cadastraItem("A2", "Escutar Origins");
 		C.cadastraItem("A2", "Comparacao com outras bandas de rock");
 		C.cadastraItem("A2", "Alunos de computacao atrapalhando atividades em campo dos alunos de arq/urb.");
 		C.cadastraItem("A2", "Indiretas no twitter.");
 		C.cadastraItem("A3", "Analisar as redes socias dos individuos ativos nos eventos dessa discurssao");
-		
+
 		assertEquals("A3", C.proximaAtividade("COM1"));
+
+		C.desassociaAtividade("COM1", "A3");
+		assertEquals("A1", C.proximaAtividade("COM1"));
 	}
-	
+
 	@Test
 	public void testProximaAtividadeMaiorRisco() {
 		C.cadastraItem("A1", "Busca por provas que a netflix esta se auto sabotando cancelando seus melhores shows");
@@ -73,6 +76,17 @@ public class testUS10 {
 		assertEquals("A2", C.proximaAtividade("COM1"));
 
 		C.desassociaAtividade("COM1", "A2");
+		assertEquals("A1", C.proximaAtividade("COM1"));
+	}
+	
+	@Test
+	public void testProximaAtividadeMaiorDuracao() {
+		C.configuraEstrategia("MAIOR_DURACAO");
+		C.cadastraItem("A1", "Busca por provas que a netflix esta se auto sabotando cancelando seus melhores shows");
+		C.cadastraItem("A2", "Alunos de computacao atrapalhando atividades em campo dos alunos de arq/urb.");
+		C.cadastraItem("A3", "Analisar as redes socias dos individuos ativos nos eventos dessa discurssao");
+
+		C.executaAtividade("A1", 1, 5);
 		assertEquals("A1", C.proximaAtividade("COM1"));
 	}
 }
