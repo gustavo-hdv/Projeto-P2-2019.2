@@ -1,0 +1,12 @@
+- Pesquisa: FER1 - Aspectos da fermentacao do mosto cervejeiro por leveduras nao-Saccharomyces. - fermentacao, cerveja
+	- Pesquisadores: 
+		- Rafael Felipe Basso (Engenherio Agronomo) - Interessado em pesquisas sobre aspectos da fermentacao - rafaelflbp@gmail.com - http://www.tcc.sc.usp.br/tce/disponiveis/11/110100/tce-21072015-140723/
+	- Problema: 
+		- P1 - Concentracao do alcool. - 4
+	- Objetivos: 
+		- O1 - GERAL - Analisar a fermentacao - 8
+	- Atividades: 
+		- Hidrolise durante o processo fermentativo. (BAIXO - Molecula de acucar e uma aglicona livre.)
+			- REALIZADO - ITEM1
+			- REALIZADO - ITEM2
+			- PENDENTE - ITEM3
