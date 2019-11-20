@@ -206,15 +206,9 @@ public class AtividadeMetodologica {
 		return mensagens;
 	}
 
-	public void registrarDuracao(int duracao, int item) {
-		Validador.validaValoresNegativos(item, "Item nao pode ser nulo ou negativo.");
-		Validador.validaValoresNegativos(duracao, "Duracao nao pode ser nula ou negativa.");
-		this.resultados.get(item-1).registrarDuracao(duracao);
-		this.duracaoExecucao += duracao;
-	}
-
-	public void realizarItem(int posItem) {
+	public void realizarItem(int posItem, int duracao) {
 		Validador.validaValoresNegativos(posItem, "Item nao pode ser nulo ou negativo.");
+		Validador.validaValoresNegativos(duracao, "Duracao nao pode ser nula ou negativa.");
 
 		if (posItem > this.resultados.size()) {
 			throw new IndexOutOfBoundsException("Item nao encontrado.");
@@ -226,7 +220,10 @@ public class AtividadeMetodologica {
 			throw new IllegalArgumentException("Item ja executado.");
 		}
 
+		item.registrarDuracao(duracao);
 		item.alteraEstado();
+
+		this.duracaoExecucao += duracao;
 	}
 
 	public int cadastraResultado(String resultado) {

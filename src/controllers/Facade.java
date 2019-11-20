@@ -1,7 +1,11 @@
 package controllers;
 
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.FileWriter;
 import java.io.IOException;
 
+import com.google.gson.Gson;
 import easyaccept.EasyAccept;
 
 /**
@@ -17,13 +21,30 @@ public class Facade {
 
 	/** Testes de aceitacao */
 	public static void main(String[] args) {
-		args = new String[] { "controllers.Facade", "TestesAceitacao/use_case_1.txt", "TestesAceitacao/use_case_2.txt",
-				"TestesAceitacao/use_case_3.txt", "TestesAceitacao/use_case_4.txt", "TestesAceitacao/use_case_5.txt",
-				"TestesAceitacao/use_case_6.txt", "TestesAceitacao/use_case_7.txt", "TestesAceitacao/use_case_8.txt",
-				"TestesAceitacao/use_case_9.txt", "TestesAceitacao/use_case_10.txt",
-				"TestesAceitacao/use_case_11.txt" };
+		args = new String[] { "controllers.Facade", "TestesAceitacao/use_case_12CARREGAR.txt" };
 		EasyAccept.main(args);
 	}
+
+	public void salvar() throws IOException {
+		Gson gson = new Gson();
+
+		String json = gson.toJson(this.controller);
+
+        FileWriter writer = new FileWriter("bd.json");
+        writer.write(json);
+        writer.close();
+	}
+
+	public void carregar() throws IOException{
+	    Gson gson = new Gson();
+
+        BufferedReader br = new BufferedReader(new FileReader("bd.json"));
+
+        //Converte String JSON para objeto Java
+        this.controller = gson.fromJson(br, Controller.class);
+
+        br.close();
+    }
 
 	/**
 	 * Exporta um resumo da pesquisa em arquivo de texto Representado todas as

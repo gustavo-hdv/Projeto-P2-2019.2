@@ -125,6 +125,7 @@ public class PesquisaController {
 		}
 		this.estrategia = new AtividadeMaisAntiga();
 		pesquisas.put(codigo, new Pesquisa(codigo, descricao, campoDeInteresse));
+		System.out.println(codigo);
 		return codigo;
 	}
 
@@ -430,8 +431,7 @@ public class PesquisaController {
 			AtividadeMetodologica atividade = pesquisa.getAtividadeAssociada(codigoAtividade);
 			if(atividade != null){
 				naoAssociada = false;
-				atividade.realizarItem(item);
-				atividade.registrarDuracao(duracao, item);
+				atividade.realizarItem(item, duracao);
 				break;
 			}
 		}
