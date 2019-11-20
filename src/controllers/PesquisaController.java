@@ -34,8 +34,6 @@ public class PesquisaController {
 	 * pesquisas estao associadas ao seu codigo.
 	 */
 	private Map<String, String> desativadas; 
-	
-//	qtdVezesIdPesquisaUsado
 
 	/**
 	 * Map responsavel por guardar um codigo associado a um ArrayList, o tamanho
