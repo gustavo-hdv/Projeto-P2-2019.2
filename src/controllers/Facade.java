@@ -21,7 +21,9 @@ public class Facade {
 
 	/** Testes de aceitacao */
 	public static void main(String[] args) {
-		args = new String[] { "controllers.Facade", "TestesAceitacao/use_case_12CARREGAR.txt" };
+		args = new String[] { "controllers.Facade", "TestesAceitacao/use_case_1.txt", "TestesAceitacao/use_case_2.txt", "TestesAceitacao/use_case_3.txt", "TestesAceitacao/use_case_4.txt", 
+				"TestesAceitacao/use_case_5.txt", "TestesAceitacao/use_case_6.txt", "TestesAceitacao/use_case_7.txt", "TestesAceitacao/use_case_8.txt", "TestesAceitacao/use_case_9.txt", 
+				"TestesAceitacao/use_case_10.txt", "TestesAceitacao/use_case_11"};
 		EasyAccept.main(args);
 	}
 
@@ -356,38 +358,61 @@ public class Facade {
 	}
 
 	/**
-	 * GABRIEL
-	 *
-	 * @param emailPesquisador
-	 * @return
+	 * Metodo que associa um Pesquisador a uma determinada pesquisa. Retorna um
+	 * valor booleano, True se o Pesquisador conseguiu ser associado e False caso
+	 * nao.
+	 * 
+	 * @param idPesquisa       eh a chave que identifica a pesquisa.
+	 * @param emailPesquisador eh o email do Pesquisador.
+	 * @return um valor booleano.
 	 */
 	public boolean associaPesquisador(String idPesquisa, String emailPesquisador) {
 		return controller.associaPesquisador(idPesquisa, emailPesquisador);
 	}
 
 	/**
-	 * GABRIEL
+	 * Metodo que desassocia um Pesquisador a uma determinada Pesquisa.
+	 * 
+	 * @param idPesquisa       eh a cgave que identifica a pesquisa.
+	 * @param emailPesquisador eh o email do Pesquisador.
+	 * @return um valor Booleano.
 	 */
 	public boolean desassociaPesquisador(String idPesquisa, String emailPesquisador) {
 		return controller.desassociaPesquisador(idPesquisa, emailPesquisador);
 	}
 
 	/**
-	 * GABRIEL
+	 * Metodo que cadastra a ESpecialidade do Pesquisador como um Professor.
+	 * 
+	 * @param email    eh o email do Pesquisador.
+	 * @param formacao eh a formacao do Pesquisador como um Professor.
+	 * @param unidade  eh a unidade do do Pesquisador como um Professor.
+	 * @param data     eh a data que aquele Pesquisador, como um Professor, foi
+	 *                 contratado.
 	 */
 	public void cadastraEspecialidadeProfessor(String email, String formacao, String unidade, String data) {
 		controller.cadastraEspecialidadeProfessor(email, formacao, unidade, data);
 	}
 
 	/**
-	 * GABRIEL
+	 * Metodo que cadastra a ESpecialidade do Pesquisador como um Aluno.
+	 * 
+	 * @param email    eh o email do Pesqusiador como um Aluno.
+	 * @param semestre eh o semestre em que o Pesquisador, como um Aluno, está
+	 *                 cursando.
+	 * @param IEA      eh o IEA daquele Pesquisador, como um ALuno.
 	 */
 	public void cadastraEspecialidadeAluno(String email, int semestre, double IEA) {
 		controller.cadastraEspecialidadeAluno(email, semestre, IEA);
 	}
 
 	/**
-	 * GABRIEL
+	 * Metodo responsavel por listar todos os pesquisadores de uma determinada
+	 * Funcao.
+	 * 
+	 * @param tipo eh a funcao.
+	 * @return retorna a respresentacao em forma de String dos pesquisadores que tem
+	 *         aquela determinada funcao.
 	 */
 	public String listaPesquisadores(String tipo) {
 		return controller.listaPesquisadores(tipo);

@@ -347,7 +347,10 @@ public class PesquisaController {
 	}
 
 	/**
-	 * GABRIEL
+	 * Metodo que retorna uma determinada pesquisa, de acorodo com o codigo passado no parametro.
+	 * 
+	 * @param codigo eh o Id que identifica a pesquisa.
+	 * @return retorna uma determinada pesquisa, de acorodo com o codigo passado no parametro.
 	 */
 	public Pesquisa buscaPesquisa(String codigo) {
 		return pesquisas.get(codigo);
