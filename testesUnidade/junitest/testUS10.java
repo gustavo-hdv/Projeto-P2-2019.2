@@ -78,21 +78,4 @@ public class testUS10 {
 		C.desassociaAtividade("COM1", "A2");
 		assertEquals("A1", C.proximaAtividade("COM1"));
 	}
-	
-	/*
-	 * @Test public void testProximaAtividadeMaiorDuracao() {
-	 * C.configuraEstrategia("MAIOR_DURACAO"); C.cadastraItem("A1",
-	 * "Busca por provas que a netflix esta se auto sabotando cancelando seus melhores shows"
-	 * ); C.cadastraItem("A2", "Comparacao com outras bandas de rock");
-	 * C.cadastraItem("A2",
-	 * "Alunos de computacao atrapalhando atividades em campo dos alunos de arq/urb."
-	 * ); C.cadastraItem("A3",
-	 * "Analisar as redes socias dos individuos ativos nos eventos dessa discurssao"
-	 * );
-	 * 
-	 * C.executaAtividade("A1", 1, 10); C.executaAtividade("A2", 1, 4);
-	 * C.executaAtividade("A2", 2, 5); C.executaAtividade("A3", 1, 1);
-	 * 
-	 * assertEquals("A1", C.proximaAtividade("COM1")); }
-	 */
 }

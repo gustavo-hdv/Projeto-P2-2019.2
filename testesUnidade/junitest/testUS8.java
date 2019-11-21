@@ -94,7 +94,7 @@ class testUS8 {
 	public void testBuscaIndice() {
 		assertEquals("zapzap@zap.com: nao sei programacao dinamica**", C.busca("**", 4));
 	}
-	
+
 	@Test
 	public void testContaResultadosBusca() {
 		assertEquals(8, C.contaResultadosBusca("**"));
