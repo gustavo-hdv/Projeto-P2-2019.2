@@ -403,8 +403,9 @@ public class Controller {
 
 	/**
 	 * Retorna o resultado associado a um indice na busca.
-	 * 
-	 * @param indice O indice do resultado.
+	 *
+	 * @param termo O termo a ser buscado.
+	 * @param indiceResultado O indice do resultado.
 	 */
 	public String busca(String termo, int indiceResultado) {
 		Validador.validaString(termo, "Campo termo nao pode ser nulo ou vazio.");
@@ -520,6 +521,14 @@ public class Controller {
 		return pesquisaC.proximaAtividade(codigoPesquisa);
 	}
 
+	/**
+	 * Associa uma atividade a uma pesquisa.
+	 *
+	 * @param codigoPesquisa codigo da pesquisa
+	 * @param codigoAtividade codigo da atividade
+	 *
+	 * @return boolean (true para associado com sucesso, false para nao associado)
+	 */
 	public boolean associaAtividade(String codigoPesquisa, String codigoAtividade) {
 		Validador.validaString(codigoPesquisa, "Campo codigoPesquisa nao pode ser nulo ou vazio.");
 		Validador.validaString(codigoAtividade, "Campo codigoAtividade nao pode ser nulo ou vazio.");
@@ -532,6 +541,15 @@ public class Controller {
 				this.atividadesC.getAtividade(codigoAtividade));
 	}
 
+	/**
+	 * Desassocia uma atividade a uma pesquisa.
+	 *
+	 * @param codigoPesquisa codigo da pesquisa
+	 * @param codigoAtividade codigo da atividade
+	 *
+	 * @return boolean (true para desassociado com sucesso, false para nao
+	 *         desassociado)
+	 */
 	public boolean desassociaAtividade(String codigoPesquisa, String codigoAtividade) {
 		Validador.validaString(codigoPesquisa, "Campo codigoPesquisa nao pode ser nulo ou vazio.");
 		Validador.validaString(codigoAtividade, "Campo codigoAtividade nao pode ser nulo ou vazio.");
@@ -543,6 +561,13 @@ public class Controller {
 		return this.pesquisaC.desassociaAtividade(codigoPesquisa, codigoAtividade);
 	}
 
+	/**
+	 * Executa uma atividade associada a pelo menos uma pesquisa.
+	 *
+	 * @param codigoAtividade codigo da atividade
+	 * @param item posicao do item a ser executado
+	 * @param duracao duracao da execucao
+	 */
 	public void executaAtividade(String codigoAtividade, int item, int duracao) {
 		Validador.validaString(codigoAtividade, "Campo codigoAtividade nao pode ser nulo ou vazio.");
 		Validador.validaValoresNegativos(item, "Item nao pode ser nulo ou negativo.");
@@ -555,6 +580,14 @@ public class Controller {
 		this.pesquisaC.executaAtividade(codigoAtividade, item, duracao);
 	}
 
+	/**
+	 * Cadastra um resultado em uma atividade.
+	 *
+	 * @param codigoAtividade codigo da atividade
+	 * @param resultado descricao do resultado
+	 *
+	 * @return inteiro representando a quantidade de resultados cadastrados
+	 */
 	public int cadastraResultado(String codigoAtividade, String resultado) {
 		Validador.validaString(codigoAtividade, "Campo codigoAtividade nao pode ser nulo ou vazio.");
 		Validador.validaString(resultado, "Resultado nao pode ser nulo ou vazio.");
@@ -566,6 +599,15 @@ public class Controller {
 		return this.pesquisaC.cadastraResultado(codigoAtividade, resultado);
 	}
 
+	/**
+	 * Remove um resultado de uma atividade.
+	 *
+	 * @param codigoAtividade codigo da atividade
+	 * @param numeroResultado posicao do resultado
+	 *
+	 * @return boolean (true para removido com sucesso, false para nao
+	 *         removido)
+	 */
 	public boolean removeResultado(String codigoAtividade, int numeroResultado) {
 		Validador.validaString(codigoAtividade, "Campo codigoAtividade nao pode ser nulo ou vazio.");
 		Validador.validaValoresNegativos(numeroResultado, "numeroResultado nao pode ser nulo ou negativo.");
@@ -577,6 +619,13 @@ public class Controller {
 		return this.pesquisaC.removeResultado(codigoAtividade, numeroResultado);
 	}
 
+	/**
+	 * Lista todos os resultados de uma atividade.
+	 *
+	 * @param codigoAtividade codigo da atividade
+	 *
+	 * @return String representando todos os resultados
+	 */
 	public String listaResultados(String codigoAtividade) {
 		Validador.validaString(codigoAtividade, "Campo codigoAtividade nao pode ser nulo ou vazio.");
 
@@ -587,6 +636,13 @@ public class Controller {
 		return this.pesquisaC.listaResultados(codigoAtividade);
 	}
 
+	/**
+	 * Retorna a duracao total de uma atividade.
+	 *
+	 * @param codigoAtividade codigo da atividade
+	 *
+	 * @return inteiro representando a duracao total da atividade
+	 */
 	public int getDuracao(String codigoAtividade) {
 		Validador.validaString(codigoAtividade, "Campo codigoAtividade nao pode ser nulo ou vazio.");
 
@@ -649,4 +705,25 @@ public class Controller {
 		return atividadesC.pegaMaiorRiscoAtividades(idAtividade);
 	}
 
+	/**
+	 * Carrega os dados de todos os controllers.
+	 */
+	public void carregar(){
+		this.pesquisaC.carregaDados();
+		this.pesquisadorC.carregaDados();
+		this.atividadesC.carregaDados();
+		this.probC.carregaDados();
+		this.objC.carregaDados();
+	}
+
+	/**
+	 * Salva os dados de todos os controllers.
+	 */
+	public void salvar(){
+		this.pesquisaC.salvaDados();
+		this.pesquisadorC.salvaDados();
+		this.atividadesC.salvaDados();
+		this.probC.salvaDados();
+		this.objC.salvaDados();
+	}
 }

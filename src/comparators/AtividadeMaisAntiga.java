@@ -1,5 +1,6 @@
 package comparators;
 
+import java.io.Serializable;
 import java.util.Comparator;
 
 import entidades.AtividadeMetodologica;
@@ -12,7 +13,7 @@ import entidades.AtividadeMetodologica;
  * @author Carlos Ribeiro
  *
  */
-public class AtividadeMaisAntiga implements Comparator<AtividadeMetodologica> {
+public class AtividadeMaisAntiga implements Comparator<AtividadeMetodologica>, Serializable {
 
 	/**
 	 * Compara duas atividades baseado em sua ordem de cadastro dentro de uma

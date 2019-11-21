@@ -1,5 +1,6 @@
 package entidades;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
@@ -17,7 +18,7 @@ import java.util.HashMap;
  * cientifico para a construcao de um novo entendimento, compreensao ou
  * processo.
  */
-public class Pesquisa {
+public class Pesquisa implements Serializable {
 
 	/**
 	 * Codigo que identifica uma Pesquisa.
@@ -155,8 +156,6 @@ public class Pesquisa {
 	/**
 	 * Desassocia um problema da a pesquisa
 	 * 
-	 * @param problema Um objeto problema
-	 * 
 	 * @return boolean (true para associado com sucesso, false para nao associado)
 	 */
 	public boolean desassociaProblema() {
@@ -170,8 +169,8 @@ public class Pesquisa {
 	/**
 	 * Associa um objetivo para a pesquisa
 	 * 
-	 * @param idPesquisa identificador da pesquisa
-	 * @param objetivo   Objetivo da pesquisa
+	 * @param idObjetivo identificador do objetivo
+	 * @param objetivo Objetivo da pesquisa
 	 * 
 	 * @return boolean (true para associado com sucesso, false para nao associado)
 	 */
@@ -190,7 +189,7 @@ public class Pesquisa {
 	/**
 	 * Desassocia um objetivo da pesquisa
 	 * 
-	 * @param idPesquisa identificador da pesquisa
+	 * @param idObjetivo identificador do objetivo
 	 * @param objetivo   Objetivo da pesquisa
 	 * 
 	 * @return boolean (true para desassociado com sucesso, false para nao
@@ -212,7 +211,6 @@ public class Pesquisa {
 	 * Verifica se a pesquisa possui determinado objetivo
 	 * 
 	 * @param idObjetivo identificar o objetivo
-	 * @param objetivo   objeto a ser verificado
 	 * 
 	 * @return boolean (possui ou nao possui o objetivo)
 	 */
@@ -242,6 +240,14 @@ public class Pesquisa {
 		this.campoDeInteresse = campoDeInteresse;
 	}
 
+	/**
+	 * Associa uma atividade a uma pesquisa.
+	 *
+	 * @param codigoAtividade codigo da atividade
+	 * @param atividade objeto da atividade
+	 *
+	 * @return boolean (true para associado com sucesso, false para nao associado)
+	 */
 	public boolean associaAtividade(String codigoAtividade, AtividadeMetodologica atividade) {
 		Validador.validaString(codigoAtividade, "Campo codigoAtividade nao pode ser nulo ou vazio.");
 		if(atividade == null){
@@ -257,6 +263,14 @@ public class Pesquisa {
 		return true;
 	}
 
+	/**
+	 * Desassocia uma atividade a uma pesquisa.
+	 *
+	 * @param codigoAtividade codigo da atividade
+	 *
+	 * @return boolean (true para desassociado com sucesso, false para nao
+	 *         desassociado)
+	 */
 	public boolean desassociaAtividade(String codigoAtividade) {
 		Validador.validaString(codigoAtividade, "Campo codigoAtividade nao pode ser nulo ou vazio.");
 

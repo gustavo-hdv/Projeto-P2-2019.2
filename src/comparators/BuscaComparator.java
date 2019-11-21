@@ -1,5 +1,6 @@
 package comparators;
 
+import java.io.Serializable;
 import java.util.Comparator;
 import java.util.HashSet;
 
@@ -8,7 +9,7 @@ import java.util.HashSet;
  * 
  * @author Carlos Ribeiro
  */
-public class BuscaComparator implements Comparator<String> {
+public class BuscaComparator implements Comparator<String>, Serializable {
 
 	/**
 	 * Compara duas mensagens de representacao de busca.

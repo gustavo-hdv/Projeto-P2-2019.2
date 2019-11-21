@@ -1,5 +1,6 @@
 package controllers;
 
+import java.io.File;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
@@ -51,6 +52,7 @@ public class AtividadeController {
 		String codigo = "A" + (++this.contagem);
 		this.atividadesMetodologicas.put(codigo,
 				new AtividadeMetodologica(descricao, nivelRisco, descricaoRisco, codigo));
+
 		return codigo;
 	}
 
@@ -163,7 +165,7 @@ public class AtividadeController {
 	/**
 	 * Metodo que verifica se tem um loop em determinada associacao de atividades.
 	 * 
-	 * @param idAtividade eh o ID da atividade que esta sendo passada como idSubsequente no metodo: defineProximaAtividade.
+	 * @param idPrecedente eh o ID da atividade que esta sendo passada como idSubsequente no metodo: defineProximaAtividade.
 	 * @return retorna um valor booleano, true se tiver loop, false se nao tiver.
 	 */
 	public boolean verificaSeTemLoop(String idPrecedente, String idSubsequente) {
@@ -284,11 +286,26 @@ public class AtividadeController {
 		riscos.put("ALTO", 3);
 		if (riscos.get(risco) > riscos.get(maiorRisco)) {
 			return true;
-		} else if (riscos.get(risco) == riscos.get(maiorRisco)) {
+		} else if (riscos.get(risco).equals(riscos.get(maiorRisco))) {
 			return true;
 		} else {
 			return false;
 		}
-	} 
-	
+	}
+
+	/**
+	 * Salva todos os atributos.
+	 */
+	public void salvaDados(){
+		Persistencia.salvar(this.atividadesMetodologicas, "atividadeController", "atividadesMetodologicas");
+		Persistencia.salvar(this.contagem, "atividadeController", "contagemCodigoAtividade");
+	}
+
+	/**
+	 * Carrega todos os atributos.
+	 */
+	public void carregaDados(){
+		this.atividadesMetodologicas = (LinkedHashMap<String, AtividadeMetodologica>) Persistencia.carregar("atividadeController", "atividadesMetodologicas");
+		this.contagem = (int) Persistencia.carregar("atividadeController", "contagemCodigoAtividade");
+	}
 }

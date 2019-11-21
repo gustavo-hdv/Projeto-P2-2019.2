@@ -1,5 +1,6 @@
 package comparators;
 
+import java.io.Serializable;
 import java.util.Comparator;
 import java.util.HashMap;
 
@@ -14,7 +15,7 @@ import entidades.AtividadeMetodologica;
  * @author Carlos Ribeiro
  *
  */
-public class AtividadeMaiorRisco implements Comparator<AtividadeMetodologica> {
+public class AtividadeMaiorRisco implements Comparator<AtividadeMetodologica>, Serializable {
 
 	/**
 	 * Compara duas atividades baseado em seus riscos dentro de uma pesquisa.

@@ -1,14 +1,12 @@
 package controllers;
 
+import java.io.File;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
-import entidades.Buscador;
-import entidades.Buscavel;
-import entidades.Objetivo;
-import entidades.Validador;
+import entidades.*;
 
 /**
  * Representacao de um Controller dos Objetivos.
@@ -98,4 +96,20 @@ public class ObjetivoController implements Buscador {
     	
     	return this.objetivos.get(idObjetivo);
 	}
+
+    /**
+     * Salva todos os atributos.
+     */
+    public void salvaDados(){
+        Persistencia.salvar(this.objetivos, "objetivoController", "objetivos");
+        Persistencia.salvar(this.posicao, "objetivoController", "posicao");
+    }
+
+    /**
+     * Carrega todos os atributos.
+     */
+    public void carregaDados(){
+        this.objetivos = (LinkedHashMap<String, Objetivo>) Persistencia.carregar("objetivoController", "objetivos");
+        this.posicao = (int) Persistencia.carregar("objetivoController", "posicao");
+    }
 }

@@ -1,9 +1,10 @@
 package entidades;
 
+import java.io.Serializable;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
-public class Pesquisador implements Buscavel {
+public class Pesquisador implements Buscavel, Serializable {
 	/**
 	 * O nome do pesquisador.
 	 */
@@ -258,8 +259,8 @@ public class Pesquisador implements Buscavel {
 	/**
 	 * Metodo que desassocia um Pesquisador a uma determinada Pesquisa.
 	 * 
-	 * @param idPesquisa       eh a cgave que identifica a pesquisa.
-	 * @param emailPesquisador eh o email do Pesquisador.
+	 * @param codigoPesquisa eh a chave que identifica a pesquisa.
+	 *
 	 * @return um valor Booleano.
 	 */
 	public boolean desassociaPesquisa(String codigoPesquisa) {

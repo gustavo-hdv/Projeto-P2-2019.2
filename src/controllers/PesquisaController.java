@@ -1,5 +1,6 @@
 package controllers;
 
+import java.io.File;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
@@ -17,11 +18,6 @@ import entidades.*;
  * e guardar alguns metodos do programa que sejam referentes a Classe Pesquisa.
  */
 public class PesquisaController {
-
-	/**
-	 * Eh o codigo da Pesquisa.
-	 */
-	private String codigo;
 
 	/**
 	 * Map responsavel por guardar as pesquisas cadastradas. Essas pesquisas
@@ -48,7 +44,6 @@ public class PesquisaController {
 	 * Constroi um Controle da Pesquisa e inicializa os HashMap e o atributo codigo.
 	 */
 	public PesquisaController() {
-		this.codigo = "";
 		this.pesquisas = new LinkedHashMap<String, Pesquisa>();
 		this.desativadas = new LinkedHashMap<String, String>();
 		this.codigos = new LinkedHashMap<String, Integer>();
@@ -111,6 +106,7 @@ public class PesquisaController {
 		Validador.validaString(campoDeInteresse, "Formato do campo de interesse invalido.");
 		Validador.validaCampoDeInteresse(campoDeInteresse);
 		String codigoLetras = campoDeInteresse.substring(0, 3).toUpperCase();
+		String codigo;
 		if (codigos.containsKey(codigoLetras)) {
 			int contador = codigos.get(codigoLetras);
 			contador++;
@@ -119,11 +115,9 @@ public class PesquisaController {
 		} else {
 			codigo = codigoLetras + "1";
 			codigos.put(codigoLetras, 1);
-			codigos.get(codigoLetras).intValue();
 		}
 		this.estrategia = new AtividadeMaisAntiga();
 		pesquisas.put(codigo, new Pesquisa(codigo, descricao, campoDeInteresse));
-		System.out.println(codigo);
 		return codigo;
 	}
 
@@ -393,6 +387,15 @@ public class PesquisaController {
 		return pesquisa.proximaAtividade(this.estrategia);
 	}
 
+	/**
+	 * Associa uma atividade a uma pesquisa.
+	 *
+	 * @param codigoPesquisa codigo da pesquisa
+	 * @param codigoAtividade codigo da atividade
+	 * @param atividade objeto da atividade
+	 *
+	 * @return boolean (true para associado com sucesso, false para nao associado)
+	 */
 	public boolean associaAtividade(String codigoPesquisa, String codigoAtividade, AtividadeMetodologica atividade){
 		Validador.validaString(codigoPesquisa, "Campo codigoPesquisa nao pode ser nulo ou vazio.");
 		Validador.validaString(codigoAtividade, "Campo codigoAtividade nao pode ser nulo ou vazio.");
@@ -409,6 +412,15 @@ public class PesquisaController {
 		return this.pesquisas.get(codigoPesquisa).associaAtividade(codigoAtividade, atividade);
 	}
 
+	/**
+	 * Desassocia uma atividade a uma pesquisa.
+	 *
+	 * @param codigoPesquisa codigo da pesquisa
+	 * @param codigoAtividade codigo da atividade
+	 *
+	 * @return boolean (true para desassociado com sucesso, false para nao
+	 *         desassociado)
+	 */
 	public boolean desassociaAtividade(String codigoPesquisa, String codigoAtividade){
 		Validador.validaString(codigoPesquisa, "Campo codigoPesquisa nao pode ser nulo ou vazio.");
 		Validador.validaString(codigoAtividade, "Campo codigoAtividade nao pode ser nulo ou vazio.");
@@ -421,6 +433,13 @@ public class PesquisaController {
 		return this.pesquisas.get(codigoPesquisa).desassociaAtividade(codigoAtividade);
 	}
 
+	/**
+	 * Executa uma atividade associada a pelo menos uma pesquisa.
+	 *
+	 * @param codigoAtividade codigo da atividade
+	 * @param item posicao do item a ser executado
+	 * @param duracao duracao da execucao
+	 */
 	public void executaAtividade(String codigoAtividade, int item, int duracao){
 		Validador.validaString(codigoAtividade, "Campo codigoAtividade nao pode ser nulo ou vazio.");
 		Validador.validaValoresNegativos(item, "Item nao pode ser nulo ou negativo.");
@@ -442,6 +461,14 @@ public class PesquisaController {
 		}
 	}
 
+	/**
+	 * Cadastra um resultado em uma atividade.
+	 *
+	 * @param codigoAtividade codigo da atividade
+	 * @param resultado descricao do resultado
+	 *
+	 * @return inteiro representando a quantidade de resultados cadastrados
+	 */
 	public int cadastraResultado(String codigoAtividade, String resultado){
 		Validador.validaString(codigoAtividade, "Campo codigoAtividade nao pode ser nulo ou vazio.");
 		Validador.validaString(resultado, "Resultado nao pode ser nulo ou vazio.");
@@ -456,6 +483,15 @@ public class PesquisaController {
 		throw new IllegalArgumentException("Atividade sem associacoes com pesquisas.");
 	}
 
+	/**
+	 * Remove um resultado de uma atividade.
+	 *
+	 * @param codigoAtividade codigo da atividade
+	 * @param numeroResultado posicao do resultado
+	 *
+	 * @return boolean (true para removido com sucesso, false para nao
+	 *         removido)
+	 */
 	public boolean removeResultado(String codigoAtividade, int numeroResultado){
 		Validador.validaString(codigoAtividade, "Campo codigoAtividade nao pode ser nulo ou vazio.");
 		Validador.validaValoresNegativos(numeroResultado, "numeroResultado nao pode ser nulo ou negativo.");
@@ -470,6 +506,13 @@ public class PesquisaController {
 		throw new IllegalArgumentException("Atividade sem associacoes com pesquisas.");
 	}
 
+	/**
+	 * Lista todos os resultados de uma atividade.
+	 *
+	 * @param codigoAtividade codigo da atividade
+	 *
+	 * @return String representando todos os resultados
+	 */
 	public String listaResultados(String codigoAtividade){
 		Validador.validaString(codigoAtividade, "Campo codigoAtividade nao pode ser nulo ou vazio.");
 
@@ -484,6 +527,13 @@ public class PesquisaController {
 		throw new IllegalArgumentException("Atividade sem associacoes com pesquisas.");
 	}
 
+	/**
+	 * Retorna a duracao total de uma atividade.
+	 *
+	 * @param codigoAtividade codigo da atividade
+	 *
+	 * @return inteiro representando a duracao total da atividade
+	 */
 	public int getDuracao(String codigoAtividade){
 		Validador.validaString(codigoAtividade, "Campo codigoAtividade nao pode ser nulo ou vazio.");
 
@@ -496,5 +546,25 @@ public class PesquisaController {
 		}
 
 		throw new IllegalArgumentException("Atividade sem associacoes com pesquisas.");
+	}
+
+	/**
+	 * Salva todos os atributos.
+	 */
+	public void salvaDados(){
+		Persistencia.salvar(this.pesquisas, "pesquisaController", "pesquisas");
+		Persistencia.salvar(this.codigos, "pesquisaController", "codigos");
+		Persistencia.salvar(this.desativadas, "pesquisaController", "desativadas");
+		Persistencia.salvar(this.estrategia, "pesquisaController", "estrategia");
+	}
+
+	/**
+	 * Carrega todos os atributos.
+	 */
+	public void carregaDados(){
+		this.pesquisas = (LinkedHashMap<String, Pesquisa>) Persistencia.carregar("pesquisaController", "pesquisas");
+		this.codigos = (LinkedHashMap<String, Integer>) Persistencia.carregar("pesquisaController", "codigos");
+		this.desativadas = (LinkedHashMap<String, String>) Persistencia.carregar("pesquisaController", "desativadas");
+		this.estrategia = (Comparator<AtividadeMetodologica>) Persistencia.carregar("pesquisaController", "estrategia");
 	}
 }

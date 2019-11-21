@@ -1,5 +1,6 @@
 package controllers;
 
+import java.io.File;
 import java.util.ArrayList;
 
 import java.util.Arrays;
@@ -8,11 +9,7 @@ import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 
-import entidades.Buscador;
-import entidades.Buscavel;
-import entidades.Pesquisa;
-import entidades.Pesquisador;
-import entidades.Validador;
+import entidades.*;
 
 /** Representacao de um contrador de pesquisadores */
 
@@ -277,5 +274,19 @@ public class PesquisadorController implements Buscador {
 			}
 		}
 		return pesquisadoresAssociados;
+	}
+
+	/**
+	 * Salva todos os atributos.
+	 */
+	public void salvaDados(){
+		Persistencia.salvar(this.pesquisadores, "pesquisadorController", "pesquisadores");
+	}
+
+	/**
+	 * Carrega todos os atributos.
+	 */
+	public void carregaDados(){
+		this.pesquisadores = (LinkedHashMap<String, Pesquisador>) Persistencia.carregar("pesquisadorController", "pesquisadores");
 	}
 }

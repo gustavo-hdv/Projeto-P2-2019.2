@@ -1,10 +1,12 @@
 package entidades;
 
+import java.io.Serializable;
+
 /**
  * Representacao de um Objetivo.
  */
 
-public class Objetivo implements Buscavel {
+public class Objetivo implements Buscavel, Serializable {
     /**
      * Codigo. Corresponde ao codigo do objetivo.
      */

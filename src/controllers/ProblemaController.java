@@ -1,14 +1,12 @@
 package controllers;
 
+import java.io.File;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
-import entidades.Buscador;
-import entidades.Buscavel;
-import entidades.Problema;
-import entidades.Validador;
+import entidades.*;
 
 /**
  * Representacao de um Controller dos Problemas.
@@ -95,4 +93,20 @@ public class ProblemaController implements Buscador {
 		}
 		return achados;
 	}
+
+    /**
+     * Salva todos os atributos.
+     */
+    public void salvaDados(){
+        Persistencia.salvar(this.problemas, "problemaController", "problemas");
+        Persistencia.salvar(this.posicao, "problemaController", "posicao");
+    }
+
+    /**
+     * Carrega todos os atributos.
+     */
+    public void carregaDados(){
+        this.problemas = (LinkedHashMap<String, Problema>) Persistencia.carregar("problemaController", "problemas");
+        this.posicao = (int) Persistencia.carregar("problemaController", "posicao");
+    }
 }

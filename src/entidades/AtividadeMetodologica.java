@@ -4,10 +4,11 @@ package entidades;
  * Representacao de uma atividade metodologica
  */
 
+import java.io.Serializable;
 import java.util.List;
 import java.util.ArrayList;
 
-public class AtividadeMetodologica {
+public class AtividadeMetodologica implements Serializable {
 
 	/** Descricao */
 	private String descricao;
@@ -206,6 +207,12 @@ public class AtividadeMetodologica {
 		return mensagens;
 	}
 
+	/**
+	 * Realiza um item de uma atividade.
+	 *
+	 * @param posItem posicao do item a ser executado
+	 * @param duracao duracao da execucao
+	 */
 	public void realizarItem(int posItem, int duracao) {
 		Validador.validaValoresNegativos(posItem, "Item nao pode ser nulo ou negativo.");
 		Validador.validaValoresNegativos(duracao, "Duracao nao pode ser nula ou negativa.");
@@ -226,6 +233,13 @@ public class AtividadeMetodologica {
 		this.duracaoExecucao += duracao;
 	}
 
+	/**
+	 * Cadastra um resultado.
+	 *
+	 * @param resultado descricao do resultado
+	 *
+	 * @return inteiro representando a quantidade de resultados cadastrados
+	 */
 	public int cadastraResultado(String resultado) {
 		Validador.validaString(resultado, "Resultado nao pode ser nulo ou vazio.");
 
@@ -234,6 +248,14 @@ public class AtividadeMetodologica {
 		return this.resultadosObtidos.size();
 	}
 
+	/**
+	 * Remove um resultado.
+	 *
+	 * @param numeroResultado posicao do resultado
+	 *
+	 * @return boolean (true para removido com sucesso, false para nao
+	 *         removido)
+	 */
 	public boolean removeResultado(int numeroResultado) {
 		Validador.validaValoresNegativos(numeroResultado, "numeroResultado nao pode ser nulo ou negativo.");
 
@@ -246,6 +268,11 @@ public class AtividadeMetodologica {
 		return true;
 	}
 
+	/**
+	 * Lista todos os resultados.
+	 *
+	 * @return String representando todos os resultados
+	 */
 	public String listaResultados() {
 		String str = "";
 
@@ -262,37 +289,41 @@ public class AtividadeMetodologica {
 		return str.trim().substring(0, index - 1);
 	}
 
+	/**
+	 * Retorna a duracao total.
+	 *
+	 * @return inteiro representando a duracao total da atividade
+	 */
 	public int getDuracao() {
 		return this.duracaoExecucao;
 	}
 
+	/**
+	 * Retorna o codigo da atividade.
+	 *
+	 * @return String representando codigo da atividade
+	 */
 	public String getCodigo() {
 		return this.codigo;
 	}
 
+	/**
+	 * Retorna o risco da atividade.
+	 *
+	 * @return String representando risco da atividade
+	 */
 	public String getRisco() {
 		return this.nivelRisco;
 	}
 
-	/**
-	 * GABRIEL
-	 */
 	public void defineProximaAtividade(String idSubsequente) {
 		this.subsequente = idSubsequente;
 	}
 
-	/**
-	 * GABRIEL
-	 */
 	public void tiraProximaAtividade() {
 		this.subsequente = "";
 	}
 
-	/**
-	 * GABRIEL
-	 * 
-	 * @return
-	 */
 	public String getSubsequente() {
 		return subsequente;
 	}

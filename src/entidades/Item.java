@@ -1,10 +1,12 @@
 package entidades;
 
+import java.io.Serializable;
+
 /**
  * Representacao de um item com descricao e estado(PENDENTE ou REALIZADO)
  */
 
-public class Item {
+public class Item implements Serializable {
 
 	/** Descricao do item */
 	private String descricao;

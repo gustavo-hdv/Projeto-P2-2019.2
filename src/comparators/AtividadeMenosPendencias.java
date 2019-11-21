@@ -1,5 +1,6 @@
 package comparators;
 
+import java.io.Serializable;
 import java.util.Comparator;
 
 import entidades.AtividadeMetodologica;
@@ -13,7 +14,7 @@ import entidades.AtividadeMetodologica;
  * @author Carlos Ribeiro
  *
  */
-public class AtividadeMenosPendencias implements Comparator<AtividadeMetodologica> {
+public class AtividadeMenosPendencias implements Comparator<AtividadeMetodologica>, Serializable {
 
 	/**
 	 * Compara duas atividades baseado em suas quantidades de pendencias dentro de

@@ -1,9 +1,11 @@
 package entidades;
 
+import java.io.Serializable;
+
 /**
  * Representacao da ESpecificacao daquele Pesquisador.
  */
-public abstract class Especificacao{
+public abstract class Especificacao implements Serializable {
 	
 	/**
 	 * O nome do Pesquisador.

@@ -1,5 +1,6 @@
 package comparators;
 
+import java.io.Serializable;
 import java.util.Comparator;
 
 import entidades.AtividadeMetodologica;
@@ -13,7 +14,7 @@ import entidades.AtividadeMetodologica;
  * @author Carlos Ribeiro
  *
  */
-public class AtividadeMaiorDuracao implements Comparator<AtividadeMetodologica> {
+public class AtividadeMaiorDuracao implements Comparator<AtividadeMetodologica>, Serializable {
 
 	/**
 	 * Compara duas atividades baseado em suas duracoes dentro de uma pesquisa.

@@ -62,7 +62,7 @@ public class Aluno extends Especificacao {
 	/**
 	 * Metodo que altera o IEA do aluno.
 	 * 
-	 * @param IEA eh o IEA do aluno.
+	 * @param iEA eh o IEA do aluno.
 	 */
 	public void setIEA(double iEA) {
 		this.IEA = iEA;

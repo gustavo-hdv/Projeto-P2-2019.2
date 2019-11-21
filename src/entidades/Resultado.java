@@ -1,6 +1,8 @@
 package entidades;
 
-public class Resultado {
+import java.io.Serializable;
+
+public class Resultado implements Serializable {
 
     private String descricao;
 

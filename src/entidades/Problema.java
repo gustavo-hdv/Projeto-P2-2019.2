@@ -1,9 +1,11 @@
 package entidades;
 
+import java.io.Serializable;
+
 /**
  * Representacao de um Problema.
  */
-public class Problema implements Buscavel {
+public class Problema implements Buscavel, Serializable {
     /**
      * Codigo. Corresponde ao codigo do problema.
      */
